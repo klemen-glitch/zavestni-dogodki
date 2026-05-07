@@ -18,6 +18,10 @@ async function getEvent(slug: string) {
   return event;
 }
 
+function toGCalDate(date: Date): string {
+  return date.toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+}
+
 async function getRelated(category: string, currentId: string) {
   return db.event.findMany({
     where: { category: category as never, id: { not: currentId }, status: { in: ["APPROVED", "FEATURED"] }, date: { gte: new Date() } },
@@ -56,7 +60,46 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
   const eventUrl = `${appUrl}/events/${event.slug ?? event.id}`;
 
+  // Google Calendar URL
+  const endForCal = event.endDate ?? new Date(event.date.getTime() + 2 * 60 * 60 * 1000);
+  const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.titleEn)}&dates=${toGCalDate(event.date)}/${toGCalDate(endForCal)}&details=${encodeURIComponent((event.shortDescEn ?? event.descriptionEn).slice(0, 400))}&location=${encodeURIComponent(event.venue?.address ?? event.venueName ?? "")}`;
+
+  // JSON-LD structured data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.titleEn,
+    startDate: event.date.toISOString(),
+    endDate: endForCal.toISOString(),
+    description: event.shortDescEn ?? event.descriptionEn.slice(0, 300),
+    url: eventUrl,
+    ...(event.imageUrl && { image: event.imageUrl }),
+    eventStatus: "https://schema.org/EventScheduled",
+    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    location: {
+      "@type": "Place",
+      name: event.venue?.name ?? event.venueName ?? "Slovenija",
+      ...(event.venue?.address && {
+        address: { "@type": "PostalAddress", streetAddress: event.venue.address, addressCountry: "SI" },
+      }),
+    },
+    ...(event.organizer && {
+      organizer: { "@type": "Person", name: event.organizer.name },
+    }),
+    ...(event.price !== null && {
+      offers: {
+        "@type": "Offer",
+        price: String(event.price),
+        priceCurrency: "EUR",
+        availability: "https://schema.org/InStock",
+        url: event.sourceUrl ?? eventUrl,
+      },
+    }),
+  };
+
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="max-w-3xl mx-auto px-4 py-10">
       {/* Back */}
       <Link href="/events" className="inline-flex items-center gap-1 text-stone-500 hover:text-stone-700 text-sm mb-6">
@@ -131,7 +174,12 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
         )}
         <a href={`/api/events/${event.slug ?? event.id}/ical`}
           className="inline-flex items-center gap-2 bg-stone-100 text-stone-700 px-5 py-2.5 rounded-xl font-medium hover:bg-stone-200 transition-colors">
-          📅 Dodaj v koledar
+          📅 Shrani .ics
+        </a>
+        <a href={gcalUrl} target="_blank" rel="noopener"
+          className="inline-flex items-center gap-2 bg-white border border-stone-200 text-stone-700 px-5 py-2.5 rounded-xl font-medium hover:bg-stone-50 transition-colors">
+          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Google Koledar
         </a>
       </div>
 
@@ -170,5 +218,6 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
 
       <NewsletterSignup compact />
     </div>
+    </>
   );
 }

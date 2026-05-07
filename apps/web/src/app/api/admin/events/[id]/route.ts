@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { sendEmail, approvalEmailHtml } from "@/lib/email";
 import type { EventStatus } from "@conscious-slovenia/database";
 
 function isAdmin(req: Request): boolean {
@@ -23,7 +24,19 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       ...(status && { status }),
       ...(featured !== undefined && { featured }),
     },
+    include: { organizer: true },
   });
+
+  // Send approval email to organizer
+  if ((status === "APPROVED" || status === "FEATURED") && event.organizer?.email) {
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
+    const eventUrl = `${appUrl}/events/${event.slug ?? event.id}`;
+    sendEmail({
+      to: event.organizer.email,
+      subject: `Vaš dogodek je odobren! 🌿 — ${event.titleEn}`,
+      html: approvalEmailHtml(event.titleEn, eventUrl),
+    }).catch(console.error);
+  }
 
   return NextResponse.json({ event });
 }

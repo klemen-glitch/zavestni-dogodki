@@ -9,6 +9,7 @@
  * Events to send: checkout.session.completed
  */
 
+import { createHmac, timingSafeEqual } from "crypto";
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 
@@ -25,13 +26,24 @@ interface StripeEvent {
 }
 
 function verifyStripeSignature(payload: string, header: string | null, secret: string): boolean {
-  // In production, use the official Stripe library for proper HMAC validation.
-  // This is a simplified check. Install stripe npm package for production use:
-  // npm install stripe
-  // const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-  // await stripe.webhooks.constructEvent(payload, header, secret);
   if (!header) return false;
-  return header.includes("t="); // Basic sanity check — replace with real HMAC in production
+  try {
+    const parts: Record<string, string> = {};
+    header.split(",").forEach((part) => {
+      const eq = part.indexOf("=");
+      if (eq !== -1) parts[part.slice(0, eq).trim()] = part.slice(eq + 1);
+    });
+    const t = parts["t"];
+    const v1 = parts["v1"];
+    if (!t || !v1) return false;
+    const signedPayload = `${t}.${payload}`;
+    const expected = createHmac("sha256", secret).update(signedPayload, "utf8").digest("hex");
+    const eBuf = Buffer.from(expected, "hex");
+    const aBuf = Buffer.from(v1, "hex");
+    return eBuf.length === aBuf.length && timingSafeEqual(eBuf, aBuf);
+  } catch {
+    return false;
+  }
 }
 
 export async function POST(req: Request) {
