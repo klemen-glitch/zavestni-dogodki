@@ -8,10 +8,11 @@ import { generateSlug } from "./utils";
 import { notifyNewEvents } from "./notify";
 
 export interface PipelineRunOptions {
-  autoApproveAbove?: number;   // confidence threshold for auto-approval (default 0.85)
+  autoApproveAbove?: number;   // confidence threshold for auto-approval (default 0.82)
   maxPostsPerGroup?: number;
   dryRun?: boolean;            // process but don't save to DB
   headless?: boolean;
+  trigger?: "cron" | "manual" | "webhook"; // how the run was triggered
 }
 
 export interface PipelineRunResult {
@@ -42,6 +43,7 @@ export async function runPipeline(
     maxPostsPerGroup = 25,
     dryRun = false,
     headless = true,
+    trigger = "manual",
   } = options;
 
   const runId = `run_${Date.now()}`;
@@ -184,6 +186,7 @@ export async function runPipeline(
         cachedTokens,
         estimatedCostUsd,
         durationMs: Date.now() - startTime,
+        trigger,
       },
     }).catch(() => {}); // non-critical
   }

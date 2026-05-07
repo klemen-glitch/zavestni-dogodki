@@ -13,7 +13,10 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "@conscious-slovenia/database": "*",
-    "@conscious-slovenia/ai-processor": "*"
+    "@conscious-slovenia/ai-processor": "*",
+    "@conscious-slovenia/pipeline": "*",
+    "@conscious-slovenia/publisher": "*",
+    "@conscious-slovenia/scraper": "*"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

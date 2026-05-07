@@ -1,4 +1,4 @@
-import { chromium, type Browser, type BrowserContext } from "playwright";
+import { chromium, type Browser } from "playwright";
 import { getActiveGroups, getOwnedGroups, type GroupConfig } from "./groups";
 import { scrapeFacebookGroup } from "./facebook";
 import type { ScrapedPost, ScraperResult } from "./types";
