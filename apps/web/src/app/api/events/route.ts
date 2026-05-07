@@ -12,7 +12,7 @@ export async function GET(req: Request) {
   const now = new Date();
 
   const where = {
-    status: { in: ["APPROVED", "FEATURED"] as const },
+    status: { in: ["APPROVED", "FEATURED"] as ("APPROVED" | "FEATURED")[] },
     date: { gte: now },
     ...(category && { category: category as EventCategory }),
     ...(featured && { featured: true }),
