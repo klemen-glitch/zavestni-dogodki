@@ -1,11 +1,11 @@
 {
   "crons": [
     {
-      "path": "/api/webhooks/cron?job=daily",
+      "path": "/api/webhooks/cron/daily",
       "schedule": "0 7 * * *"
     },
     {
-      "path": "/api/webhooks/cron?job=weekly",
+      "path": "/api/webhooks/cron/weekly",
       "schedule": "0 9 * * 0"
     }
   ]
