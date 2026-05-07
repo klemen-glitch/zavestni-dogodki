@@ -1,4 +1,4 @@
-// Conscious Slovenia — Database Schema
+// Conscious Slovenia — Database Schema v2
 // Stack: Prisma + PostgreSQL (Supabase-ready)
 
 generator client {
@@ -30,23 +30,23 @@ enum EventCategory {
 }
 
 enum EventStatus {
-  PENDING_REVIEW // scraped, not yet approved
-  APPROVED       // live on the directory
-  FEATURED       // paid featured placement
-  REJECTED       // failed moderation
-  ARCHIVED       // past events
+  PENDING_REVIEW
+  APPROVED
+  FEATURED
+  REJECTED
+  ARCHIVED
 }
 
 enum EventSource {
-  FACEBOOK_GROUP    // auto-scraped from FB group
-  DIRECT_SUBMISSION // organizer submitted directly (paid)
-  MANUAL            // manually entered by admin
+  FACEBOOK_GROUP
+  DIRECT_SUBMISSION
+  MANUAL
 }
 
 enum OrganizerTier {
-  FREE    // basic listing
-  PREMIUM // paid, unlocks analytics + priority
-  PARTNER // venue/sponsor partnership
+  FREE
+  PREMIUM
+  PARTNER
 }
 
 enum DraftStatus {
@@ -57,7 +57,7 @@ enum DraftStatus {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// ORGANIZERS — facilitators, teachers, event creators
+// ORGANIZERS
 // ─────────────────────────────────────────────────────────────────────────────
 
 model Organizer {
@@ -74,32 +74,30 @@ model Organizer {
   reviewCount Int           @default(0)
   verified    Boolean       @default(false)
   tier        OrganizerTier @default(FREE)
-
-  events    Event[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  events      Event[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
 
   @@index([tier])
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// VENUES — physical locations (studios, parks, retreat centers)
+// VENUES
 // ─────────────────────────────────────────────────────────────────────────────
 
 model Venue {
-  id      String  @id @default(cuid())
-  name    String
-  slug    String? @unique
-  address String?
-  city    String  @default("Ljubljana")
-  region  String?
-  country String  @default("Slovenia")
-  lat     Float?
-  lng     Float?
-  website String?
+  id       String   @id @default(cuid())
+  name     String
+  slug     String?  @unique
+  address  String?
+  city     String   @default("Ljubljana")
+  region   String?
+  country  String   @default("Slovenia")
+  lat      Float?
+  lng      Float?
+  website  String?
   imageUrl String?
-
-  events    Event[]
+  events   Event[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -107,55 +105,51 @@ model Venue {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// EVENTS — the core entity
+// EVENTS
 // ─────────────────────────────────────────────────────────────────────────────
 
 model Event {
-  id   String @id @default(cuid())
-  slug String? @unique
+  id    String  @id @default(cuid())
+  slug  String? @unique
 
-  // Bilingual content (Slovenian + English)
   titleSl       String?
   titleEn       String
   descriptionSl String?
   descriptionEn String
-  shortDescEn   String? // max 160 chars for cards / newsletter previews
+  shortDescEn   String?
 
-  // Scheduling
   date    DateTime
   endDate DateTime?
 
-  // Pricing
-  price    Float?  // null = unknown, 0 = free
-  priceNote String? // "Po srcu / Heart donation", "20–30€ sliding scale"
+  price     Float?
+  priceNote String?
   currency  String  @default("EUR")
 
-  // Classification
   category EventCategory @default(OTHER)
   tags     String[]
 
-  // Media & links
   imageUrl  String?
-  sourceUrl String?     @unique // original FB post URL
+  sourceUrl String?     @unique
   source    EventSource @default(FACEBOOK_GROUP)
 
-  // Status & visibility
   status   EventStatus @default(PENDING_REVIEW)
   featured Boolean     @default(false)
 
-  // AI processing metadata
-  rawText      String? // original scraped text
-  aiProcessed  Boolean @default(false)
-  aiConfidence Float?  // 0.0–1.0
+  // Analytics
+  viewCount Int @default(0)
 
-  // Relations
+  rawText      String?
+  aiProcessed  Boolean @default(false)
+  aiConfidence Float?
+
   organizerId String?
   organizer   Organizer? @relation(fields: [organizerId], references: [id])
   venueId     String?
   venue       Venue?     @relation(fields: [venueId], references: [id])
-  venueName   String?    // fallback plain-text location if venue not in DB
+  venueName   String?
 
   newsletterDrafts NewsletterDraft[] @relation("EventToNewsletter")
+  revenueLogs      RevenueLog[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -165,84 +159,130 @@ model Event {
   @@index([status])
   @@index([featured])
   @@index([aiProcessed])
+  @@index([createdAt])
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// NEWSLETTER DRAFTS — compiled weekly editions
+// NEWSLETTER DRAFTS
 // ─────────────────────────────────────────────────────────────────────────────
 
 model NewsletterDraft {
-  id          String @id @default(cuid())
-  title       String // e.g. "Zavestni Dogodki — 10.–16. junij 2026"
-  subjectLine String? // email subject (A/B testable)
-  previewText String? // email preview snippet
-
-  contentMd   String // Markdown source
-  contentHtml String? // rendered HTML (optional, for direct API push)
-
-  status       DraftStatus @default(DRAFT)
+  id          String      @id @default(cuid())
+  title       String
+  subjectLine String?
+  previewText String?
+  contentMd   String
+  contentHtml String?
+  status      DraftStatus @default(DRAFT)
   scheduledFor DateTime?
   publishedAt  DateTime?
-
-  // External platform IDs after publishing
-  externalId String? // Beehiiv post_id or Ghost post ID
-  platform   String? // "beehiiv" | "ghost"
-
-  // Edition metadata
-  weekNumber Int?
-  year       Int?
-  weekStart  DateTime?
-  weekEnd    DateTime?
-
-  events Event[] @relation("EventToNewsletter")
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  externalId   String?
+  platform     String?
+  weekNumber   Int?
+  year         Int?
+  weekStart    DateTime?
+  weekEnd      DateTime?
+  events       Event[]    @relation("EventToNewsletter")
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 
   @@index([status])
   @@index([year, weekNumber])
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SUBSCRIBERS — email list (mirror of Beehiiv, for local analytics)
+// SUBSCRIBERS
 // ─────────────────────────────────────────────────────────────────────────────
 
 model Subscriber {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  firstName String?
-  lastName  String?
-  active    Boolean  @default(true)
-  source    String?  // "beehiiv", "landing_page", "event_signup"
-
-  // Category preferences for personalized digests
+  id          String          @id @default(cuid())
+  email       String          @unique
+  firstName   String?
+  lastName    String?
+  active      Boolean         @default(true)
+  source      String?
   preferences EventCategory[]
-
-  externalId String? // Beehiiv subscriber ID
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  externalId  String?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
 
   @@index([active])
+  @@index([createdAt])
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// SUBMISSIONS — direct paid submissions bypassing FB group
+// SUBMISSIONS — paid direct submissions
 // ─────────────────────────────────────────────────────────────────────────────
 
 model Submission {
-  id    String @id @default(cuid())
-  email String
-
-  // Raw submission data from the form
-  formData Json
-
-  // Linked event after approval
-  eventId String? @unique
-
-  paid       Boolean @default(false)
+  id              String   @id @default(cuid())
+  email           String
+  formData        Json
+  eventId         String?  @unique
+  paid            Boolean  @default(false)
   stripeSessionId String?
+  status          String   @default("pending")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
 
-  status    String   @default("pending") // pending | approved | rejected
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+// ─────────────────────────────────────────────────────────────────────────────
+// PIPELINE RUNS — track every automated scrape+process execution
+// ─────────────────────────────────────────────────────────────────────────────
+
+model PipelineRun {
+  id               String   @id @default(cuid())
+  runId            String   @unique
+  scraped          Int      @default(0)   // total posts scraped from all groups
+  deduplicated     Int      @default(0)   // new posts (not already in DB)
+  processed        Int      @default(0)   // sent to AI
+  saved            Int      @default(0)   // successfully saved to DB
+  autoApproved     Int      @default(0)   // auto-approved (high confidence)
+  skipped          Int      @default(0)   // low confidence, skipped
+  errors           String[]
+  totalTokens      Int      @default(0)
+  cachedTokens     Int      @default(0)
+  estimatedCostUsd Float    @default(0)
+  durationMs       Int      @default(0)
+  trigger          String   @default("cron") // "cron" | "manual" | "webhook"
+  createdAt        DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// COST LOG — track every external API cost
+// ─────────────────────────────────────────────────────────────────────────────
+
+model CostLog {
+  id          String   @id @default(cuid())
+  service     String   // "anthropic" | "beehiiv" | "stripe" | "vercel" | "supabase"
+  operation   String   // "event_extraction" | "newsletter_publish" | "submission"
+  amountUsd   Float    // cost in USD
+  units       Int?     // tokens, API calls, etc.
+  metadata    Json?
+  pipelineRunId String?
+  createdAt   DateTime @default(now())
+
+  @@index([service])
+  @@index([createdAt])
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// REVENUE LOG — track every payment received
+// ─────────────────────────────────────────────────────────────────────────────
+
+model RevenueLog {
+  id              String   @id @default(cuid())
+  type            String   // "featured_listing" | "basic_listing" | "sponsorship" | "pass"
+  amountEur       Float
+  stripePaymentId String?  @unique
+  eventId         String?
+  event           Event?   @relation(fields: [eventId], references: [id])
+  submissionId    String?
+  description     String?
+  createdAt       DateTime @default(now())
+
+  @@index([type])
+  @@index([createdAt])
 }

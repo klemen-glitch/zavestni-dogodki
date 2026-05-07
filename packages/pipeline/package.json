@@ -1,0 +1,24 @@
+{
+  "name": "@conscious-slovenia/pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "run": "ts-node src/index.ts",
+    "daily": "ts-node src/cron.ts daily",
+    "weekly": "ts-node src/cron.ts weekly",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@conscious-slovenia/database": "*",
+    "@conscious-slovenia/ai-processor": "*",
+    "@conscious-slovenia/scraper": "*",
+    "@conscious-slovenia/publisher": "*",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0",
+    "ts-node": "^10.9.2"
+  }
+}

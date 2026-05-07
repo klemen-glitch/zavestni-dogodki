@@ -2,8 +2,8 @@ import { chromium, type Browser, type Page } from "playwright";
 import type { ScrapedPost, ScraperConfig, ScraperResult } from "./types";
 
 const FB_GROUP_URL =
-  process.env.FB_GROUP_URL ||
-  "https://www.facebook.com/groups/19s8ds6nJx";
+  process.env.FB_OWN_GROUP_URL ||
+  "https://www.facebook.com/groups/529182865647567/";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // AUTHENTICATION
