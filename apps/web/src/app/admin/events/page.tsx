@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import { db } from "@/lib/db";
 import { formatDate, CATEGORY_EMOJI, CATEGORY_LABEL } from "@/lib/utils";

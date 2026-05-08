@@ -19,7 +19,7 @@ async function getEvents(search: SearchParams) {
   const now = new Date();
 
   const where = {
-    status: { in: ["APPROVED", "FEATURED"] as const },
+    status: { in: ["APPROVED", "FEATURED"] as ("APPROVED" | "FEATURED")[] },
     date: { gte: now },
     ...(search.category && { category: search.category as EventCategory }),
     ...(search.featured === "true" && { featured: true }),

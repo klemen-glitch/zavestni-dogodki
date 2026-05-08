@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import { db } from "@/lib/db";
 import { formatCurrency, timeAgo, CATEGORY_LABEL, CATEGORY_EMOJI } from "@/lib/utils";
