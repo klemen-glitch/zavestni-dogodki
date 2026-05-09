@@ -27,4 +27,5 @@ export { scrapeFacebookGroup } from "./facebook";
 export { scrapeAllGroups } from "./multi-scraper";
 export { FB_GROUPS, getActiveGroups, getGroupById, getOwnedGroups, getExternalGroups } from "./groups";
 export type { ScrapedPost, ScraperConfig, ScraperResult } from "./types";
-export type { GroupConfig, MultiScrapeResult } from "./multi-scraper";
+export type { MultiScrapeResult } from "./multi-scraper";
+export type { GroupConfig } from "./groups";

@@ -19,11 +19,11 @@ export async function processPost(
       max_tokens: 1024,
       system: [
         {
-          type: "text",
+          type: "text" as const,
           text: EVENT_EXTRACTION_SYSTEM_PROMPT,
           // Cache the system prompt — it's large and reused for every post
-          cache_control: { type: "ephemeral" },
-        },
+          cache_control: { type: "ephemeral" as const },
+        } as Anthropic.TextBlockParam,
       ],
       messages: [
         {
