@@ -37,12 +37,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const event = await getEvent(slug);
   if (!event) return { title: "Dogodek ni najden" };
+  const title = event.titleSl ?? event.titleEn;
+  const description = event.descriptionSl?.slice(0, 160) ?? event.shortDescEn ?? event.descriptionEn.slice(0, 160);
   return {
-    title: event.titleEn,
-    description: event.shortDescEn ?? event.descriptionEn.slice(0, 160),
+    title,
+    description,
     openGraph: {
-      title: event.titleEn,
-      description: event.shortDescEn ?? event.descriptionEn.slice(0, 160),
+      title,
+      description,
       images: event.imageUrl ? [{ url: event.imageUrl }] : [],
     },
   };
@@ -121,9 +123,9 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       </span>
 
       {/* Title */}
-      <h1 className="text-3xl md:text-4xl font-bold text-stone-800 mb-2">{event.titleEn}</h1>
+      <h1 className="text-3xl md:text-4xl font-bold text-stone-800 mb-2">{event.titleSl ?? event.titleEn}</h1>
       {event.titleSl && event.titleSl !== event.titleEn && (
-        <p className="text-stone-400 text-lg mb-6 italic">{event.titleSl}</p>
+        <p className="text-stone-400 text-lg mb-6 italic">{event.titleEn}</p>
       )}
 
       {/* Info grid */}
@@ -160,9 +162,13 @@ export default async function EventPage({ params }: { params: Promise<{ slug: st
       {/* Description */}
       <div className="prose prose-stone max-w-none mb-8">
         <h2 className="text-lg font-semibold text-stone-700 mb-3">O dogodku</h2>
-        <p className="text-stone-600 leading-relaxed whitespace-pre-line">{event.descriptionEn}</p>
-        {event.descriptionSl && (
-          <p className="text-stone-400 text-sm mt-4 leading-relaxed whitespace-pre-line border-t pt-4">{event.descriptionSl}</p>
+        {event.descriptionSl ? (
+          <>
+            <p className="text-stone-600 leading-relaxed whitespace-pre-line">{event.descriptionSl}</p>
+            <p className="text-stone-400 text-sm mt-4 leading-relaxed whitespace-pre-line border-t pt-4">{event.descriptionEn}</p>
+          </>
+        ) : (
+          <p className="text-stone-600 leading-relaxed whitespace-pre-line">{event.descriptionEn}</p>
         )}
       </div>
 

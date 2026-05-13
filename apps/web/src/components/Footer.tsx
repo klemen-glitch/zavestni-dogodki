@@ -20,10 +20,16 @@ export function Footer() {
         <div>
           <h4 className="text-white text-sm font-medium mb-3">Dogodki</h4>
           <ul className="space-y-2 text-sm">
-            {["Yoga", "Meditacija", "Dihanje", "Zvočna kopel", "Retreati"].map((cat) => (
+            {[
+              { label: "Joga", cat: "yoga" },
+              { label: "Meditacija", cat: "meditation" },
+              { label: "Dihanje", cat: "breathwork" },
+              { label: "Zvočna kopel", cat: "sound_bath" },
+              { label: "Retreati", cat: "retreat" },
+            ].map(({ label, cat }) => (
               <li key={cat}>
-                <Link href={`/events?q=${cat.toLowerCase()}`} className="hover:text-white transition-colors">
-                  {cat}
+                <Link href={`/categories/${cat}`} className="hover:text-white transition-colors">
+                  {label}
                 </Link>
               </li>
             ))}
@@ -36,7 +42,7 @@ export function Footer() {
             <li><Link href="/submit" className="hover:text-white transition-colors">Dodaj dogodek</Link></li>
             <li><Link href="/pass" className="hover:text-white transition-colors">Conscious Pass</Link></li>
             <li><Link href="/organizers" className="hover:text-white transition-colors">Za facilitatorje</Link></li>
-            <li><Link href="/api/newsletter/subscribe" className="hover:text-white transition-colors">Newsletter</Link></li>
+            <li><Link href="/#newsletter" className="hover:text-white transition-colors">Newsletter</Link></li>
           </ul>
         </div>
       </div>

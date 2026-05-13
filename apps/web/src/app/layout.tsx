@@ -7,11 +7,16 @@ import { Footer } from "@/components/Footer";
 const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: { default: "Zavestni Dogodki", template: "%s | Zavestni Dogodki" },
-  description: "Vaš vodič po zavestnih dogodkih v Sloveniji — joga, meditacija, dihanje, zvočne kopeli in duhovne prireditve.",
+  title: { default: "Zavestni Dogodki — Zavestni dogodki v Sloveniji", template: "%s | Zavestni Dogodki" },
+  description: "Kurirani imenik zavestnih dogodkov v Sloveniji — joga, meditacija, dihalne vaje, zvočne kopeli, retreati in duhovne prireditve.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si"),
+  keywords: ["zavestni dogodki", "joga slovenija", "meditacija", "breathwork", "zvočna kopel", "retreat slovenija", "kakao ceremonija", "duhovnost"],
   openGraph: { siteName: "Zavestni Dogodki", locale: "sl_SI", type: "website" },
   twitter: { card: "summary_large_image" },
+  manifest: "/manifest.json",
+  other: {
+    "google-site-verification": "",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

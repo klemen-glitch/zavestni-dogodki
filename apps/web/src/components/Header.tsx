@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const nav = [
   { href: "/events", label: "Dogodki" },
-  { href: "/categories/YOGA", label: "Kategorije" },
+  { href: "/categories/yoga", label: "Kategorije" },
   { href: "/organizers", label: "Facilitatorji" },
   { href: "/pass", label: "Conscious Pass" },
   { href: "/submit", label: "Objavi dogodek" },

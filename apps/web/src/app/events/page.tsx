@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { db } from "@/lib/db";
@@ -28,6 +30,7 @@ async function getEvents(search: SearchParams) {
         { titleEn: { contains: search.q, mode: "insensitive" as const } },
         { titleSl: { contains: search.q, mode: "insensitive" as const } },
         { descriptionEn: { contains: search.q, mode: "insensitive" as const } },
+        { descriptionSl: { contains: search.q, mode: "insensitive" as const } },
         { venueName: { contains: search.q, mode: "insensitive" as const } },
         { tags: { has: search.q.toLowerCase() } },
       ],

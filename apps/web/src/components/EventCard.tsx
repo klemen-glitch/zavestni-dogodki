@@ -6,6 +6,7 @@ interface EventCardProps {
   event: {
     id: string;
     slug: string | null;
+    titleSl: string | null;
     titleEn: string;
     shortDescEn: string | null;
     date: Date;
@@ -24,6 +25,7 @@ interface EventCardProps {
 
 export function EventCard({ event, compact = false }: EventCardProps) {
   const href = `/events/${event.slug ?? event.id}`;
+  const title = event.titleSl ?? event.titleEn;
   const emoji = CATEGORY_EMOJI[event.category] ?? "🌸";
   const label = CATEGORY_LABEL[event.category] ?? "Dogodek";
   const colorClass = CATEGORY_COLOR[event.category] ?? "bg-gray-100 text-gray-800";
@@ -35,7 +37,7 @@ export function EventCard({ event, compact = false }: EventCardProps) {
       {/* Image */}
       <div className={`relative bg-gradient-to-br from-emerald-50 to-teal-100 ${compact ? "h-32" : "h-44"}`}>
         {event.imageUrl ? (
-          <Image src={event.imageUrl} alt={event.titleEn} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+          <Image src={event.imageUrl} alt={title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <span className={compact ? "text-4xl" : "text-6xl"}>{emoji}</span>
@@ -54,7 +56,7 @@ export function EventCard({ event, compact = false }: EventCardProps) {
       {/* Content */}
       <div className="p-4">
         <h3 className={`font-semibold text-stone-800 group-hover:text-emerald-700 transition-colors line-clamp-2 ${compact ? "text-sm" : "text-base"}`}>
-          {event.titleEn}
+          {title}
         </h3>
 
         {!compact && event.shortDescEn && (

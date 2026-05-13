@@ -100,7 +100,7 @@ export default async function HomePage() {
       </section>
 
       {/* Newsletter */}
-      <section className="mb-20">
+      <section id="newsletter" className="mb-20">
         <NewsletterSignup />
       </section>
     </div>
