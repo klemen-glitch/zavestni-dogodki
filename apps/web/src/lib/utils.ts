@@ -98,3 +98,48 @@ export const ALL_CATEGORIES = [
   "YOGA", "MEDITATION", "BREATHWORK", "SOUND_BATH", "CACAO_CEREMONY",
   "RETREAT", "WORKSHOP", "DANCE", "TANTRA", "HEALING", "OTHER",
 ] as const;
+
+// ─── Location constants ───────────────────────────────────────────────────────
+
+export const SLOVENIAN_REGIONS = [
+  "Osrednjeslovenska",
+  "Gorenjska",
+  "Podravska",
+  "Savinjska",
+  "Jugovzhodna Slovenija",
+  "Obalno-kraška",
+  "Goriška",
+  "Primorsko-notranjska",
+  "Koroška",
+  "Zasavska",
+  "Posavska",
+  "Pomurska",
+] as const;
+
+export type SlovenianRegion = typeof SLOVENIAN_REGIONS[number];
+
+/** Maps city name to its statistical region */
+export const CITY_REGION_MAP: Record<string, string> = {
+  Ljubljana: "Osrednjeslovenska",
+  Maribor: "Podravska",
+  Celje: "Savinjska",
+  Kranj: "Gorenjska",
+  Koper: "Obalno-kraška",
+  Velenje: "Savinjska",
+  Ptuj: "Podravska",
+  "Novo Mesto": "Jugovzhodna Slovenija",
+  "Nova Gorica": "Goriška",
+  "Murska Sobota": "Pomurska",
+  Bled: "Gorenjska",
+  Bohinj: "Gorenjska",
+  "Kranjska Gora": "Gorenjska",
+  Piran: "Obalno-kraška",
+  Portorož: "Obalno-kraška",
+  Izola: "Obalno-kraška",
+  Postojna: "Primorsko-notranjska",
+  Ajdovščina: "Goriška",
+  Trbovlje: "Zasavska",
+  Zagorje: "Zasavska",
+  Brežice: "Posavska",
+  "Slovenj Gradec": "Koroška",
+};
