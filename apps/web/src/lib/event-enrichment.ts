@@ -133,26 +133,44 @@ async function callAnthropicForEnrichment(
   const organizerName = event.organizer?.name ?? "Facilitator";
   const organizerBio = event.organizer?.bio ?? "";
 
-  const prompt = `Si copywriter za slovensko wellness platformo Zavestni Dogodki. Napiši bogato vsebino za spletno stran dogodka. ODGOVORI SAMO Z VELJAVNIM JSON brez markdown, brez kode bloka.
+  const prompt = `Si izkušen novinar in copywriter za slovensko wellness platformo Zavestni Dogodki. Napiši OBSEŽNO, BOGATO vsebino za spletno stran dogodka. Pišeš kot urednik revije — z dušo, toplino in navdihom. ODGOVORI SAMO Z VELJAVNIM JSON brez markdown, brez kode bloka.
 
 PODATKI O DOGODKU:
 - Naslov: ${title}
-- Opis: ${desc}
+- Kratek opis: ${desc}
 - Kategorija: ${event.category}
 - Facilitator: ${organizerName} — ${organizerBio}
-- Lokacija: ${venue}, ${city} ${region}
+- Lokacija: ${venue}, ${city}${region ? ", " + region : ""}
 - Oznake: ${event.tags.join(", ")}
 
-VRNI JSON z natančno temi ključi:
+NAVODILA:
+- NIKOLI ne ponavljaj besedila iz kratkega opisa dobesedno
+- Vsak odstavek mora biti poln vsebine, ne le en ali dva stavka
+- Piši kot da vabis bralca na posebno izkušnjo — z emocijo, konkretnostjo in navdihom
+- Facilitatorja predstavi kot strokovnjaka z zgodbo, ne le z navedbo bio
+- Za lokacijo napiši zakaj je to mesto/prostor posebno za to vrsto prireditve
+
+VRNI JSON z natančno temi ključi (brez odstopanj):
 {
-  "intro": ["1. odstavek o dogadku (3-4 stavki)", "2. odstavek o tem kaj pričakovati (3-4 stavki)", "3. odstavek zakaj obiskati ta konkreten dogodek (2-3 stavki)"],
-  "whatToExpect": ["točka 1 (konkretna)", "točka 2", "točka 3", "točka 4", "točka 5"],
-  "facilitatorBio": "2-3 stavki o facilitatorju v 3. osebi — konkretno, toplo, avtoritativno",
-  "facilitatorFact": "1 zanimiva misel ali citat v slogu facilitatorja (izmisli si realistično)",
-  "locationContext": "2 stavka o mestu/regiji in zakaj je ta lokacija posebna za ta tip dogodka"
+  "intro": [
+    "1. odstavek (5-6 stavkov): Poetično odpri temo — kaj je ta vrsta izkušnje, zakaj je posebna, kakšno transformacijo prinaša. Brez omembe specifičnega datuma.",
+    "2. odstavek (5-6 stavkov): Opiši specifičen ta dogodek — kaj se bo dogajalo, kakšna bo atmosfera, kaj bo facilitator vodil. Bodi konkreten.",
+    "3. odstavek (4-5 stavkov): Zakaj ravno ta facilitator, ta prostor, ta čas. Kaj je edinstveno pri tej kombinaciji. Poziv k dejanju."
+  ],
+  "whatToExpect": [
+    "Konkretna aktivnost 1 z opisom kako bo potekala",
+    "Konkretna aktivnost 2",
+    "Konkretna aktivnost 3",
+    "Konkretna aktivnost 4",
+    "Konkretna aktivnost 5",
+    "Praktična informacija (kaj prinesti, kako se oblačiti ipd.)"
+  ],
+  "facilitatorBio": "3-4 stavki v 3. osebi: pot facilitatorja, specializacija, zakaj je prav ta oseba idealna za ta tip dela, njegova/njena filozofija ali pristop",
+  "facilitatorFact": "Avtentičen citat ali misel v slogu te osebe — kaj bi rekel/a o tej praksi ali o tem zakaj dela to delo. Naj zveni resnično, ne reklamno.",
+  "locationContext": "3 stavki: zakaj je ${city || "ta kraj"} posebno za to prakso, kaj prinaša ta prostor energijsko ali fizično, kaj je posebnega pri tem prizorišču"
 }
 
-Piši v slovenščini. Ton: topel, navdihujoč, profesionalen. NE ponavljaj naslov in opisa dobesedno.`;
+Piši v slovenščini. Ton: topel, navdihujoč, literarno bogat, a dostopen.`;
 
   try {
     const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -163,8 +181,8 @@ Piši v slovenščini. Ton: topel, navdihujoč, profesionalen. NE ponavljaj nasl
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-3-haiku-20240307",
-        max_tokens: 1500,
+        model: "claude-3-5-haiku-20241022",
+        max_tokens: 2500,
         messages: [{ role: "user", content: prompt }],
       }),
     });

@@ -285,6 +285,37 @@ export default async function EventPage({
               </ul>
             </section>
 
+            {/* Facebook Event Link — prominent section */}
+            {event.sourceUrl && (
+              <section>
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-1 h-6 rounded-full" style={{ backgroundColor: catColor }} />
+                  <h2 className="text-xl font-bold text-stone-800">Originalni Facebook Dogodek</h2>
+                </div>
+                <a
+                  href={event.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-2xl overflow-hidden border border-blue-200 hover:border-blue-400 hover:shadow-md transition-all group"
+                >
+                  <div className="flex items-center gap-4 px-6 py-5" style={{ background: "linear-gradient(135deg, #1877f2, #0d5cd9)" }}>
+                    <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-2xl">
+                      📘
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-white font-bold text-base leading-tight">Oglej si in se prijavi na Facebooku</p>
+                      <p className="text-blue-100 text-sm mt-0.5">Odpri originalni vir, preveri vse podrobnosti in potrditev udeležbe</p>
+                    </div>
+                    <span className="text-white/70 group-hover:text-white group-hover:translate-x-1 transition-all text-xl font-bold">→</span>
+                  </div>
+                  <div className="bg-blue-50 px-6 py-2.5 border-t border-blue-100 flex items-center gap-2">
+                    <span className="text-blue-400 text-xs">🔗</span>
+                    <span className="text-blue-600 text-xs truncate">{event.sourceUrl}</span>
+                  </div>
+                </a>
+              </section>
+            )}
+
             {/* Facilitator */}
             {event.organizer && (
               <section>
@@ -425,12 +456,35 @@ export default async function EventPage({
                       >
                         📘 Prijavi se na Facebooku →
                       </a>
+                    ) : event.organizer?.instagram || event.organizer?.website ? (
+                      <div className="space-y-2">
+                        <p className="text-xs text-stone-400 text-center mb-1">Kontaktiraj facilitatorja za prijavo</p>
+                        {event.organizer.website && (
+                          <a
+                            href={event.organizer.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full text-center text-white font-bold py-3 rounded-xl text-sm transition-opacity hover:opacity-90"
+                            style={{ background: `linear-gradient(135deg, ${catColor}, ${catDark})` }}
+                          >
+                            🌐 Spletna stran facilitatorja →
+                          </a>
+                        )}
+                        {event.organizer.instagram && (
+                          <a
+                            href={`https://instagram.com/${event.organizer.instagram.replace("@", "")}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-full text-center font-semibold py-3 rounded-xl text-sm transition-colors"
+                            style={{ background: "#fdf2f8", color: "#be185d", border: "1px solid #fbcfe8" }}
+                          >
+                            📸 Instagram {event.organizer.instagram}
+                          </a>
+                        )}
+                      </div>
                     ) : (
-                      <div
-                        className="block w-full text-center text-white font-bold py-3.5 rounded-xl text-sm opacity-70 cursor-not-allowed"
-                        style={{ backgroundColor: catColor }}
-                      >
-                        Prijava kmalu →
+                      <div className="block w-full text-center text-stone-500 font-medium py-3.5 rounded-xl text-sm bg-stone-50 border border-stone-200">
+                        📧 Kontaktirajte organizatorja
                       </div>
                     )}
 
