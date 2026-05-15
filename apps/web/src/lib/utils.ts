@@ -79,6 +79,21 @@ export function getWeekRange(offsetWeeks = 1): { start: Date; end: Date } {
   return { start: monday, end: sunday };
 }
 
+/** [primary, dark] hex pairs per category — used for branded image overlays */
+export const CATEGORY_HEX: Record<string, [string, string]> = {
+  YOGA: ["#059669", "#064e3b"],
+  MEDITATION: ["#7c3aed", "#4c1d95"],
+  BREATHWORK: ["#0284c7", "#0c4a6e"],
+  SOUND_BATH: ["#d97706", "#78350f"],
+  CACAO_CEREMONY: ["#ea580c", "#7c2d12"],
+  RETREAT: ["#0d9488", "#134e4a"],
+  WORKSHOP: ["#4f46e5", "#312e81"],
+  DANCE: ["#db2777", "#831843"],
+  TANTRA: ["#e11d48", "#881337"],
+  HEALING: ["#65a30d", "#365314"],
+  OTHER: ["#57534e", "#292524"],
+};
+
 export const ALL_CATEGORIES = [
   "YOGA", "MEDITATION", "BREATHWORK", "SOUND_BATH", "CACAO_CEREMONY",
   "RETREAT", "WORKSHOP", "DANCE", "TANTRA", "HEALING", "OTHER",
