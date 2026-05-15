@@ -52,6 +52,16 @@ export default async function HomePage() {
         {stats > 0 && (
           <p className="text-stone-400 text-sm mt-6">{stats} aktivnih dogodkov po vsej Sloveniji</p>
         )}
+
+        {/* Launch promo banner */}
+        <div className="mt-8 inline-flex items-center gap-2 bg-amber-50 border border-amber-200 px-5 py-2.5 rounded-full text-sm text-amber-800">
+          <span>🎉</span>
+          <span className="font-semibold">Objava otvoritev:</span>
+          <span>Dodajte vaš dogodek</span>
+          <span className="line-through text-amber-500">15 €</span>
+          <span className="font-bold text-emerald-700">BREZPLAČNO</span>
+          <Link href="/submit" className="ml-1 underline font-semibold hover:text-amber-900">→</Link>
+        </div>
       </section>
 
       {/* Featured */}

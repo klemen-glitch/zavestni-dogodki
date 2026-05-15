@@ -3,9 +3,12 @@ import { useState } from "react";
 import { ALL_CATEGORIES } from "@/lib/utils";
 import { CATEGORY_EMOJI, CATEGORY_LABEL } from "@/lib/utils";
 
+// 🎉 Launch promo: all tiers free. Set to false to re-enable paid submissions.
+const LAUNCH_PROMO = true;
+
 const TIERS = [
-  { id: "basic", label: "Osnovna objava", price: "15 €", features: ["Objava v imeniku", "Viden 30 dni", "Email obvestilo skupnosti"] },
-  { id: "featured", label: "Izpostavljena objava", price: "35 €", features: ["Vse iz osnove", "⭐ Izpostavljen na vrhu", "Vključen v newsletter", "Dlje vidljiv (60 dni)"] },
+  { id: "basic", label: "Osnovna objava", price: "15 €", promoPrice: "BREZPLAČNO", features: ["Objava v imeniku", "Viden 30 dni", "Email obvestilo skupnosti"] },
+  { id: "featured", label: "Izpostavljena objava", price: "35 €", promoPrice: "BREZPLAČNO", features: ["Vse iz osnove", "⭐ Izpostavljen na vrhu", "Vključen v newsletter", "Dlje vidljiv (60 dni)"] },
 ];
 
 export default function SubmitPage() {
@@ -26,6 +29,8 @@ export default function SubmitPage() {
       const data = await res.json();
       if (res.ok && data.checkoutUrl) {
         window.location.href = data.checkoutUrl;
+      } else if (res.ok && data.redirect) {
+        window.location.href = data.redirect;
       } else if (res.ok) {
         setStatus("success");
         setMessage("Vaša prijava je bila uspešno oddana! Preverite email za potrditev.");
@@ -58,12 +63,35 @@ export default function SubmitPage() {
         <p className="text-stone-500">Dosezite zavestno skupnost po vsej Sloveniji</p>
       </div>
 
+      {/* Launch promo banner */}
+      {LAUNCH_PROMO && (
+        <div className="mb-8 rounded-2xl overflow-hidden border border-amber-200">
+          <div className="bg-gradient-to-r from-amber-400 to-orange-400 px-5 py-3 flex items-center gap-2">
+            <span className="text-xl">🎉</span>
+            <p className="text-amber-900 font-bold text-sm">Otvoritev — Objava BREZPLAČNA za vse facilitatorje!</p>
+          </div>
+          <div className="bg-amber-50 px-5 py-3">
+            <p className="text-amber-800 text-sm">
+              V čast odprtju platforme Zavestni Dogodki so vse objave <strong>popolnoma brezplačne</strong>.
+              Izkoristite priložnost in dosezite skupnost tisočih zavestnih iskalcev po Sloveniji — brez plačila.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Tier selection */}
       <div className="grid grid-cols-2 gap-4 mb-10">
         {TIERS.map((t) => (
           <button key={t.id} onClick={() => setTier(t.id as "basic" | "featured")}
             className={`p-5 rounded-2xl border-2 text-left transition-all ${tier === t.id ? "border-emerald-500 bg-emerald-50" : "border-stone-200 bg-white hover:border-stone-300"}`}>
-            <p className="font-bold text-stone-800 text-lg">{t.price}</p>
+            {LAUNCH_PROMO ? (
+              <div className="mb-1">
+                <span className="text-lg font-bold text-emerald-700">BREZPLAČNO 🎉</span>
+                <span className="ml-2 text-sm text-stone-400 line-through">{t.price}</span>
+              </div>
+            ) : (
+              <p className="font-bold text-stone-800 text-lg mb-1">{t.price}</p>
+            )}
             <p className="text-sm font-medium text-stone-600 mb-3">{t.label}</p>
             <ul className="space-y-1">
               {t.features.map((f) => (
@@ -143,9 +171,17 @@ export default function SubmitPage() {
 
         <button type="submit" disabled={status === "loading"}
           className="w-full bg-emerald-700 text-white py-3 rounded-xl font-semibold hover:bg-emerald-800 transition-colors disabled:opacity-50">
-          {status === "loading" ? "Pošiljam..." : `Objavi za ${tier === "featured" ? "35 €" : "15 €"} →`}
+          {status === "loading"
+            ? "Pošiljam..."
+            : LAUNCH_PROMO
+              ? "Objavi BREZPLAČNO 🎉 →"
+              : `Objavi za ${tier === "featured" ? "35 €" : "15 €"} →`}
         </button>
-        <p className="text-xs text-stone-400 text-center">Plačilo varno prek Stripe. Po plačilu boste preusmerjeni na potrdilo.</p>
+        <p className="text-xs text-stone-400 text-center">
+          {LAUNCH_PROMO
+            ? "🎉 Otvoritev promo: objava je brezplačna. Vaš dogodek bo pregledan in objavljen v 24 urah."
+            : "Plačilo varno prek Stripe. Po plačilu boste preusmerjeni na potrdilo."}
+        </p>
       </form>
     </div>
   );

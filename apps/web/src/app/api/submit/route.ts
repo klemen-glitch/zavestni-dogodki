@@ -3,18 +3,36 @@ import { db } from "@/lib/db";
 
 const PRICES: Record<string, number> = { basic: 1500, featured: 3500 }; // in cents
 
+// 🎉 Launch promo: skip payment entirely. Set to false to re-enable Stripe.
+const LAUNCH_PROMO = true;
+
 export async function POST(req: Request) {
   const body = await req.json();
-  const { email, tier = "basic", title, date, category, location, description, organizerName } = body;
+  const { email, tier = "basic", title, date, category } = body;
 
   if (!email || !title || !date || !category) {
     return NextResponse.json({ error: "Manjkajo obvezna polja." }, { status: 400 });
   }
 
-  // Save submission to DB
+  // Save submission to DB (marked paid=true during promo)
   const submission = await db.submission.create({
-    data: { email, formData: body, paid: false, status: "pending" },
+    data: {
+      email,
+      formData: body,
+      paid: LAUNCH_PROMO,
+      status: "pending",
+    },
   });
+
+  // During launch promo: skip Stripe, go straight to success
+  if (LAUNCH_PROMO) {
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+    return NextResponse.json({
+      ok: true,
+      submissionId: submission.id,
+      redirect: `${appUrl}/submit/success?submission_id=${submission.id}&promo=true`,
+    });
+  }
 
   // Create Stripe checkout session (if Stripe is configured)
   const stripeKey = process.env.STRIPE_SECRET_KEY;
