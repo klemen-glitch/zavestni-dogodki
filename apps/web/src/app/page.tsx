@@ -109,6 +109,28 @@ export default async function HomePage() {
         )}
       </section>
 
+      {/* Partner / Ad banner */}
+      <section className="mb-16">
+        <div className="rounded-2xl overflow-hidden border border-stone-200">
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-stone-100">
+            {[
+              { emoji: "📍", title: "Najdi evento blizu tebe", desc: "Filtriraj po mestu ali regiji", href: "/events", cta: "Išči po lokaciji" },
+              { emoji: "📅", title: "Ta vikend v naravi", desc: "Retreati, joga in meditacija v naravnem okolju", href: "/events?dateRange=weekend&category=RETREAT", cta: "Vikend retreati" },
+              { emoji: "🎁", title: "Brezplačni dogodki", desc: "Odprti krogi, uvodni tečaji in več", href: "/events?free=true", cta: "Brezplačno" },
+            ].map((item) => (
+              <Link key={item.title} href={item.href} className="group flex items-start gap-4 p-5 bg-white hover:bg-emerald-50 transition-colors">
+                <span className="text-3xl">{item.emoji}</span>
+                <div>
+                  <p className="font-semibold text-stone-800 text-sm group-hover:text-emerald-700 transition-colors">{item.title}</p>
+                  <p className="text-xs text-stone-400 mt-0.5 mb-2">{item.desc}</p>
+                  <span className="text-xs font-bold text-emerald-700">{item.cta} →</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Newsletter */}
       <section id="newsletter" className="mb-20">
         <NewsletterSignup />

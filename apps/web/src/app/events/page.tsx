@@ -8,6 +8,9 @@ import { CategoryFilter } from "@/components/CategoryFilter";
 import { SearchBar } from "@/components/SearchBar";
 import { LocationFilter } from "@/components/LocationFilter";
 import { EventFilters } from "@/components/EventFilters";
+import { SponsoredStrip } from "@/components/SponsoredStrip";
+import { NativeAdCard } from "@/components/NativeAdCard";
+import { getAdForPosition } from "@/lib/ads";
 import type { EventCategory } from "@conscious-slovenia/database";
 
 export const metadata: Metadata = {
@@ -77,6 +80,15 @@ function getSortOrder(sort?: string): { featured?: "asc" | "desc"; date?: "asc" 
   }
 }
 
+async function getFeatured() {
+  return db.event.findMany({
+    where: { status: "FEATURED", date: { gte: new Date() } },
+    orderBy: { date: "asc" },
+    take: 6,
+    include: { organizer: true, venue: true },
+  });
+}
+
 async function getEvents(search: SearchParams) {
   const page = Math.max(1, Number(search.page ?? 1));
   const pageSize = 12;
@@ -139,8 +151,13 @@ export default async function EventsPage({
   searchParams: Promise<SearchParams>;
 }) {
   const params = await searchParams;
-  const { events, total, page, pages } = await getEvents(params);
+  const [{ events, total, page, pages }, featured] = await Promise.all([
+    getEvents(params),
+    params.page ? Promise.resolve([]) : getFeatured(),
+  ]);
   const activeFilterCount = countActiveFilters(params);
+  // Show sponsored strip only on page 1 with no active filters
+  const showSponsored = !params.page && !params.q && !params.category && !params.city && !params.region && featured.length > 0;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
@@ -202,6 +219,11 @@ export default async function EventsPage({
         )}
       </div>
 
+      {/* Sponsored featured strip — only on unfiltered page 1 */}
+      {showSponsored && (
+        <SponsoredStrip events={featured as Parameters<typeof SponsoredStrip>[0]["events"]} />
+      )}
+
       {events.length === 0 ? (
         <div className="text-center py-24 text-stone-400">
           <p className="text-5xl mb-4">🔍</p>
@@ -213,10 +235,19 @@ export default async function EventsPage({
         </div>
       ) : (
         <>
+          {/* Events grid with native ads injected every 6 cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {events.map((e) => (
-              <EventCard key={e.id} event={e as Parameters<typeof EventCard>[0]["event"]} />
-            ))}
+            {events.flatMap((e, idx) => {
+              const cards = [
+                <EventCard key={e.id} event={e as Parameters<typeof EventCard>[0]["event"]} />,
+              ];
+              // Insert a native ad after every 6th event card
+              if ((idx + 1) % 6 === 0 && idx + 1 < events.length) {
+                const ad = getAdForPosition(Math.floor((idx + 1) / 6) - 1);
+                cards.push(<NativeAdCard key={`ad-${idx}`} ad={ad} />);
+              }
+              return cards;
+            })}
           </div>
 
           {/* Pagination */}
@@ -250,6 +281,22 @@ export default async function EventsPage({
               })}
             </div>
           )}
+
+          {/* "Become a partner" footer banner */}
+          <div className="mt-12 rounded-2xl overflow-hidden border border-emerald-200">
+            <div className="bg-gradient-to-r from-emerald-700 to-teal-700 px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <p className="text-white font-bold text-lg leading-tight">Oglasite se na Zavestnih Dogodkih</p>
+                <p className="text-emerald-100 text-sm mt-1">Dosezite zavestno skupnost po vsej Sloveniji — studio, center, blagovna znamka.</p>
+              </div>
+              <a
+                href="mailto:klemen@zavestnidogodki.si?subject=Oglaševanje na Zavestnih Dogodkih"
+                className="flex-shrink-0 bg-white text-emerald-800 px-6 py-2.5 rounded-full text-sm font-bold hover:bg-emerald-50 transition-colors"
+              >
+                Postani partner →
+              </a>
+            </div>
+          </div>
         </>
       )}
     </div>
