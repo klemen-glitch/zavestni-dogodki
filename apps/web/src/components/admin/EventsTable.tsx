@@ -20,6 +20,7 @@ export function AdminEventsTable({
 }) {
   const router = useRouter();
   const [loading, setLoading] = useState<string | null>(null);
+  const [fbShared, setFbShared] = useState<Set<string>>(new Set());
 
   async function action(id: string, newStatus: string) {
     setLoading(id);
@@ -30,6 +31,18 @@ export function AdminEventsTable({
     });
     setLoading(null);
     router.refresh();
+  }
+
+  async function shareToFB(id: string) {
+    setLoading(`fb-${id}`);
+    const res = await fetch(`/api/admin/events/${id}/share-fb`, { method: "POST" });
+    const data = await res.json() as { ok?: boolean; error?: string };
+    if (data.ok) {
+      setFbShared((prev) => new Set([...prev, id]));
+    } else {
+      alert(`FB share failed: ${data.error ?? "unknown error"}`);
+    }
+    setLoading(null);
   }
 
   const pages = Math.ceil(total / pageSize);
@@ -76,7 +89,7 @@ export function AdminEventsTable({
                   {e.source === "FACEBOOK_GROUP" ? "FB" : e.source === "DIRECT_SUBMISSION" ? "💳 Plačano" : "Ročno"}
                 </td>
                 <td className="px-4 py-3">
-                  <div className="flex items-center justify-end gap-1">
+                  <div className="flex items-center justify-end gap-1 flex-wrap">
                     {currentStatus !== "APPROVED" && (
                       <button onClick={() => action(e.id, "APPROVED")} disabled={loading === e.id}
                         className="px-2 py-1 bg-emerald-600 text-white text-xs rounded-lg hover:bg-emerald-700 disabled:opacity-50">
@@ -87,6 +100,21 @@ export function AdminEventsTable({
                       <button onClick={() => action(e.id, "FEATURED")} disabled={loading === e.id}
                         className="px-2 py-1 bg-amber-500 text-white text-xs rounded-lg hover:bg-amber-600 disabled:opacity-50">
                         ⭐ Featured
+                      </button>
+                    )}
+                    {/* Share to FB group */}
+                    {(currentStatus === "APPROVED" || currentStatus === "FEATURED") && (
+                      <button
+                        onClick={() => shareToFB(e.id)}
+                        disabled={loading === `fb-${e.id}` || fbShared.has(e.id)}
+                        title="Deli v FB skupino"
+                        className={`px-2 py-1 text-xs rounded-lg transition-colors disabled:opacity-50 ${
+                          fbShared.has(e.id)
+                            ? "bg-blue-100 text-blue-700 cursor-default"
+                            : "bg-blue-50 text-blue-700 hover:bg-blue-100"
+                        }`}
+                      >
+                        {fbShared.has(e.id) ? "📘 Deljeno" : loading === `fb-${e.id}` ? "..." : "📘 FB"}
                       </button>
                     )}
                     {currentStatus !== "REJECTED" && (

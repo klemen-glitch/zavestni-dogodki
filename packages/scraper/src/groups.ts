@@ -42,6 +42,18 @@ export const FB_GROUPS: GroupConfig[] = [
   // TO ADD: Search FB → find group URL → copy numeric ID from URL → add here
 
   {
+    id: "zavestno_zivljenje",
+    name: "Zavestno življenje Slovenija",
+    url: "https://www.facebook.com/groups/1161382984212526/",
+    groupId: "1161382984212526",
+    language: "sl",
+    owned: false,
+    active: true,
+    priority: 1,
+    notes: "Verified active group with wellness events. Added by user request.",
+  },
+
+  {
     id: "yoga_ljubljana",
     name: "Yoga Ljubljana",
     url: "https://www.facebook.com/groups/yogaljubljana",

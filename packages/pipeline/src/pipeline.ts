@@ -6,6 +6,7 @@ import type { ScrapedPost } from "@conscious-slovenia/scraper";
 import { deduplicatePosts } from "./dedupe";
 import { generateSlug } from "./utils";
 import { notifyNewEvents } from "./notify";
+import { postEventToFBGroup } from "@conscious-slovenia/publisher";
 
 export interface PipelineRunOptions {
   autoApproveAbove?: number;   // confidence threshold for auto-approval (default 0.82)
@@ -159,6 +160,44 @@ export async function runPipeline(
     await notifyNewEvents(newEventIds).catch((e) =>
       errors.push(`Notify error: ${e}`)
     );
+
+    // ── Step 6: Auto-share approved events to FB group ────────────────────
+    // Only posts events that did NOT originate from that same FB group (to avoid duplicates).
+    // Requires FB_ACCESS_TOKEN env var with publish_to_groups permission.
+    if (process.env.FB_ACCESS_TOKEN) {
+      const approvedEvents = await prisma.event.findMany({
+        where: {
+          id: { in: newEventIds },
+          status: { in: ["APPROVED", "FEATURED"] },
+          // Don't re-share events already scraped from our own FB group
+          NOT: { sourceUrl: { contains: "529182865647567" } },
+        },
+        include: { organizer: true, venue: true },
+      });
+
+      for (const ev of approvedEvents) {
+        const shareResult = await postEventToFBGroup({
+          event: {
+            ...ev,
+            titleSl: ev.titleSl,
+            titleEn: ev.titleEn,
+            descriptionSl: ev.descriptionSl,
+            descriptionEn: ev.descriptionEn,
+            organizer: ev.organizer ?? null,
+            venue: ev.venue ? { name: ev.venue.name, city: ev.venue.city } : null,
+          },
+        }).catch((e) => ({ ok: false, error: String(e) }));
+
+        if (!shareResult.ok) {
+          errors.push(`FB share failed for "${ev.titleEn}": ${shareResult.error}`);
+        } else {
+          console.log(`  📘 Shared to FB group: ${ev.titleEn}`);
+        }
+
+        // Small delay between posts
+        await new Promise((r) => setTimeout(r, 2000));
+      }
+    }
   }
 
   // Anthropic pricing: ~$3/MTok input, $15/MTok output (claude-sonnet-4-6)
