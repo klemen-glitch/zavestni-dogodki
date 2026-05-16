@@ -143,3 +143,85 @@
 | `STRIPE_SECRET_KEY` | ❌ Missing | Needed when promo ends |
 | `STRIPE_WEBHOOK_SECRET` | ❌ Missing | Needed when promo ends |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | ❌ Missing | Needed when promo ends |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | ❌ Missing | Google Analytics 4 |
+
+---
+
+## 🔍 SEO & GEO Status
+*(Based on SEO Knowledge Hub — May 2026)*
+
+### ✅ Already Implemented (in code)
+- [x] **Event JSON-LD schema** — full `Event` type with name, dates, location (with GeoCoords), organizer, offers, keywords
+- [x] **BreadcrumbList schema** — on event pages and category pages → enables rich SERP breadcrumbs
+- [x] **Organization + WebSite schema** in layout — AI citation signal + Google SearchAction (sitelinks search box)
+- [x] **Keyword-rich `<title>` tags** on event pages — format: `[Event] — [Category] v [City] [Year] | Zavestni Dogodki`
+- [x] **Optimized meta descriptions** — include date, location, CTA, 120-160 chars
+- [x] **Open Graph + Twitter Card** — full tags on event pages (image with dimensions, locale `sl_SI`, canonical URL)
+- [x] **Canonical URLs** on event and category pages
+- [x] **Category page SEO titles** — `"Yoga v Sloveniji 2026 — Delavnice & Retreati"`
+- [x] **Category-specific meta descriptions** — keyword-rich, unique per category
+- [x] **Sitemap** — event pages (priority 0.8) + category static pages `/categories/[cat]` (priority 0.7, replaces broken `?category=` params)
+- [x] **robots.txt** — blocks `/admin`, `/admin-login`, `/api/`; allows all bots on public pages
+- [x] **Image alt text** — `"{event title} — {category} v {city}"` format on event cards
+- [x] **`lang="sl"`** on `<html>` element
+- [x] **Responsive design** — mobile-first, touch-friendly
+
+### ❌ Needs Action — High Priority
+
+#### Google Business Profile (LOCAL SEO #1 priority)
+- [ ] **Create/claim Google Business Profile** at business.google.com
+  - Category: "Event Organization" or "Wellness Center"
+  - Name: "Zavestni Dogodki"
+  - Website: https://zavestnidogodki.si
+  - Description: (750 chars, include: joga, meditacija, breathwork, retreat, Slovenija)
+  - Post 1-2 events per week (6-8 weeks before each event)
+
+#### Google Analytics 4 + Search Console (Measurement)
+- [ ] **Set up GA4** — install via Google Tag Manager or add `gtag.js` to layout
+  - Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` to Vercel env vars
+  - Define Key Events: event registration click, form submit, newsletter signup, chat open
+- [ ] **Connect Google Search Console** — verify ownership, link to GA4
+  - Add `google-site-verification` content to `layout.tsx` (field exists, currently empty)
+  - Submit sitemap: `https://zavestnidogodki.si/sitemap.xml`
+
+#### Schema — Missing Types
+- [ ] **FAQPage schema** on event pages — the "Kaj te čaka" section qualifies; high AI citation rate (14.2%)
+- [ ] **BlogPosting schema** — needed when blog is added
+
+### ⚠️ Needs Action — Medium Priority
+
+#### Local Citations (NAP consistency)
+- [ ] Submit to **Eventbrite** (list Zavestni Dogodki as organizer)
+- [ ] Submit to **Meetup.com** (create organization profile)
+- [ ] Submit to **TripAdvisor Events** (for Slovenia)
+- [ ] Local Slovenian event directories (e.g., kam.si, events.si)
+- [ ] Use consistent NAP: "Zavestni Dogodki — zavestnidogodki.si"
+
+#### Content / Blog (for topical authority + AI citations)
+- [ ] **Create `/blog` section** — blog posts drive organic traffic and AI citations
+  - Best formats: Listicles (21.9% AI citation rate), Guides (18.5%), How-To (16.7%)
+  - Target content: "10 najboljših yoga retreatov v Sloveniji", "Kaj je zvočna kopel?", "Breathwork za začetnike"
+  - Min. length: 1500+ words per post; include FAQ section at end
+- [ ] **Location-specific landing pages** — e.g., `/eventi/ljubljana`, `/eventi/maribor` for GEO targeting
+- [ ] **Evergreen category content** — add descriptive intro text to category pages (currently just event grid)
+
+#### Link Building
+- [ ] Guest posts on Slovenian wellness blogs (2-4 per quarter)
+- [ ] Get listed on wellness directories (at least 5 authoritative sources)
+- [ ] Partner with event organizers for cross-linking
+
+### 📊 Monthly SEO Maintenance (Recurring)
+- [ ] **Week 1** — Check Core Web Vitals (PageSpeed Insights), review Search Console indexing errors
+- [ ] **Week 2** — GA4: top landing pages, bounce rate, conversion rate by page
+- [ ] **Week 3** — Monitor keyword rankings, check backlink profile
+- [ ] **Week 4** — Plan next month's content, respond to new reviews
+
+### 🛠️ SEO Tools to Set Up (Free tier first)
+| Tool | Cost | Priority | Purpose |
+|---|---|---|---|
+| Google Search Console | Free | 🔴 Now | Indexing, search queries, Core Web Vitals |
+| Google Analytics 4 | Free | 🔴 Now | Traffic, conversions, AI channel tracking |
+| Google PageSpeed Insights | Free | 🔴 Now | Core Web Vitals monitoring |
+| Google Business Profile | Free | 🔴 Now | Local SEO, map listing |
+| Semrush or Ahrefs | ~$99-120/mo | 🟡 Later | Keyword research, backlinks |
+| SERPWatcher | ~$29/mo | 🟡 Later | Rank tracking |
