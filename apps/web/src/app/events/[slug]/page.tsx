@@ -60,17 +60,54 @@ export async function generateMetadata({
   const { slug } = await params;
   const event = await getEvent(slug);
   if (!event) return { title: "Dogodek ni najden" };
-  const title = event.titleSl ?? event.titleEn;
-  const description =
-    event.descriptionSl?.slice(0, 160) ?? event.shortDescEn ?? event.descriptionEn.slice(0, 160);
+
+  const titleSl = event.titleSl ?? event.titleEn;
+  const city = event.venue?.city ?? event.venueName ?? "Slovenija";
+  const categoryLabel = CATEGORY_LABEL[event.category] ?? "Dogodek";
+  const year = event.date.getFullYear();
+
+  // SEO title: [Event Name] — [Category] v [City] [Year] (50-60 chars ideal)
+  const seoTitle = `${titleSl} — ${categoryLabel} v ${city} ${year}`;
+
+  // Meta description: date + location + short hook + CTA (120-160 chars)
+  const formattedDate = formatDate(event.date, { day: "numeric", month: "long" });
+  const shortDesc = event.shortDescEn ?? event.descriptionEn.slice(0, 80);
+  const metaDesc = `${categoryLabel} v ${city}, ${formattedDate}. ${shortDesc.slice(0, 100)}. Oglej si podrobnosti in se prijavi!`;
+
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
+  const canonicalUrl = `${appUrl}/events/${event.slug ?? event.id}`;
+
   return {
-    title,
-    description,
+    title: seoTitle,
+    description: metaDesc.slice(0, 160),
+    keywords: [
+      titleSl,
+      categoryLabel,
+      `${categoryLabel} ${city}`,
+      `${categoryLabel} slovenija`,
+      city,
+      "zavestni dogodki",
+    ],
+    alternates: { canonical: canonicalUrl },
     openGraph: {
-      title,
-      description,
-      images: event.imageUrl ? [{ url: event.imageUrl }] : [],
+      title: seoTitle,
+      description: metaDesc.slice(0, 160),
+      url: canonicalUrl,
       type: "article",
+      locale: "sl_SI",
+      siteName: "Zavestni Dogodki",
+      images: event.imageUrl
+        ? [{ url: event.imageUrl, width: 1200, height: 630, alt: titleSl }]
+        : [],
+      publishedTime: event.createdAt?.toISOString(),
+      section: categoryLabel,
+      tags: event.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seoTitle,
+      description: metaDesc.slice(0, 160),
+      images: event.imageUrl ? [event.imageUrl] : [],
     },
   };
 }
@@ -157,22 +194,30 @@ export default async function EventPage({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Event",
-    name: event.titleEn,
+    name: event.titleSl ?? event.titleEn,
     startDate: event.date.toISOString(),
     endDate: endForCal.toISOString(),
     description: event.shortDescEn ?? event.descriptionEn.slice(0, 300),
     url: eventUrl,
-    ...(event.imageUrl && { image: event.imageUrl }),
+    ...(event.imageUrl && { image: [event.imageUrl] }),
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+    inLanguage: "sl",
     location: {
       "@type": "Place",
       name: locationName,
-      ...(event.venue?.address && {
-        address: { "@type": "PostalAddress", streetAddress: event.venue.address, addressCountry: "SI" },
-      }),
+      address: {
+        "@type": "PostalAddress",
+        ...(event.venue?.address && { streetAddress: event.venue.address }),
+        ...(locationCity && { addressLocality: locationCity }),
+        ...(locationRegion && { addressRegion: locationRegion }),
+        addressCountry: "SI",
+      },
+      ...(hasCoords && { geo: { "@type": "GeoCoordinates", latitude: event.venue!.lat, longitude: event.venue!.lng } }),
     },
-    ...(event.organizer && { organizer: { "@type": "Person", name: event.organizer.name } }),
+    organizer: event.organizer
+      ? { "@type": "Person", name: event.organizer.name, ...(event.organizer.website && { url: event.organizer.website }) }
+      : { "@type": "Organization", name: "Zavestni Dogodki", url: appUrl },
     ...(event.price !== null && {
       offers: {
         "@type": "Offer",
@@ -182,11 +227,24 @@ export default async function EventPage({
         url: event.sourceUrl ?? eventUrl,
       },
     }),
+    ...(event.tags.length > 0 && { keywords: event.tags.join(", ") }),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Domov", item: appUrl },
+      { "@type": "ListItem", position: 2, name: "Dogodki", item: `${appUrl}/events` },
+      { "@type": "ListItem", position: 3, name: label, item: `${appUrl}/categories/${event.category.toLowerCase()}` },
+      { "@type": "ListItem", position: 4, name: event.titleSl ?? event.titleEn, item: eventUrl },
+    ],
   };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <div className="relative w-full h-[52vh] min-h-[360px] max-h-[520px] overflow-hidden">

@@ -19,18 +19,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  const categoryUrls: MetadataRoute.Sitemap = ALL_CATEGORIES.map((cat) => ({
-    url: `${base}/events?category=${cat}`,
+  // Use /categories/[category] static pages (indexable) instead of ?category= query params
+  const categoryUrls: MetadataRoute.Sitemap = ALL_CATEGORIES.filter((c) => c !== "OTHER").map((cat) => ({
+    url: `${base}/categories/${cat.toLowerCase()}`,
     changeFrequency: "daily",
-    priority: 0.6,
+    priority: 0.7,
   }));
 
   return [
     { url: base, changeFrequency: "daily", priority: 1.0 },
     { url: `${base}/events`, changeFrequency: "daily", priority: 0.9 },
-    { url: `${base}/organizers`, changeFrequency: "weekly", priority: 0.5 },
     { url: `${base}/submit`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${base}/pass`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/organizers`, changeFrequency: "weekly", priority: 0.5 },
+    { url: `${base}/pass`, changeFrequency: "monthly", priority: 0.5 },
     ...categoryUrls,
     ...eventUrls,
   ];

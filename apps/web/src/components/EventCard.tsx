@@ -53,7 +53,7 @@ export function EventCard({ event, compact = false }: EventCardProps) {
             {/* Full-bleed event image */}
             <Image
               src={event.imageUrl}
-              alt={title}
+              alt={`${title} — ${label} v ${event.venue?.city ?? event.venueName ?? "Sloveniji"}`}
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 768px) 100vw, 33vw"

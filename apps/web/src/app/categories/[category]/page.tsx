@@ -10,15 +10,41 @@ import type { EventCategory } from "@conscious-slovenia/database";
 
 type Props = { params: Promise<{ category: string }> };
 
+// Keyword-rich category descriptions for SEO
+const CATEGORY_DESCRIPTIONS: Record<string, string> = {
+  YOGA: "Najdite joga delavnice, tečaje in retreate v Sloveniji. Od začetnikov do naprednih — hatha, vinyasa, yin joga in več.",
+  MEDITATION: "Meditacijski tečaji, vodene meditacije in mindfulness delavnice v Sloveniji. Notranji mir in zavestnost.",
+  BREATHWORK: "Dihalne vaje in breathwork delavnice v Sloveniji. Holotropno dihanje, pranayama in transformativni dih.",
+  SOUND_BATH: "Zvočne kopeli z Tibetanskimi posodami, gongom in kristalnimi posodami v Sloveniji. Zvočno zdravljenje.",
+  CACAO_CEREMONY: "Kakao ceremonije v Sloveniji. Srčno odpirajoče skupnostne prireditve z ceremonialnim kakaom.",
+  RETREAT: "Wellness retreati in zavestni retreati v Sloveniji. Weekend in večdnevni odmiki za telo, um in dušo.",
+  WORKSHOP: "Zavestne delavnice in seminarji v Sloveniji. Osebna rast, duhovnost in holistično zdravje.",
+  DANCE: "Zavestni ples, ecstatic dance in gibalne delavnice v Sloveniji. Svobodna izražanje skozi ples.",
+  TANTRA: "Tantra delavnice in seminarji v Sloveniji. Zavestno partnerstvo, energija in celovitost.",
+  HEALING: "Zdravilne prireditve in delavnice v Sloveniji. Energijsko zdravljenje, reiki, zvočno in holistično.",
+  OTHER: "Zavestni dogodki v Sloveniji — duhovnost, osebna rast in celostno zdravje.",
+};
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category } = await params;
   const upper = category.toUpperCase();
   if (!ALL_CATEGORIES.includes(upper as EventCategory)) return { title: "Kategorija ni najdena" };
   const label = CATEGORY_LABEL[upper] ?? upper;
-  const emoji = CATEGORY_EMOJI[upper] ?? "🌸";
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
+  const description = CATEGORY_DESCRIPTIONS[upper] ?? `Vsi ${label.toLowerCase()} dogodki v Sloveniji.`;
   return {
-    title: `${emoji} ${label} dogodki v Sloveniji`,
-    description: `Vsi ${label.toLowerCase()} dogodki v Sloveniji — najdite pravi za vas.`,
+    title: `${label} v Sloveniji 2026 — Delavnice & Retreati`,
+    description,
+    keywords: [label, `${label} slovenija`, `${label} ljubljana`, `${label} delavnica`, "zavestni dogodki", "holistic events slovenia"],
+    alternates: { canonical: `${appUrl}/categories/${category.toLowerCase()}` },
+    openGraph: {
+      title: `${label} v Sloveniji 2026`,
+      description,
+      url: `${appUrl}/categories/${category.toLowerCase()}`,
+      type: "website",
+      locale: "sl_SI",
+      siteName: "Zavestni Dogodki",
+    },
   };
 }
 
@@ -46,8 +72,21 @@ export default async function CategoryPage({ params }: Props) {
   // Other categories to suggest
   const otherCats = ALL_CATEGORIES.filter((c) => c !== upper && c !== "OTHER");
 
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Domov", item: appUrl },
+      { "@type": "ListItem", position: 2, name: "Dogodki", item: `${appUrl}/events` },
+      { "@type": "ListItem", position: 3, name: label, item: `${appUrl}/categories/${upper.toLowerCase()}` },
+    ],
+  };
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm text-stone-400 mb-8">
         <Link href="/" className="hover:text-stone-600">Domov</Link>
@@ -57,10 +96,10 @@ export default async function CategoryPage({ params }: Props) {
         <span className="text-stone-700">{label}</span>
       </div>
 
-      {/* Header */}
+      {/* Header — H1 with location keyword for SEO */}
       <div className="mb-10">
         <div className="text-5xl mb-4">{emoji}</div>
-        <h1 className="text-3xl font-bold text-stone-800 mb-2">{label} v Sloveniji</h1>
+        <h1 className="text-3xl font-bold text-stone-800 mb-2">{label} v Sloveniji — Delavnice &amp; Retreati 2026</h1>
         <p className="text-stone-500">{total} {total === 1 ? "dogodek" : "dogodkov"} · prihajajoče</p>
       </div>
 
