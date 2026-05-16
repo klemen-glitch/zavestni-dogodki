@@ -24,7 +24,7 @@ interface EventCardProps {
     imageUrl: string | null;
     venueName: string | null;
     featured: boolean;
-    organizer?: { name: string } | null;
+    organizer?: { name: string; avatarUrl?: string | null } | null;
     venue?: { name: string; city: string } | null;
   };
   compact?: boolean;
@@ -46,105 +46,91 @@ export function EventCard({ event, compact = false }: EventCardProps) {
         event.featured ? "ring-2 ring-amber-400 shadow-amber-100/50" : "shadow-sm border border-stone-100"
       }`}
     >
-      {/* ── Image section: diagonal split ── */}
-      <div className={`relative ${compact ? "h-36" : "h-52"} overflow-hidden`}>
-        {/* Branded gradient background (right side) */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `linear-gradient(135deg, ${catColor} 0%, ${catDark} 100%)`,
-          }}
-        >
-          {/* Decorative botanical SVG */}
-          <svg
-            className="absolute right-0 top-0 h-full w-3/5 opacity-[0.07] pointer-events-none"
-            viewBox="0 0 200 300"
-            fill="none"
-          >
-            <circle cx="150" cy="60" r="50" stroke="white" strokeWidth="0.5" />
-            <circle cx="150" cy="60" r="35" stroke="white" strokeWidth="0.5" />
-            <circle cx="150" cy="60" r="20" stroke="white" strokeWidth="0.5" />
-            <path
-              d="M130 160 Q158 115 170 160 Q158 145 130 160Z"
-              fill="white"
-              opacity="0.4"
-            />
-            <path
-              d="M108 205 Q143 155 168 205 Q143 185 108 205Z"
-              fill="white"
-              opacity="0.3"
-            />
-            <path
-              d="M140 245 Q163 210 175 245 Q163 232 140 245Z"
-              fill="white"
-              opacity="0.25"
-            />
-            <circle cx="180" cy="135" r="3" fill="white" opacity="0.3" />
-            <circle cx="120" cy="270" r="3" fill="white" opacity="0.2" />
-          </svg>
-
-          {/* Large watermark emoji */}
-          <span className="absolute right-4 bottom-4 text-5xl opacity-[0.15] select-none">
-            {emoji}
-          </span>
-
-          {/* Category label */}
-          <span className="absolute top-3 right-3 text-white/80 text-[11px] font-medium tracking-widest uppercase z-10">
-            {label}
-          </span>
-        </div>
-
-        {/* Event image with diagonal clip */}
+      {/* ── Image section ── */}
+      <div className={`relative ${compact ? "h-40" : "h-52"} overflow-hidden`}>
         {event.imageUrl ? (
           <>
+            {/* Full-bleed event image */}
+            <Image
+              src={event.imageUrl}
+              alt={title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+            {/* Dark gradient overlay at bottom for text legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+            {/* Subtle brand color tint at bottom */}
             <div
-              className="absolute inset-0"
-              style={{ clipPath: "polygon(0 0, 72% 0, 56% 100%, 0 100%)" }}
-            >
-              <Image
-                src={event.imageUrl}
-                alt={title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-            </div>
-            {/* Soft gradient along diagonal edge */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                clipPath: "polygon(67% 0, 74% 0, 58% 100%, 51% 100%)",
-                background: `linear-gradient(to right, rgba(0,0,0,0.1), ${catColor}bb)`,
-              }}
+              className="absolute bottom-0 left-0 right-0 h-1/3 opacity-40"
+              style={{ background: `linear-gradient(to top, ${catDark}, transparent)` }}
             />
           </>
         ) : (
-          /* No image — show large emoji on branded bg */
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-7xl opacity-20">{emoji}</span>
+          /* No image — full branded gradient */
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{ background: `linear-gradient(135deg, ${catColor}, ${catDark})` }}
+          >
+            {/* Botanical decoration */}
+            <svg className="absolute inset-0 w-full h-full opacity-[0.08]" viewBox="0 0 400 300" fill="none">
+              <circle cx="300" cy="60" r="80" stroke="white" strokeWidth="1" />
+              <circle cx="300" cy="60" r="55" stroke="white" strokeWidth="0.8" />
+              <path d="M260 200 Q300 150 340 200 Q300 180 260 200Z" fill="white" opacity="0.4" />
+              <path d="M220 250 Q280 190 340 250 Q280 225 220 250Z" fill="white" opacity="0.3" />
+            </svg>
+            <span className="text-7xl opacity-25 select-none">{emoji}</span>
           </div>
         )}
 
-        {/* Featured badge */}
+        {/* Category badge — top right */}
+        <div className="absolute top-3 right-3 z-10">
+          <span
+            className="text-white text-[11px] font-bold px-2.5 py-1 rounded-full backdrop-blur-sm"
+            style={{ backgroundColor: `${catColor}cc` }}
+          >
+            {emoji} {label}
+          </span>
+        </div>
+
+        {/* Featured badge — top left */}
         {event.featured && (
           <span className="absolute top-3 left-3 bg-amber-400/90 backdrop-blur-sm text-amber-900 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm z-10">
             ⭐ Izpostavljeno
           </span>
         )}
+
+        {/* Facilitator avatar — bottom right, overlaps content section */}
+        {event.organizer && (
+          <div className="absolute bottom-[-18px] right-4 z-20">
+            <div className="w-10 h-10 rounded-full border-2 border-white shadow-md overflow-hidden bg-stone-200 flex items-center justify-center flex-shrink-0">
+              {event.organizer.avatarUrl ? (
+                <Image
+                  src={event.organizer.avatarUrl}
+                  alt={event.organizer.name}
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <span
+                  className="text-white text-xs font-bold"
+                  style={{ backgroundColor: catColor }}
+                >
+                  {event.organizer.name.charAt(0).toUpperCase()}
+                </span>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* ── Content section ── */}
-      <div className="relative p-4">
-        {/* Category accent line */}
-        <div
-          className="absolute top-0 left-4 right-4 h-[2px] rounded-full"
-          style={{ backgroundColor: catColor }}
-        />
-
+      <div className={`relative p-4 ${event.organizer ? "pt-6" : "pt-4"}`}>
         <h3
-          className={`font-semibold text-stone-800 group-hover:text-emerald-700 transition-colors line-clamp-2 mt-1 ${
+          className={`font-semibold text-stone-800 group-hover:text-emerald-700 transition-colors line-clamp-2 ${
             compact ? "text-sm" : "text-base"
-          }`}
+          } ${event.organizer ? "pr-2" : ""}`}
         >
           {title}
         </h3>
@@ -170,7 +156,7 @@ export function EventCard({ event, compact = false }: EventCardProps) {
               {formatPrice(event.price, event.priceNote)}
             </span>
             {event.organizer && (
-              <span className="text-xs text-stone-400 truncate max-w-[120px]">
+              <span className="text-xs text-stone-400 truncate max-w-[110px] text-right">
                 {event.organizer.name}
               </span>
             )}
