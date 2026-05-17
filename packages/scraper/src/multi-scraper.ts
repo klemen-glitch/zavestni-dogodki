@@ -68,8 +68,10 @@ async function scrapeViaGraphApi(group: GroupConfig): Promise<ScraperResult> {
     }
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
-    errors.push(msg);
-    console.error(`❌ Graph API failed for ${group.name}:`, msg);
+    console.warn(`⚠️  Graph API failed for ${group.name}: ${msg} — falling back to Playwright`);
+    // Fall back to Playwright so own group still gets scraped even if token
+    // is expired or missing required permissions (groups_access_member_info)
+    return scrapeFacebookGroup({ groupUrl: group.url });
   }
 
   return {

@@ -66,23 +66,30 @@
 
 ## 🟡 Pending — Needs Your Action
 
-### 🔑 Facebook Access Token (BLOCKER for FB auto-posting)
-- [ ] **Get `FB_ACCESS_TOKEN` from Facebook**
+### 🔑 Facebook Access Token (needs replacement — wrong permissions)
+- [x] `FB_ACCESS_TOKEN` is set in Vercel ✅ — but the current token has problems:
+  - ❌ **Expires: 2026-05-17** (today — already expired or expiring very soon)
+  - ❌ **Only has `public_profile` scope** — needs `publish_to_groups` + `groups_access_member_info`
+  - The token cannot read group feed or post to the group
+  
+- [ ] **Get a NEW token with correct permissions:**
   1. Go to: https://developers.facebook.com/tools/explorer
-  2. Select your Facebook App
-  3. Add permission: `publish_to_groups`
-  4. Click "Generate Access Token" and authorize
-  5. Exchange for a **long-lived token** (60 days):
+  2. Select your App: **"zavestni dogpdki"** (App ID: `2086804152051911`)
+  3. Add permissions: ✅ `publish_to_groups` + ✅ `groups_access_member_info`
+  4. Click **"Generate Access Token"** and authorize all permissions
+  5. **Exchange for long-lived token** (60 days) via:
      ```
      GET https://graph.facebook.com/v21.0/oauth/access_token
        ?grant_type=fb_exchange_token
-       &client_id=YOUR_APP_ID
+       &client_id=2086804152051911
        &client_secret=YOUR_APP_SECRET
        &fb_exchange_token=SHORT_LIVED_TOKEN
      ```
-  6. Add to Vercel → zavestni-dogodki → Settings → Environment Variables:
-     - Key: `FB_ACCESS_TOKEN` / Value: *(long-lived token)*
+  6. **Update** Vercel → zavestni-dogodki → Settings → Environment Variables:
+     - Key: `FB_ACCESS_TOKEN` / Value: *(new long-lived token)*
+  7. Redeploy after updating
   - `FB_GROUP_ID=529182865647567` is already set ✅
+  - App ID is already known: `2086804152051911` ✅
 
 ### 📧 Email Domain Verification (BLOCKER for sending newsletters to any address)
 - [ ] **Add DKIM/SPF records** for `zavestnidogodki.si` in your DNS (Vercel Domains or registrar)
@@ -139,7 +146,7 @@
 | `CRON_SECRET` | ✅ Set | Cron job auth |
 | `NEXT_PUBLIC_APP_URL` | ✅ Set | Public URL |
 | `FB_GROUP_ID` | ✅ Set | `529182865647567` |
-| `FB_ACCESS_TOKEN` | ❌ Missing | **Needed for FB posting** |
+| `FB_ACCESS_TOKEN` | ⚠️ Set but invalid | Expires today, wrong scopes — see section above |
 | `STRIPE_SECRET_KEY` | ❌ Missing | Needed when promo ends |
 | `STRIPE_WEBHOOK_SECRET` | ❌ Missing | Needed when promo ends |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | ❌ Missing | Needed when promo ends |
@@ -185,8 +192,8 @@
   - Submit sitemap: `https://zavestnidogodki.si/sitemap.xml`
 
 #### Schema — Missing Types
-- [ ] **FAQPage schema** on event pages — the "Kaj te čaka" section qualifies; high AI citation rate (14.2%)
-- [ ] **BlogPosting schema** — needed when blog is added
+- [x] **FAQPage schema** on event pages ✅ — added to `/events/[slug]/page.tsx`
+- [x] **BlogPosting + FAQPage schema** ✅ — added to `/blog/[slug]/page.tsx`
 
 ### ⚠️ Needs Action — Medium Priority
 
@@ -198,12 +205,12 @@
 - [ ] Use consistent NAP: "Zavestni Dogodki — zavestnidogodki.si"
 
 #### Content / Blog (for topical authority + AI citations)
-- [ ] **Create `/blog` section** — blog posts drive organic traffic and AI citations
-  - Best formats: Listicles (21.9% AI citation rate), Guides (18.5%), How-To (16.7%)
-  - Target content: "10 najboljših yoga retreatov v Sloveniji", "Kaj je zvočna kopel?", "Breathwork za začetnike"
-  - Min. length: 1500+ words per post; include FAQ section at end
-- [ ] **Location-specific landing pages** — e.g., `/eventi/ljubljana`, `/eventi/maribor` for GEO targeting
-- [ ] **Evergreen category content** — add descriptive intro text to category pages (currently just event grid)
+- [x] **`/blog` section created** ✅ — listing + detail pages with BlogPosting + FAQPage schema
+  - 3 initial posts: "Kaj je zvočna kopel?", "Breathwork za začetnike", "10 razlogov za yoga retreat"
+  - All posts have 5+ content sections and 5 FAQs for AI citation optimization
+  - Add more posts by editing `apps/web/src/content/blog-posts.ts` (no DB needed)
+- [x] **Location-specific landing pages** ✅ — `/eventi/[city]` for 11 Slovenian cities
+- [x] **Evergreen category content** ✅ — unique SEO intro text on all category pages
 
 #### Link Building
 - [ ] Guest posts on Slovenian wellness blogs (2-4 per quarter)
