@@ -1,5 +1,7 @@
 "use client";
 
+import { trackEvent } from "@/lib/gtag";
+
 interface EventLocationMapProps {
   lat: number;
   lng: number;
@@ -29,6 +31,7 @@ export function EventLocationMap({ lat, lng, venueName, city }: EventLocationMap
           href={osmLink}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackEvent("map_direction_click", { venue: venueName, city })}
           className="text-xs text-emerald-700 hover:text-emerald-900 font-medium border border-emerald-300 px-3 py-1.5 rounded-lg hover:bg-emerald-50 transition-colors"
         >
           Odpri v zemljevidu →

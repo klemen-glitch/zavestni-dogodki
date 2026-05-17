@@ -10,6 +10,7 @@ import { ShareButtons } from "@/components/ShareButtons";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { EventCard } from "@/components/EventCard";
 import { EventLocationMap } from "@/components/EventLocationMap";
+import { EventCTALink } from "@/components/EventCTALink";
 import {
   CATEGORY_EMOJI,
   CATEGORY_LABEL,
@@ -531,28 +532,28 @@ export default async function EventPage({
                     <p className="text-xs text-stone-400 mb-4">na osebo · enkratni vnos</p>
 
                     {event.sourceUrl ? (
-                      <a
+                      <EventCTALink
                         href={event.sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        eventName={event.titleSl ?? event.titleEn}
+                        category={event.category}
                         className="block w-full text-center text-white font-bold py-3.5 rounded-xl text-sm transition-opacity hover:opacity-90"
                         style={{ background: `linear-gradient(135deg, ${catColor}, ${catDark})` }}
                       >
                         📘 Prijavi se na Facebooku →
-                      </a>
+                      </EventCTALink>
                     ) : event.organizer?.instagram || event.organizer?.website ? (
                       <div className="space-y-2">
                         <p className="text-xs text-stone-400 text-center mb-1">Kontaktiraj facilitatorja za prijavo</p>
                         {event.organizer.website && (
-                          <a
+                          <EventCTALink
                             href={event.organizer.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            eventName={event.titleSl ?? event.titleEn}
+                            category={event.category}
                             className="block w-full text-center text-white font-bold py-3 rounded-xl text-sm transition-opacity hover:opacity-90"
                             style={{ background: `linear-gradient(135deg, ${catColor}, ${catDark})` }}
                           >
                             🌐 Spletna stran facilitatorja →
-                          </a>
+                          </EventCTALink>
                         )}
                         {event.organizer.instagram && (
                           <a
