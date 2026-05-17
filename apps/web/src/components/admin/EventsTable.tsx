@@ -36,11 +36,17 @@ export function AdminEventsTable({
   async function shareToFB(id: string) {
     setLoading(`fb-${id}`);
     const res = await fetch(`/api/admin/events/${id}/share-fb`, { method: "POST" });
-    const data = await res.json() as { ok?: boolean; error?: string };
+    const data = await res.json() as { ok?: boolean; error?: string; preview?: string };
     if (data.ok) {
       setFbShared((prev) => new Set([...prev, id]));
+    } else if (data.preview) {
+      // No valid token — show preview text so admin can copy-paste to FB manually
+      const groupUrl = "https://www.facebook.com/groups/529182865647567/";
+      const msg = `📋 Kopirajte besedilo spodaj in ga ročno objavite v FB skupini:\n${groupUrl}\n\n──────────\n${data.preview}\n──────────`;
+      prompt("Kopiraj & prilepi v FB skupino:", data.preview);
+      console.log(msg); // also log so it's easy to grab from devtools
     } else {
-      alert(`FB share failed: ${data.error ?? "unknown error"}`);
+      alert(`FB deljenje ni uspelo: ${data.error ?? "neznana napaka"}`);
     }
     setLoading(null);
   }
