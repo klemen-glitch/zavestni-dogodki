@@ -1,0 +1,49 @@
+name: Daily Scraper Pipeline
+
+on:
+  schedule:
+    # Every morning at 07:00 UTC (09:00 Ljubljana)
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+    # Also allow manual trigger from GitHub Actions tab
+    inputs:
+      dry_run:
+        description: "Dry run (process but don't save to DB)"
+        required: false
+        default: "false"
+        type: choice
+        options: ["false", "true"]
+
+jobs:
+  scrape:
+    name: Scrape & Process FB Events
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+        working-directory: packages/scraper
+
+      - name: Run daily pipeline
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NODE_ENV: production
+        run: |
+          echo "🚀 Starting daily scraper pipeline..."
+          npx ts-node packages/pipeline/src/cron.ts daily
+        timeout-minutes: 25

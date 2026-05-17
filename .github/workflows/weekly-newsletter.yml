@@ -1,0 +1,47 @@
+name: Weekly Newsletter
+
+on:
+  schedule:
+    # Every Sunday at 09:00 UTC (11:00 Ljubljana)
+    - cron: "0 9 * * 0"
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "Publish to Beehiiv (false = draft only)"
+        required: false
+        default: "true"
+        type: choice
+        options: ["true", "false"]
+
+jobs:
+  newsletter:
+    name: Send Weekly Newsletter
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run weekly newsletter
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DIRECT_URL: ${{ secrets.DIRECT_URL }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+          BEEHIIV_PUBLICATION_ID: ${{ secrets.BEEHIIV_PUBLICATION_ID }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_APP_URL: ${{ secrets.NEXT_PUBLIC_APP_URL }}
+          NODE_ENV: production
+        run: |
+          echo "📰 Starting weekly newsletter..."
+          npx ts-node packages/pipeline/src/cron.ts weekly
