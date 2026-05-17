@@ -1,7 +1,7 @@
 # Zavestni Dogodki — Status & Checklist
 
-> Last updated: May 2026  
-> Production: https://zavestni-dogodki.vercel.app
+> Last updated: 17 May 2026  
+> Production: https://zavestnidogodki.si
 
 ---
 
@@ -43,14 +43,16 @@
 
 ### Infrastructure
 - [x] **Vercel deployment** — auto-deploys on push to `main`
-- [x] **Vercel cron jobs** — 2 scheduled jobs:
-  - Daily at 07:00 UTC → `/api/webhooks/cron/daily` (scrape + process pipeline)
-  - Weekly Sunday 09:00 UTC → `/api/webhooks/cron/weekly` (newsletter)
+- [x] **GitHub Actions cron jobs** — 2 scheduled workflows (replaces Vercel cron; Playwright cannot run serverless):
+  - `.github/workflows/daily-scraper.yml` — runs daily 07:00 UTC (09:00 Ljubljana)
+  - `.github/workflows/weekly-newsletter.yml` — runs every Sunday 09:00 UTC (11:00 Ljubljana)
+  - Both support `workflow_dispatch` for manual triggers from the GitHub Actions tab
+  - **GitHub Secrets set:** `DATABASE_URL`, `DIRECT_URL`, `ANTHROPIC_API_KEY`, `BEEHIIV_API_KEY`, `BEEHIIV_PUBLICATION_ID`, `NEXT_PUBLIC_APP_URL`
 - [x] **Supabase PostgreSQL** — events, organizers, venues, pipeline runs, newsletter subs
 - [x] **Prisma ORM** with direct + pooler URLs
-- [x] **Resend email** — configured for transactional emails
-- [x] **Beehiiv newsletter** — publish drafts via API
-- [x] **Sitemap + robots.txt** — auto-generated
+- [x] **Resend email** — configured for transactional emails (graceful no-op if key missing)
+- [x] **Beehiiv newsletter** — publish drafts via API (`BEEHIIV_API_KEY` + `BEEHIIV_PUBLICATION_ID` set)
+- [x] **Sitemap + robots.txt** — auto-generated (includes city pages, blog posts, categories)
 
 ### Scraper & Pipeline
 - [x] **Multi-group FB scraper** — currently active groups:
@@ -138,19 +140,23 @@
 
 | Variable | Status | Notes |
 |---|---|---|
-| `DATABASE_URL` | ✅ Set | Supabase pooler |
-| `DIRECT_URL` | ✅ Set | Supabase direct |
-| `ANTHROPIC_API_KEY` | ✅ Set | Claude AI |
+| `DATABASE_URL` | ✅ Set | Supabase pooler (also in GitHub Secrets) |
+| `DIRECT_URL` | ✅ Set | Supabase direct (also in GitHub Secrets) |
+| `ANTHROPIC_API_KEY` | ✅ Set | Claude AI (also in GitHub Secrets) |
 | `RESEND_API_KEY` | ✅ Set | Email sending |
 | `ADMIN_SECRET` | ✅ Set | Admin panel auth |
 | `CRON_SECRET` | ✅ Set | Cron job auth |
-| `NEXT_PUBLIC_APP_URL` | ✅ Set | Public URL |
+| `NEXT_PUBLIC_APP_URL` | ✅ Set | `https://zavestnidogodki.si` (also in GitHub Secrets) |
 | `FB_GROUP_ID` | ✅ Set | `529182865647567` |
+| `BEEHIIV_API_KEY` | ✅ Set | Newsletter publishing (also in GitHub Secrets) |
+| `BEEHIIV_PUBLICATION_ID` | ✅ Set | `pub_0df01f98-...` (also in GitHub Secrets) |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | ✅ Set | Search Console ownership proof |
 | `FB_ACCESS_TOKEN` | ⚠️ Set but invalid | Expires today, wrong scopes — see section above |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | ❌ Missing | **TODO:** Add `G-XXXXXXXXXX` from GA4 admin → Admin → Data Streams → your stream |
+| `RESEND_API_KEY` (GitHub Secrets) | ❌ Missing | Add when you can find the `re_...` value in Resend dashboard |
 | `STRIPE_SECRET_KEY` | ❌ Missing | Needed when promo ends |
 | `STRIPE_WEBHOOK_SECRET` | ❌ Missing | Needed when promo ends |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | ❌ Missing | Needed when promo ends |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | ❌ Missing | Google Analytics 4 |
 
 ---
 
@@ -184,12 +190,14 @@
   - Post 1-2 events per week (6-8 weeks before each event)
 
 #### Google Analytics 4 + Search Console (Measurement)
-- [ ] **Set up GA4** — install via Google Tag Manager or add `gtag.js` to layout
-  - Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` to Vercel env vars
-  - Define Key Events: event registration click, form submit, newsletter signup, chat open
-- [ ] **Connect Google Search Console** — verify ownership, link to GA4
-  - Add `google-site-verification` content to `layout.tsx` (field exists, currently empty)
-  - Submit sitemap: `https://zavestnidogodki.si/sitemap.xml`
+- [ ] **Set up GA4** — `gtag.js` is already in `layout.tsx`, conditionally loaded when env var is set
+  - [ ] **Add `NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX` to Vercel** — get it from:
+    GA4 → Admin (gear icon) → Data Streams → your stream → Measurement ID (top right)
+  - [ ] Define Key Events in GA4: event click, form submit, newsletter signup, chat open
+- [x] **Google Search Console verification** ✅ — `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` set in Vercel
+  - Verification token: `8L_aWJaREtd1Vti4JW2CNkjEUyUXHm5w6f7TydzEe0s`
+  - [ ] **Submit sitemap** at Search Console: `https://zavestnidogodki.si/sitemap.xml`
+  - [ ] **Link GA4 ↔ Search Console** once both are verified
 
 #### Schema — Missing Types
 - [x] **FAQPage schema** on event pages ✅ — added to `/events/[slug]/page.tsx`
