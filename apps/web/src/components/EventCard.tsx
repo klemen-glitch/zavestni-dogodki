@@ -110,7 +110,7 @@ export function EventCard({ event, compact = false }: EventCardProps) {
                   alt={event.organizer.name}
                   width={40}
                   height={40}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               ) : (
                 <span
