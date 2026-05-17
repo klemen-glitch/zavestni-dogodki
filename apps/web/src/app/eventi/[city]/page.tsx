@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!data) return { title: "Mesto ni najdeno" };
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
   return {
-    title: `Zavestni Dogodki v ${data.label} 2026 — Joga, Meditacija & Retreati`,
+    title: { absolute: `Zavestni Dogodki v ${data.label} — Joga, Meditacija & Retreati | Zavestni Dogodki` },
     description: data.description,
     keywords: [
       `zavestni dogodki ${data.label.toLowerCase()}`,

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ALL_CATEGORIES } from "@/lib/utils";
+import { trackEvent } from "@/lib/gtag";
 import { CATEGORY_EMOJI, CATEGORY_LABEL } from "@/lib/utils";
 
 // 🎉 Launch promo: all tiers free. Set to false to re-enable paid submissions.
@@ -28,10 +29,13 @@ export default function SubmitPage() {
       });
       const data = await res.json();
       if (res.ok && data.checkoutUrl) {
+        trackEvent("submit_form", { tier, type: "checkout" });
         window.location.href = data.checkoutUrl;
       } else if (res.ok && data.redirect) {
+        trackEvent("submit_form", { tier, type: "promo_redirect" });
         window.location.href = data.redirect;
       } else if (res.ok) {
+        trackEvent("submit_form", { tier, type: "direct" });
         setStatus("success");
         setMessage("Vaša prijava je bila uspešno oddana! Preverite email za potrditev.");
       } else {

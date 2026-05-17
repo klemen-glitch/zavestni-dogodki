@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useTransition } from "react";
+import { trackEvent } from "@/lib/gtag";
 
 interface Message {
   role: "user" | "assistant";
@@ -26,6 +27,7 @@ export function ChatWidget() {
   const [isPending, startTransition] = useTransition();
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const hasTrackedOpen = useRef(false);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -171,7 +173,14 @@ export function ChatWidget() {
 
       {/* Floating button */}
       <button
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          const next = !open;
+          setOpen(next);
+          if (next && !hasTrackedOpen.current) {
+            hasTrackedOpen.current = true;
+            trackEvent("chat_open");
+          }
+        }}
         className="fixed bottom-5 right-4 md:right-6 z-50 w-14 h-14 rounded-full bg-emerald-700 text-white shadow-lg hover:bg-emerald-800 hover:shadow-xl transition-all flex items-center justify-center group"
         aria-label={open ? "Zapri pomočnika" : "Odpri pomočnika"}
       >

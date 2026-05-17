@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { trackEvent } from "@/lib/gtag";
 
 export function NewsletterSignup({ compact = false }: { compact?: boolean }) {
   const [email, setEmail] = useState("");
@@ -20,6 +21,7 @@ export function NewsletterSignup({ compact = false }: { compact?: boolean }) {
         setStatus("success");
         setMessage("Hvala! Preverite email za potrditev. 🌿");
         setEmail("");
+        trackEvent("newsletter_signup", { location: compact ? "compact" : "full" });
       } else {
         setStatus("error");
         setMessage(data.error ?? "Prišlo je do napake. Prosimo, poskusite znova.");

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getBlogPost, BLOG_POSTS } from "@/content/blog-posts";
-import { CATEGORY_EMOJI, CATEGORY_LABEL } from "@/lib/utils";
+import { CATEGORY_EMOJI, CATEGORY_LABEL, CATEGORY_HEX } from "@/lib/utils";
 
 const AUTHOR_BIO = {
   name: "Uredništvo Zavestni Dogodki",
@@ -89,6 +89,8 @@ export default async function BlogPostPage({ params }: Props) {
     wordCount: post.content.map((s) => s.body.split(/\s+/).length).reduce((a, b) => a + b, 0),
   };
 
+  const [catColor, catDark] = CATEGORY_HEX[post.category] ?? ["#059669", "#064e3b"];
+
   const faqSchema = post.faq.length > 0
     ? {
         "@context": "https://schema.org",
@@ -118,18 +120,24 @@ export default async function BlogPostPage({ params }: Props) {
         <span className="text-stone-700 truncate max-w-xs">{post.title}</span>
       </div>
 
-      {/* Meta */}
-      <div className="flex items-center gap-3 mb-4 flex-wrap">
-        <span className="text-2xl">{CATEGORY_EMOJI[post.category] ?? "📖"}</span>
-        <span className="text-xs font-medium text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">
-          {CATEGORY_LABEL[post.category] ?? post.category}
-        </span>
-        <span className="text-xs text-stone-400">{post.readingTime} min branja</span>
-        <span className="text-xs text-stone-400">
-          {new Date(post.date).toLocaleDateString("sl-SI", {
-            day: "numeric", month: "long", year: "numeric",
-          })}
-        </span>
+      {/* Category hero strip — visual anchor (replaces featured image) */}
+      <div
+        className="rounded-2xl mb-8 p-6 flex items-center gap-5"
+        style={{ background: `linear-gradient(135deg, ${catColor}14 0%, ${catColor}22 100%)`, borderLeft: `4px solid ${catColor}` }}
+      >
+        <span className="text-5xl leading-none">{CATEGORY_EMOJI[post.category] ?? "📖"}</span>
+        <div>
+          <span
+            className="inline-block text-[11px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full text-white mb-2"
+            style={{ backgroundColor: catColor }}
+          >
+            {CATEGORY_LABEL[post.category] ?? post.category}
+          </span>
+          <p className="text-stone-500 text-sm">
+            {post.readingTime} min branja &middot;{" "}
+            {new Date(post.date).toLocaleDateString("sl-SI", { day: "numeric", month: "long", year: "numeric" })}
+          </p>
+        </div>
       </div>
 
       {/* Title */}
