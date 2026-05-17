@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { sendEmail, approvalEmailHtml } from "@/lib/email";
+import { triggerContentGeneration } from "@/lib/trigger-content-generation";
 import type { EventStatus } from "@conscious-slovenia/database";
 
 function isAdmin(req: Request): boolean {
@@ -24,7 +25,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       ...(status && { status }),
       ...(featured !== undefined && { featured }),
     },
-    include: { organizer: true },
+    include: { organizer: true, venue: true },
   });
 
   // Send approval email to organizer
@@ -35,6 +36,20 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       to: event.organizer.email,
       subject: `Vaš dogodek je odobren! 🌿 — ${event.titleEn}`,
       html: approvalEmailHtml(event.titleEn, eventUrl),
+    }).catch(console.error);
+  }
+
+  // Trigger automated blog content generation (fire-and-forget)
+  if (status === "APPROVED" || status === "FEATURED") {
+    triggerContentGeneration({
+      eventId: event.id,
+      title: (event as unknown as { titleSl?: string }).titleSl ?? event.titleEn,
+      category: event.category,
+      city: (event as unknown as { venue?: { city?: string } }).venue?.city ?? event.venueName ?? "Ljubljana",
+      organizerName: event.organizer?.name ?? "",
+      organizerBio: event.organizer?.bio ?? undefined,
+      organizerWebsite: event.organizer?.website ?? undefined,
+      description: (event as unknown as { descriptionEn?: string }).descriptionEn ?? undefined,
     }).catch(console.error);
   }
 

@@ -1,0 +1,74 @@
+name: Generate Blog Content
+
+on:
+  repository_dispatch:
+    types: [generate-blog-content]
+  workflow_dispatch:
+    inputs:
+      event_id:
+        description: "Event ID"
+        required: true
+      title:
+        description: "Event title"
+        required: true
+      category:
+        description: "Event category (e.g. BREATHWORK)"
+        required: true
+      city:
+        description: "Event city"
+        required: true
+      organizer_name:
+        description: "Organizer name"
+        required: false
+      organizer_bio:
+        description: "Organizer bio"
+        required: false
+      description:
+        description: "Event description"
+        required: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Anthropic SDK
+        run: npm install --prefix scripts @anthropic-ai/sdk
+
+      - name: Generate blog content
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EVENT_ID: ${{ github.event.client_payload.event_id || inputs.event_id }}
+          EVENT_TITLE: ${{ github.event.client_payload.title || inputs.title }}
+          EVENT_CATEGORY: ${{ github.event.client_payload.category || inputs.category }}
+          EVENT_CITY: ${{ github.event.client_payload.city || inputs.city }}
+          ORGANIZER_NAME: ${{ github.event.client_payload.organizer_name || inputs.organizer_name }}
+          ORGANIZER_BIO: ${{ github.event.client_payload.organizer_bio || inputs.organizer_bio }}
+          ORGANIZER_WEBSITE: ${{ github.event.client_payload.organizer_website || '' }}
+          EVENT_DESCRIPTION: ${{ github.event.client_payload.description || inputs.description }}
+        run: node scripts/generate-blog-content.mjs
+
+      - name: Commit and push generated articles
+        run: |
+          git config --global user.email "bot@zavestnidogodki.si"
+          git config --global user.name "Zavestni Dogodki Bot"
+          git add apps/web/src/content/blog-posts.ts
+          if git diff --cached --quiet; then
+            echo "No new articles generated (all slugs already exist)"
+          else
+            git commit -m "feat(blog): auto-generate 3 articles for event '$EVENT_TITLE' [skip ci]"
+            git push
+          fi
+        env:
+          EVENT_TITLE: ${{ github.event.client_payload.title || inputs.title }}
