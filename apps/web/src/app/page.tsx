@@ -8,10 +8,16 @@ import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { CATEGORY_EMOJI, CATEGORY_LABEL, ALL_CATEGORIES } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Zavestni Dogodki — Joga, Meditacija & Retreati v Sloveniji 2026",
+  title: { absolute: "Zavestni Dogodki — Joga, Meditacija & Retreati v Sloveniji 2026" },
   description: "Kurirani imenik zavestnih dogodkov v Sloveniji. Najdi joga delavnice, meditacijske tečaje, breathwork, zvočne kopeli in retreate v tvojem mestu. Brezplačna objava.",
   keywords: ["zavestni dogodki", "joga slovenija", "meditacija slovenija", "breathwork", "retreat slovenija", "zvočna kopel", "mindfulness", "wellness eventi"],
-  alternates: { canonical: process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si" },
+  alternates: {
+    canonical: process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si",
+    languages: {
+      sl: process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si",
+      "x-default": process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si",
+    },
+  },
   openGraph: {
     title: "Zavestni Dogodki — Joga, Meditacija & Retreati v Sloveniji",
     description: "Kurirani imenik zavestnih dogodkov v Sloveniji — joga, meditacija, breathwork, zvočne kopeli in retreati. Brezplačna objava.",
@@ -54,6 +60,10 @@ export default async function HomePage() {
     url: appUrl,
     inLanguage: "sl",
     publisher: { "@type": "Organization", name: "Zavestni Dogodki", url: appUrl },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "h2", ".speakable"],
+    },
   };
 
   return (

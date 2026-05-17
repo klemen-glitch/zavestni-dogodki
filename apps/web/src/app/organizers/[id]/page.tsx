@@ -12,15 +12,26 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const org = await db.organizer.findUnique({ where: { id } });
   if (!org) return { title: "Facilitator ni najden" };
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
   return {
-    title: org.name,
-    description: org.bio ?? `Zavestni dogodki s facilitatorjem ${org.name} v Sloveniji.`,
-    openGraph: { images: org.avatarUrl ? [{ url: org.avatarUrl }] : [] },
+    title: { absolute: `${org.name} — Facilitator & Yoga Učitelj v Sloveniji | Zavestni Dogodki` },
+    description: org.bio ?? `Prihajajoči zavestni dogodki s facilitatorjem ${org.name} v Sloveniji — joga, meditacija, breathwork in retreati.`,
+    alternates: { canonical: `${appUrl}/organizers/${id}` },
+    openGraph: {
+      title: `${org.name} — Facilitator v Sloveniji`,
+      description: org.bio ?? `Prihajajoči zavestni dogodki s facilitatorjem ${org.name} v Sloveniji.`,
+      url: `${appUrl}/organizers/${id}`,
+      type: "profile",
+      locale: "sl_SI",
+      siteName: "Zavestni Dogodki",
+      images: org.avatarUrl ? [{ url: org.avatarUrl, alt: `${org.name} — facilitator` }] : [],
+    },
   };
 }
 
 export default async function OrganizerProfilePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
 
   const [organizer, events] = await Promise.all([
     db.organizer.findUnique({
@@ -40,7 +51,35 @@ export default async function OrganizerProfilePage({ params }: { params: Promise
 
   if (!organizer) notFound();
 
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: organizer.name,
+    url: `${appUrl}/organizers/${id}`,
+    ...(organizer.avatarUrl && { image: organizer.avatarUrl }),
+    ...(organizer.bio && { description: organizer.bio }),
+    ...(organizer.website && { sameAs: [organizer.website] }),
+    ...(organizer.instagram && {
+      sameAs: [`https://instagram.com/${organizer.instagram.replace("@", "")}`],
+    }),
+    jobTitle: "Wellness Facilitator",
+    knowsAbout: ["joga", "meditacija", "breathwork", "zavestne prakse"],
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Domov", item: appUrl },
+      { "@type": "ListItem", position: 2, name: "Facilitatorji", item: `${appUrl}/organizers` },
+      { "@type": "ListItem", position: 3, name: organizer.name, item: `${appUrl}/organizers/${id}` },
+    ],
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <div className="max-w-4xl mx-auto px-4 py-10">
       <Link href="/organizers" className="inline-flex items-center gap-1 text-stone-500 hover:text-stone-700 text-sm mb-8">
         ← Vsi facilitatorji
@@ -134,5 +173,6 @@ export default async function OrganizerProfilePage({ params }: { params: Promise
         )}
       </section>
     </div>
+    </>
   );
 }

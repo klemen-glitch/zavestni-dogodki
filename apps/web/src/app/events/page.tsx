@@ -14,7 +14,7 @@ import { getAdForPosition } from "@/lib/ads";
 import type { EventCategory } from "@conscious-slovenia/database";
 
 export const metadata: Metadata = {
-  title: "Vsi Zavestni Dogodki v Sloveniji 2026 — Joga, Meditacija, Retreati",
+  title: { absolute: "Vsi Zavestni Dogodki v Sloveniji 2026 — Joga, Meditacija, Retreati | Zavestni Dogodki" },
   description: "Poišči zavestne dogodke v Sloveniji: joga delavnice, meditacijski tečaji, breathwork, zvočne kopeli, kakao ceremonije in retreati. Filtriraj po mestu, kategoriji in datumu.",
   keywords: ["zavestni dogodki slovenija", "joga delavnice", "meditacija tečaj", "breathwork slovenija", "retreat slovenija", "zvočna kopel", "kakao ceremonija"],
   alternates: { canonical: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si"}/events` },
@@ -172,7 +172,7 @@ export default async function EventsPage({
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-stone-800 mb-2">Zavestni dogodki</h1>
+        <h1 className="text-3xl font-bold text-stone-800 mb-2">Zavestni dogodki v Sloveniji 2026</h1>
         <p className="text-stone-500">
           {total} dogodkov v Sloveniji
           {(params.city || params.region) && (

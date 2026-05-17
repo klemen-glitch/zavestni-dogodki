@@ -6,8 +6,20 @@ import Image from "next/image";
 import { db } from "@/lib/db";
 
 export const metadata: Metadata = {
-  title: "Facilitatorji",
-  description: "Spoznajte facilitatorje in učitelje zavestnih dogodkov v Sloveniji.",
+  title: { absolute: "Yoga Učitelji & Facilitatorji v Sloveniji — Zavestni Dogodki" },
+  description: "Spoznajte verificirane yoga učitelje, meditacijske vodiče in wellness facilitatorje v Sloveniji. Prihajajoči dogodki, ocene in kontaktni podatki.",
+  keywords: ["yoga učitelj slovenija", "meditacijski vodič", "facilitator breathwork", "retreat vodič slovenija", "wellness facilitator"],
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si"}/organizers`,
+  },
+  openGraph: {
+    title: "Yoga Učitelji & Facilitatorji v Sloveniji",
+    description: "Verificirani yoga učitelji, meditacijski vodiči in wellness facilitatorji v Sloveniji z prihajajoči dogodki.",
+    url: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si"}/organizers`,
+    type: "website",
+    locale: "sl_SI",
+    siteName: "Zavestni Dogodki",
+  },
 };
 
 export default async function OrganizersPage() {
@@ -18,11 +30,31 @@ export default async function OrganizersPage() {
     take: 50,
   });
 
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Domov", item: appUrl },
+      { "@type": "ListItem", position: 2, name: "Facilitatorji", item: `${appUrl}/organizers` },
+    ],
+  };
+
   return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
     <div className="max-w-6xl mx-auto px-4 py-10">
+      {/* Breadcrumb */}
+      <div className="flex items-center gap-2 text-sm text-stone-400 mb-6">
+        <Link href="/" className="hover:text-stone-600">Domov</Link>
+        <span>/</span>
+        <span className="text-stone-700">Facilitatorji</span>
+      </div>
+
       <div className="mb-10">
-        <h1 className="text-3xl font-bold text-stone-800 mb-2">Facilitatorji</h1>
-        <p className="text-stone-500">Učitelji in organizatorji zavestnih dogodkov po vsej Sloveniji</p>
+        <h1 className="text-3xl font-bold text-stone-800 mb-2">Yoga Učitelji &amp; Facilitatorji v Sloveniji</h1>
+        <p className="text-stone-500">Verificirani učitelji in organizatorji zavestnih dogodkov po vsej Sloveniji</p>
       </div>
 
       {organizers.length === 0 ? (
@@ -56,5 +88,6 @@ export default async function OrganizersPage() {
         </div>
       )}
     </div>
+    </>
   );
 }

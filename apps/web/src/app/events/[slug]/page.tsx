@@ -225,6 +225,7 @@ export default async function EventPage({
         price: String(event.price),
         priceCurrency: "EUR",
         availability: "https://schema.org/InStock",
+        validFrom: (event.createdAt ?? new Date()).toISOString(),
         url: event.sourceUrl ?? eventUrl,
       },
     }),

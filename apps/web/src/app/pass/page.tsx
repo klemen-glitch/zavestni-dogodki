@@ -1,9 +1,23 @@
 import type { Metadata } from "next";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 
+const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
+
 export const metadata: Metadata = {
-  title: "Conscious Pass",
-  description: "Ekskluzivni popusti na zavestne dogodke po vsej Sloveniji za naše naročnike.",
+  title: { absolute: "Conscious Pass — Popusti na Jogo & Retreate v Sloveniji | Zavestni Dogodki" },
+  description: "Conscious Pass: do 30 % popust na joga delavnice, meditacijo in retreate po vsej Sloveniji. Prednostni dostop do novih dogodkov in tedenski kurirani digest.",
+  keywords: ["conscious pass", "popust joga slovenija", "wellness naročnina", "zavestni dogodki pass", "retreat popust"],
+  alternates: {
+    canonical: `${appUrl}/pass`,
+  },
+  openGraph: {
+    title: "Conscious Pass — Popusti na Jogo & Retreate v Sloveniji",
+    description: "Do 30 % popust na joga delavnice, meditacijo in retreate po vsej Sloveniji z Conscious Pass naročnino.",
+    url: `${appUrl}/pass`,
+    type: "website",
+    locale: "sl_SI",
+    siteName: "Zavestni Dogodki",
+  },
 };
 
 const BENEFITS = [

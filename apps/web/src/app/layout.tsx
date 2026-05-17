@@ -26,11 +26,19 @@ const organizationSchema = {
   "@type": "Organization",
   name: "Zavestni Dogodki",
   url: "https://zavestnidogodki.si",
-  logo: "https://zavestnidogodki.si/icon-512.png",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://zavestnidogodki.si/icon-512.png",
+    width: 512,
+    height: 512,
+  },
   sameAs: [
     "https://www.facebook.com/groups/529182865647567",
   ],
   description: "Kurirani imenik zavestnih dogodkov v Sloveniji — joga, meditacija, dihalne vaje, zvočne kopeli in retreati.",
+  areaServed: { "@type": "Country", name: "Slovenia", sameAs: "https://www.wikidata.org/wiki/Q215" },
+  knowsAbout: ["joga", "meditacija", "breathwork", "zvočne kopeli", "retreati", "wellness"],
+  inLanguage: "sl",
 };
 
 const websiteSchema = {

@@ -4,7 +4,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { db } from "@/lib/db";
 
-export const metadata: Metadata = { title: "Oddaja uspešna" };
+export const metadata: Metadata = {
+  title: "Oddaja uspešna",
+  robots: { index: false, follow: false },
+};
 
 export default async function SubmitSuccessPage({
   searchParams,
