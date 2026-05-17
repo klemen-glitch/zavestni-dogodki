@@ -241,10 +241,36 @@ export default async function EventPage({
     ],
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Kaj bom izkusil/a na "${event.titleSl ?? event.titleEn}"?`,
+        acceptedAnswer: { "@type": "Answer", text: enriched.whatToExpect.join(" ") },
+      },
+      ...enriched.benefits.slice(0, 3).map((b: { title: string; description: string }) => ({
+        "@type": "Question",
+        name: b.title,
+        acceptedAnswer: { "@type": "Answer", text: b.description },
+      })),
+      {
+        "@type": "Question",
+        name: `Kje poteka "${event.titleSl ?? event.titleEn}"?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Dogodek poteka v ${locationName}${locationCity ? `, ${locationCity}` : ""}${locationAddress ? `, ${locationAddress}` : ""}, Slovenija.`,
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <div className="relative w-full h-[52vh] min-h-[360px] max-h-[520px] overflow-hidden">

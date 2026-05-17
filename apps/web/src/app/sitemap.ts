@@ -3,6 +3,12 @@ export const dynamic = "force-dynamic";
 import type { MetadataRoute } from "next";
 import { db } from "@/lib/db";
 import { ALL_CATEGORIES } from "@/lib/utils";
+import { BLOG_POSTS } from "@/content/blog-posts";
+
+const CITY_SLUGS = [
+  "ljubljana", "maribor", "koper", "bled", "kranjska-gora",
+  "celje", "kranj", "piran", "portoroz", "nova-gorica", "novo-mesto",
+];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
@@ -26,6 +32,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
+  const cityUrls: MetadataRoute.Sitemap = CITY_SLUGS.map((city) => ({
+    url: `${base}/eventi/${city}`,
+    changeFrequency: "daily",
+    priority: 0.7,
+  }));
+
+  const blogUrls: MetadataRoute.Sitemap = [
+    { url: `${base}/blog`, changeFrequency: "weekly", priority: 0.7 },
+    ...BLOG_POSTS.map((post) => ({
+      url: `${base}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+  ];
+
   return [
     { url: base, changeFrequency: "daily", priority: 1.0 },
     { url: `${base}/events`, changeFrequency: "daily", priority: 0.9 },
@@ -33,6 +55,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/organizers`, changeFrequency: "weekly", priority: 0.5 },
     { url: `${base}/pass`, changeFrequency: "monthly", priority: 0.5 },
     ...categoryUrls,
+    ...cityUrls,
+    ...blogUrls,
     ...eventUrls,
   ];
 }

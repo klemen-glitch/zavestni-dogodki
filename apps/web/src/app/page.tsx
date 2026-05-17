@@ -1,10 +1,26 @@
 export const dynamic = "force-dynamic";
 
+import type { Metadata } from "next";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { EventCard } from "@/components/EventCard";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { CATEGORY_EMOJI, CATEGORY_LABEL, ALL_CATEGORIES } from "@/lib/utils";
+
+export const metadata: Metadata = {
+  title: "Zavestni Dogodki — Joga, Meditacija & Retreati v Sloveniji 2026",
+  description: "Kurirani imenik zavestnih dogodkov v Sloveniji. Najdi joga delavnice, meditacijske tečaje, breathwork, zvočne kopeli in retreate v tvojem mestu. Brezplačna objava.",
+  keywords: ["zavestni dogodki", "joga slovenija", "meditacija slovenija", "breathwork", "retreat slovenija", "zvočna kopel", "mindfulness", "wellness eventi"],
+  alternates: { canonical: process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si" },
+  openGraph: {
+    title: "Zavestni Dogodki — Joga, Meditacija & Retreati v Sloveniji",
+    description: "Kurirani imenik zavestnih dogodkov v Sloveniji — joga, meditacija, breathwork, zvočne kopeli in retreati. Brezplačna objava.",
+    url: process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si",
+    type: "website",
+    locale: "sl_SI",
+    siteName: "Zavestni Dogodki",
+  },
+};
 
 async function getHomeData() {
   const now = new Date();
@@ -28,9 +44,22 @@ async function getHomeData() {
 
 export default async function HomePage() {
   const { featured, upcoming, stats } = await getHomeData();
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
+
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Zavestni Dogodki v Sloveniji",
+    description: "Kurirani imenik zavestnih dogodkov v Sloveniji — joga, meditacija, breathwork, zvočne kopeli in retreati.",
+    url: appUrl,
+    inLanguage: "sl",
+    publisher: { "@type": "Organization", name: "Zavestni Dogodki", url: appUrl },
+  };
 
   return (
-    <div className="max-w-6xl mx-auto px-4">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+      <div className="max-w-6xl mx-auto px-4">
       {/* Hero */}
       <section className="py-20 text-center">
         <div className="text-6xl mb-6">🌿</div>
@@ -136,5 +165,6 @@ export default async function HomePage() {
         <NewsletterSignup />
       </section>
     </div>
+    </>
   );
 }

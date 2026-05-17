@@ -97,10 +97,14 @@ export default async function CategoryPage({ params }: Props) {
       </div>
 
       {/* Header — H1 with location keyword for SEO */}
-      <div className="mb-10">
+      <div className="mb-6">
         <div className="text-5xl mb-4">{emoji}</div>
         <h1 className="text-3xl font-bold text-stone-800 mb-2">{label} v Sloveniji — Delavnice &amp; Retreati 2026</h1>
-        <p className="text-stone-500">{total} {total === 1 ? "dogodek" : "dogodkov"} · prihajajoče</p>
+        <p className="text-stone-500 mb-4">{total} {total === 1 ? "dogodek" : "dogodkov"} · prihajajoče</p>
+        {/* SEO intro — unique description per category */}
+        <p className="text-stone-600 text-base leading-relaxed max-w-2xl">
+          {CATEGORY_DESCRIPTIONS[upper]}
+        </p>
       </div>
 
       {/* Events grid */}

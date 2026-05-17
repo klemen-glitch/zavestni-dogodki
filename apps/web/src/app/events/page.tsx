@@ -14,8 +14,18 @@ import { getAdForPosition } from "@/lib/ads";
 import type { EventCategory } from "@conscious-slovenia/database";
 
 export const metadata: Metadata = {
-  title: "Dogodki",
-  description: "Vsi zavestni dogodki v Sloveniji — joga, meditacija, breathwork in več.",
+  title: "Vsi Zavestni Dogodki v Sloveniji 2026 — Joga, Meditacija, Retreati",
+  description: "Poišči zavestne dogodke v Sloveniji: joga delavnice, meditacijski tečaji, breathwork, zvočne kopeli, kakao ceremonije in retreati. Filtriraj po mestu, kategoriji in datumu.",
+  keywords: ["zavestni dogodki slovenija", "joga delavnice", "meditacija tečaj", "breathwork slovenija", "retreat slovenija", "zvočna kopel", "kakao ceremonija"],
+  alternates: { canonical: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si"}/events` },
+  openGraph: {
+    title: "Zavestni Dogodki v Sloveniji 2026 — Joga, Meditacija & Retreati",
+    description: "Poišči joga delavnice, meditacijske tečaje, breathwork, zvočne kopeli in retreate v Sloveniji.",
+    url: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si"}/events`,
+    type: "website",
+    locale: "sl_SI",
+    siteName: "Zavestni Dogodki",
+  },
 };
 
 interface SearchParams {
