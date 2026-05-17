@@ -13,10 +13,16 @@ const CITY_SLUGS = [
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
 
-  const events = await db.event.findMany({
-    where: { status: { in: ["APPROVED", "FEATURED"] } },
-    select: { slug: true, id: true, updatedAt: true },
-  });
+  const [events, organizers] = await Promise.all([
+    db.event.findMany({
+      where: { status: { in: ["APPROVED", "FEATURED"] } },
+      select: { slug: true, id: true, updatedAt: true },
+    }),
+    db.organizer.findMany({
+      where: { events: { some: { status: { in: ["APPROVED", "FEATURED"] } } } },
+      select: { id: true, updatedAt: true },
+    }),
+  ]);
 
   const eventUrls: MetadataRoute.Sitemap = events.map((e) => ({
     url: `${base}/events/${e.slug ?? e.id}`,
@@ -25,11 +31,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  const organizerUrls: MetadataRoute.Sitemap = organizers.map((o) => ({
+    url: `${base}/organizers/${o.id}`,
+    lastModified: o.updatedAt,
+    changeFrequency: "weekly",
+    priority: 0.5,
+  }));
+
   // Use /categories/[category] static pages (indexable) instead of ?category= query params
   const categoryUrls: MetadataRoute.Sitemap = ALL_CATEGORIES.filter((c) => c !== "OTHER").map((cat) => ({
     url: `${base}/categories/${cat.toLowerCase()}`,
     changeFrequency: "daily",
-    priority: 0.7,
+    priority: 0.75,
   }));
 
   const cityUrls: MetadataRoute.Sitemap = CITY_SLUGS.map((city) => ({
@@ -39,12 +52,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const blogUrls: MetadataRoute.Sitemap = [
-    { url: `${base}/blog`, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${base}/blog`, changeFrequency: "weekly", priority: 0.75 },
     ...BLOG_POSTS.map((post) => ({
       url: `${base}/blog/${post.slug}`,
-      lastModified: new Date(post.date),
+      // Use dateModified if set — tells crawlers the content is fresh
+      lastModified: new Date(post.dateModified ?? post.date),
       changeFrequency: "monthly" as const,
-      priority: 0.6,
+      priority: 0.7,
     })),
   ];
 
@@ -52,11 +66,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: base, changeFrequency: "daily", priority: 1.0 },
     { url: `${base}/events`, changeFrequency: "daily", priority: 0.9 },
     { url: `${base}/submit`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${base}/organizers`, changeFrequency: "weekly", priority: 0.5 },
+    { url: `${base}/organizers`, changeFrequency: "weekly", priority: 0.6 },
     { url: `${base}/pass`, changeFrequency: "monthly", priority: 0.5 },
     ...categoryUrls,
     ...cityUrls,
     ...blogUrls,
     ...eventUrls,
+    ...organizerUrls,
   ];
 }

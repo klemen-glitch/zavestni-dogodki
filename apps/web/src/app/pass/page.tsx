@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
@@ -70,6 +71,21 @@ export default function PassPage() {
         <p className="text-emerald-300 mb-6">ali 79 € letno — prihranite 2 meseca</p>
         <div className="bg-white/10 rounded-xl p-4">
           <p className="text-sm text-emerald-200">🎁 Prvi 100 naročnikov dobi doživljenjski early-bird popust</p>
+        </div>
+      </div>
+
+      {/* Browse events CTA — internal link + user value while pass is pending */}
+      <div className="bg-stone-50 rounded-2xl border border-stone-200 p-8 text-center mb-16">
+        <p className="text-2xl mb-2">🌿</p>
+        <h2 className="text-lg font-bold text-stone-800 mb-2">Medtem — odkrijte zavestne dogodke</h2>
+        <p className="text-stone-500 text-sm mb-5">Conscious Pass je kmalu tu. Do takrat brskajte po joga delavnicah, meditacijah, zvočnih kopelih in retreatih v vsej Sloveniji.</p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link href="/events" className="bg-emerald-700 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-emerald-800 transition-colors">
+            Poišči zavestne dogodke →
+          </Link>
+          <Link href="/blog" className="border border-stone-300 text-stone-700 px-6 py-2.5 rounded-full text-sm font-medium hover:bg-stone-100 transition-colors">
+            Preberi blog
+          </Link>
         </div>
       </div>
 

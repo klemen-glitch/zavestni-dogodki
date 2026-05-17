@@ -51,6 +51,12 @@ export default async function OrganizerProfilePage({ params }: { params: Promise
 
   if (!organizer) notFound();
 
+  const sameAsLinks = [
+    ...(organizer.website ? [organizer.website] : []),
+    ...(organizer.instagram ? [`https://instagram.com/${organizer.instagram.replace("@", "")}`] : []),
+    ...(organizer.facebookUrl ? [organizer.facebookUrl] : []),
+  ];
+
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -58,10 +64,7 @@ export default async function OrganizerProfilePage({ params }: { params: Promise
     url: `${appUrl}/organizers/${id}`,
     ...(organizer.avatarUrl && { image: organizer.avatarUrl }),
     ...(organizer.bio && { description: organizer.bio }),
-    ...(organizer.website && { sameAs: [organizer.website] }),
-    ...(organizer.instagram && {
-      sameAs: [`https://instagram.com/${organizer.instagram.replace("@", "")}`],
-    }),
+    ...(sameAsLinks.length > 0 && { sameAs: sameAsLinks }),
     jobTitle: "Wellness Facilitator",
     knowsAbout: ["joga", "meditacija", "breathwork", "zavestne prakse"],
   };

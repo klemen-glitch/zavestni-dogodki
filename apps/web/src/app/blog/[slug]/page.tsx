@@ -87,6 +87,10 @@ export default async function BlogPostPage({ params }: Props) {
     keywords: post.relatedCategories.map((c) => CATEGORY_LABEL[c] ?? c).join(", "),
     articleBody: post.content.map((s) => s.body).join(" "),
     wordCount: post.content.map((s) => s.body.split(/\s+/).length).reduce((a, b) => a + b, 0),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "h2", ".prose > p:first-child"],
+    },
   };
 
   const [catColor, catDark] = CATEGORY_HEX[post.category] ?? ["#059669", "#064e3b"];
@@ -103,12 +107,31 @@ export default async function BlogPostPage({ params }: Props) {
       }
     : null;
 
+  const howToSchema = post.howToSteps && post.howToSteps.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: `Kako začeti z ${CATEGORY_LABEL[post.category]?.toLowerCase() ?? "zavestno prakso"} — korak za korakom`,
+        description: post.description,
+        inLanguage: "sl",
+        step: post.howToSteps.map((s, i) => ({
+          "@type": "HowToStep",
+          position: i + 1,
+          name: s.name,
+          text: s.text,
+        })),
+      }
+    : null;
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostingSchema) }} />
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
+      {howToSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
       )}
 
       {/* Breadcrumb */}
@@ -136,6 +159,11 @@ export default async function BlogPostPage({ params }: Props) {
           <p className="text-stone-500 text-sm">
             {post.readingTime} min branja &middot;{" "}
             {new Date(post.date).toLocaleDateString("sl-SI", { day: "numeric", month: "long", year: "numeric" })}
+            {post.dateModified && post.dateModified !== post.date && (
+              <span className="ml-2 text-emerald-600 font-medium">
+                · Posodobljeno {new Date(post.dateModified).toLocaleDateString("sl-SI", { day: "numeric", month: "long", year: "numeric" })}
+              </span>
+            )}
           </p>
         </div>
       </div>

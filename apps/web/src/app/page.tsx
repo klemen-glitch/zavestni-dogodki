@@ -52,6 +52,43 @@ export default async function HomePage() {
   const { featured, upcoming, stats } = await getHomeData();
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Kaj so zavestni dogodki?",
+        acceptedAnswer: { "@type": "Answer", text: "Zavestni dogodki so prireditve, ki spodbujajo osebnostno rast, dobro počutje in duhovno zavedanje — joga delavnice, meditacijski tečaji, breathwork (dihalne vaje), zvočne kopeli, kakao ceremonije in yoga retreati. Zavestni Dogodki je kurirani imenik tovrstnih prireditev po vsej Sloveniji." },
+      },
+      {
+        "@type": "Question",
+        name: "Kje najdem joga delavnice in meditacijo v Sloveniji?",
+        acceptedAnswer: { "@type": "Answer", text: "Zavestni Dogodki zbira vse joga delavnice, meditacijske tečaje, breathwork seje, zvočne kopeli in retreate v Sloveniji na enem mestu. Filtrirate lahko po mestu (Ljubljana, Maribor, Koper, Bled), kategoriji in datumu." },
+      },
+      {
+        "@type": "Question",
+        name: "Koliko stane breathwork delavnica ali zvočna kopel?",
+        acceptedAnswer: { "@type": "Answer", text: "Skupinske breathwork delavnice in zvočne kopeli v Sloveniji stanejo med 15 in 35 EUR za 60–90-minutno sejo. Yoga retreati (vikend all-inclusive) so od 150 do 400 EUR. Kakao ceremonije so tipično 20–40 EUR." },
+      },
+      {
+        "@type": "Question",
+        name: "Kaj je yoga retreat in kako ga izbrati?",
+        acceptedAnswer: { "@type": "Answer", text: "Yoga retreat je večdnevni odmik z intenzivno joga prakso, meditacijo, zdravo hrano in naravnim okoljem. Slovenija nudi odlične lokacije — Bled, Bohinj, Julijske Alpe in jadransko obalo. Pri izbiri upoštevajte raven zahtevnosti, profil inštruktorja in velikost skupine." },
+      },
+      {
+        "@type": "Question",
+        name: "Kako objavim zavestni dogodek na Zavestni Dogodki?",
+        acceptedAnswer: { "@type": "Answer", text: "Objavo oddate prek obrazca na /submit. V času otvoritve je objava brezplačna za vse facilitatorje. Vaš dogodek bo pregledan in objavljen v roku 24 ur." },
+      },
+      {
+        "@type": "Question",
+        name: "Ali je zvočna kopel primerna za začetnike?",
+        acceptedAnswer: { "@type": "Answer", text: "Da — zvočna kopel je primerna za začetnike. Ne zahteva predznanja, fizične pripravljenosti ali meditacijske izkušnje. Udeleženci preprosto ležijo, medtem ko vodja igra Tibetanske posode, gong in kristalne posode." },
+      },
+    ],
+  };
+
   const collectionSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -69,6 +106,7 @@ export default async function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="max-w-6xl mx-auto px-4">
       {/* Hero */}
       <section className="py-20 text-center">
@@ -168,6 +206,51 @@ export default async function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* FAQ section — AEO/GEO citation target */}
+      <section className="mb-16">
+        <h2 className="text-2xl font-bold text-stone-800 mb-6 speakable">Pogosta vprašanja o zavestnih dogodkih</h2>
+        <div className="space-y-4">
+          {[
+            {
+              q: "Kaj so zavestni dogodki?",
+              a: "Zavestni dogodki so prireditve, ki spodbujajo osebnostno rast, dobro počutje in duhovno zavedanje — joga delavnice, meditacijski tečaji, breathwork (dihalne vaje), zvočne kopeli, kakao ceremonije in yoga retreati. Zavestni Dogodki je kurirani imenik tovrstnih prireditev po vsej Sloveniji.",
+            },
+            {
+              q: "Kje najdem joga delavnice in meditacijo v Sloveniji?",
+              a: "Zavestni Dogodki zbira vse joga delavnice, meditacijske tečaje, breathwork seje, zvočne kopeli in retreate v Sloveniji na enem mestu. Filtrirate lahko po mestu (Ljubljana, Maribor, Koper, Bled...), kategoriji in datumu. Večina prireditev je v Ljubljani in Mariboru, a pogosto najdemo tudi dogodke v naravi po vsej Sloveniji.",
+            },
+            {
+              q: "Koliko stane breathwork delavnica ali zvočna kopel?",
+              a: "Skupinske breathwork delavnice in zvočne kopeli v Sloveniji stanejo med 15 in 35 EUR za 60–90-minutno sejo. Yoga retreati (vikend all-inclusive) so od 150 do 400 EUR. Kakao ceremonije so tipično 20–40 EUR. Pogosti so tudi brezplačni uvodni dogodki — filtrirajte po »brezplačno« na naši strani.",
+            },
+            {
+              q: "Kaj je yoga retreat in kako ga izbrati?",
+              a: "Yoga retreat je večdnevni odmik z intenzivno joga prakso, meditacijo, zdravo hrano in naravnim okoljem. Slovenija nudi odlične lokacije — Bled, Bohinj, Julijske Alpe in jadransko obalo. Pri izbiri upoštevajte: raven zahtevnosti (začetniki vs. napredni), profil inštruktorja, velikost skupine (idealno do 12 udeležencev) in lokacijo.",
+            },
+            {
+              q: "Kako objavim zavestni dogodek na Zavestni Dogodki?",
+              a: "Objavo oddate prek obrazca na strani /submit. V času otvoritve je objava brezplačna za vse facilitatorje. Vaš dogodek bo pregledan in objavljen v roku 24 ur. Na voljo sta dve možnosti: osnovna objava (30 dni vidljivost) in izpostavljena objava (60 dni + newsletter).",
+            },
+            {
+              q: "Ali je zvočna kopel primerna za začetnike?",
+              a: "Da — zvočna kopel je ena najprimernejših praks za začetnike. Ne zahteva predznanja, fizične pripravljenosti ali meditacijske izkušnje. Udeleženci preprosto ležijo, medtem ko vodja igra Tibetanske posode, gong in kristalne posode. Večina udeležencev poroča o globoki sprostitvi že po prvi seji.",
+            },
+          ].map(({ q, a }) => (
+            <details key={q} className="group bg-white border border-stone-200 rounded-2xl overflow-hidden">
+              <summary className="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer font-semibold text-stone-800 hover:text-emerald-700 transition-colors list-none">
+                {q}
+                <span className="flex-shrink-0 text-stone-400 group-open:rotate-180 transition-transform text-xl leading-none">›</span>
+              </summary>
+              <p className="px-6 pb-5 text-stone-600 text-sm leading-relaxed">{a}</p>
+            </details>
+          ))}
+        </div>
+        <p className="mt-4 text-sm text-stone-400 text-center">
+          Imate več vprašanj?{" "}
+          <Link href="/blog" className="text-emerald-700 hover:underline">Preberite naš blog →</Link>
+        </p>
       </section>
 
       {/* Newsletter */}

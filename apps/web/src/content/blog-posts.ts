@@ -12,6 +12,8 @@ export interface BlogPost {
   content: { heading?: string; body: string }[];
   faq: { question: string; answer: string }[];
   relatedCategories: string[];
+  /** Optional HowTo steps for instructional posts — generates HowTo schema + rich results */
+  howToSteps?: { name: string; text: string }[];
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -20,6 +22,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Kaj je zvočna kopel? Popoln vodič za začetnike",
     description: "Zvočna kopel je terapevtska praksa, ki uporablja zvok Tibetanskih posod, gonga in kristalnih posod za globoko sprostitev in zdravljenje. Vse kar morate vedeti.",
     date: "2026-05-01",
+    dateModified: "2026-05-17",
     category: "SOUND_BATH",
     readingTime: 14,
     author: "Zavestni Dogodki",
@@ -72,6 +75,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Breathwork za začetnike: kako začeti z dihalnimi vajami",
     description: "Breathwork ali zavestno dihanje je ena najučinkovitejših tehnik za zmanjšanje stresa, čustveno ozdravljenje in povečanje energije. Vodič za začetnike 2026.",
     date: "2026-05-08",
+    dateModified: "2026-05-17",
     category: "BREATHWORK",
     readingTime: 15,
     author: "Zavestni Dogodki",
@@ -118,12 +122,22 @@ export const BLOG_POSTS: BlogPost[] = [
       { question: "Kje najdem breathwork delavnice v Sloveniji?", answer: "Na Zavestni Dogodki objavljamo vse breathwork delavnice, tečaje in retreate v Sloveniji. Filtrirajte kategorijo Dihanje in izberite datum ter mesto, ki vam ustreza." },
     ],
     relatedCategories: ["BREATHWORK", "YOGA", "MEDITATION"],
+    howToSteps: [
+      { name: "Izberite tiho mesto", text: "Poiščite tiho mesto brez motenj in si vzemite 10 minut časa zase." },
+      { name: "Zavzemite udoben položaj", text: "Ulezite se na hrbet ali sedite z ravno hrbtenico — hrbtenica naj bo vzravnana, mišice pa sproščene." },
+      { name: "Postavite roke", text: "Položite eno roko na prsni koš, drugo na trebuh. Ti roki sta vaše biofeedback orodje za nadzor dihanja." },
+      { name: "Vdihnite trebušno", text: "Vdihnite skozi nos 4 sekunde in usmerite zrak v trebuh — trebuh se dvigne, prsni koš ostane miren. To je pravilno trebušno dihanje." },
+      { name: "Zadržite dih", text: "Na koncu vdiha zadržite dih 2 sekundi." },
+      { name: "Počasi izdihnite", text: "Počasi izdihnite skozi usta 6 sekund. Podaljšan izdih aktivira parasimpatični živčni sistem in sproži stanje mirnosti." },
+      { name: "Ponovite", text: "Ponovite celoten cikel 8–10 krat. Ko se navadite na trebušno dihanje po 1–2 tednih, preidite na box breathing ali tehniko 4-7-8." },
+    ],
   },
   {
     slug: "10-razlogov-za-yoga-retreat",
     title: "10 razlogov zakaj bi moral/a iti na yoga retreat v Sloveniji",
     description: "Yoga retreati nudijo globlje doživetje kot redne ure joge. Od osebnostne rasti do trajnih navad — odkrijte zakaj so retreati najboljša naložba v vaše zdravje.",
     date: "2026-05-15",
+    dateModified: "2026-05-17",
     category: "RETREAT",
     readingTime: 12,
     author: "Zavestni Dogodki",
