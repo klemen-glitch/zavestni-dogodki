@@ -1,31 +1,31 @@
-/** Temporary route — returns Resend domain DNS records. Delete after use. */
+/** Temporary route — adds domain to Resend and returns DNS records. Delete after use. */
 import { NextResponse } from "next/server";
-
-function isAuthorized(req: Request): boolean {
-  const secret = process.env.ADMIN_SECRET;
-  if (!secret) return true;
-  const fromHeader = req.headers.get("x-admin-secret");
-  const fromAuth = req.headers.get("authorization")?.replace("Bearer ", "");
-  return fromHeader === secret || fromAuth === secret;
-}
 
 export async function GET(_req: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return NextResponse.json({ error: "RESEND_API_KEY not set" }, { status: 500 });
 
-  // List all domains on the Resend account
-  const resp = await fetch("https://api.resend.com/domains", {
+  // List all domains
+  const listResp = await fetch("https://api.resend.com/domains", {
     headers: { Authorization: `Bearer ${apiKey}` },
   });
-  const data = await resp.json() as { data?: { id: string; name: string; status: string; records: unknown[] }[] };
+  const listData = await listResp.json() as { data?: { id: string; name: string; status: string }[] };
+  const existing = (listData.data ?? []).find(d => d.name === "zavestnidogodki.si");
 
-  const domain = (data.data ?? []).find(d => d.name === "zavestnidogodki.si");
-  if (!domain) return NextResponse.json({ domains: data.data?.map(d => d.name), error: "zavestnidogodki.si not found" });
+  if (existing) {
+    // Already exists — fetch full details with DNS records
+    const r = await fetch(`https://api.resend.com/domains/${existing.id}`, {
+      headers: { Authorization: `Bearer ${apiKey}` },
+    });
+    return NextResponse.json(await r.json());
+  }
 
-  // Fetch full record details
-  const r2 = await fetch(`https://api.resend.com/domains/${domain.id}`, {
-    headers: { Authorization: `Bearer ${apiKey}` },
+  // Not found — create it
+  const createResp = await fetch("https://api.resend.com/domains", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ name: "zavestnidogodki.si", region: "eu-west-1" }),
   });
-  const full = await r2.json();
-  return NextResponse.json(full);
+  const created = await createResp.json();
+  return NextResponse.json({ created: true, status: createResp.status, ...created });
 }
