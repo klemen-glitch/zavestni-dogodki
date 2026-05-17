@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
   manifest: "/manifest.json",
   other: {
-    "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "",
+    "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "8L_aWJaREtd1Vti4JW2CNkjEUyUXHm5w6f7TydzEe0s",
     "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION ?? "",
   },
 };
