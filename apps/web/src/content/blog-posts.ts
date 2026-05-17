@@ -2,7 +2,10 @@ export interface BlogPost {
   slug: string;
   title: string;
   description: string;
+  /** ISO date string of first publish (YYYY-MM-DD) */
   date: string;
+  /** ISO date string of last significant update — defaults to `date` if not set */
+  dateModified?: string;
   category: string;
   readingTime: number;
   author: string;

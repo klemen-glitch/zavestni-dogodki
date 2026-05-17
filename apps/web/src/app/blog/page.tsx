@@ -4,7 +4,7 @@ import { BLOG_POSTS } from "@/content/blog-posts";
 import { CATEGORY_EMOJI, CATEGORY_LABEL } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Blog — Zavestni Dogodki: Joga, Meditacija, Breathwork v Sloveniji",
+  title: { absolute: "Blog — Joga, Meditacija & Breathwork Vodniki | Zavestni Dogodki" },
   description: "Vodniki, nasveti in poglobljeni članki o jogi, meditaciji, breathworku, zvočnih kopelih in zavestnih praksah v Sloveniji.",
   keywords: ["zavestni blog", "joga vodnik", "meditacija nasveti", "breathwork slovenija", "zvočna kopel vodnik", "mindfulness slovenija"],
   alternates: { canonical: `${process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si"}/blog` },

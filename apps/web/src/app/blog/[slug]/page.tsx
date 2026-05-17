@@ -4,6 +4,13 @@ import Link from "next/link";
 import { getBlogPost, BLOG_POSTS } from "@/content/blog-posts";
 import { CATEGORY_EMOJI, CATEGORY_LABEL } from "@/lib/utils";
 
+const AUTHOR_BIO = {
+  name: "Uredništvo Zavestni Dogodki",
+  role: "Kuratorji zavestnih praks v Sloveniji",
+  description:
+    "Zavestni Dogodki je kurirani imenik joga delavnic, meditacij, breathwork sej in retreatov v Sloveniji. Naša ekipa redno obiskuje prireditve in s prvimi rokami preverja kakovost — da vam prihranimo čas pri iskanju.",
+};
+
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
@@ -16,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) return { title: "Članek ni najden" };
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
   return {
-    title: `${post.title} | Zavestni Dogodki Blog`,
+    title: { absolute: `${post.title} | Zavestni Dogodki Blog` },
     description: post.description,
     keywords: [
       post.title.toLowerCase(),
@@ -34,6 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "sl_SI",
       siteName: "Zavestni Dogodki",
       publishedTime: post.date,
+      modifiedTime: post.dateModified ?? post.date,
       authors: [post.author],
     },
   };
@@ -45,6 +53,14 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound();
 
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://zavestnidogodki.si";
+
+  // Related posts: same category or overlapping relatedCategories, excluding current
+  const relatedPosts = BLOG_POSTS.filter(
+    (p) =>
+      p.slug !== slug &&
+      (p.category === post.category ||
+        p.relatedCategories.some((c) => post.relatedCategories.includes(c)))
+  ).slice(0, 2);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -62,13 +78,15 @@ export default async function BlogPostPage({ params }: Props) {
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    dateModified: post.date,
-    author: { "@type": "Organization", name: post.author, url: appUrl },
-    publisher: { "@type": "Organization", name: "Zavestni Dogodki", url: appUrl },
+    dateModified: post.dateModified ?? post.date,
+    author: { "@type": "Organization", name: AUTHOR_BIO.name, url: appUrl },
+    publisher: { "@type": "Organization", name: "Zavestni Dogodki", url: appUrl, logo: { "@type": "ImageObject", url: `${appUrl}/icon-512.png` } },
     url: `${appUrl}/blog/${slug}`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${appUrl}/blog/${slug}` },
     inLanguage: "sl",
     keywords: post.relatedCategories.map((c) => CATEGORY_LABEL[c] ?? c).join(", "),
     articleBody: post.content.map((s) => s.body).join(" "),
+    wordCount: post.content.map((s) => s.body.split(/\s+/).length).reduce((a, b) => a + b, 0),
   };
 
   const faqSchema = post.faq.length > 0
@@ -152,6 +170,47 @@ export default async function BlogPostPage({ params }: Props) {
                   {item.answer}
                 </div>
               </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Author bio — E-E-A-T signal */}
+      <section className="mb-10 p-6 bg-stone-50 rounded-2xl border border-stone-100">
+        <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-4">O avtorju</p>
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-700 flex items-center justify-center text-white text-sm font-extrabold">
+            ZD
+          </div>
+          <div>
+            <p className="font-semibold text-stone-800 text-sm">{AUTHOR_BIO.name}</p>
+            <p className="text-emerald-700 text-xs font-medium mt-0.5">{AUTHOR_BIO.role}</p>
+            <p className="text-stone-500 text-sm mt-2 leading-relaxed">{AUTHOR_BIO.description}</p>
+            <Link href="/events" className="inline-block mt-3 text-xs font-semibold text-emerald-700 hover:underline">
+              Poišči zavestne dogodke v Sloveniji →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Related posts — internal linking */}
+      {relatedPosts.length > 0 && (
+        <section className="mb-10">
+          <h2 className="text-lg font-bold text-stone-800 mb-4">Podobne objave</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {relatedPosts.map((p) => (
+              <Link
+                key={p.slug}
+                href={`/blog/${p.slug}`}
+                className="block bg-white rounded-xl border border-stone-100 p-5 hover:border-emerald-200 hover:shadow-sm transition-all group"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-lg">{CATEGORY_EMOJI[p.category] ?? "📖"}</span>
+                  <span className="text-xs font-medium text-emerald-700">{CATEGORY_LABEL[p.category] ?? p.category}</span>
+                </div>
+                <p className="font-bold text-stone-800 text-sm leading-snug group-hover:text-emerald-700 transition-colors">{p.title}</p>
+                <p className="text-xs text-stone-400 mt-2">{p.readingTime} min branja</p>
+              </Link>
             ))}
           </div>
         </section>
