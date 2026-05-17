@@ -18,6 +18,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
   other: {
     "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "",
+    "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION ?? "",
   },
 };
 
