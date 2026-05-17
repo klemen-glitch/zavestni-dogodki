@@ -42,3 +42,4 @@ packages/scraper/auth/
 
 # Test outputs
 coverage/
+.vercel
