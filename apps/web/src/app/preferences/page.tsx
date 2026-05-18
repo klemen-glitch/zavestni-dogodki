@@ -6,11 +6,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function PreferencesPage({
+export default async function PreferencesPage({
   searchParams,
 }: {
-  searchParams: { email?: string };
+  searchParams: Promise<{ email?: string }>;
 }) {
+  const { email } = await searchParams;
   return (
     <div className="min-h-screen bg-stone-50 flex items-center justify-center px-4 py-16">
       <div className="max-w-lg w-full">
@@ -22,7 +23,7 @@ export default function PreferencesPage({
           </p>
         </div>
         <div className="bg-white rounded-2xl border border-stone-100 p-8 shadow-sm">
-          <PreferencesForm email={searchParams.email ?? ""} />
+          <PreferencesForm email={email ?? ""} />
         </div>
       </div>
     </div>

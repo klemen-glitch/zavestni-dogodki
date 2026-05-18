@@ -15,6 +15,7 @@
 import "dotenv/config";
 import { runPipeline } from "./pipeline";
 import { runWeeklyNewsletter } from "./newsletter-cron";
+import { runPersonalisedNewsletter } from "./personalised-newsletter-cron";
 
 const command = process.argv[2];
 
@@ -29,6 +30,11 @@ async function main() {
     case "weekly":
       console.log("⏰ Running weekly newsletter...");
       await runWeeklyNewsletter({ publish: true, weekOffset: 1 });
+      break;
+
+    case "personalised":
+      console.log("⏰ Running personalised newsletter...");
+      await runPersonalisedNewsletter({ dryRun: false });
       break;
 
     default:

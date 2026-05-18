@@ -6,11 +6,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function UnsubscribePage({
+export default async function UnsubscribePage({
   searchParams,
 }: {
-  searchParams: { email?: string };
+  searchParams: Promise<{ email?: string }>;
 }) {
+  const { email } = await searchParams;
   return (
     <div className="min-h-screen flex items-center justify-center bg-stone-50 px-4">
       <div className="max-w-md w-full">
@@ -22,7 +23,7 @@ export default function UnsubscribePage({
           </p>
         </div>
         <div className="bg-white rounded-2xl border border-stone-100 p-8 shadow-sm">
-          <UnsubscribeForm email={searchParams.email ?? ""} />
+          <UnsubscribeForm email={email ?? ""} />
         </div>
       </div>
     </div>
