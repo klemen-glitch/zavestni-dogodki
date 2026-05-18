@@ -120,7 +120,7 @@ function formatEventsForContext(events: Array<{
 interface Message { role: "user" | "assistant"; content: string; }
 
 export async function POST(req: Request) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.DEEPSEEK_API_KEY;
   if (!apiKey) {
     return NextResponse.json({ reply: "Oprostite, pomočnik trenutno ni na voljo." });
   }
@@ -195,18 +195,19 @@ SLOG:
 - NIKOLI ne izmišljaj podatkov — vedno temelji na spodnjem seznamu${eventContext}`;
 
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
+    const res = await fetch("https://api.deepseek.com/chat/completions", {
       method: "POST",
       headers: {
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-haiku-4-5",
+        model: "deepseek-chat",
         max_tokens: 500,
-        system: systemPrompt,
-        messages,
+        messages: [
+          { role: "system", content: systemPrompt },
+          ...messages,
+        ],
       }),
     });
 
@@ -214,8 +215,8 @@ SLOG:
       return NextResponse.json({ reply: "Oprostite, prišlo je do napake. Poskusite znova." });
     }
 
-    const data = (await res.json()) as { content: Array<{ text: string }> };
-    const reply = data.content?.[0]?.text ?? "Oprostite, ne razumem. Poskusite znova.";
+    const data = (await res.json()) as { choices: Array<{ message: { content: string } }> };
+    const reply = data.choices?.[0]?.message?.content ?? "Oprostite, ne razumem. Poskusite znova.";
     return NextResponse.json({ reply });
   } catch {
     return NextResponse.json({ reply: "Oprostite, prišlo je do napake. Poskusite znova." });

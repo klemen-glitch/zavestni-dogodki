@@ -109,7 +109,7 @@ const TECHNIQUE_GENERIC = {
 
 // ── AI enrichment ─────────────────────────────────────────────────────────────
 
-async function callAnthropicForEnrichment(
+async function callDeepSeekForEnrichment(
   event: {
     titleSl: string | null;
     titleEn: string;
@@ -122,7 +122,7 @@ async function callAnthropicForEnrichment(
     tags: string[];
   }
 ): Promise<Partial<EnrichedContent>> {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.DEEPSEEK_API_KEY;
   if (!apiKey) return {};
 
   const title = event.titleSl ?? event.titleEn;
@@ -173,23 +173,22 @@ VRNI JSON z natančno temi ključi (brez odstopanj):
 Piši v slovenščini. Ton: topel, navdihujoč, literarno bogat, a dostopen.`;
 
   try {
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
+    const res = await fetch("https://api.deepseek.com/chat/completions", {
       method: "POST",
       headers: {
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "claude-3-5-haiku-20241022",
+        model: "deepseek-chat",
         max_tokens: 2500,
         messages: [{ role: "user", content: prompt }],
       }),
     });
 
     if (!res.ok) return {};
-    const data = (await res.json()) as { content: Array<{ text: string }> };
-    const text = data.content?.[0]?.text ?? "{}";
+    const data = (await res.json()) as { choices: Array<{ message: { content: string } }> };
+    const text = data.choices?.[0]?.message?.content ?? "{}";
     return JSON.parse(text) as Partial<EnrichedContent>;
   } catch {
     return {};
@@ -225,7 +224,7 @@ export async function getEnrichedContent(event: {
   const technique = TECHNIQUE_FALLBACK[event.category] ?? TECHNIQUE_GENERIC;
 
   // AI-generated personalised content
-  const ai = await callAnthropicForEnrichment(event);
+  const ai = await callDeepSeekForEnrichment(event);
 
   const enriched: EnrichedContent = {
     intro: ai.intro ?? [

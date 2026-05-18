@@ -47,12 +47,11 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install Anthropic SDK
-        run: npm install --prefix scripts @anthropic-ai/sdk
+      # No extra SDK needed — generate-blog-content.mjs uses built-in fetch
 
       - name: Generate blog content
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           EVENT_ID: ${{ github.event.client_payload.event_id || inputs.event_id }}
           EVENT_TITLE: ${{ github.event.client_payload.title || inputs.title }}
           EVENT_CATEGORY: ${{ github.event.client_payload.category || inputs.category }}

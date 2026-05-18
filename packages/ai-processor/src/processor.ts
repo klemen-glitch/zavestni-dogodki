@@ -1,66 +1,67 @@
-import Anthropic from "@anthropic-ai/sdk";
 import { EVENT_EXTRACTION_SYSTEM_PROMPT } from "./prompts";
 import type { RawFacebookPost, ProcessedEvent, ProcessingResult } from "./types";
 
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
+const DEEPSEEK_API_URL = "https://api.deepseek.com/chat/completions";
+const MODEL = "deepseek-chat";
 
-const MODEL = "claude-sonnet-4-6";
+// ── DeepSeek response shape ───────────────────────────────────────────────────
+
+interface DeepSeekResponse {
+  choices: Array<{ message: { content: string } }>;
+  usage: { prompt_tokens: number; completion_tokens: number; total_tokens: number };
+}
+
+// ── Main export ───────────────────────────────────────────────────────────────
 
 export async function processPost(
   raw: RawFacebookPost
 ): Promise<ProcessingResult> {
+  const apiKey = process.env.DEEPSEEK_API_KEY;
+  if (!apiKey) {
+    return { success: false, error: "DEEPSEEK_API_KEY not set", rawPost: raw };
+  }
+
   const userMessage = buildUserMessage(raw);
 
   try {
-    const response = await client.messages.create({
-      model: MODEL,
-      max_tokens: 1024,
-      system: [
-        {
-          type: "text" as const,
-          text: EVENT_EXTRACTION_SYSTEM_PROMPT,
-          // Cache the system prompt — it's large and reused for every post
-          cache_control: { type: "ephemeral" as const },
-        } as Anthropic.TextBlockParam,
-      ],
-      messages: [
-        {
-          role: "user",
-          content: userMessage,
-        },
-      ],
+    const res = await fetch(DEEPSEEK_API_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: 1024,
+        messages: [
+          { role: "system", content: EVENT_EXTRACTION_SYSTEM_PROMPT },
+          { role: "user",   content: userMessage },
+        ],
+      }),
     });
 
-    const textBlock = response.content.find((b) => b.type === "text");
-    if (!textBlock || textBlock.type !== "text") {
-      throw new Error("No text block in response");
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(`DeepSeek API error ${res.status}: ${err}`);
     }
 
-    const event = JSON.parse(textBlock.text) as ProcessedEvent;
+    const data = (await res.json()) as DeepSeekResponse;
+    const text = data.choices?.[0]?.message?.content ?? "";
 
-    const usage = response.usage as {
-      input_tokens: number;
-      output_tokens: number;
-      cache_read_input_tokens?: number;
-      cache_creation_input_tokens?: number;
-    };
+    if (!text) throw new Error("Empty response from DeepSeek");
+
+    const event = JSON.parse(text) as ProcessedEvent;
 
     return {
       success: true,
       event,
       rawPost: raw,
-      tokensUsed: usage.input_tokens + usage.output_tokens,
-      cachedTokens: usage.cache_read_input_tokens ?? 0,
+      tokensUsed: data.usage?.total_tokens ?? 0,
+      cachedTokens: 0,   // DeepSeek has no prompt caching
     };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    return {
-      success: false,
-      error: message,
-      rawPost: raw,
-    };
+    return { success: false, error: message, rawPost: raw };
   }
 }
 
@@ -74,8 +75,6 @@ export async function processBatch(
   for (const post of posts) {
     const result = await processPost(post);
     results.push(result);
-
-    // Respect rate limits between calls
     if (delay > 0) {
       await new Promise((r) => setTimeout(r, delay));
     }
@@ -86,15 +85,11 @@ export async function processBatch(
 
 function buildUserMessage(raw: RawFacebookPost): string {
   const parts: string[] = [];
-
   if (raw.authorName) parts.push(`Posted by: ${raw.authorName}`);
-  if (raw.postedAt) parts.push(`Posted at: ${raw.postedAt}`);
-
+  if (raw.postedAt)   parts.push(`Posted at: ${raw.postedAt}`);
   parts.push(`\nPost text:\n${raw.text}`);
-
   if (raw.imageUrls?.length) {
     parts.push(`\nImages attached: ${raw.imageUrls.length} image(s)`);
   }
-
   return parts.join("\n");
 }

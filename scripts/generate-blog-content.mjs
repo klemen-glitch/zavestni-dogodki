@@ -4,13 +4,12 @@
  *   2. Location article        (e.g. "Joga v Ljubljani")
  *   3. Facilitator article     (e.g. "Ana Novak — Breathwork Facilitatorka")
  *
- * Uses Anthropic API with web_search for deep research.
+ * Uses DeepSeek V3 API for content generation.
  * Appends results to apps/web/src/content/blog-posts.ts and git-commits them.
  *
  * Run via GitHub Actions (generate-blog-content.yml) — NOT in Vercel serverless.
  */
 
-import Anthropic from "@anthropic-ai/sdk";
 import { readFileSync, writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, resolve } from "path";
@@ -22,7 +21,11 @@ const BLOG_POSTS_PATH = resolve(ROOT, "apps/web/src/content/blog-posts.ts");
 
 // ── Config ─────────────────────────────────────────────────────────────────
 const TODAY = new Date().toISOString().split("T")[0];
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
+if (!DEEPSEEK_API_KEY) {
+  console.error("❌ DEEPSEEK_API_KEY environment variable is required");
+  process.exit(1);
+}
 
 const CATEGORY_LABELS = {
   YOGA: "Joga",
@@ -82,39 +85,40 @@ function uniqueSlug(base, alternatives, existingSlugs) {
   return existingSlugs.has(withYear) ? `${base}-vodic-2026` : withYear;
 }
 
-// ── Anthropic call with web search + fallback ──────────────────────────────
-async function callClaude(system, userMsg) {
-  const messages = [{ role: "user", content: userMsg }];
+// ── DeepSeek API call ──────────────────────────────────────────────────────
+async function callDeepSeek(system, userMsg) {
+  const res = await fetch("https://api.deepseek.com/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${DEEPSEEK_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "deepseek-chat",
+      max_tokens: 8000,
+      messages: [
+        { role: "system", content: system },
+        { role: "user",   content: userMsg },
+      ],
+    }),
+  });
 
-  // Try with web search first
-  try {
-    const resp = await anthropic.messages.create({
-      model: "claude-opus-4-5",
-      max_tokens: 10000,
-      system,
-      tools: [{ type: "web_search_20250305", name: "web_search", max_uses: 5 }],
-      messages,
-    });
-    const text = resp.content.filter((b) => b.type === "text").map((b) => b.text).join("\n");
-    if (text.trim()) return text;
-  } catch (err) {
-    console.warn(`   ⚠️  Web search unavailable (${err.message}), falling back…`);
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`DeepSeek API error ${res.status}: ${err}`);
   }
 
-  // Fallback: plain generation without web search
-  const resp = await anthropic.messages.create({
-    model: "claude-opus-4-5",
-    max_tokens: 10000,
-    system,
-    messages,
-  });
-  return resp.content.filter((b) => b.type === "text").map((b) => b.text).join("\n");
+  const data = await res.json();
+  return data.choices?.[0]?.message?.content ?? "";
 }
+
+// Keep alias so article generator functions don't need renaming
+const callClaude = callDeepSeek;
 
 function extractJson(text) {
   // Try to find a JSON object in the response
   const match = text.match(/\{[\s\S]*\}/);
-  if (!match) throw new Error("No JSON object found in Claude response");
+  if (!match) throw new Error("No JSON object found in DeepSeek response");
   try {
     return JSON.parse(match[0]);
   } catch (e) {
