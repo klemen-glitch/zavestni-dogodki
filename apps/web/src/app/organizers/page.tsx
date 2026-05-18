@@ -69,7 +69,7 @@ export default async function OrganizersPage() {
               className="bg-white rounded-2xl border border-stone-100 p-6 hover:shadow-md hover:-translate-y-0.5 transition-all text-center group">
               <div className="w-16 h-16 rounded-full overflow-hidden bg-emerald-50 mx-auto mb-4 flex items-center justify-center">
                 {org.avatarUrl
-                  ? <Image src={org.avatarUrl} alt={org.name} width={64} height={64} className="object-cover object-top" />
+                  ? <Image src={org.avatarUrl} alt={org.name} width={64} height={64} className="object-cover [object-position:50%_20%]" />
                   : <span className="text-2xl">🧘</span>
                 }
               </div>

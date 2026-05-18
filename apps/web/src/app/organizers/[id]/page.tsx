@@ -92,7 +92,7 @@ export default async function OrganizerProfilePage({ params }: { params: Promise
       <div className="flex flex-col sm:flex-row gap-6 mb-10 items-start">
         <div className="w-24 h-24 rounded-full overflow-hidden bg-emerald-50 flex-shrink-0 flex items-center justify-center">
           {organizer.avatarUrl
-            ? <Image src={organizer.avatarUrl} alt={organizer.name} width={96} height={96} className="object-cover object-top" />
+            ? <Image src={organizer.avatarUrl} alt={organizer.name} width={96} height={96} className="object-cover [object-position:50%_20%]" />
             : <span className="text-4xl">🧘</span>
           }
         </div>

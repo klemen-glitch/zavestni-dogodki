@@ -417,7 +417,7 @@ export default async function EventPage({
                           src={event.organizer.avatarUrl}
                           alt={event.organizer.name}
                           fill
-                          className="object-cover object-top"
+                          className="object-cover [object-position:50%_15%]"
                         />
                       </div>
                     )}

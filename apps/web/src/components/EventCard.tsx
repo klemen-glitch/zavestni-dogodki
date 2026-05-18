@@ -100,17 +100,17 @@ export function EventCard({ event, compact = false }: EventCardProps) {
           </span>
         )}
 
-        {/* Facilitator avatar — bottom right, overlaps content section */}
+        {/* Facilitator avatar — bottom right, sits at image bottom edge */}
         {event.organizer && (
-          <div className="absolute bottom-[-18px] right-4 z-20">
-            <div className="w-10 h-10 rounded-full border-2 border-white shadow-md overflow-hidden bg-stone-200 flex items-center justify-center flex-shrink-0">
+          <div className="absolute bottom-0 right-4 z-20 translate-y-1/2">
+            <div className="w-12 h-12 rounded-full border-2 border-white shadow-md overflow-hidden bg-stone-200 flex items-center justify-center flex-shrink-0">
               {event.organizer.avatarUrl ? (
                 <Image
                   src={event.organizer.avatarUrl}
                   alt={event.organizer.name}
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-cover object-top"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover [object-position:50%_20%]"
                 />
               ) : (
                 <span
@@ -126,7 +126,7 @@ export function EventCard({ event, compact = false }: EventCardProps) {
       </div>
 
       {/* ── Content section ── */}
-      <div className={`relative p-4 ${event.organizer ? "pt-6" : "pt-4"}`}>
+      <div className={`relative p-4 ${event.organizer ? "pt-7" : "pt-4"}`}>
         <h3
           className={`font-semibold text-stone-800 group-hover:text-emerald-700 transition-colors line-clamp-2 ${
             compact ? "text-sm" : "text-base"
