@@ -5,7 +5,9 @@ export const metadata: Metadata = { title: { default: "Admin", template: "%s | A
 
 const nav = [
   { href: "/admin/dashboard", label: "Dashboard", emoji: "📊" },
+  { href: "/admin/analytics", label: "Analytics", emoji: "📈" },
   { href: "/admin/events", label: "Dogodki", emoji: "📅" },
+  { href: "/admin/facilitators", label: "Facilitatorji", emoji: "🧘" },
   { href: "/admin/newsletter", label: "Newsletter", emoji: "📧" },
   { href: "/admin/pipeline", label: "Pipeline", emoji: "⚡" },
 ];
