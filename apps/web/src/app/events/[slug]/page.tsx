@@ -8,6 +8,7 @@ import { db } from "@/lib/db";
 import { getEnrichedContent } from "@/lib/event-enrichment";
 import { ShareButtons } from "@/components/ShareButtons";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { SubscribeSection } from "@/components/subscribe/SubscribeSection";
 import { EventCard } from "@/components/EventCard";
 import { EventLocationMap } from "@/components/EventLocationMap";
 import { EventCTALink } from "@/components/EventCTALink";
@@ -688,9 +689,9 @@ export default async function EventPage({
           </section>
         )}
 
-        {/* ── NEWSLETTER ───────────────────────────────────────────────────── */}
+        {/* ── NEWSLETTER — personalised subscribe ──────────────────────────── */}
         <section className="mt-16">
-          <NewsletterSignup compact />
+          <SubscribeSection variant="compact" source="event_page" />
         </section>
       </div>
     </>

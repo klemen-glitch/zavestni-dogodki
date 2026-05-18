@@ -211,7 +211,8 @@ model Subscriber {
   lastName    String?
   active      Boolean         @default(true)
   source      String?
-  preferences EventCategory[]
+  preferences EventCategory[]   // event categories subscriber is interested in
+  cities      String[]          // city names subscriber wants events from
   externalId  String?
   createdAt   DateTime        @default(now())
   updatedAt   DateTime        @updatedAt

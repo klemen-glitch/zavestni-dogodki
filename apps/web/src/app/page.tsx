@@ -5,6 +5,7 @@ import Link from "next/link";
 import { db } from "@/lib/db";
 import { EventCard } from "@/components/EventCard";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { SubscribeSection } from "@/components/subscribe/SubscribeSection";
 import { CATEGORY_EMOJI, CATEGORY_LABEL, ALL_CATEGORIES } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -253,9 +254,9 @@ export default async function HomePage() {
         </p>
       </section>
 
-      {/* Newsletter */}
-      <section id="newsletter" className="mb-20">
-        <NewsletterSignup />
+      {/* Newsletter — personalised subscribe section */}
+      <section id="newsletter" className="mb-20 max-w-4xl mx-auto px-4">
+        <SubscribeSection source="home_section" />
       </section>
     </div>
     </>
