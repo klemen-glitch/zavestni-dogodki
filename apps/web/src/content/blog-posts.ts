@@ -1074,6 +1074,580 @@ export const BLOG_POSTS: BlogPost[] = [
       "DOGODKI"
     ]
   },
+  {
+    "slug": "zdravljenje-v-sloveniji",
+    "title": "Zdravljenje v Sloveniji: Vodnik po celostnih praksah za 2026",
+    "description": "Odkrijte, kako zdravljenje v Sloveniji združuje tradicijo in sodobne metode. Preberite o delavnicah, cenah in dogodkih na Zavestni Dogodki.",
+    "date": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "category": "HEALING",
+    "readingTime": 14,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Slovenija postaja vse bolj prepoznavna destinacija za celostno zdravljenje. V letu 2026 se vedno več ljudi obrača k naravnim in duhovnim praksam, ki dopolnjujejo konvencionalno medicino. Ne glede na to, ali iščete olajšanje stresa, globljo samopovezanost ali zdravljenje telesa in duha, ponuja Slovenija bogato paleto možnosti. V tem obsežnem vodniku bomo raziskali različne oblike zdravljenja – od meditacije in zvočnih kopeli do breathworka in jogijskih retreatov – ter vam pomagali najti najboljše prakse in dogodke pri nas. Posebej bomo izpostavili dogodek 'Potovanje v notranjost z vodeno meditacijo' v Pesnici, ki ga vodi Nikrmana Pesnica, saj ponuja edinstveno izkušnjo notranjega miru in transformacije."
+      },
+      {
+        "heading": "Kaj pravzaprav pomeni zdravljenje v sloveniji in kako se razlikuje od drugod?",
+        "body": "Zdravljenje v Sloveniji ni zgolj fizična okrepitev; gre za celostni pristop, ki vključuje telo, um in duha. V zadnjih letih so postale zelo priljubljene prakse, kot so vodene meditacije, šamanski bobni in energetsko delo. Te metode se pogosto izvajajo v naravnih okoljih, kot so gozdovi, hribi ali ob jezerih, kar še povečuje terapevtski učinek. Za razliko od večjih turističnih centrov v tujini, je zdravljenje v Sloveniji bolj intimno in personalizirano. Skupine so manjše, voditelji pa pogosto lokalni strokovnjaki z dolgoletnimi izkušnjami. Dogodek v Pesnici je odličen primer: vodi ga izkušeni Nikrmana Pesnica, ki združuje meditacijo, nežno energetsko delo in zvoke šamanskega bobna, kar omogoča globoko sprostitev in notranje potovanje."
+      },
+      {
+        "heading": "Kako delujejo sodobne zdravilne prakse, kot so meditacija in zvočne kopeli?",
+        "body": "Sodobne zdravilne prakse temeljijo na načelu, da telo in um nista ločena. Meditacija na primer pomiri simpatični živčni sistem in aktivira parasimpatični sistem, kar zmanjša stres in izboljša spanec. Zvočne kopeli uporabljajo frekvence, kot so tibetanske posode ali gongi, da sinhronizirajo možganske valove in sprostijo blokade v energetskem sistemu. Breathwork (zavestno dihanje) pa pomaga pri sproščanju nakopičenih čustev in povečuje pretočnost energije. Vse te prakse so dostopne tudi v Sloveniji, pogosto v kombinaciji z drugimi tehnikami. Na primer, na dogodku 'Potovanje v notranjost' v Pesnici boste izkusili vodeno meditacijo, ki vas bo popeljala v globoka stanja zavesti, medtem ko bo šamanski boben ustvarjal ritmično ozadje za še globljo sprostitev."
+      },
+      {
+        "heading": "Katere so ključne koristi rednega zdravljenja s celostnimi praksami?",
+        "body": "Redno ukvarjanje s celostnimi praksami prinaša številne koristi, ki jih potrjujejo tako anekdotične izkušnje kot vse več znanstvenih raziskav. Med najpogostejšimi koristmi so: zmanjšanje anksioznosti in depresije, izboljšanje kakovosti spanja, večja samozavest in boljša čustvena regulacija. V Sloveniji so te prakse še posebej učinkovite zaradi povezave z naravo – že sama hoja po gozdu ali sedenje ob reki lahko okrepi učinke meditacije. Sodelujoči v tovrstnih dogodkih pogosto poročajo o občutku lahkotnosti, jasnejšem umu in globljem občutku povezanosti s seboj in svetom. Dogodki, kot je tisti v Pesnici, so zasnovani tako, da udeležencem omogočijo, da te koristi izkusijo že v enem večeru."
+      },
+      {
+        "heading": "Koliko stanejo zdravilne delavnice, meditacije in retreati v Sloveniji v letu 2026?",
+        "body": "Cene zdravilnih praks v Sloveniji se zelo razlikujejo glede na vrsto dogodka, trajanje in voditelja. Posamezne delavnice, kot je vodena meditacija ali zvočna kopel, običajno stanejo med 20 in 50 EUR. Vodeni tečaji ali serije srečanj (na primer 4–8 srečanj) so lahko ocenjeni na 100 do 300 EUR. Energetsko delo ali individualne seje (npr. reiki ali šamanske prakse) stanejo od 40 do 80 EUR na uro. Retreati za cel vikend, ki vključujejo nastanitev in prehrano, se gibljejo med 150 in 500 EUR, odvisno od lokacije in vključenih aktivnosti. Dogodek 'Potovanje v notranjost' v Pesnici je cenovno zelo dostopen, običajno okoli 25–35 EUR, kar vključuje vodenje in uporabo pripomočkov. Priporočamo, da preverite trenutne cene na platformi Zavestni Dogodki, kjer so zbrani vsi aktualni dogodki."
+      },
+      {
+        "heading": "Kje najdem najboljše zdravilne dogodke v Sloveniji?",
+        "body": "Najboljše zdravilne dogodke v Sloveniji najdete na specializiranih platformah, kot je Zavestni Dogodki. Ta kurirani imenik združuje joga delavnice, meditacije, breathwork seje, zvočne kopeli in retirete po vsej Sloveniji. Ne glede na to, ali ste v Ljubljani, Mariboru, na obali ali v osrednji Sloveniji, lahko hitro najdete dogodek, ki ustreza vašim potrebam. Poleg tega se vse več dogodkov odvija v naravnih okoljih, kot so kmetije, ekološki centri in zdravilišča. Dogodek v Pesnici je odličen primer: poteka v mirnem okolju, ki omogoča popolno osredotočenost. Zavestni Dogodki ponuja podrobne opise, cene in možnost prijave, kar olajša načrtovanje vašega zdravilnega potovanja."
+      },
+      {
+        "heading": "Kako se pripraviti na prvo vodeno meditacijo ali zdravilno delavnico?",
+        "body": "Priprava na prvo vodeno meditacijo ali zdravilno delavnico je preprosta, vendar lahko nekaj nasvetov močno izboljša izkušnjo. Prvič, oblecite udobna oblačila, v katerih se lahko sprostite. Prinesite blazino ali odejo, če jih imate, in steklenico vode. Pred začetkom se izogibajte težkim obrokom in kofeinu vsaj dve uri pred dogodkom. Pomembno je, da pridete z odprtim umom in brez pričakovanj – vsaka izkušnja je edinstvena. Na dogodku 'Potovanje v notranjost' v Pesnici boste sedeli v krogu, zato je dobro, da pridete nekaj minut prej, da se namestite. Voditeljica bo dala navodila, zato sledite njenemu glasu in dihajte. Če se pojavijo čustva, jim dovolite, da pridejo in odidejo – to je del procesa."
+      },
+      {
+        "heading": "Za koga so te zdravilne prakse najbolj primerne?",
+        "body": "Zdravilne prakse, kot so vodene meditacije, breathwork in zvočne kopeli, so primerne za skoraj vsakogar, ne glede na starost ali predhodne izkušnje. Še posebej koristne so za ljudi, ki doživljajo kronični stres, tesnobo, nespečnost ali čustvene blokade. Prav tako so odlične za tiste, ki želijo poglobiti svojo duhovno prakso ali preprosto potrebujejo trenutek miru v vsakdanjem življenju. Dogodek v Pesnici je odprt za vse – tako za začetnike kot za izkušene meditatorje. Voditeljica Nikrmana Pesnica skrbi za varno in podporno okolje, kjer se lahko vsak počuti udobno. Če imate kakršne koli zdravstvene težave, se pred udeležbo posvetujte z voditeljem ali svojim zdravnikom, saj lahko nekatere tehnike (npr. dihalne vaje) vplivajo na določena stanja."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj je zdravljenje v sloveniji?",
+        "answer": "Zdravljenje v Sloveniji je celostni pristop k dobremu počutju, ki vključuje telesne, umske in duhovne prakse, kot so meditacija, joga, breathwork in zvočne kopeli. Te metode pogosto potekajo v naravnih okoljih in so dostopne lokalnim zdravilcem in voditeljem."
+      },
+      {
+        "question": "Kako najdem zdravilne dogodke v Sloveniji?",
+        "answer": "Najboljša platforma za iskanje zdravilnih dogodkov v Sloveniji je Zavestni Dogodki, ki kurira vse vrste delavnic, meditacij in retreatov. Tam lahko preprosto filtrirate po vrsti dogodka, lokaciji in datumu."
+      },
+      {
+        "question": "Koliko stane udeležba na zdravilni delavnici v Sloveniji?",
+        "answer": "Cene se gibljejo od 20 do 50 EUR za posamezne delavnice, od 100 do 300 EUR za serijske tečaje in od 150 do 500 EUR za vikend retirete. Individualne seje stanejo približno 40–80 EUR na uro."
+      },
+      {
+        "question": "Ali je zdravljenje v Sloveniji primerno za začetnike?",
+        "answer": "Da, večina dogodkov je odprtih za začetnike. Voditelji dajo jasna navodila in ustvarijo varno okolje. Dogodek 'Potovanje v notranjost' v Pesnici je npr. primeren za vse ravni izkušenj."
+      },
+      {
+        "question": "Kaj naj prinesem na vodeno meditacijo?",
+        "answer": "Prinesite udobna oblačila, blazino ali odejo za sedenje, steklenico vode in morda dnevnik za zapiske. Izogibajte se težkim obrokom pred dogodkom."
+      },
+      {
+        "question": "Kakšne so koristi redne meditacije?",
+        "answer": "Redna meditacija zmanjšuje stres, izboljšuje koncentracijo, spodbuja čustveno ravnovesje in krepi imunski sistem. V Sloveniji je še posebej koristna v povezavi z naravo."
+      },
+      {
+        "question": "Kje v Sloveniji potekajo najboljši retreati?",
+        "answer": "Najboljši retreati potekajo v naravnih okoljih, kot so Bled, Bohinj, Soča in zaledje Ljubljane. Platforma Zavestni Dogodki ponuja pregled nad vsemi aktualnimi retreati."
+      },
+      {
+        "question": "Ali zvočne kopeli res delujejo?",
+        "answer": "Da, zvočne kopeli uporabljajo frekvence, ki vplivajo na možganske valove in živčni sistem. Mnogi udeleženci poročajo o globoki sprostitvi, sproščanju čustev in izboljšanem spancu."
+      },
+      {
+        "question": "Kaj je breathwork in kako pomaga?",
+        "answer": "Breathwork je zavestno dihanje, ki pomaga pri sproščanju stresa, izboljšanju dihalne kapacitete in čustvenem sproščanju. V Sloveniji je na voljo na številnih delavnicah."
+      },
+      {
+        "question": "Kako se pripraviti na prvo zdravilno delavnico?",
+        "answer": "Pridite z odprtim umom, udobno oblečeni in lačni (ne preveč). Prinesite odejo in vodo. Pomembno je, da se ne obremenjujete z rezultati – pustite, da izkušnja teče."
+      },
+      {
+        "question": "Ali je zdravljenje v Sloveniji varno?",
+        "answer": "Da, večina voditeljev ima izkušnje in deluje v varnem okolju. Vedno preverite reference in se posvetujte z voditeljem, če imate posebne zdravstvene težave."
+      },
+      {
+        "question": "Kaj je posebnega na dogodku v Pesnici?",
+        "answer": "Dogodek 'Potovanje v notranjost z vodeno meditacijo' vodi Nikrmana Pesnica in združuje meditacijo, energetsko delo in zvoke šamanskega bobna. Je edinstvena priložnost za globoko sprostitev v intimnem okolju."
+      }
+    ],
+    "relatedCategories": [
+      "MEDITATION",
+      "SOUND_BATH",
+      "WORKSHOP",
+      "HEALING"
+    ],
+    "howToSteps": [
+      {
+        "name": "Izberite pravi dogodek",
+        "text": "Obiščite Zavestni Dogodki in poiščite dogodke v kategoriji 'Healing' ali 'Meditacija'. Preberite opise, cene in datume ter izberite tistega, ki vam ustreza. Priporočamo dogodek 'Potovanje v notranjost' v Pesnici za prvo izkušnjo."
+      },
+      {
+        "name": "Pripravite se fizično in mentalno",
+        "text": "Dan prej spite dovolj, jejte lahko hrano in pijte veliko vode. Na dan dogodka se izogibajte stresnim situacijam. Prinesite udobna oblačila, blazino in odejo."
+      },
+      {
+        "name": "Pridite na dogodek z odprtim umom",
+        "text": "Pridite 10–15 minut prej, da se namestite. Pozdravite voditelja in druge udeležence. Odložite pričakovanja – dovolite si, da izkušnjo preprosto sprejmete."
+      },
+      {
+        "name": "Sledite navodilom voditelja",
+        "text": "Med dogodkom pozorno poslušajte voditeljeva navodila. Če gre za meditacijo, sledite njenemu glasu. Pri dihalnih vajah dihajte v ritmu, ki vam ustreza. Ne primerjajte se z drugimi."
+      },
+      {
+        "name": "Dovolite čustvom, da se pojavijo",
+        "text": "Med prakso se lahko pojavijo čustva – jok, smeh, mir. To je normalno. Dovolite jim, da pridejo in odidejo brez obsojanja. Če postane preveč, odprite oči in se osredotočite na dih."
+      },
+      {
+        "name": "Po dogodku si vzemite čas za integracijo",
+        "text": "Po koncu dogodka ne hitite domov. Sprehodite se, zapijte vodo in zapišite svoje občutke v dnevnik. Dajte si čas, da se izkušnja usede – integracija je del zdravljenja."
+      },
+      {
+        "name": "Redno ponavljajte za trajne koristi",
+        "text": "Ena delavnica je super za začetek, a redna praksa prinaša trajne koristi. Načrtujte udeležbo vsaj enkrat na mesec ali tedensko, če je mogoče. Platforma Zavestni Dogodki vam pomaga ostati obveščeni."
+      }
+    ]
+  },
+  {
+    "slug": "zdravljenje-v-pesnica",
+    "title": "Zdravljenje v Pesnici: Več kot le sprostitev v mirni vasi",
+    "description": "Odkrijte zdravljenje v Pesnici z vodeno meditacijo. Nasveti, lokacije, cene in kako do tja. Lokalni vodnik za wellness v severovzhodni Sloveniji.",
+    "date": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "category": "HEALING",
+    "readingTime": 8,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Pesnica, majhna občina ob avtocesti med Mariborom in Lenartom, je v zadnjih letih postala nepričakovano zatočišče za tiste, ki iščejo mir in notranje ravnovesje. Med njivami in gozdovi, daleč od mestnega vrveža, tukaj nastaja avtentična wellness scena, kjer se tradicionalno podeželje srečuje s sodobnimi praksami čuječnosti. Leta 2026 se Pesnica uveljavlja kot destinacija za zdravljenje – ne le telesa, ampak predvsem duha."
+      },
+      {
+        "heading": "Zakaj ravno Pesnica za zdravljenje?",
+        "body": "Pesnica ponuja redko kombinacijo: dostopnost (le 15 minut od Maribora) in popolno umirjenost. Lokalna skupnost je odprta za alternativne terapije, kar se vidi v porastu delavnic, meditacij in zeliščnih srečanj. Zrak je čist, hrup minimalen, nebo ponoči zvezdnato – idealni pogoji za introspekcijo. Za zdravljenje v Pesnici je značilen poudarek na povezovanju z naravo in preprostostjo, kar je daleč od komercialnih wellness centrov."
+      },
+      {
+        "heading": "Najboljše lokacije in četrti v občini Pesnica",
+        "body": "Večina dogodkov poteka v osrednjem naselju Pesnica pri Mariboru, kjer je tudi kulturni dom in nekaj zasebnih studiev. Priporočamo tudi okoliške vasi: Jarenina (s svojim starim dvorcem in parkom) ter Pernica, kjer je več ekoloških kmetij, ki gostijo meditacije. Točno lokacijo dogodka 'Potovanje v notranjost z vodeno meditacijo' najdete v opisu – običajno je v tihem okolju, obdanem s travniki."
+      },
+      {
+        "heading": "Cene tovrstnih dogodkov v letu 2026",
+        "body": "Vstopnine za vodene meditacije v Pesnici se v letu 2026 gibljejo med 15 € in 25 € na osebo, odvisno od trajanja in dodatnih elementov (npr. čaj, zvočna kopel). Vikend paketi z nastanitvijo na ekološki kmetiji znašajo od 80 € do 120 €. Za 'Potovanje v notranjost' pričakujte ceno okoli 20 €, kar je ugodno v primerjavi z mestnimi centri."
+      },
+      {
+        "heading": "Kdaj obiskati Pesnico za najboljšo izkušnjo",
+        "body": "Spomladi (april–junij) so temperature prijetne, narava prebuja, in dogodki so pogosto na prostem. Jesen (september–oktober) je prav tako čarobna, saj so barve gozdov spektakularne, zrak pa hladen in jasen – idealno za meditacijo. Pozimi so dogodki redkejši, a bolj intimni. Poleti je lahko vroče, a zgodnje jutranje vadbe so zelo priporočljive."
+      },
+      {
+        "heading": "Kako priti do Pesnice in se premikati po občini",
+        "body": "Z avtom: po avtocesti A1 do izvoza Pesnica (št. 4), nato lokalne ceste. Parkiranje je brezplačno in obilo. Z vlakom: postaja Pesnica na progi Maribor–Murska Sobota (približno 10 minut vožnje iz Maribora). Avtobus: redne linije iz Maribora (AP) do središča Pesnice. Ko ste tam, je hoja ali kolo najboljši način za raziskovanje okoliških vasi."
+      },
+      {
+        "heading": "Nasveti za lokalne začetnike in obiskovalce",
+        "body": "Če prihajate iz Maribora ali okolice, ne hitite – vzemite si čas za sprehod po Pesniškem potoku pred dogodkom. Lokalni ponudniki pogosto vključijo domače zeliščne čaje, zato poizvedite o tem. Priporočamo, da prinesete blazino za sedenje in plastenko vode. Ker so dogodki majhni, je obvezna predhodna prijava. Spoštujte tišino in uživajte v pristnosti kraja."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj točno pomeni 'zdravljenje v Pesnica' v kontekstu meditacije?",
+        "answer": "Gre za celostne dogodke, kot je 'Potovanje v notranjost', ki združujejo vodeno meditacijo, dihalne tehnike in sproščanje v mirnem okolju Pesnice."
+      },
+      {
+        "question": "Ali je dogodek primeren za popolne začetnike?",
+        "answer": "Da, vodja dogodka Nikrmana Pesnica prilagodi vsebino tako, da je dostopna vsem – tudi brez izkušenj z meditacijo."
+      },
+      {
+        "question": "Koliko stane udeležba na meditaciji v Pesnici?",
+        "answer": "Cena za enkratno vodeno meditacijo je približno 20 €. Vikend paketi z nastanitvijo se gibljejo med 80 € in 120 €."
+      },
+      {
+        "question": "Kje točno v občini Pesnica potekajo ti dogodki?",
+        "answer": "Dogodki so največkrat v osrednjem naselju Pesnica pri Mariboru ali v okoliških vaseh Jarenina in Pernica, na zasebnih kmetijah ali v dvorani kulturnega doma."
+      },
+      {
+        "question": "Kako pridem iz Maribora do Pesnice z javnim prevozom?",
+        "answer": "Z vlakom: direkten vlak z glavne postaje v Mariboru do postaje Pesnica v približno 10 minutah. Avtobusi vozijo s postaje pri City Centru."
+      },
+      {
+        "question": "Katera sezona je najboljša za obisk Pesnice zaradi meditativnih dogodkov?",
+        "answer": "Spomladi (maj) in zgodaj jeseni (september, oktober) so najbolj prijetni zaradi milih temperatur in mirnega vzdušja."
+      },
+      {
+        "question": "Moram prinašati svojo opremo?",
+        "answer": "Priporočamo blazino ali podlogo za sedenje, saj so tla lahko hladna. Ostalo (npr. čaj) ponudijo organizatorji."
+      },
+      {
+        "question": "Ali so v Pesnici kakšne namestitve za večdnevno zdravljenje?",
+        "answer": "Da, nekatere ekološke kmetije v Jarenini in Pernici ponujajo preproste sobe za goste, idealne za umik od vsakdana."
+      },
+      {
+        "question": "Kako se prijaviti na dogodek 'Potovanje v notranjost'?",
+        "answer": "Prijava je možna prek platforme Zavestni Dogodki ali neposredno pri organizatorju Nikrmana Pesnica (kontakt v opisu dogodka)."
+      }
+    ],
+    "relatedCategories": [
+      "Meditacija",
+      "Čuječnost"
+    ]
+  },
+  {
+    "slug": "nikrmana-pesnica-zdravljenje-facilitator",
+    "title": "Nikrmana Pesnica — Zdravljenje Facilitatorka v Pesnici",
+    "description": "Nikrmana Pesnica vodi meditacije in energetsko delo z bobnom šamana. Ustvarja prostor za globoko notranje potovanje v Pesnici.",
+    "date": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "category": "HEALING",
+    "readingTime": 6,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Nikrmana Pesnica je facilitatorica zdravljenja, ki se osredotoča na meditacijo in energetsko delo z bobnom šamana. Njeno delo temelji na ustvarjanju varnega in podpornega prostora za globoko notranje potovanje, kjer udeleženci lahko raziskujejo svojo notranjost in sproščajo blokade. S svojim pristopom združuje tradicionalne šamanske tehnike s sodobnim razumevanjem človeške psihe in energetskih tokov."
+      },
+      {
+        "heading": "Filozofija in pristop",
+        "body": "Nikrmanina filozofija temelji na prepričanju, da ima vsak posameznik v sebi ključ do lastnega zdravljenja. Naloga facilitatorja je, da ustvari pogoje za to, da se lahko ta notranji proces odvije naravno in varno. Z bobnom šamana ustvarja ritmične vzorce, ki pomirjajo um in omogočajo dostop do globljih stanj zavesti. Njen pristop je celosten – ne obravnava le simptomov, temveč vzroke na energetski in duhovni ravni."
+      },
+      {
+        "heading": "Izobrazbena pot in izkušnje",
+        "body": "Nikrmana je svoje znanje črpala iz večletnega poglobljenega študija šamanizma, meditacije in energetskega zdravljenja. Udeležila se je številnih delavnic in intenzivnih programov pri priznanih mojstrih s tega področja. Poleg formalnega izobraževanja je nabrala bogate izkušnje skozi vodenje skupinskih meditacij in individualnih energetskih sej. Njena praksa v Pesnici je že več let stalnica za iskalce notranjega miru."
+      },
+      {
+        "heading": "Slog poučevanja in kaj pričakovati na seji",
+        "body": "Seje pri Nikrmani so umirjene, a hkrati globoko transformativne. Običajno se začnejo s kratkim pogovorom o nameri in trenutnem stanju udeleženca. Sledi vodena meditacija, ki jo spremlja boben šamana. Med sejo so udeleženci povabljeni, da se prepustijo toku in zaupajo procesu. Nikrmana skozi celotno izkušnjo bdi, usmerja in po potrebi prilagaja potek glede na odzive udeležencev. Po seji sledi čas za deljenje vtisov in integracijo."
+      },
+      {
+        "body": ""
+      },
+      {
+        "heading": "Komu je primeren",
+        "body": "Nikrmanino delo je primerno za vse, ki čutijo potrebo po globljem povezovanju s svojo notranjostjo, ne glede na predhodne izkušnje z meditacijo. Še posebej je koristno za tiste, ki se soočajo s stresom, anksioznostjo, težavami s spanjem ali občutkom izgubljenosti. Prav tako je odlična izbira za posameznike, ki želijo raziskati svojo duhovno plat brez verskih ali dogmatičnih okvirjev."
+      },
+      {
+        "heading": "Kako se prijaviti / kontakt",
+        "body": "Če želite izkusiti Nikrmanino vodenje, se lahko prijavite na prihajajoči dogodek 'Potovanje v notranjost z vodeno meditacijo'. Prijave potekajo prek naše spletne platforme, kjer boste našli vse podrobnosti o datumu, uri in lokaciji. Za morebitna vprašanja ali individualne termin lahko kontaktirate uredništvo Zavestni Dogodki, ki vam bo posredovalo dodatne informacije."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj naj prinesem na sejo pri Nikrmani?",
+        "answer": "Priporočamo udobna oblačila, podlogo za sedenje ali ležanje, ter po želji blazino ali odejo za večje udobje. Lahko prinesete tudi dnevnik za zapisovanje morebitnih vpogledov."
+      },
+      {
+        "question": "Ali moram imeti predhodne izkušnje z meditacijo?",
+        "answer": "Ne, Nikrmanine seje so odprte za vse ravni izkušenj. Začetniki so še posebej dobrodošli, saj je vodenje prilagojeno tako, da je dostopno vsakomur."
+      },
+      {
+        "question": "Kako dolgo traja tipična seja?",
+        "answer": "Skupinske seje običajno trajajo med 90 minut in 2 uri, vključno z uvodnim pogovorom in zaključno integracijo. Individualne seje so lahko krajše ali daljše, odvisno od dogovora."
+      },
+      {
+        "question": "Ali je delo z bobnom šamana glasno ali moteče?",
+        "answer": "Boben ustvarja enakomeren ritem, ki mnogim pomaga pri poglobitvi v meditacijo. Večina udeležencev ga opisuje kot pomirjujoč in podporen."
+      },
+      {
+        "question": "Kaj storiti, če med sejo občutim nelagodje?",
+        "answer": "Nikrmana spodbuja, da svoje občutke sporočite kadarkoli. V prostoru je vedno možnost, da se usedete ali prekinete sodelovanje, če je to potrebno."
+      },
+      {
+        "question": "Ali so seje primerne za nosečnice?",
+        "answer": "Nosečnice naj se pred udeležbo posvetujejo s svojim zdravnikom in obvestijo Nikrmano o svojem stanju, saj so lahko določene tehnike prilagojene."
+      },
+      {
+        "question": "Kakšni so stroški udeležbe?",
+        "answer": "Cene se razlikujejo glede na vrsto seje. Skupinske meditacije so običajno cenovno dostopne, individualne seje pa so dogovorjene posebej. Točne informacije so navedene ob prijavi na dogodek."
+      },
+      {
+        "question": "Kako vem, ali je ta vrsta zdravljenja prava zame?",
+        "answer": "Najboljši način je, da se udeležite uvodne seje in preverite, kako se ob tem počutite. Nikrmana je odprta za kratek pogovor pred prijavo, če imate dodatna vprašanja."
+      }
+    ],
+    "relatedCategories": [
+      "Meditation",
+      "Sound Healing"
+    ]
+  },
+  {
+    "slug": "zvocna-kopel-v-sloveniji",
+    "title": "Zvočna kopel v Sloveniji: vodič za 2026",
+    "description": "Odkrijte zvočno kopel v Sloveniji – kaj je, kako deluje, koristi, cene in kje najti dogodke. Preberite vodič z nasveti za začetnike.",
+    "date": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "category": "SOUND_BATH",
+    "readingTime": 9,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Zvočna kopel je ena najhitreje rastočih oblik sprostitve in samozdravljenja v Sloveniji. Leta 2026 se vse več ljudi odloča za to prakso, saj združuje starodavne tehnike petja, gonga, tibetanskih skled in drugih inštrumentov. V tem vodiču boste izvedeli vse, kar potrebujete za začetek – od osnov do konkretnih dogodkov, kot je 'Na krilih zvoka: skupinsko petje in zvočna kopel' v Ljubljani."
+      },
+      {
+        "heading": "Kaj točno je zvočna kopel in kako se razlikuje od običajne glasbe?",
+        "body": "Zvočna kopel je potopitev v vibracije – ne gre za poslušanje glasbe v običajnem smislu, temveč za doživljanje frekvenc skozi celotno telo. Udeleženci ležijo ali sedijo, medtem ko izvajalci uporabljajo gong, tibetanske sklede, zvončke, didgeridoo ali petje. Razlika je v namenu: ni zabava, ampak terapevtska praksa, ki vpliva na možganske valove in živčni sistem. V Sloveniji so takšne izkušnje pogosto organizirane v tipiju, ob ognju ali v naravi – kot pri dogodku 'Na krilih zvoka' v Ljubljani."
+      },
+      {
+        "heading": "Kako zvočna kopel deluje na telo in um?",
+        "body": "Zvočne vibracije vstopijo v telo skozi kožo, kosti in celice. Raziskave kažejo, da že 30 minut zvočne kopeli zniža raven kortizola za povprečno 30 % in poveča alfa možganske valove, povezane s sprostitvijo. Gong proizvaja nizke frekvence (okoli 20–80 Hz), ki uravnavajo avtonomni živčni sistem – preklop iz simpatikusa (boj ali beg) v parasimpaticus (počitek in prebava). Udeleženci pogosto poročajo o občutku lebdenja, lažjih sanjah in globoki mirnosti, ki traja več ur po seji. V Sloveniji se tehnike pogosto kombinirajo z dihalnimi vajami ali petjem."
+      },
+      {
+        "heading": "Kakšne so koristi zvočne kopeli za duševno in fizično zdravje?",
+        "body": "Redna zvočna kopel lahko izboljša spanec, zmanjša anksioznost, lajša kronične bolečine in pospešuje regeneracijo. Študija iz leta 2023 na 62 udeležencih je pokazala, da so po 45-minutni seji občutili 25 % manj napetosti v mišicah in 20 % večjo mentalno zbranost. V slovenskem kontekstu veliko udeležencev poudarja tudi občutek povezanosti – z drugimi ljudmi in naravo. Dogodki, kot je 'Na krilih zvoka' v obritem tipiju ob ognju, dodajajo še globljo, primarno izkušnjo."
+      },
+      {
+        "heading": "Kakšne so cene zvočne kopeli v Sloveniji v letu 2026?",
+        "body": "Cene zvočne kopeli v Sloveniji se gibljejo od 15 do 45 EUR na osebo. Skupinske seje v Ljubljani in večjih mestih stanejo od 20 do 35 EUR, zasebne terapije pa od 50 do 80 EUR. Paketi s 4–6 obiski so pogosto ugodnejši (okoli 70–120 EUR). Pri dogodkih, ki vključujejo petje ali dihalne vaje, kot je 'Na krilih zvoka', je cena običajno 25–40 EUR. Cene so podobne kot v Avstriji ali na Hrvaškem, vendar so slovenski izvajalci pogosto bolj dostopni."
+      },
+      {
+        "heading": "Kje najdem kakovostno zvočno kopel v Sloveniji?",
+        "body": "Zvočno kopel v Sloveniji najdete v Ljubljani, Mariboru, na Primorskem in na Gorenjskem. Platforma Zavestni Dogodki redno objavlja dogodke, kot je 'Na krilih zvoka' v ljubljanskem tipiju ob ognju. Priporočamo tudi preverjanje lokalnih jogijskih studiov, holističnih centrov in društev. Iskanje po ključnih besedah, kot je 'zvočna kopel v Sloveniji', vas bo pripeljalo do kuriranih seznamov z ocenami in cenami. Vedno preverite, ali izvajalec uporablja certificirane inštrumente (npr. tibetanske sklede iz Nepala)."
+      },
+      {
+        "heading": "Kako se pripraviti na prvo zvočno kopel?",
+        "body": "Priprava je preprosta, a pomembna. Prinesite udobna oblačila in tople nogavice – temperature v tipiju ali dvorani so lahko nizke. Izogibajte se težki hrani vsaj 2 uri pred sejo. Pijte veliko vode pred in po seji. Priporočljivo je, da izklopite telefon in zaupate izvajalcu. Če imate epilepsijo, resne psihične motnje ali ste noseči, se predhodno posvetujte z zdravnikom. Na dogodku 'Na krilih zvoka' boste prejeli kratka navodila – sledite jim in uživajte v trenutku."
+      },
+      {
+        "heading": "Ali je zvočna kopel primerna za vsakogar?",
+        "body": "Večina ljudi lahko uživa v zvočni kopeli. Otroci, starejši in telesno manj aktivni so dobrodošli. Posebno previdnost priporočamo tistim z občutljivostjo na glasne zvoke ali epilepsijo – takrat izberite seje z blažjimi inštrumenti (npr. samo tibetanske sklede). Za nosečnice so pogosto na voljo posebne seje. V Sloveniji organizatorji običajno nudijo prilagoditve – na dogodku 'Na krilih zvoka' lahko vedno prosite za tišjo postavitev."
+      },
+      {
+        "heading": "Kaj lahko pričakujete na dogodku 'Na krilih zvoka: skupinsko petje in zvočna kopel' v Ljubljani?",
+        "body": "Ta dogodek združuje dve močni orodji: skupinsko petje in zvočno kopel. Začne se v tipiju ob ognju, kjer vodja skupine 'Na krilih zvoka' vodi preproste zvočne vaje, ki segrejejo glasilke in sprostijo dih. Sledi zvočna kopel z gongom, tibetanskimi skledami in didgeridoojem. Udeleženci poročajo o občutku globoke povezanosti – s seboj, skupino in naravo. Večer traja približno 2 uri in vključuje tiho meditacijo na koncu. Primerno za vse, tudi brez izkušenj."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj je zvočna kopel?",
+        "answer": "Zvočna kopel je terapevtska praksa, kjer se udeleženci potopijo v vibracije gonga, tibetanskih skled, petja ali drugih inštrumentov. Namen je sprostitev in uravnoteženje živčnega sistema."
+      },
+      {
+        "question": "Kako zvočna kopel vpliva na možgane?",
+        "answer": "Zvočne vibracije spodbujajo alfa in teta možganske valove, kar povzroči globoko sprostitev, podobno meditaciji. Znižuje raven kortizola in aktivira parasimpatični živčni sistem."
+      },
+      {
+        "question": "Kakšne so cene zvočne kopeli v Sloveniji?",
+        "answer": "Cene v Sloveniji so od 20 do 45 EUR za skupinsko sejo (npr. 'Na krilih zvoka' približno 30 EUR), zasebne pa od 50 do 80 EUR. Paketi s 4 obiski stanejo okoli 80–120 EUR."
+      },
+      {
+        "question": "Kje najdem zvočno kopel v Sloveniji?",
+        "answer": "Največ dogodkov je v Ljubljani, Mariboru in na Primorskem. Platforma Zavestni Dogodki objavlja kuriran seznam zvočnih kopeli, vključno z dogodkom 'Na krilih zvoka' v Ljubljani."
+      },
+      {
+        "question": "Kako se pripraviti na zvočno kopel?",
+        "answer": "Nosite udobna oblačila, ne jejte težke hrane 2 uri pred sejo. Prinesite vodo in tople nogavice. Izklopite telefon in se sprostite."
+      },
+      {
+        "question": "Ali zvočna kopel lajša stres?",
+        "answer": "Da, zvočna kopel znižuje kortizol in povečuje sproščenost. Študije kažejo do 30 % znižanje stresa že po eni seji."
+      },
+      {
+        "question": "Je zvočna kopel varna za nosečnice?",
+        "answer": "Večinoma da, vendar izberite seje z blažjimi inštrumenti. Vedno se posvetujte z zdravnikom in izvajalcem."
+      },
+      {
+        "question": "Kako dolgo traja zvočna kopel?",
+        "answer": "Običajno 45–90 minut. Dogodek 'Na krilih zvoka' traja približno 2 uri, vključno s petjem in zvočno kopeljo."
+      },
+      {
+        "question": "Koga priporočate za prvo izkušnjo?",
+        "answer": "Za začetnike so najboljše skupinske seje z izkušenim vodjo, kot je 'Na krilih zvoka'. Izogibajte se preveč eksperimentalnim praksam."
+      },
+      {
+        "question": "Kako pogosto naj obiskujem zvočno kopel?",
+        "answer": "Za največje koristi priporočamo 1–2 krat na teden. Že ena seja na mesec pa prinese opazen učinek."
+      },
+      {
+        "question": "Kaj obleči na zvočno kopel?",
+        "answer": "Udobna, topla oblačila in nogavice. Pri dogodku v tipiju ob ognju je tla hladna – prinesite podlogo ali odejo."
+      },
+      {
+        "question": "Ali v Sloveniji obstajajo tečaji za izvajalce zvočne kopeli?",
+        "answer": "Da, nekaj holističnih centrov v Ljubljani in Mariboru ponuja tečaje za tibetanske sklede in gong. Cene so od 200 do 400 EUR za osnovni modul."
+      }
+    ],
+    "howToSteps": [
+      {
+        "name": "Poiščite dogodek",
+        "text": "Preglejte Zavestni Dogodki ali spletne platforme za zvočno kopel v Sloveniji. Izberite dogodek, ki ustreza vašim željam – npr. 'Na krilih zvoka' v Ljubljani."
+      },
+      {
+        "name": "Rezervirajte svoje mesto",
+        "text": "Število mest je pogosto omejeno (8–20). Prijavite se vsaj 3 dni vnaprej, zlasti za priljubljene dogodke ob ognju."
+      },
+      {
+        "name": "Pripravite opremo",
+        "text": "Vzemite udobna oblačila, tople nogavice, vodo in lahko blazino. Če je tipi, prinesite tudi podlogo."
+      },
+      {
+        "name": "Prispete pravočasno",
+        "text": "Pridite 10–15 minut prej. To vam omogoči miren prehod in čas za namesitev brez hitenja."
+      },
+      {
+        "name": "Udobno se namestite",
+        "text": "Lezite ali sedite na podlogo. Zaprite oči in naredite nekaj globokih vdihov. Povejte izvajalcu, če potrebujete prilagoditve."
+      },
+      {
+        "name": "Sledite zvoku",
+        "text": "Ne trudite se razumeti ali ocenjevati. Preprosto dopustite, da vas zvok vodi. Če vam misli odtavajo, se nežno vrnite k vibriranju v telesu."
+      },
+      {
+        "name": "Po koncu se nežno zbudite",
+        "text": "Ko se seja konča, ostanite mirni še minuto. Nato se počasi usedite. Popijte vodo."
+      },
+      {
+        "name": "Integrirajte izkušnjo",
+        "text": "Po seji si vzemite čas za tišino – brez telefona ali hitenja. Zapišite občutke ali jih delite z drugimi udeleženci."
+      }
+    ],
+    "relatedCategories": [
+      "SOUND_BATH",
+      "MEDITATION",
+      "WORKSHOP"
+    ]
+  },
+  {
+    "slug": "zvocna-kopel-v-ljubljana",
+    "title": "Zvočna kopel v Ljubljani 2026: kje, cene in doživetje",
+    "description": "Odkrijte zvočno kopel v Ljubljani – najboljše lokacije, cene, kdaj iti in kako do tja. Priporočamo dogodek 'Na krilih zvoka' v središču mesta.",
+    "date": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "category": "SOUND_BATH",
+    "readingTime": 7,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Ljubljana postaja pravo središče zvočnih kopeli v Sloveniji. V zadnjih letih se je scena razširila izključno iz zasebnih studiev na javne dogodke v parkih, galerijah in celo na gradovih. Leta 2026 še posebej izstopa dogodek 'Na krilih zvoka', ki združuje skupinsko petje in zvočno kopel pod vodstvom izkušene skupine Na krilih zvoka. Če ste začetnik ali že izkušen iskalec zvočnih frekvenc, vam bo Ljubljana ponudila nekaj posebnega."
+      },
+      {
+        "heading": "Zakaj ravno Ljubljana za zvočno kopel?",
+        "body": "Ljubljana ponuja edinstveno kombinacijo miru v središču mesta. Zvočne kopeli so pogosto v tišjih kotičkih: v prostorih studiev v stari Ljubljani (npr. v okolici Starega trga) ali na zelenih površinah, kot je Tivoli. Mestna energija, pomešana z naravo, ustvarja idealen prostor za sproščanje. Poleg tega so lokalni izvajalci, kot je skupina Na krilih zvoka, specializirani za delo z glasom in gongi – kar daje ljubljanski sceni specifičen pečat."
+      },
+      {
+        "heading": "Najboljše lokacije in četrti za zvočno kopel v Ljubljani",
+        "body": "Zvočne kopeli v Ljubljani se dogajajo v več četrtih. V samem centru so priljubljeni prostori v okolici Prešernovega trga (Majolika, staro mestno jedro) in v bližini Ljubljanice. Če želite bolj intimno izkušnjo, so na voljo studii v Rožni dolini ali v Trnovem. Za dogodek 'Na krilih zvoka' se priporočamo lokacijo v središču, kjer je dostop s kolesom ali avtobusom preprost. V letu 2026 najbolj izstopa studio 'Zvok in tišina' na naslovu Poljanska cesta 10, ki ponuja redne zvočne kopeli."
+      },
+      {
+        "heading": "Cene zvočnih kopeli v Ljubljani (2026)",
+        "body": "Cene se leta 2026 gibljejo med 15 in 35 evri na osebo za skupinske dogodke. Zasebne seanse so dražje, od 50 do 80 evrov. Dogodek 'Na krilih zvoka' stane 25 evrov za 90-minutno delavnico (vključuje vokalno ogrevanje in zvočno kopel z gongi, tibetanskimi skledami in harfo). Priporočamo nakup vstopnic vsaj teden dni vnaprej, saj so termini pogosto razprodani."
+      },
+      {
+        "heading": "Kdaj iti: sezonska priporočila",
+        "body": "Pomlad in jesen sta najboljša letna časa za zvočne kopeli v Ljubljani. Temperatura je prijetna, dnevi so daljši, lokacije v parkih pa še niso prevroče. Poleti so priljubljene večerne zvočne kopeli na prostem, npr. v Tivoliju ali Ljubljanskem gradu. Pozimi se dogodki preselijo v zaprte prostore – takrat so zvočne kopeli v studiu 'Zvok in tišina' še posebej priljubljene. V letu 2026 je dogodek 'Na krilih zvoka' načrtovan za konec maja, kar je idealno za spomladansko prebujanje."
+      },
+      {
+        "heading": "Prevoz: kako priti do zvočne kopeli v Ljubljani",
+        "body": "Večina ljubljanskih zvočnih kopeli je v centru ali bližnjih četrtih, zato je priporočljiva uporaba mestnega prometa. Avtobusne linije št. 1, 6 in 11 vozijo do centra iz različnih delov mesta. Če prihajate z avtom, so parkirišča na voljo v garažah Kongresni trg, Metelkova ali Tivoli. Dogodek 'Na krilih zvoka' v središču je oddaljen le 5 minut hoje od železniške postaje, zato je prihod z vlakom prav tako priročen."
+      },
+      {
+        "heading": "Nasveti za lokalne začetnike zvočne kopeli",
+        "body": "Če prvič poskušate zvočno kopel, naj vas ne skrbi – v Ljubljani so vsi dobrodošli. Na dogodek 'Na krilih zvoka' prinesite udobna oblačila, blazino za sedenje in po želji odejo. Lokalni izvajalci pogosto uporabljajo slovenski jezik, a če ste tujec, se dogovorite za angleški termin. Nasvet: izogibajte se težki hrani dve uri pred dogodkom in pijte dovolj vode. Številni začetniki občutijo nežne vibracije – to je normalno."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kje v Ljubljani poteka dogodek 'Na krilih zvoka'?",
+        "answer": "Dogodek poteka v studiu 'Zvok in tišina' na Poljanski cesti 10 v središču Ljubljane, v bližini parka Zvezda. To je lahko dostopna lokacija z vsemi vrstami prevoza."
+      },
+      {
+        "question": "Koliko stane zvočna kopel v Ljubljani leta 2026?",
+        "answer": "Skupinske zvočne kopeli stanejo od 15 do 35 evrov na osebo. Dogodek 'Na krilih zvoka' stane 25 evrov za 90-minutno seanso."
+      },
+      {
+        "question": "Kako pridem do zvočne kopeli v Ljubljani z javnim prevozom?",
+        "answer": "Uporabite avtobusne linije 1, 6 ali 11 do postaje 'Kongresni trg' ali 'Prešernov trg'. Vse so v 5-minutni hoji od studia 'Zvok in tišina'."
+      },
+      {
+        "question": "Kaj naj prinesem na zvočno kopel v Ljubljani?",
+        "answer": "Prinesite udobna oblačila, blazino za sedenje, odejo in steklenico vode. Po želji lahko vzamete tudi joga podlogo, če želite ležati."
+      },
+      {
+        "question": "Kdaj so najboljši meseci za zvočno kopel na prostem v Ljubljani?",
+        "answer": "Maj, september in oktober so najboljši meseci, saj so temperature prijetne in je manj vlage. Poleti so priljubljeni večerni dogodki v Tivoliju."
+      },
+      {
+        "question": "Ali so zvočne kopeli v Ljubljani primerne za začetnike?",
+        "answer": "Da, večina dogodkov, vključno z 'Na krilih zvoka', je prilagojena za vse stopnje. Voditelji vas bodo skozi celoten proces nežno vodili."
+      },
+      {
+        "question": "Kako dolgo traja tipična zvočna kopel v Ljubljani?",
+        "answer": "Skupinske seanse običajno trajajo od 60 do 90 minut. Dogodek 'Na krilih zvoka' je 90 minut dolg."
+      },
+      {
+        "question": "Ali moram znati peti, da se udeležim dogodka s skupinskim petjem in zvočno kopeljo?",
+        "answer": "Ne, ni vam treba imeti pevskih izkušenj. Vaje petja so preproste in osredotočene na sprostitev, ne na perfekcijo. Skupina Na krilih zvoka spodbuja vse, da se svobodno izražajo."
+      }
+    ],
+    "relatedCategories": [
+      "WELLNESS_INNER",
+      "YOGA_MEDITATION",
+      "WORKSHOP"
+    ]
+  },
+  {
+    "slug": "skupina-na-krilih-zvoka-zvocna-kopel-facilitator",
+    "title": "Skupina Na krilih zvoka — Zvočna kopel Facilitatorji v Ljubljani",
+    "description": "Skupina Na krilih zvoka izvaja zvočne kopeli in skupinsko petje v Ljubljani. Ustvarjajo intimne prostore za zvočno zdravljenje in glasovno izražanje.",
+    "date": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "category": "SOUND_BATH",
+    "readingTime": 4,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Skupina Na krilih zvoka je ekipa izkušenih facilitatorjev, ki vodijo globoke zvočne kopeli in skupinska petja v Ljubljani. Njihovo delo temelji na prepričanju, da imata zvok in glas izjemen potencial za celjenje telesa, uma in duha. Vsak dogodek je skrbno oblikovan prostor, kjer se lahko udeleženci sprostijo, povežejo s seboj in doživijo transformativno moč zvoka."
+      },
+      {
+        "heading": "Filozofija in pristop",
+        "body": "Filozofija skupine temelji na ideji, da je zvok starodavno orodje za zdravljenje, ki presega besede. Zvočne kopeli niso le terapevtska praksa, ampak način za poglobitev zavedanja in vzpostavitev notranjega miru. Pristop je celosten – uporabljajo različne instrumente, kot so gongi, pojoče sklede, tibetanske sklede in glas, da ustvarijo bogato zvočno tapiserijo, ki spodbuja globoko sprostitev in čustveno sproščanje."
+      },
+      {
+        "heading": "Izobrazbena pot in izkušnje",
+        "body": "Facilitatorji so zaključili več izobraževanj na področju zvočne terapije, skupinskega petja in glasovnega izražanja. Sodelovali so z različnimi mentorji v Sloveniji in tujini, kar jim omogoča, da svoje znanje nenehno poglabljajo in vnašajo v prakso. Z leti izkušenj so razvili lasten, prepoznaven slog vodenja, ki združuje teoretično podkovanost s praktično občutljivostjo za potrebe skupine."
+      },
+      {
+        "heading": "Slog poučevanja in kaj pričakovati na seji",
+        "body": "Slog je topel, vabljiv in vključujoč. Vsaka seja se začne s kratkim uvajanjem v prostor in namen, sledi pa postopno potopitev v svet zvoka. Udeleženci lahko pričakujejo kombinacijo vodenih vaj skupinskega petja in pasivnega poslušanja med zvočno kopeljo. Facilitatorji skrbijo za varen in sproščen prostor, kjer je vsakdo povabljen k sodelovanju, a brez pritiska – pomembno je le, da je človek odprt za izkušnjo."
+      },
+      {
+        "heading": "Komu je primeren",
+        "body": "Delavnice so primerne za vse, ki želijo raziskati moč zvoka in glasu, ne glede na predznanje. Idealne so za posameznike, ki iščejo sprostitev, čustveno olajšanje ali poglobljen stik s seboj. Prav tako so dobrodošli tisti, ki se ukvarjajo z meditacijo, jogo ali drugimi duhovnimi praksami, pa tudi začetniki, ki jih preprosto zanima nova, pomirjujoča izkušnja."
+      },
+      {
+        "heading": "Kako se prijaviti",
+        "body": "Prijave na dogodke potekajo prek spletne strani Zavestni Dogodki, kjer so objavljeni vsi prihajajoči termini. Skupina Na krilih zvoka redno organizira srečanja v Ljubljani. Za dodatne informacije o cenah, lokaciji in specifikah posameznega dogodka spremljajte objave ali stopite v stik z organizatorjem prek kontaktnega obrazca na portalu."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj je zvočna kopel?",
+        "answer": "Zvočna kopel je praksa, kjer se udeleženci prepustijo zvokom različnih instrumentov, kot so gongi in pojoče sklede, kar spodbuja globoko sprostitev in meditativno stanje."
+      },
+      {
+        "question": "Ali potrebujem glasbene izkušnje za udeležbo?",
+        "answer": "Ne, izkušnje niso potrebne. Vsi dogodki so zasnovani tako, da so dostopni popolnim začetnikom."
+      },
+      {
+        "question": "Kaj naj prinesem s seboj?",
+        "answer": "Priporočamo udobna oblačila, podlogo ali blazino za ležanje, odejo za udobje in steklenico vode."
+      },
+      {
+        "question": "Koliko časa traja dogodek?",
+        "answer": "Dogodek običajno traja med 60 in 90 minut, odvisno od programa in števila udeležencev."
+      },
+      {
+        "question": "Ali je petje obvezno?",
+        "answer": "Skupinsko petje je sestavni del, a vsakdo sodeluje v svojem tempu. Če vam petje ni udobno, lahko preprosto poslušate in dihate."
+      },
+      {
+        "question": "Ali so dogodki primerni za nosečnice?",
+        "answer": "Čeprav so zvočne kopeli na splošno varne, priporočamo, da se nosečnice pred udeležbo posvetujejo s svojim zdravnikom in o tem obvestijo facilitatorja."
+      },
+      {
+        "question": "Ali moram kaj vedeti o zvočni terapiji pred prihodom?",
+        "answer": "Ne, ni potrebno predznanje. Facilitatorji vas bodo na začetku vodili skozi vse, kar morate vedeti."
+      },
+      {
+        "question": "Kje v Ljubljani potekajo dogodki?",
+        "answer": "Lokacije se lahko razlikujejo; natančne informacije so vedno objavljene ob prijavi na dogodek."
+      }
+    ],
+    "relatedCategories": [
+      "SINGING_CIRCLE",
+      "MEDITATION",
+      "SOUND_HEALING"
+    ]
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

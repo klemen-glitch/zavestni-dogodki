@@ -127,7 +127,7 @@ export async function runPipeline(
           titleSl: event.titleSl,
           titleEn: event.titleEn,
           descriptionSl: event.descriptionSl,
-          descriptionEn: event.descriptionEn,
+          descriptionEn: event.descriptionEn ?? event.shortDescEn ?? event.titleEn,
           shortDescEn: event.shortDescEn,
           date: event.date ? new Date(event.date) : new Date(),
           endDate: event.endDate ? new Date(event.endDate) : null,
@@ -160,7 +160,7 @@ export async function runPipeline(
           location: event.location,
           venueName: event.venueName,
           organizerName: event.organizerName,
-          descriptionEn: event.descriptionEn,
+          descriptionEn: event.descriptionEn ?? event.shortDescEn ?? event.titleEn,
         });
       }
     } catch (err) {
