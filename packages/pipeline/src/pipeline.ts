@@ -9,6 +9,7 @@ import { notifyNewEvents } from "./notify";
 import { postEventToFBGroup } from "@conscious-slovenia/publisher";
 import { triggerBlogContentGeneration } from "./content-trigger";
 import type { ContentTriggerEvent } from "./content-trigger";
+import { sendSubscriberAlerts } from "./subscriber-alerts";
 
 export interface PipelineRunOptions {
   autoApproveAbove?: number;   // confidence threshold for auto-approval (default 0.82)
@@ -179,7 +180,15 @@ export async function runPipeline(
     );
   }
 
-  // ── Step 6: Notify ────────────────────────────────────────────────────────
+  // ── Step 6: Instant subscriber alerts for matching preferences ──────────
+  if (!dryRun && newEventIds.length > 0) {
+    console.log(`\n📬 Sending instant alerts to matching subscribers...`);
+    await sendSubscriberAlerts(newEventIds).catch((e) =>
+      errors.push(`Subscriber alert error: ${e}`)
+    );
+  }
+
+  // ── Step 7: Notify (Slack/Telegram) ───────────────────────────────────────
   if (!dryRun && newEventIds.length > 0) {
     await notifyNewEvents(newEventIds).catch((e) =>
       errors.push(`Notify error: ${e}`)
