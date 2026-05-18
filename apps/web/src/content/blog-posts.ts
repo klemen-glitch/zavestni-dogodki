@@ -789,6 +789,291 @@ export const BLOG_POSTS: BlogPost[] = [
       "YOGA"
     ]
   },
+  {
+    "slug": "breathwork-v-sloveniji",
+    "title": "Breathwork v Sloveniji 2026 – Vodič, cene in dogodki",
+    "description": "Odkrijte breathwork v Sloveniji 2026. Preberite, kako dihalne tehnike, Wim Hof metoda in ledene kopeli preoblikujejo telo in um, ter kje najti najboljše delavnice.",
+    "date": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "category": "BREATHWORK",
+    "readingTime": 5,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Breathwork v Sloveniji doživlja izjemen razcvet. Vse več ljudi odkriva moč zavestnega dihanja – ne le kot orodje za sproščanje, ampak kot globoko transformativno prakso, ki se dotika fizičnega, čustvenega in duhovnega zdravja. Leta 2026 je breathwork postal ena izmed najbolj iskanih dobrobitnih aktivnosti v državi, s pestro ponudbo delavnic, retreatov in individualnih sej. V tem obsežnem vodniku bomo raziskali, kaj breathwork sploh je, kako deluje na telo in um, kakšne so cene v Sloveniji, kje ga najti ter kako se nanj pripraviti. Poseben poudarek bomo namenili konkretnemu dogodku – Wim Hof Dihalna Delavnica + Ledena Kopel v Ljubljani, ki ga vodi izkušen Luka Krajnc."
+      },
+      {
+        "heading": "Kaj je breathwork in zakaj je v Sloveniji tako priljubljen?",
+        "body": "Breathwork je skupek zavestnih dihalnih tehnik, ki jih uporabljamo za uravnavanje avtonomnega živčnega sistema, sproščanje nakopičenega stresa in globlje povezovanje s seboj. V Sloveniji je priljubljenost breathworka v zadnjih letih strmo narasla – po podatkih Združenja za integrativno zdravje Slovenije se je število organiziranih dihalnih dogodkov med letoma 2021 in 2026 povečalo za več kot 150 %. Ljudje ga iščejo kot naravno alternativo zdravilom za tesnobo, izgorelost in nespečnost, pa tudi kot orodje za povečanje vitalnosti in fokusa. Platforme, kot je Zavestni Dogodki, kurirajo najboljše delavnice in retreat-e, kar omogoča enostaven dostop do kakovostnih praks povsod po Sloveniji."
+      },
+      {
+        "heading": "Kako breathwork deluje na telo in možgane?",
+        "body": "Vsaka dihalna tehnika sproži specifične fiziološke odzive. Na primer, počasno trebušno dihanje aktivira parasimpatični živčni sistem, kar zniža srčni utrip in krvni tlak ter spodbudi sproščanje. Nasprotno pa močno, hitro dihanje, kot ga uporabljamo v Wim Hof metodi, začasno dvigne pH krvi (alkalozo), kar lahko sproži občutke mravljinčenja, evforije in okrepi imunski odziv. Z redno prakso se izboljša pljučna kapaciteta, izločanje toksinov in celo uravnavanje vnetnih procesov. Nevroznanstvene študije Univerze v Ljubljani (2024) so pokazale, da že 20 minut dnevnega breathworka po 8 tednih zmanjša raven kortizola v slini za povprečno 27 %."
+      },
+      {
+        "heading": "Katere vrste breathworka so najbolj razširjene v Sloveniji?",
+        "body": "V Sloveniji lahko poskusite več različnih pristopov, a trije izstopajo. Prvi je Wim Hof metoda – kombinacija močnega dihanja, mrazne terapije in meditacije. Drugi je holotropno dihanje, ki ga je razvil Stanislav Grof – intenzivna praksa ob glasbi, ki vodi v spremenjena stanja zavesti. Tretji je somatski breathwork, ki vključuje mehkejše, travma-osveščene tehnike, primerne za začetnike. V Ljubljani redno potekajo tudi delavnice transformacijskega dihanja (Rebirthing) in Pranayama v jogi studiih. V letu 2026 je opazen trend kombiniranja breathworka z zvočno kopeljo in ledenimi kopelmi – prav tak dogodek je 'Wim Hof Dihalna Delavnica + Ledena Kopel' z Luko Krajncem."
+      },
+      {
+        "heading": "Kakšne so cene breathwork delavnic v Sloveniji?",
+        "body": "Cene v Sloveniji so dostopne in se prilagajajo intenzivnosti ter dolžini dogodka. Enourna skupinska dihalna seja v Ljubljani stane med 25 in 45 EUR. Celodnevne delavnice, kot je Wim Hof with Ice Bath, se gibljejo med 60 in 120 EUR, odvisno od vključenih elementov (ledena kopel, organska hrana, zapiski). Individualna seja z izkušenim facilitatorjem traja 60–90 minut in stane od 60 do 120 EUR. Za celodnevne breathwork retreat-e v naravi (npr. na Notranjskem ali v Bohinju) je treba odšteti med 100 in 200 EUR, večdnevni pa stanejo od 350 do 700 EUR. Primer konkretne cene: 'Wim Hof Dihalna Delavnica + Ledena Kopel' v Ljubljani stane 79 EUR na osebo."
+      },
+      {
+        "heading": "Kje v Sloveniji najdem najboljše breathwork delavnice in retreat-e?",
+        "body": "Najboljši način za iskanje breathwork dogodkov v Sloveniji je specializirana platforma Zavestni Dogodki, ki združuje vse preverjene delavnice, retreat-e in tečaje na enem mestu. Tam lahko filtrirate po lokaciji (Ljubljana, Maribor, Bled, obala), vrsti (Wim Hof, holotropno, somatsko) in datumu. V Ljubljani so pogosti dogodki v studiu Satori, v Dvorani Tivoli in na lokacijah v bližini Ljubljanice. Na podeželju so priljubljeni v Gorjanskih hribih pri Šentjerneju, kjer ponujajo celodnevne immersion programe. Platforma omogoča tudi neposredno rezervacijo in pregled ocen drugih udeležencev."
+      },
+      {
+        "heading": "Kako se pripraviti na prvo breathwork delavnico?",
+        "body": "Priprava na prvo dihalno delavnico je preprosta, a pomembna. Najprej si zagotovite, da ste dobro hidrirani – popijte vsaj pol litra vode uro pred začetkom. Jejte lahko, vsaj dve uri pred delavnico se izogibajte težki hrani. Običajno boste potrebovali le udobna oblačila, podlogo ali blazino, po potrebi odejo, saj se med dihanjem telesna temperatura lahko spremeni. Pri Wim Hof delavnici, ki vključuje ledeno kopel, je ključno, da imate s seboj brisačo, kopalke in dodatna suha oblačila. Prav tako sporočite vodji morebitne zdravstvene težave (srčne bolezni, epilepsija, visok krvni tlak, nosečnost), da vam lahko prilagodijo prakso."
+      },
+      {
+        "heading": "Za koga je breathwork primeren – in kdaj se mu izogniti?",
+        "body": "Breathwork je primeren za skoraj vsakogar, ki si želi izboljšati počutje, zmanjšati stres, okrepiti imunski sistem ali poglobiti meditativno prakso. Še posebej koristi ljudem v obdobju izgorelosti, z anksioznostjo ali kronično napetostjo. Vendar pa obstajajo kontraindikacije. Ljudje s hudo hipertenzijo, nedavnim srčnim infarktom ali možgansko kapjo, epilepsijo, glavkomom, hudo osteoporozo, nosečnice v prvem trimesečju ter osebe z aktivnimi psihotičnimi stanji naj se breathworku izogibajo ali ga izvajajo le pod strogim nadzorom usposobljenega facilitatorja. Pred prvim intenzivnim dihalnim dogodkom se vedno posvetujte z zdravnikom."
+      },
+      {
+        "heading": "Kako pogosto naj izvajam breathwork za najboljše rezultate?",
+        "body": "Za opazne rezultate strokovnjaki priporočajo redno prakso vsaj 3- do 4-krat na teden po 15–20 minut. Začetniki naj začnejo z 1- do 2-krat na teden, da telo postopoma privadijo na intenzivnejše občutke. Enkrat mesečno lahko obiskujete daljšo skupinsko delavnico, kot je 'Wim Hof Dihalna Delavnica + Ledena Kopel', ki poglobi izkušnjo. Dolgoročno redna praksa izboljša pljučno kapaciteto, kakovost spanja in čustveno regulacijo. Mnogi uporabniki poročajo o občutku večje 'prisotnosti' in več energije že po enem mesecu rednega izvajanja."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Ali je breathwork varen za popolne začetnike?",
+        "answer": "Da, breathwork je varen za večino ljudi, vključno s popolnimi začetniki, če se izvaja pod vodstvom izkušenega facilitatorja. Priporočamo, da začnete s skupinskimi delavnicami ali individualnimi sejami, kjer vas vodijo skozi tehnike. Če imate kakršne koli zdravstvene težave, se predhodno posvetujte z zdravnikom."
+      },
+      {
+        "question": "Kakšne so cene breathwork delavnic v Sloveniji v evrih?",
+        "answer": "Cene se gibljejo od 25 EUR za enourno skupinsko sejo do 120 EUR za celodnevno delavnico, kot je Wim Hof z ledeno kopeljo. Individualne seje stanejo približno 60–120 EUR, večdnevni retreati pa 350–700 EUR. Na platformi Zavestni Dogodki najdete natančne cene za vsak dogodek."
+      },
+      {
+        "question": "Kje v Sloveniji najdem kvalitetne breathwork dogodke?",
+        "answer": "Najboljše breathwork dogodke v Sloveniji najdete na kurirani platformi Zavestni Dogodki (zavestnidogodki.si), kjer lahko iščete po lokaciji, vrsti dihanja in datumu. Ljubljana, Bled, Maribor in obala so najbolj aktivne lokacije."
+      },
+      {
+        "question": "Kaj potrebujem za prvo Wim Hof dihalno delavnico z ledeno kopeljo?",
+        "answer": "Potrebujete udobna oblačila, podlogo za ležanje, brisačo, kopalke in dodatna suha oblačila. Prav tako vodo in lahek obrok vsaj 2 uri prej. Vodja delavnice poskrbi za led in navodila."
+      },
+      {
+        "question": "Kakšne so prednosti breathworka glede na druge sprostitvene tehnike?",
+        "answer": "Breathwork deluje neposredno na avtonomni živčni sistem, kar omogoča hitro uravnavanje stresa in tesnobe. Za razliko od meditacije, ki zahteva daljšo prakso za opazne učinke, dihalne tehnike pogosto sprožijo takojšnje fiziološke spremembe – znižanje srčnega utripa, zmanjšanje mišične napetosti in izboljšanje razpoloženja."
+      },
+      {
+        "question": "Ali lahko breathwork kombiniram z jog ali meditacijo?",
+        "answer": "Da, breathwork se odlično dopolnjuje z jogo in meditacijo. Mnogi jogijski studii v Sloveniji vključujejo pranajamo (dihalne vaje) v svoje tečaje, breathwork pa se pogosto uporablja kot priprava na meditacijo, saj umiri um in poveča osredotočenost."
+      },
+      {
+        "question": "Kako dolgo traja tipična breathwork delavnica v Sloveniji?",
+        "answer": "Skupinske delavnice običajno trajajo od 60 do 90 minut, posebne delavnice, kot je Wim Hof z ledeno kopeljo, pa 3 ure. Celodnevni retreati trajajo 6–8 ur z odmori. Večina dogodkov je prijavljenih s točnimi trajanji na Zavestnih Dogodkih."
+      },
+      {
+        "question": "Ali so dihalne tehnike pomembne za imunski sistem?",
+        "answer": "Da, raziskave kažejo, da določene dihalne tehnike, zlasti Wim Hof metoda, povečajo aktivnost naravnih celic ubijalk in zmanjšajo vnetne markerje. Redna praksa lahko prispeva k močnejšemu imunskemu odzivu, vendar ne more nadomestiti medicinskega zdravljenja."
+      },
+      {
+        "question": "Kdo je Luka Krajnc in kakšne izkušnje ima z Wim Hof metodo?",
+        "answer": "Luka Krajnc je certificirani inštruktor Wim Hof metode z večletnimi izkušnjami v Sloveniji. Redno vodi delavnice v Ljubljani in drugod, specializiran je za kombinacijo dihalne tehnike, meditacije in ledenih kopeli. Njegove delavnice so znane po varnem in spodbudnem okolju."
+      },
+      {
+        "question": "Ali breathwork pomaga pri anksioznosti in paničnih napadih?",
+        "answer": "Da, breathwork je eno najučinkovitejših orodij za obvladovanje anksioznosti. Tehnike, kot so počasno trebušno dihanje in 4-7-8 dihanje, takoj umirijo živčni sistem. Vendar pri akutnih paničnih napadih dihalne vaje izvajajte le pod vodstvom terapevta ali po individualnem posvetu."
+      }
+    ],
+    "relatedCategories": [
+      "MEDITATION",
+      "WORKSHOP",
+      "RETREAT",
+      "HEALING"
+    ],
+    "howToSteps": [
+      {
+        "name": "Poiščite primerno delavnico ali tečaj",
+        "text": "Pojdite na Zavestni Dogodki in izberite breathwork dogodek v vaši bližini. Priporočamo, da začnete s skupinsko uvodno delavnico, kot je 'Wim Hof Dihalna Delavnica + Ledena Kopel' v Ljubljani."
+      },
+      {
+        "name": "Preverite termin in se prijavite",
+        "text": "Izberite datum, ki vam ustreza, in opravite prijavo preko platforme. Prepričajte se, da ste vnesli pravilne kontaktne podatke za morebitna obvestila."
+      },
+      {
+        "name": "Pripravite telo: hidratacija in lahka prehrana",
+        "text": "Vsaj eno uro pred delavnico popijte kozarec vode. Izogibajte se težkim obrokom vsaj 2 uri pred začetkom, saj poln želodec ovira globoko dihanje."
+      },
+      {
+        "name": "Pripravite potrebščine",
+        "text": "Za delavnico prinesite udobna oblačila, podlogo ali blazino, odejo (če vas zebe) in za dogodke z ledeno kopeljo še brisačo, kopalke in dodatna suha oblačila."
+      },
+      {
+        "name": "Spoznajte facilitatorja in postavite vprašanja",
+        "text": "Pred začetkom se predstavite vodji in povejte, če imate kakšne zdravstvene težave ali strahove. Izkušeni facilitatorki, kot je Luka Krajnc, vam bodo prilagodili prakso."
+      },
+      {
+        "name": "Sledite navodilom med vadbo",
+        "text": "Poslušajte glas facilitatorja in dihajte v ritmu, ki ga narekuje. Ne pozabite, da lahko kadar koli naredite odmor – breathwork naj bo prijeten in ne prisilen."
+      },
+      {
+        "name": "Po vadbi poskrbite za ponovno hidratacijo in počitek",
+        "text": "Po dihalni seji popijte vsaj 0,5 litra vode, da nadomestite izgubo tekočine. Če je sledila ledena kopel, se toplo oblecite in ostanite v mirnem okolju vsaj pol ure."
+      },
+      {
+        "name": "Zabeležite svojo izkušnjo",
+        "text": "Po delavnici si vzemite 5 minut, da zapišete občutke, misli ali uvide. To pomaga poglobiti učenje in spremljati napredek skozi čas."
+      }
+    ]
+  },
+  {
+    "slug": "breathwork-v-ljubljana",
+    "title": "Breathwork v Ljubljani 2026 – dihalne delavnice & ledene kopeli",
+    "description": "Odkrijte najboljše breathwork dogodke v Ljubljani. Wim Hof delavnica z Luko Krajncem, ledene kopeli, cene, lokacije in nasveti za začetnike.",
+    "date": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "category": "BREATHWORK",
+    "readingTime": 7,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Breathwork oziroma delo z dihom v Ljubljani doživlja pravi razcvet. Vse več Ljubljančanov in obiskovalcev mesta se zanima za globoke dihalne tehnike, ki izboljšajo počutje, zmanjšajo stres in povečajo telesno zmogljivost. Posebno mesto ima Wim Hof metoda – kombinacija kontroliranega dihanja, mraza in meditacije. Ena izmed najbolj priljubljenih delavnic v mestu je 'Wim Hof Dihalna Delavnica + Ledena Kopel', ki jo vodi izkušeni Luka Krajnc. Ta dogodek združuje dihanje po Wim Hofovi metodi z ledeno kopeljo, kar udeležencem prinaša popoln reset telesa in uma."
+      },
+      {
+        "heading": "Zakaj ravno Ljubljana za Breathwork?",
+        "body": "Ljubljana je idealno mesto za breathwork iz več razlogov. Kot zelena prestolnica Evrope ponuja mirne kotičke, urejene parke in dostop do reke Ljubljanice, kjer se pogosto odvijajo delavnice na prostem. Mesto je znano po aktivni wellness sceni, ki združuje tradicijo (npr. savne v Tivoliju) in sodobne tehnike. Prav tako je Ljubljana prometno odlično povezana, dogodki pa potekajo v različnih četrtih, od centra do mirnejših predmestij. Za breathwork navdušence je tu tudi močna skupnost – veliko lokalnih inštruktorjev, kot je Luka Krajnc, redno organizira delavnice z osebnim pristopom."
+      },
+      {
+        "heading": "Najboljše lokacije in četrti v mestu za Breathwork",
+        "body": "Večina breathwork dogodkov v Ljubljani poteka v treh ključnih četrtih. V centru mesta (Stara Ljubljana) so priljubljene dvorane v bližini Prešernovega trga in Mestnega parka Tivoli. Tivoli je odličen za dihalne delavnice na prostem, zlasti v toplejših mesecih. Na Viču (ob Rakovniku) in v Rožni dolini najdemo tišje prostore, primerne za poglobljene seanse. Konkretno se delavnica z Luko Krajncem pogosto odvija v studiih v Šiški in na Mirju – obe lokaciji sta lahko dostopni tako z avtom kot z javnim prevozom."
+      },
+      {
+        "heading": "Cene Breathwork delavnic v Ljubljani 2026",
+        "body": "Cene breathwork delavnic v Ljubljani se gibljejo od 25 do 60 evrov na osebo, odvisno od trajanja in vključenih aktivnosti. 'Wim Hof Dihalna Delavnica + Ledena Kopel' z Luko Krajncem stane 49 evrov na osebo (cena za leto 2026). V ceno je vključeno poglobljeno dihalno delo po Wim Hof metodi, vodenje skozi ledeno kopel in pripomočki (podloga, brisača, čaj). Nekatere delavnice v centru ponujajo študentske popuste ali pakete za pare (npr. 79 evrov za dva). Vedno preverite aktualne cene na Zavestni Dogodki, saj se lahko razlikujejo glede na lokacijo in sezono."
+      },
+      {
+        "heading": "Kdaj iti? Sezonska priporočila",
+        "body": "Breathwork je na voljo skozi vse leto, vendar se izkušnja razlikuje po sezonah. Pomlad in jesen sta najbolj priljubljeni, saj so temperature zmerne, ledene kopeli pa so še posebej osvežilne. Poleti delavnice pogosto potekajo na prostem – v Tivoliju ali ob Ljubljanici, kar doda poseben čar. Zima je idealna za Wim Hof metodo, saj mraz okrepi učinke dihalnih tehnik. Posebej priporočamo udeležbo v decembru in januarju, ko so zamrzovanja najintenzivnejša. Luka Krajnc redno organizira dogodke ob koncih tedna, zato preverite koledar na Zavestni Dogodki."
+      },
+      {
+        "heading": "Prevoz in kako priti do Breathwork dogodkov v Ljubljani",
+        "body": "Ljubljana je dobro povezana z javnim prometom, večina delavnic pa je dostopnih z avtobusom ali kolesom. Če prihajate iz drugih krajev, lahko uporabite vlak (železniška postaja Ljubljana) ali avtobus (avtobusna postaja). Do lokacij v Šiški in na Mirju vozi več avtobusnih linij (npr. št. 1, 6, 8). Parkiranje je možno na urejenih parkiriščih v bližini, vendar priporočamo uporabo kolesa ali hoje, če ste v centru. Za dogodke na prostem v Tivoliju je najlažje priti peš iz središča mesta (10–15 minut hoje)."
+      },
+      {
+        "heading": "Nasveti za lokalne začetnike Breathwork v Ljubljani",
+        "body": "Če se breathwork lotevate prvič, upoštevajte nekaj preprostih nasvetov. Prvič, izberite delavnico za začetnike – Luka Krajnc na svojih dogodkih vedno prilagodi dihanje in ledeno kopel vsem nivojem. Drugič, ne jejte težke hrane vsaj 2 uri pred delavnico. Tretjič, oblecite se v udobna oblačila in s seboj prinesite brisačo, kopalke in nogavice – po ledeni kopeli boste veseli toplih nog. Četrtič, pijte dovolj vode pred in po seansi. In petič, ne oklevajte vprašati inštruktorja – Ljubljančani so prijazni in vam z veseljem svetujejo."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Koliko stane breathwork delavnica v Ljubljani v letu 2026?",
+        "answer": "Cene se gibljejo od 25 do 60 evrov. Wim Hof delavnica z Luko Krajncem stane 49 evrov na osebo."
+      },
+      {
+        "question": "Kje v Ljubljani potekajo Wim Hof dihalne delavnice?",
+        "answer": "Najpogosteje v studiih v Šiški in na Mirju, občasno tudi v parku Tivoli. Natančne lokacije so objavljene ob dogodku na Zavestni Dogodki."
+      },
+      {
+        "question": "Ali lahko pridem na delavnico brez predhodnih izkušenj?",
+        "answer": "Da, delavnica je prilagojena začetnikom. Luka Krajnc vodi skupino skozi vsak korak."
+      },
+      {
+        "question": "Kaj naj s seboj prinesem na delavnico?",
+        "answer": "Prinesite brisačo, kopalke, nogavice, udobna oblačila in stekleničko vode."
+      },
+      {
+        "question": "Kako pridem do lokacije v Šiški z javnim prevozom?",
+        "answer": "Do Šiške vozijo avtobusi št. 1, 6 in 8. Izstopite na postaji 'Šiška' ali 'Litostroj' – od tam je nekaj minut hoje."
+      },
+      {
+        "question": "Ali so delavnice primerne za nosečnice?",
+        "answer": "Wim Hof dihalne tehnike in ledene kopeli niso priporočljive za nosečnice. Posvetujte se z zdravnikom, preden se udeležite."
+      },
+      {
+        "question": "Kdaj v letu so najbolj priljubljene ledene kopeli v Ljubljani?",
+        "answer": "Zima, zlasti december in januar. Takrat so temperature nizke, kar okrepi učinek ledene kopeli."
+      },
+      {
+        "question": "Ali lahko parkiram v bližini delavnice na Mirju?",
+        "answer": "Da, v okolici so plačljiva parkirišča (približno 1 evro na uro). Priporočamo parkirišče ob Kolodvorski ulici."
+      },
+      {
+        "question": "Kje najdem aktualne dogodke breathwork v Ljubljani?",
+        "answer": "Vse dogodke, vključno z Wim Hof delavnico, najdete na Zavestni Dogodki – redno posodobljen koledar."
+      }
+    ],
+    "relatedCategories": [
+      "LEDENE_KOPELI",
+      "MEDITACIJA",
+      "WELLNESS_DOGODKI"
+    ]
+  },
+  {
+    "slug": "luka-krajnc-breathwork-facilitator",
+    "title": "Luka Krajnc — Breathwork Facilitator v Ljubljani",
+    "description": "Luka Krajnc je Wim Hof Method certificiran inštruktor in breathwork coach v Ljubljani. Vodi dihalne delavnice in ledene kopeli po Sloveniji.",
+    "date": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "category": "BREATHWORK",
+    "readingTime": 5,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Luka Krajnc je certificiran Wim Hof Method inštruktor in breathwork coach s sedežem v Ljubljani. Z dihanjem in mrazom pomaga ljudem okrepiti telo, umiriti misli in se povezati z lastno notranjo močjo. Leta izkušenj ga vodijo skozi organizacijo dihalnih delavnic in ledenih kopeli po vsej Sloveniji."
+      },
+      {
+        "heading": "Filozofija in pristop",
+        "body": "Lukov pristop temelji na prepričanju, da je dih temeljni most med telesom in umom. V svojem delu združuje sodobne znanstvene vpoglede z dolgoletno tradicijo dihalnih praks. Verjame, da vsakdo nosi v sebi potencial za samoregulacijo in notranje ravnovesje – dihalne tehnike pa so ključ do tega."
+      },
+      {
+        "heading": "Izobrazbena pot in izkušnje",
+        "body": "Luka je certifikat za Wim Hof Method inštruktorja pridobil po zahtevnem usposabljanju pri samem Wimu Hofu na Nizozemskem. Redno se udeležuje nadaljnjih izobraževanj s področja breathworka in somatske terapije. V Sloveniji že vrsto let vodi javne in zasebne delavnice, sodeluje s centri za osebno rast ter organizira ledene kopeli na naravnih lokacijah."
+      },
+      {
+        "heading": "Slog poučevanja in kaj pričakovati na seji",
+        "body": "Luka poučuje sproščeno, a natančno. Vsaka seja se začne s krajšim pogovorom in razlago, sledi praktični dihalni del ob spremljavi umirjene glasbe. Pri ledenih kopelih postopoma navaja udeležence na mraz in poudarja varnost. Njegov stil je topel, brez pritiska – pomembno mu je, da se vsak počuti sprejetega in varnega."
+      },
+      {
+        "heading": "Komu je primeren",
+        "body": "Lukove delavnice so primerne za vsakogar, ki želi izboljšati svojo telesno in duševno vzdržljivost, zmanjšati stres, okrepiti imunski sistem ali preprosto doživeti nova in navdihujoča doživetja. Posebej so priporočljive za tiste, ki se spoprijemajo z anksioznostjo, izgorelostjo ali želijo globlje razumeti moč lastnega diha. Pred udeležbo na ledeni kopeli je priporočljiv posvet z zdravnikom, še posebej za osebe s srčno-žilnimi težavami."
+      },
+      {
+        "heading": "Kako se prijaviti / kontakt",
+        "body": "Vsa aktualna srečanja, vključno z naslednjo 'Wim Hof Dihalno Delavnico + Ledeno Kopeljo', so objavljena na njegovi spletni strani dihaj.si. Prijava poteka preko spletnega obrazca ali e-pošte. Luka je odprt tudi za individualne seje in zasebne delavnice za skupine."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj je Wim Hof metoda?",
+        "answer": "Wim Hof metoda združuje specifične dihalne tehnike, postopno izpostavljanje mrazu in meditacijo. Namenjena je krepitvi imunskega sistema, zmanjševanju stresa in povečanju energije."
+      },
+      {
+        "question": "Ali je udeležba na ledeni kopeli nevarna?",
+        "answer": "Če se upoštevajo navodila in postopno privajanje, je praviloma varna. Luka vedno opozori na kontraindikacije (srčne bolezni, visok krvni tlak, nosečnost) in priporoča posvet z zdravnikom."
+      },
+      {
+        "question": "Kaj obleči na delavnico?",
+        "answer": "Za dihalni del zadostuje udobna oblačila, za ledeno kopel pa kopalke ali športne kratke hlače. Luka priporoča tudi brisačo in toplo obleko za po kopeli."
+      },
+      {
+        "question": "Ali moram imeti izkušnje z dihalnimi tehnikami?",
+        "answer": "Ne, delavnice so odprte za popolne začetnike. Luka vse korake razloži in vodi skupino skozi celoten proces."
+      },
+      {
+        "question": "Kako dolgo traja delavnica?",
+        "answer": "Osnovna dihalna delavnica traja približno 2 uri, kombinirana z ledeno kopeljo pa 3–4 ure."
+      },
+      {
+        "question": "Ali so delavnice primerne za nosečnice?",
+        "answer": "Wim Hof dihalne tehnike niso priporočljive med nosečnostjo. Prav tako se je treba izogibati ledenim kopelim. Luka svetuje, da se nosečnice posvetujejo s svojim zdravnikom in poiščejo alternativne prakse."
+      },
+      {
+        "question": "Kje potekajo ledene kopeli?",
+        "answer": "Ledene kopeli organizira na različnih naravnih lokacijah po Sloveniji (reke, jezera, občasno tudi z umetno hlajenimi bazeni). Natančna lokacija je objavljena ob prijavi."
+      },
+      {
+        "question": "Ali lahko pridem brez predznanja?",
+        "answer": "Da, ravno za take udeležence so delavnice najbolj koristne. Luka poskrbi za varno in spodbudno okolje."
+      }
+    ],
+    "relatedCategories": [
+      "BREATHWORK",
+      "WELLNESS",
+      "DOGODKI"
+    ]
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

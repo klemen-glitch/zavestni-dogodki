@@ -6,6 +6,7 @@ const nav = [
   { href: "/events", label: "Dogodki" },
   { href: "/categories/yoga", label: "Kategorije" },
   { href: "/organizers", label: "Facilitatorji" },
+  { href: "/blog", label: "Blog" },
   { href: "/pass", label: "Conscious Pass" },
   { href: "/submit", label: "Objavi dogodek" },
 ];
