@@ -50,45 +50,50 @@ if (!PASSWORD || PASSWORD === "your-facebook-password") {
   process.exit(1);
 }
 
-console.log("🌐 Opening browser — log in to Facebook in the window that appears");
-console.log("   If 2FA appears, complete it manually. The script waits for you.\n");
+import os from "os";
+
+const CHROME_PROFILE = resolve(os.homedir(), "Library/Application Support/Google/Chrome");
+
+console.log("📋 Opening Chrome with your existing profile...");
+console.log("   (Make sure Chrome is fully closed / Cmd+Q before this runs)\n");
 
 mkdirSync(resolve(ROOT, "packages/scraper/auth"), { recursive: true });
 
-const browser = await chromium.launch({
+// Launch Chrome with the user's real profile — already logged in to Facebook
+const context = await chromium.launchPersistentContext(CHROME_PROFILE, {
+  channel: "chrome",
   headless: false,
   args: ["--start-maximized"],
 });
 
-const context = await browser.newContext({
-  viewport: null,
-  userAgent:
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-});
-
 const page = await context.newPage();
+await page.goto("https://www.facebook.com/");
 
-await page.goto("https://www.facebook.com/login");
-await page.waitForLoadState("networkidle");
+console.log("⏳ Waiting for Facebook feed to load (up to 30 seconds)...");
 
-// Fill credentials
-await page.fill("#email", EMAIL);
-await page.fill("#pass", PASSWORD);
-await page.click('[name="login"]');
-
-console.log("✏️  Credentials submitted — waiting for you to complete 2FA if needed...");
-console.log("   (You have 2 minutes. If no 2FA, this completes automatically.)\n");
-
-// Wait until we're no longer on the login page (up to 2 minutes for 2FA)
+// Wait until we see the FB feed — not a login page
 try {
-  await page.waitForURL((url) => !url.href.includes("/login"), {
-    timeout: 120_000,
-  });
+  await page.waitForURL(
+    (url) =>
+      url.href.includes("facebook.com") &&
+      !url.href.includes("/login") &&
+      !url.href.includes("/checkpoint") &&
+      !url.href.includes("google.com"),
+    { timeout: 30_000 }
+  );
 } catch {
-  console.error("❌ Still on login page after 2 minutes — check your credentials or complete 2FA faster");
-  await browser.close();
-  process.exit(1);
+  // If still on login/google page after 30s, wait extra 60s for manual action
+  console.log("⚠️  Not logged in automatically — you have 60 seconds to log in manually in the browser window...");
+  await page.waitForURL(
+    (url) =>
+      url.href.includes("facebook.com") &&
+      !url.href.includes("/login") &&
+      !url.href.includes("google.com"),
+    { timeout: 60_000 }
+  );
 }
+
+await page.waitForTimeout(3000);
 
 // Extra wait to ensure all cookies are set
 await page.waitForTimeout(2000);

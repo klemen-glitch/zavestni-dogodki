@@ -1,44 +1,16 @@
-import { chromium, type Browser, type Page } from "playwright";
+import { chromium, type Browser } from "playwright";
+import { resolve } from "path";
 import type { ScrapedPost, ScraperConfig, ScraperResult } from "./types";
+
+// Auth state lives next to this file: packages/scraper/auth/facebook-state.json
+const DEFAULT_AUTH_PATH = resolve(__dirname, "../auth/facebook-state.json");
 
 const FB_GROUP_URL =
   process.env.FB_OWN_GROUP_URL ||
   "https://www.facebook.com/groups/529182865647567/";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// AUTHENTICATION
-// Save auth state after first login so subsequent runs don't need credentials.
-// Usage: run once with headless: false to log in manually, then auth is saved.
-// ─────────────────────────────────────────────────────────────────────────────
-
-async function loginToFacebook(page: Page): Promise<void> {
-  const email = process.env.FB_EMAIL;
-  const password = process.env.FB_PASSWORD;
-
-  if (!email || !password) {
-    throw new Error(
-      "FB_EMAIL and FB_PASSWORD must be set in .env for initial login"
-    );
-  }
-
-  await page.goto("https://www.facebook.com/login");
-  await page.waitForLoadState("networkidle");
-
-  await page.fill("#email", email);
-  await page.fill("#pass", password);
-  await page.click('[name="login"]');
-
-  await page.waitForNavigation({ waitUntil: "networkidle" });
-
-  if (page.url().includes("login")) {
-    throw new Error("Facebook login failed — check FB_EMAIL and FB_PASSWORD");
-  }
-
-  console.log("✅ Facebook login successful");
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// MAIN SCRAPER
+// MAIN SCRAPER — innerText-based, works with Facebook's Comet/React rendering
 // ─────────────────────────────────────────────────────────────────────────────
 
 export async function scrapeFacebookGroup(
@@ -46,9 +18,9 @@ export async function scrapeFacebookGroup(
 ): Promise<ScraperResult> {
   const {
     groupUrl = FB_GROUP_URL,
-    maxPosts = 30,
+    maxPosts = 25,
     headless = true,
-    authStatePath = "./auth/facebook-state.json",
+    authStatePath = DEFAULT_AUTH_PATH,
   } = config;
 
   const startTime = Date.now();
@@ -60,66 +32,102 @@ export async function scrapeFacebookGroup(
   try {
     browser = await chromium.launch({ headless });
 
-    // Try to reuse saved auth state, fall back to fresh login
+    // Load session from saved cookies
     let context;
     try {
       context = await browser.newContext({ storageState: authStatePath });
       console.log("♻️  Reusing saved Facebook session");
     } catch {
+      // No session file — can't log in automatically (Google OAuth blocks Playwright)
       context = await browser.newContext();
-      const loginPage = await context.newPage();
-      await loginToFacebook(loginPage);
-      await context.storageState({ path: authStatePath });
-      await loginPage.close();
-      console.log("💾 Auth state saved to", authStatePath);
+      console.warn("⚠️  No saved session found. Run scripts/fb-login-once.mjs first.");
     }
 
     const page = await context.newPage();
 
     // Navigate to the group feed
-    await page.goto(`${groupUrl}?sorting_setting=CHRONOLOGICAL`, {
-      waitUntil: "networkidle",
+    await page.goto(groupUrl, {
+      waitUntil: "domcontentloaded",
+      timeout: 60_000,
     });
+    await page.waitForTimeout(6000);
 
-    console.log(`📜 Scraping ${maxPosts} posts from group...`);
+    console.log(`📜 Scraping up to ${maxPosts} posts from group...`);
 
-    // Scroll and collect posts
-    let collected = 0;
-    let previousHeight = 0;
-    let stuckCount = 0;
+    // Scroll + expand "See more" in multiple passes (max 10 scrolls)
+    for (let scroll = 0; scroll < 10; scroll++) {
+      // Click all visible "See more" / "Več" collapse buttons
+      const seeMoreCount = await expandSeeMores(page);
+      if (seeMoreCount > 0) await page.waitForTimeout(1000);
 
-    while (collected < maxPosts && stuckCount < 3) {
-      // Grab all visible post containers
-      const postElements = await page.$$('[data-pagelet^="FeedUnit"]');
-
-      for (const el of postElements) {
-        if (collected >= maxPosts) break;
-
-        try {
-          const postData = await extractPostData(page, el);
-          if (postData && !posts.find((p) => p.postId === postData.postId)) {
-            posts.push(postData);
-            collected++;
-          }
-        } catch (e) {
-          errors.push(`Post extraction error: ${e}`);
-        }
-      }
-
-      // Scroll down to load more
-      await page.evaluate(() => window.scrollBy(0, 2000));
+      await page.evaluate(() => window.scrollBy(0, 1200));
       await page.waitForTimeout(2000);
+    }
 
-      const newHeight = await page.evaluate(() => document.body.scrollHeight);
-      if (newHeight === previousHeight) {
-        stuckCount++;
-      } else {
-        stuckCount = 0;
-        previousHeight = newHeight;
-      }
+    // Final expand pass after scrolling
+    await expandSeeMores(page);
+    await page.waitForTimeout(1000);
+
+    // ── Extract post text from rendered innerText ──────────────────────────
+    const rawText: string = await page.evaluate(() => document.body.innerText);
+
+    // Find where the discussion feed starts
+    const feedMarker = "sort group feed by";
+    const feedStart = rawText.toLowerCase().indexOf(feedMarker);
+    const feedText = feedStart > -1 ? rawText.slice(feedStart + feedMarker.length) : rawText;
+
+    // Extract post URLs for dedup / sourcing
+    const postLinks: string[] = await page.$$eval(
+      'a[href*="/posts/"], a[href*="/permalink/"]',
+      (els: HTMLAnchorElement[]) => [...new Set(els.map((e) => e.href).filter(Boolean))]
+    );
+
+    // Split feed by "Comment as" which appears after every post (admin view)
+    // Also handle non-admin boundary: "Like · Comment · Share"
+    const sections = feedText.split(/\bComment as\s+\w[\w\s]*\n|\bLike\s*·\s*Comment\s*·\s*Share\b/);
+
+    let postIndex = 0;
+
+    for (const section of sections) {
+      if (posts.length >= maxPosts) break;
+
+      const lines = section
+        .split("\n")
+        .map((l) => l.trim())
+        .filter((l) => l.length > 0 && l !== "Facebook");
+
+      // Find "View insights" line which marks end of post content in admin view
+      const insightsIdx = lines.findIndex((l) => l.toLowerCase().includes("view insights"));
+      const contentLines = insightsIdx > 0 ? lines.slice(0, insightsIdx) : lines;
+
+      // Skip navigation noise and very short sections
+      const text = contentLines
+        .filter((l) => !isNoise(l))
+        .join("\n")
+        .trim();
+
+      if (text.length < 80) continue;
+
+      // Try to find a matching post URL
+      const postUrl = postLinks[postIndex] ?? "";
+      const postIdMatch = postUrl.match(/\/posts\/(\d+)|\/permalink\/(\d+)/);
+      const postId = postIdMatch?.[1] ?? postIdMatch?.[2] ?? `fb-${Date.now()}-${postIndex}`;
+
+      posts.push({
+        postId,
+        text,
+        imageUrls: [],
+        postUrl,
+        authorName: extractAuthorFromSection(lines),
+        postedAt: new Date().toISOString(),
+        scrapedAt: new Date().toISOString(),
+      });
+
+      postIndex++;
     }
 
     await browser.close();
+    console.log(`✅ Extracted ${posts.length} posts`);
 
     return {
       posts,
@@ -139,60 +147,52 @@ export async function scrapeFacebookGroup(
   }
 }
 
-async function extractPostData(
-  page: Page,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  element: any
-): Promise<ScrapedPost | null> {
-  // Extract text content from post
-  const text = await element
-    .$eval('[data-ad-preview="message"]', (el: Element) => el.textContent ?? "")
-    .catch(() => "");
+// ── Helper: click all "See more" / "Več" expand buttons ───────────────────────
+async function expandSeeMores(page: import("playwright").Page): Promise<number> {
+  try {
+    const buttons = await page.$$(
+      'div[role="button"]:has-text("See more"), div[role="button"]:has-text("Več"), ' +
+      'span[role="button"]:has-text("See more"), span[role="button"]:has-text("Več")'
+    );
+    for (const btn of buttons) {
+      try { await btn.click({ timeout: 1000 }); } catch {}
+    }
+    return buttons.length;
+  } catch {
+    return 0;
+  }
+}
 
-  if (!text.trim()) return null;
+// ── Helper: filter out Facebook UI noise lines ────────────────────────────────
+function isNoise(line: string): boolean {
+  const noisePatterns = [
+    /^Facebook$/,
+    /^Like$/,
+    /^Comment$/,
+    /^Share$/,
+    /^Follow$/,
+    /^·$/,
+    /^\d+$/,
+    /^View insights$/i,
+    /^\d+\s+post reach$/i,
+    /^Number of unread/i,
+    /^Write something/i,
+    /^Most relevant$/i,
+    /^Manage/,
+    /^Community home$/,
+    /^Overview$/,
+    /^Admin tools$/,
+  ];
+  return noisePatterns.some((p) => p.test(line.trim()));
+}
 
-  // Extract post URL / ID
-  const postUrl = await element
-    .$eval('a[href*="/posts/"]', (el: Element) =>
-      (el as HTMLAnchorElement).href
-    )
-    .catch(() => "");
-
-  const postIdMatch = postUrl.match(/\/posts\/(\d+)/);
-  const postId = postIdMatch?.[1] ?? `${Date.now()}-${Math.random()}`;
-
-  // Extract author
-  const authorName = await element
-    .$eval(
-      'a[role="link"] strong, h2 a',
-      (el: Element) => el.textContent ?? ""
-    )
-    .catch(() => "Unknown");
-
-  // Extract images
-  const imageUrls = await element
-    .$$eval('img[src*="scontent"]', (imgs: HTMLImageElement[]) =>
-      imgs.map((img) => img.src)
-    )
-    .catch(() => [] as string[]);
-
-  // Extract post timestamp
-  const postedAt = await element
-    .$eval("abbr[data-utime]", (el: Element) => {
-      const utime = el.getAttribute("data-utime");
-      return utime
-        ? new Date(parseInt(utime) * 1000).toISOString()
-        : new Date().toISOString();
-    })
-    .catch(() => new Date().toISOString());
-
-  return {
-    postId,
-    text: text.trim(),
-    imageUrls,
-    postUrl,
-    authorName,
-    postedAt,
-    scrapedAt: new Date().toISOString(),
-  };
+// ── Helper: extract author name from section lines ────────────────────────────
+function extractAuthorFromSection(lines: string[]): string {
+  // Author is usually first non-empty, non-noise, non-short line
+  for (const line of lines) {
+    if (line.length > 2 && line.length < 80 && !isNoise(line) && !line.startsWith("http")) {
+      return line;
+    }
+  }
+  return "Unknown";
 }
