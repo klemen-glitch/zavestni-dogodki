@@ -75,10 +75,20 @@ model Organizer {
   verified    Boolean       @default(false)
   tier        OrganizerTier @default(FREE)
   events      Event[]
+
+  // Research & outreach fields
+  researchedAt    DateTime?
+  researchNotes   String?
+  contactEmail    String?
+  contactPhone    String?
+  outreachSentAt  DateTime?
+  outreachStatus  String?   @default("PENDING")  // PENDING | SENT | REPLIED | OPTED_OUT
+
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
 
   @@index([tier])
+  @@index([outreachStatus])
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
