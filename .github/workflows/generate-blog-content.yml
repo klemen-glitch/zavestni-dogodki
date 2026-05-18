@@ -27,6 +27,10 @@ on:
         description: "Event description"
         required: false
 
+concurrency:
+  group: blog-generation
+  cancel-in-progress: false  # queue jobs, never cancel — each event needs its articles
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -68,6 +72,7 @@ jobs:
             echo "No new articles generated (all slugs already exist)"
           else
             git commit -m "feat(blog): auto-generate 3 articles for event '$EVENT_TITLE' [skip ci]"
+            git pull --rebase origin main
             git push
           fi
         env:
