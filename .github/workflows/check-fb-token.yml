@@ -1,0 +1,66 @@
+name: Check FB Token Expiry
+
+on:
+  schedule:
+    # Every Monday at 08:00 UTC (10:00 Ljubljana)
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+jobs:
+  check-token:
+    name: Verify Facebook Access Token
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check token expiry via Graph API debug endpoint
+        env:
+          FB_ACCESS_TOKEN: ${{ secrets.FB_ACCESS_TOKEN }}
+          FB_APP_ID: ${{ secrets.FB_APP_ID }}
+          FB_APP_SECRET: ${{ secrets.FB_APP_SECRET }}
+        run: |
+          if [ -z "$FB_ACCESS_TOKEN" ]; then
+            echo "⚠️  FB_ACCESS_TOKEN secret is not set — skipping check"
+            exit 0
+          fi
+
+          echo "🔍 Checking Facebook access token..."
+
+          RESPONSE=$(curl -s \
+            "https://graph.facebook.com/debug_token?input_token=${FB_ACCESS_TOKEN}&access_token=${FB_APP_ID}|${FB_APP_SECRET}")
+
+          echo "API response: $RESPONSE"
+
+          EXPIRES_AT=$(echo "$RESPONSE" | jq -r '.data.expires_at // 0')
+          IS_VALID=$(echo "$RESPONSE"   | jq -r '.data.is_valid // false')
+
+          if [ "$IS_VALID" != "true" ]; then
+            echo ""
+            echo "❌  FACEBOOK TOKEN IS INVALID OR ALREADY EXPIRED!"
+            echo "    Renew it at: https://developers.facebook.com/tools/explorer"
+            echo "    Then update the FB_ACCESS_TOKEN secret in GitHub and in your .env"
+            exit 1
+          fi
+
+          NOW=$(date +%s)
+          DAYS_LEFT=$(( (EXPIRES_AT - NOW) / 86400 ))
+          EXPIRY_DATE=$(date -d "@${EXPIRES_AT}" '+%Y-%m-%d')
+
+          echo ""
+          echo "Token expires: ${EXPIRY_DATE} (${DAYS_LEFT} days from now)"
+
+          if [ "$DAYS_LEFT" -lt 10 ]; then
+            echo ""
+            echo "🚨  TOKEN EXPIRES IN ${DAYS_LEFT} DAYS — renew NOW!"
+            echo "    1. Go to https://developers.facebook.com/tools/explorer"
+            echo "    2. Generate a new User Token with groups_access_member_info"
+            echo "    3. Exchange for long-lived token (60 days)"
+            echo "    4. Update FB_ACCESS_TOKEN in GitHub Secrets + .env"
+            exit 1
+          elif [ "$DAYS_LEFT" -lt 20 ]; then
+            echo "⚠️   Token expires soon — renew within the next few days"
+            echo "    https://developers.facebook.com/tools/explorer"
+            exit 1
+          else
+            echo "✅  Token is healthy — no action needed"
+          fi
