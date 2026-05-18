@@ -7,6 +7,8 @@ import { deduplicatePosts } from "./dedupe";
 import { generateSlug } from "./utils";
 import { notifyNewEvents } from "./notify";
 import { postEventToFBGroup } from "@conscious-slovenia/publisher";
+import { triggerBlogContentGeneration } from "./content-trigger";
+import type { ContentTriggerEvent } from "./content-trigger";
 
 export interface PipelineRunOptions {
   autoApproveAbove?: number;   // confidence threshold for auto-approval (default 0.82)
@@ -40,7 +42,7 @@ export async function runPipeline(
   options: PipelineRunOptions = {}
 ): Promise<PipelineRunResult> {
   const {
-    autoApproveAbove = 0.82,
+    autoApproveAbove = 0.25,   // approve everything above the minimum confidence bar
     maxPostsPerGroup = 25,
     dryRun = false,
     headless = true,
@@ -74,6 +76,7 @@ export async function runPipeline(
   console.log(`\n🧠 Processing ${freshPosts.length} new posts with AI...\n`);
 
   const newEventIds: string[] = [];
+  const approvedForBlog: ContentTriggerEvent[] = [];
 
   for (const post of freshPosts) {
     process.stdout.write(`  ⚡ ${post.authorName}: `);
@@ -145,7 +148,20 @@ export async function runPipeline(
 
       newEventIds.push(created.id);
       saved++;
-      if (shouldAutoApprove) autoApproved++;
+      if (shouldAutoApprove) {
+        autoApproved++;
+        // Queue for blog content generation
+        approvedForBlog.push({
+          id: created.id,
+          titleSl: event.titleSl,
+          titleEn: event.titleEn,
+          category: event.category,
+          location: event.location,
+          venueName: event.venueName,
+          organizerName: event.organizerName,
+          descriptionEn: event.descriptionEn,
+        });
+      }
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       errors.push(`DB save failed for "${event.titleEn}": ${msg}`);
@@ -155,7 +171,15 @@ export async function runPipeline(
     await new Promise((r) => setTimeout(r, 300));
   }
 
-  // ── Step 5: Notify ────────────────────────────────────────────────────────
+  // ── Step 5: Trigger blog content generation for new approved events ────────
+  if (!dryRun && approvedForBlog.length > 0) {
+    console.log(`\n📝 Triggering blog generation for ${approvedForBlog.length} approved events...`);
+    await triggerBlogContentGeneration(approvedForBlog).catch((e) =>
+      errors.push(`Blog trigger error: ${e}`)
+    );
+  }
+
+  // ── Step 6: Notify ────────────────────────────────────────────────────────
   if (!dryRun && newEventIds.length > 0) {
     await notifyNewEvents(newEventIds).catch((e) =>
       errors.push(`Notify error: ${e}`)

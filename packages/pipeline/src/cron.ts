@@ -22,7 +22,7 @@ async function main() {
   switch (command) {
     case "daily":
       console.log("⏰ Running daily scrape pipeline...");
-      const result = await runPipeline({ autoApproveAbove: 0.82 });
+      const result = await runPipeline({ autoApproveAbove: 0.25 }); // approve everything above minimum confidence
       console.log(JSON.stringify(result, null, 2));
       break;
 
