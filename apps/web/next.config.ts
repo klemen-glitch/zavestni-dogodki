@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "graph.facebook.com" },
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "**.supabase.co" },
+      { protocol: "https", hostname: "image.pollinations.ai" },
     ],
   },
   async headers() {

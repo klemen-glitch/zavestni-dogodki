@@ -347,9 +347,20 @@ export default async function EventPage({
               </div>
               <div className="space-y-4">
                 {enriched.intro.map((para, i) => (
-                  <p key={i} className="text-stone-600 text-base leading-relaxed">
-                    {para}
-                  </p>
+                  <div key={i}>
+                    <p className="text-stone-600 text-base leading-relaxed">{para}</p>
+                    {enriched.sectionImages?.[i] && (
+                      <div className="relative mt-5 mb-2 w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "16/9" }}>
+                        <Image
+                          src={enriched.sectionImages[i]}
+                          alt={`${event.titleSl ?? event.titleEn} — ${label}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 1024px) 100vw, 672px"
+                        />
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </section>

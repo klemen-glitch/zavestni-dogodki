@@ -184,6 +184,19 @@ export default async function BlogPostPage({ params }: Props) {
               <h2 className="text-xl font-bold text-stone-800 mt-8 mb-3">{section.heading}</h2>
             )}
             <p className="text-stone-600 leading-relaxed">{section.body}</p>
+            {section.imageUrl && (
+              <figure className="my-8 not-prose">
+                <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "16/9" }}>
+                  <Image
+                    src={section.imageUrl}
+                    alt={section.heading ?? post.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 752px"
+                  />
+                </div>
+              </figure>
+            )}
           </div>
         ))}
       </article>

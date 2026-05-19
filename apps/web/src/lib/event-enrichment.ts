@@ -16,6 +16,7 @@ export interface EnrichedContent {
   researchNotes: string;     // science/research paragraph
   locationContext: string;   // about the venue/city
   enrichedAt: string;
+  sectionImages?: string[];  // AI-generated images for inline display
 }
 
 // ── Per-category fallback content ─────────────────────────────────────────────

@@ -9,7 +9,7 @@ export interface BlogPost {
   category: string;
   readingTime: number;
   author: string;
-  content: { heading?: string; body: string }[];
+  content: { heading?: string; body: string; imageUrl?: string }[];
   faq: { question: string; answer: string }[];
   relatedCategories: string[];
   /** Optional HowTo steps for instructional posts — generates HowTo schema + rich results */
@@ -29,6 +29,7 @@ export const BLOG_POSTS: BlogPost[] = [
     content: [
       {
         body: "Zvočna kopel (ang. sound bath) je meditativna in terapevtska praksa, pri kateri se udeleženci položijo na tla ali sedijo v udobnem položaju, medtem ko vodja igra različne inštrumente — najpogosteje Tibetanske zvočne posode, gong, kristalne posode in ksilofon. Zvoki in vibracije 'kopajo' telo in um v zvočne valove, ki spodbujajo globoko sprostitev. Praksa, ki izvira iz starodavnih azijskih tradicij, danes doživlja pravi preporod — in ni čudno, saj jo sodobna medicina vse bolj prepoznava kot učinkovito orodje za upravljanje stresa.",
+        imageUrl: "https://image.pollinations.ai/prompt/Photorealistic%20editorial%20wellness%20photography%2C%20a%20peaceful%20person%20lying%20on%20a%20soft%20cream%20mat%2C%20surrounded%20by%20glowing%20Tibetan%20singing%20bowls%2C%20warm%20candlelight%2C%20zen%20atmosphere%2C%20golden%20natural%20light%2C%20sage%20and%20cream%20color%20palette%2C%20clean%20minimal%20composition%2C%20professional%20DSLR%20quality%2C%2016%3A9%20aspect%20ratio.?model=flux&width=1280&height=720&nologo=true&seed=100",
       },
       {
         heading: "Kako deluje zvočna kopel?",
@@ -37,6 +38,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Kaj pričakovati na zvočni kopeli?",
         body: "Seansa navadno traja 60–90 minut. Udeleženci ležijo na joging preprogah ali blazinah, pogosto pokrijejo oči in se prepustijo izkušnji. Vodja začne z mehkimi toni in postopoma gradi zvočno izkušnjo — od nežnih posod do globokih vibracij gonga. Mnogi udeleženci opisujejo globoko sprostitev, vizualizacije, občutek lahkotnosti ali celo začasno 'izginotje' telesnih meja. Nekateri celo zaspijo — to je povsem normalno in kaže, da se telo globoko sprošča! Po seji je priporočljivo počivati vsaj 10–15 minut, piti vodo in si dati čas za integracijo izkušnje. Izogibajte se intenzivnim aktivnostim takoj po seji.",
+        imageUrl: "https://image.pollinations.ai/prompt/Close-up%20group%20sound%20healing%20session%2C%20people%20resting%20on%20yoga%20mats%20in%20a%20healing%20circle%2C%20soft%20diffused%20warm%20golden%20light%2C%20cream%20and%20sage%20color%20palette%2C%20clean%20minimal%20editorial%20wellness%20photography%2C%20professional%20DSLR%20quality%2C%2016%3A9%20aspect%20ratio%2C%20photorealistic.?model=flux&width=1280&height=720&nologo=true&seed=102",
       },
       {
         heading: "Kateri inštrumenti se uporabljajo?",
@@ -49,6 +51,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Kaj pravijo raziskave o zvočnih kopelih?",
         body: "Klinična literatura je še relativno mlada, a naraščajoča. Prelomna študija dr. Mitchella Gainesa iz leta 2016 (objavljena v Journal of Evidence-Based Complementary & Alternative Medicine) je pri udeležencih zvočnih kopeli izmerila statistično značilno zmanjšanje napetosti, anksioznosti in telesne bolečine. Kasnejše študije so potrdile, da zvočna terapija v kombinaciji z meditacijo zmanjšuje raven kortizola (hormona stresa) za 11–20 % in izboljšuje kakovost spanja po samo 4 tednih redne prakse. Zvočna kopel se v rehabilitacijski medicini vse bolj uporablja tudi kot dopolnilna terapija pri obvladovanju kronične bolečine, posttravmatski stresni motnji (PTSD) in onkološki negi.",
+        imageUrl: "https://image.pollinations.ai/prompt/Photorealistic%20editorial%20wellness%20photography%2C%20warm%20golden%20natural%20light%2C%20cream%20and%20sage%20color%20palette%2C%20crystal%20singing%20bowls%20of%20varying%20sizes%20glowing%20softly%20on%20a%20clean%20wooden%20surface%2C%20soft%20studio%20light%20creating%20gentle%20reflections%2C%20artistic%20bokeh%20background%2C%20minimal%20composition%2C%20professional%20DSLR%20quality%2C%2016%3A9%20aspect%20ratio.?model=flux&width=1280&height=720&nologo=true&seed=105",
       },
       {
         heading: "Kako se pripraviti na svojo prvo zvočno kopel?",
@@ -82,6 +85,7 @@ export const BLOG_POSTS: BlogPost[] = [
     content: [
       {
         body: "Breathwork (zavestno dihanje) je skupen izraz za različne tehnike namernega uravnavanja dihanja za terapevtske namene. Od enostavnih vaj za sproščanje do globokih transformativnih tehnik — breathwork je eno najučinkovitejših in najdostopnejših orodij za dobro počutje. Najboljše pri vsem tem? Vaš dih je vedno z vami. Brezkupcijsko, brezplačno in dostopno 24 ur na dan.",
+        imageUrl: "https://image.pollinations.ai/prompt/Photorealistic%20editorial%20wellness%20photography%2C%20serene%20woman%20with%20hands%20on%20chest%20practicing%20deep%20breathing%20meditation%20outdoors%20at%20golden%20hour%2C%20warm%20golden%20natural%20light%2C%20cream%20and%20sage%20color%20palette%2C%20Slovenian%20mountain%20backdrop%2C%20clean%20minimal%20composition%2C%20professional%20DSLR%20quality%2C%2016%3A9%20aspect%20ratio.?model=flux&width=1280&height=720&nologo=true&seed=100",
       },
       {
         heading: "Zakaj je breathwork tako učinkovit?",
@@ -94,6 +98,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Korak za korakom: začnite z dihalnimi vajami doma",
         body: "Izberite tiho mesto in si vzemite 10 minut brez motenj. 1) Ulezite se na hrbet ali sedite z ravno hrbtenico. 2) Položite eno roko na prsni koš, drugo na trebuh — to je vaše biofeedback orodje. 3) Vdihnite skozi nos 4 sekunde in usmerite zrak v trebuh (trebuh se dvigne, prsni koš ostane miren — to je trebušno dihanje). 4) Zadržite dih 2 sekunde. 5) Počasi izdihnite skozi usta 6 sekund — podaljšan izdih aktivira parasimpatični živčni sistem. 6) Ponovite 8–10 krat. Ko se navadite na trebušno dihanje (1–2 tedna), preidite na box breathing ali 4-7-8. Sledite ritmu — ne hitenite.",
+        imageUrl: "https://image.pollinations.ai/prompt/Close-up%20portrait%20of%20a%20person%20doing%20breathwork%2C%20eyes%20closed%2C%20serene%20expression%2C%20white%20linen%20clothing%2C%20sunlit%20studio%20with%20warm%20golden%20natural%20light%2C%20cream%20and%20sage%20color%20palette%2C%20editorial%20wellness%20photography%2C%20clean%20minimal%20composition%2C%20professional%20DSLR%20quality%2C%2016%3A9%20aspect%20ratio%2C%20photorealistic.?model=flux&width=1280&height=720&nologo=true&seed=103",
       },
       {
         heading: "Kdaj je priporočljivo iti na delavnico?",
@@ -106,6 +111,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Kdaj pričakovati rezultate?",
         body: "Akutni učinki (zmanjšan stres, jasnejši um, boljše razpoloženje) so zaznavni že po prvi seji — to je ena redkih praks z takojšnjim feedbackom. Trajnejše spremembe v stopnji stresnega odziva, kakovosti spanja in čustveni stabilnosti se pokažejo po 4–8 tednih redne dnevne prakse (10–20 minut). Transformativne izkušnje (globoka čustvena sprostitev, sprememba vzorcev) zahtevajo globlje intenzivnejše seje z usposobljenim facilitatorjem.",
+        imageUrl: "https://image.pollinations.ai/prompt/Photorealistic%20editorial%20wellness%20photography%2C%20early%20morning%20golden%20hour%20light%20over%20an%20alpine%20lake%2C%20mist%20rising%20from%20still%20water%2C%20a%20person%20in%20minimalist%20cream%20wool%20clothing%20seated%20in%20lotus%20pose%20on%20a%20smooth%20rock%20at%20the%20water's%20edge%2C%20sage%20green%20pine%20forest%20backdrop%2C%20clean%20minimal%20composition%2C%20soft%20warm%20glow%2C%20professional%20DSLR%20quality%2C%2016%3A9%20aspect%20ratio.?model=flux&width=1280&height=720&nologo=true&seed=106",
       },
       {
         heading: "Zaključek: zakaj bi morali začeti danes?",
@@ -144,6 +150,7 @@ export const BLOG_POSTS: BlogPost[] = [
     content: [
       {
         body: "Yoga retreat je večdnevni odmik, ki združuje intenzivnejšo joga prakso, meditacijo, dihalne vaje in počitek v naravnem ali mirnem okolju. Slovenija z Julijskimi Alpami, Jadranskim morjem in prekrasnimi dolenci nudi ene najboljših lokacij za tovrstne izkušnje v Evropi — in pri dostopnih cenah. Toda zakaj bi morali iti na retreat namesto nadaljevanja tedenskih ur joge?",
+        imageUrl: "https://image.pollinations.ai/prompt/Photorealistic%20wellness%20photography%2C%20a%20yoga%20practitioner%20in%20warrior%20pose%20on%20a%20misty%20alpine%20meadow%2C%20golden%20sunrise%20light%20filtering%20through%20clouds%2C%20Slovenian%20Alps%20in%20background%2C%20cream%20and%20sage%20color%20palette%2C%20clean%20minimal%20composition%2C%20professional%20DSLR%20quality%2C%2016%3A9%20aspect%20ratio.?model=flux&width=1280&height=720&nologo=true&seed=100",
       },
       {
         heading: "1. Globlja praksa v kratkem času",
@@ -160,6 +167,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "4. Naučite se novih navad v okolju, ki jim je naklonjeno",
         body: "Okolje oblikuje vedenje bolj, kot si mislimo. Doma je zofa bližje kot preproga, prigrizki bližje kot meditacijska blazina. Na retreatu je okolje sestavljeno prav za prakso: jutranja meditacija, zdrava hrana in redna vadba so privzete možnosti, ne izjeme. Ta 'mišični spomin' novih rutin se prenese domov z bistveno višjo verjetnostjo od navad, ki jih gradite v mesecih.",
+        imageUrl: "https://image.pollinations.ai/prompt/Photorealistic%20wellness%20photography%2C%20serene%20wooden%20yoga%20retreat%20center%20nestled%20in%20lush%20forest%2C%20green%20canopy%20overhead%2C%20warm%20golden%20interior%20light%20glowing%20through%20large%20windows%2C%20peaceful%20garden%20path%20leading%20to%20entrance%2C%20cream%20and%20sage%20color%20palette%2C%20soft%20natural%20light%2C%20editorial%20composition%2C%20clean%20minimal%20aesthetic%2C%20professional%20DSLR%20quality%2C%2016%3A9%20aspect%20ratio.?model=flux&width=1280&height=720&nologo=true&seed=104",
       },
       {
         heading: "5. Digitalni detoks in kakovost spanja",
@@ -176,6 +184,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Kako izbrati pravi yoga retreat za vas?",
         body: "Najprej določite namen: Ali iščete sprostitev, intenzivno vadbo, duhovno poglobitev ali skupnost? Preverite raven zahtevnosti — retreati so označeni kot 'za začetnike', 'za vse ravni' ali 'za napredne'. Preverite profil inštruktorja: izkušnje, izobrazba in slog poučevanja so ključni. Preverite lokacijo in nastanitev: ali je skupina majhna (do 12) ali večja? Je nastanitev v eni sobi ali privatno? Je hrana vključena? Preberite recenzije prejšnjih udeležencev — iskreni komentarji o vzdušju in organizaciji povedo več kot lepše fotografije.",
+        imageUrl: "https://image.pollinations.ai/prompt/Photorealistic%20wellness%20photography%2C%20small%20group%20yoga%20class%20on%20wooden%20deck%20overlooking%20majestic%20mountains%2C%20instructor%20gently%20adjusting%20student%20in%20warrior%20pose%2C%20warm%20golden%20sunset%20light%2C%20cream%20and%20sage%20color%20palette%2C%20joyful%20community%20atmosphere%2C%20editorial%20wellness%20photography%2C%20clean%20minimal%20composition%2C%20professional%20DSLR%20quality%2C%2016%3A9%20aspect%20ratio.?model=flux&width=1280&height=720&nologo=true&seed=108",
       },
       {
         heading: "Zaključek: kdaj je pravi čas za retreat?",
