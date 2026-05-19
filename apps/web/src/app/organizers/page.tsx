@@ -24,8 +24,16 @@ export const metadata: Metadata = {
 
 export default async function OrganizersPage() {
   const organizers = await db.organizer.findMany({
-    where: { events: { some: { status: { in: ["APPROVED", "FEATURED"] }, date: { gte: new Date() } } } },
-    include: { _count: { select: { events: true } } },
+    where: { events: { some: { status: { in: ["APPROVED", "FEATURED"] } } } },
+    include: {
+      _count: { select: { events: true } },
+      events: {
+        where: { status: { in: ["APPROVED", "FEATURED"] }, date: { gte: new Date() } },
+        orderBy: { date: "asc" },
+        take: 1,
+        select: { date: true },
+      },
+    },
     orderBy: [{ tier: "asc" }, { rating: "desc" }],
     take: 50,
   });
