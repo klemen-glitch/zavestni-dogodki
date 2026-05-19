@@ -12,6 +12,7 @@ import { SponsoredStrip } from "@/components/SponsoredStrip";
 import { NativeAdCard } from "@/components/NativeAdCard";
 import { getAdForPosition } from "@/lib/ads";
 import type { EventCategory } from "@conscious-slovenia/database";
+import { SubscribeSection } from "@/components/subscribe/SubscribeSection";
 
 export const metadata: Metadata = {
   title: { absolute: "Vsi Zavestni Dogodki v Sloveniji 2026 — Joga, Meditacija, Retreati | Zavestni Dogodki" },
@@ -313,6 +314,11 @@ export default async function EventsPage({
               })}
             </div>
           )}
+
+          {/* Newsletter signup */}
+          <div className="mt-12 mb-8">
+            <SubscribeSection source="events_page" />
+          </div>
 
           {/* "Become a partner" footer banner */}
           <div className="mt-12 rounded-2xl overflow-hidden border border-emerald-200">

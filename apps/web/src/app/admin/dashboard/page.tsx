@@ -7,11 +7,33 @@ import { DashboardActions } from "./client";
 
 export const metadata: Metadata = { title: "Dashboard" };
 
+// Build month buckets for the last N months
+function buildMonthBuckets(records: { createdAt: Date }[], months = 6) {
+  const now = new Date();
+  const buckets: { label: string; count: number }[] = [];
+  for (let i = months - 1; i >= 0; i--) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    buckets.push({
+      label: d.toLocaleDateString("sl-SI", { month: "short", year: "2-digit" }),
+      count: 0,
+    });
+  }
+  for (const r of records) {
+    const d = r.createdAt;
+    const monthsAgo = (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
+    if (monthsAgo >= 0 && monthsAgo < months) {
+      buckets[months - 1 - monthsAgo].count += 1;
+    }
+  }
+  return buckets;
+}
+
 // Fetch all dashboard data in a single pass
 async function getDashboardData() {
   const now = new Date();
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
   const startOfLastMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+  const sixMonthsAgo = new Date(now.getFullYear(), now.getMonth() - 5, 1);
 
   const [
     eventStatusCounts,
@@ -26,6 +48,8 @@ async function getDashboardData() {
     newsletterDrafts,
     pendingSubmissions,
     totalViews,
+    totalOrganizers,
+    recentSubscribers,
   ] = await Promise.all([
     // Event status breakdown
     db.event.groupBy({ by: ["status"], _count: true }),
@@ -55,13 +79,13 @@ async function getDashboardData() {
       _sum: { amountEur: true },
     }).catch(() => ({ _sum: { amountEur: 0 } })),
 
-    // Top event categories
+    // Top 8 event categories
     db.event.groupBy({
       by: ["category"],
       where: { status: { in: ["APPROVED", "FEATURED"] } },
       _count: true,
       orderBy: { _count: { category: "desc" } },
-      take: 5,
+      take: 8,
     }),
 
     // Recently scraped events (last 10)
@@ -77,10 +101,17 @@ async function getDashboardData() {
     // Pending paid submissions
     db.submission.count({ where: { status: "pending", paid: true } }).catch(() => 0),
 
-    // Total event views this month
-    db.event.aggregate({
-      where: { updatedAt: { gte: startOfMonth } },
-      _sum: { viewCount: true },
+    // Total event views (all time)
+    db.event.aggregate({ _sum: { viewCount: true } }),
+
+    // Total organizers
+    db.organizer.count(),
+
+    // Subscribers created in last 6 months (for sparkline)
+    db.subscriber.findMany({
+      where: { createdAt: { gte: sixMonthsAgo } },
+      select: { createdAt: true },
+      orderBy: { createdAt: "asc" },
     }),
   ]);
 
@@ -89,6 +120,7 @@ async function getDashboardData() {
 
   const lastPipelineRun = recentPipelineRuns[0];
   const totalPipelineCost = recentPipelineRuns.reduce((s, r) => s + r.estimatedCostUsd, 0);
+  const subscriberMonths = buildMonthBuckets(recentSubscribers, 6);
 
   return {
     events: {
@@ -115,7 +147,9 @@ async function getDashboardData() {
     recentEvents,
     newsletter: newsletterMap,
     pendingSubmissions,
-    totalViewsThisMonth: totalViews._sum.viewCount ?? 0,
+    totalViews: totalViews._sum.viewCount ?? 0,
+    totalOrganizers,
+    subscriberMonths,
   };
 }
 
@@ -158,6 +192,16 @@ export default async function DashboardPage() {
     ? ((data.revenue.thisMonth - data.revenue.lastMonth) / data.revenue.lastMonth * 100).toFixed(0)
     : null;
 
+  // Sparkline dimensions
+  const sparkMax = Math.max(...data.subscriberMonths.map((m) => m.count), 1);
+
+  // SVG bar chart for categories
+  const chartMax = Math.max(...data.topCategories.map((c) => c._count), 1);
+  const barW = 32;
+  const barGap = 10;
+  const chartH = 80;
+  const chartW = data.topCategories.length * (barW + barGap) - barGap;
+
   return (
     <div className="p-8">
       <div className="flex items-center justify-between mb-8">
@@ -173,19 +217,21 @@ export default async function DashboardPage() {
       </div>
 
       {/* ── KPI Row ────────────────────────────────────────────────────────── */}
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-4 mb-8">
         <KpiCard label="Skupaj dogodki" value={data.events.total} sub={`${data.events.approved} odobrenih`} />
         <KpiCard
           label="V pregledu" value={data.events.pending}
           sub="čaka odobritev" alert={true}
           badge={data.events.pending > 0 ? "!" : undefined} badgeColor="amber"
         />
+        <KpiCard label="Izpostavljeni" value={data.events.featured} sub="featured" badgeColor="amber" />
+        <KpiCard label="Facilitatorji" value={data.totalOrganizers} sub="registriranih" badgeColor="teal" />
         <KpiCard label="Naročniki" value={data.subscribers.active}
           sub={`${data.subscribers.total} skupaj`} badge="email" badgeColor="blue" />
-        <KpiCard label="Ogledi (mesec)" value={data.totalViewsThisMonth.toLocaleString()} />
+        <KpiCard label="Skupaj ogledi" value={data.totalViews.toLocaleString()} sub="vsi časi" />
         <KpiCard
           label="Prihodki (mesec)" value={formatCurrency(data.revenue.thisMonth)}
-          sub={revenueChange ? `${revenueChange > "0" ? "+" : ""}${revenueChange}% vs. prejšnji` : "prvi mesec"}
+          sub={revenueChange ? `${Number(revenueChange) > 0 ? "+" : ""}${revenueChange}% vs. prejšnji` : "prvi mesec"}
           badge={data.pendingSubmissions > 0 ? `${data.pendingSubmissions} čaka` : undefined}
           badgeColor="violet"
         />
@@ -193,6 +239,83 @@ export default async function DashboardPage() {
           label="AI strošek (mesec)" value={`$${data.costs.thisMonth.toFixed(3)}`}
           sub="Anthropic Claude" badgeColor="stone"
         />
+      </div>
+
+      {/* ── Charts row ─────────────────────────────────────────────────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+
+        {/* SVG bar chart — events by category */}
+        <div className="bg-white rounded-2xl border border-stone-100 p-6">
+          <h3 className="font-semibold text-stone-700 mb-5">Dogodki po kategorijah (top 8)</h3>
+          {data.topCategories.length === 0 ? (
+            <p className="text-stone-300 text-sm text-center py-6">Ni podatkov.</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <svg
+                width={Math.max(chartW, 300)}
+                height={chartH + 40}
+                className="overflow-visible"
+                aria-label="Dogodki po kategorijah"
+              >
+                {data.topCategories.map((c, i) => {
+                  const barH = Math.max(2, Math.round((c._count / chartMax) * chartH));
+                  const x = i * (barW + barGap);
+                  const y = chartH - barH;
+                  return (
+                    <g key={c.category}>
+                      <rect x={x} y={y} width={barW} height={barH} rx={4} fill="#059669" opacity="0.85" />
+                      <text
+                        x={x + barW / 2} y={chartH + 14}
+                        textAnchor="middle" fontSize={9} fill="#78716c"
+                      >
+                        {CATEGORY_EMOJI[c.category]}
+                      </text>
+                      <text
+                        x={x + barW / 2} y={chartH + 26}
+                        textAnchor="middle" fontSize={8} fill="#a8a29e"
+                      >
+                        {(CATEGORY_LABEL[c.category] ?? c.category).slice(0, 7)}
+                      </text>
+                      <text
+                        x={x + barW / 2} y={y - 4}
+                        textAnchor="middle" fontSize={9} fill="#57534e" fontWeight="600"
+                      >
+                        {c._count}
+                      </text>
+                    </g>
+                  );
+                })}
+              </svg>
+            </div>
+          )}
+        </div>
+
+        {/* Subscribers over time — last 6 months sparkline */}
+        <div className="bg-white rounded-2xl border border-stone-100 p-6">
+          <div className="flex items-start justify-between mb-5">
+            <h3 className="font-semibold text-stone-700">Naročniki po mesecih</h3>
+            <span className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full font-medium">
+              zadnjih 6 mes.
+            </span>
+          </div>
+          <div className="flex items-end gap-2 h-20">
+            {data.subscriberMonths.map((m) => {
+              const pct = sparkMax > 0 ? (m.count / sparkMax) * 100 : 0;
+              return (
+                <div key={m.label} className="flex-1 flex flex-col items-center gap-1">
+                  <span className="text-xs font-mono text-stone-500">{m.count}</span>
+                  <div className="w-full bg-stone-100 rounded-t-sm overflow-hidden" style={{ height: "48px" }}>
+                    <div
+                      className="w-full bg-blue-400 rounded-t-sm transition-all"
+                      style={{ height: `${pct}%`, marginTop: `${100 - pct}%` }}
+                    />
+                  </div>
+                  <span className="text-[10px] text-stone-400">{m.label}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       {/* ── Main grid ──────────────────────────────────────────────────────── */}
@@ -230,9 +353,9 @@ export default async function DashboardPage() {
           </table>
         </div>
 
-        {/* Category breakdown */}
+        {/* Category breakdown — CSS bars (top 8) */}
         <div className="bg-white rounded-2xl border border-stone-100 p-6">
-          <h3 className="font-semibold text-stone-700 mb-4">📊 Kategorije (odobreni)</h3>
+          <h3 className="font-semibold text-stone-700 mb-4">Kategorije (odobreni)</h3>
           <div className="space-y-3">
             {data.topCategories.map((c) => {
               const total = data.events.approved + data.events.featured;
@@ -240,7 +363,7 @@ export default async function DashboardPage() {
               return (
                 <div key={c.category}>
                   <div className="flex items-center justify-between text-sm mb-1">
-                    <span className="text-stone-600">{CATEGORY_EMOJI[c.category]} {CATEGORY_LABEL[c.category]}</span>
+                    <span className="text-stone-600 text-xs">{CATEGORY_EMOJI[c.category]} {CATEGORY_LABEL[c.category]}</span>
                     <span className="text-stone-400 font-mono text-xs">{c._count} ({pct}%)</span>
                   </div>
                   <div className="h-1.5 bg-stone-100 rounded-full overflow-hidden">

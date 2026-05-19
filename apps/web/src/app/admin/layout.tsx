@@ -10,6 +10,7 @@ const nav = [
   { href: "/admin/facilitators", label: "Facilitatorji", emoji: "🧘" },
   { href: "/admin/newsletter", label: "Newsletter", emoji: "📧" },
   { href: "/admin/pipeline", label: "Pipeline", emoji: "⚡" },
+  { href: "/admin/costs", label: "Stroški & Aplikacije", emoji: "💰" },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

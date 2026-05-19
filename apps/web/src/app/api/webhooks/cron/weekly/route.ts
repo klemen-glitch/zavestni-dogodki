@@ -7,8 +7,13 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { runWeeklyNewsletter } = await import("@conscious-slovenia/pipeline");
+  const { runWeeklyNewsletter, runPersonalisedNewsletter } = await import("@conscious-slovenia/pipeline");
+
+  // 1. Generic Beehiiv newsletter for all subscribers
   await runWeeklyNewsletter({ publish: true, weekOffset: 1 });
+
+  // 2. Personalised email via Resend for subscribers with category/city preferences
+  await runPersonalisedNewsletter({ daysAhead: 14 });
 
   return NextResponse.json({ ok: true });
 }
