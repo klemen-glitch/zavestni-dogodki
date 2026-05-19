@@ -15,10 +15,12 @@ export const dynamic = "force-dynamic";
 // ── auth ──────────────────────────────────────────────────────────────────────
 function requireAdmin(req: Request) {
   const secret = process.env.ADMIN_SECRET;
-  return (
+  if (!secret) return false;
+  const cookie = req.headers.get("cookie") ?? "";
+  const m = cookie.match(/admin_token=([^;]+)/);
+  return m?.[1] === secret ||
     req.headers.get("x-admin-secret") === secret ||
-    req.headers.get("authorization") === `Bearer ${secret}`
-  );
+    req.headers.get("authorization") === `Bearer ${secret}`;
 }
 
 // ── constants ─────────────────────────────────────────────────────────────────

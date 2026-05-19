@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "**.fbcdn.net" },
       { protocol: "https", hostname: "**.facebook.com" },
+      { protocol: "https", hostname: "graph.facebook.com" },
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "**.supabase.co" },
     ],
