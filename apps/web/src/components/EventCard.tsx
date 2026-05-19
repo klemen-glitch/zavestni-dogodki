@@ -42,8 +42,8 @@ export function EventCard({ event, compact = false }: EventCardProps) {
   return (
     <Link
       href={href}
-      className={`group block bg-white rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ${
-        event.featured ? "ring-2 ring-amber-400 shadow-amber-100/50" : "shadow-sm border border-stone-100"
+      className={`group block bg-white rounded-xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 ${
+        event.featured ? "ring-1 ring-brand/30 shadow-sm" : "shadow-sm border border-stone-100"
       }`}
     >
       {/* ── Image section ── */}
@@ -95,8 +95,8 @@ export function EventCard({ event, compact = false }: EventCardProps) {
 
         {/* Featured badge — top left */}
         {event.featured && (
-          <span className="absolute top-3 left-3 bg-amber-400/90 backdrop-blur-sm text-amber-900 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm z-10">
-            ⭐ Izpostavljeno
+          <span className="absolute top-3 left-3 bg-white/80 backdrop-blur-sm text-brand text-[10px] font-medium px-2.5 py-1 rounded-full shadow-sm z-10 tracking-widest uppercase">
+            Izpostavljeno
           </span>
         )}
 
@@ -128,7 +128,7 @@ export function EventCard({ event, compact = false }: EventCardProps) {
       {/* ── Content section ── */}
       <div className={`relative p-4 ${event.organizer ? "pt-7" : "pt-4"}`}>
         <h3
-          className={`font-semibold text-stone-800 group-hover:text-emerald-700 transition-colors line-clamp-2 ${
+          className={`font-medium text-stone-800 group-hover:text-brand transition-colors line-clamp-2 ${
             compact ? "text-sm" : "text-base"
           } ${event.organizer ? "pr-2" : ""}`}
         >
@@ -136,8 +136,7 @@ export function EventCard({ event, compact = false }: EventCardProps) {
         </h3>
 
         <div className="mt-3 space-y-1.5">
-          <div className="flex items-center gap-1.5 text-xs text-stone-500">
-            <span>📅</span>
+          <div className="flex items-center gap-1.5 text-xs text-stone-400">
             <span>
               {formatDate(event.date, {
                 weekday: "short",
@@ -147,8 +146,7 @@ export function EventCard({ event, compact = false }: EventCardProps) {
               {time ? ` · ${time}` : ""}
             </span>
           </div>
-          <div className="flex items-center gap-1.5 text-xs text-stone-500">
-            <span>📍</span>
+          <div className="flex items-center gap-1.5 text-xs text-stone-400">
             <span className="truncate">{location}</span>
           </div>
           <div className="flex items-center justify-between mt-2 pt-2 border-t border-stone-100">

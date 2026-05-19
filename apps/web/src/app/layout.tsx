@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Cormorant_Garamond } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -8,6 +8,12 @@ import { ChatWidget } from "@/components/ChatWidget";
 import { SubscribePopup } from "@/components/subscribe/SubscribePopup";
 
 const geist = Geist({ subsets: ["latin"] });
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+});
 
 export const metadata: Metadata = {
   title: { default: "Zavestni Dogodki — Zavestni dogodki v Sloveniji", template: "%s | Zavestni Dogodki" },
@@ -71,7 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body className={`${geist.className} bg-stone-50 text-stone-900 antialiased min-h-full flex flex-col`}>
+      <body className={`${geist.className} ${cormorant.variable} bg-background text-foreground antialiased min-h-full flex flex-col`}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

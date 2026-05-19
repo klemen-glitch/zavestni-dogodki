@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafaf7;
-  --foreground: #1a1a1a;
-  --brand: #2d6a4f;
-  --brand-light: #52b788;
-  --brand-pale: #d8f3dc;
+  --background: #faf7f2;
+  --foreground: #1c1917;
+  --brand: #5a7a5e;
+  --brand-light: #7fa880;
+  --brand-pale: #edf3ee;
 }
 
 @theme inline {
@@ -16,6 +16,7 @@
   --color-brand-pale: var(--brand-pale);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-cormorant);
 }
 
 body {
