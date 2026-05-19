@@ -105,14 +105,16 @@ function buildWelcomeHtml(name: string, categoryLabel: string, eventTitle: strin
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   if (!requireAdmin(req)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  const { id } = await params;
+
   const organizer = await db.organizer.findUnique({
-    where: { id: params.id },
+    where: { id },
     include: { events: { orderBy: { createdAt: "desc" }, take: 1 } },
   });
 
@@ -152,7 +154,7 @@ export async function POST(
 
   // Update outreach status regardless (mark attempt)
   await db.organizer.update({
-    where: { id: params.id },
+    where: { id },
     data: {
       outreachSentAt: new Date(),
       outreachStatus: sent || !hasResend ? "SENT" : "PENDING",
