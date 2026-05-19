@@ -1648,6 +1648,209 @@ export const BLOG_POSTS: BlogPost[] = [
       "SOUND_HEALING"
     ]
   },
+  {
+    "slug": "other-v-sloveniji",
+    "title": "Other v Sloveniji: Kaj je in kako najti svojo pot?",
+    "description": "Odkrijte, kaj pomeni 'other' v Sloveniji, kako ta praksa deluje, koliko stane in kje najti najboljše delavnice. Preberite več na Zavestni Dogodki.",
+    "date": "2026-05-19",
+    "dateModified": "2026-05-19",
+    "category": "OTHER",
+    "readingTime": 5,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "V zadnjih letih v Sloveniji opažamo porast zanimanja za alternativne in celostne pristope k osebni rasti. Izrazi, kot so 'other', 'drugačno' ali 'nerazvrščeno', pogosto označujejo dogodke in prakse, ki presegajo tradicionalne okvire joge, meditacije ali dihalnih tehnik. Gre za prostor za eksperimentiranje, raziskovanje in povezovanje z nečim, kar ne sodi v običajne kategorije. Ta članek je namenjen vsem, ki jih zanima, kaj 'other' v Sloveniji pomeni v praksi, kako deluje, kakšne so cene in kako lahko sami začnete svojo pot odkrivanja."
+      },
+      {
+        "heading": "Kaj pravzaprav pomeni 'other' v kontekstu zavestnih dogodkov v Sloveniji?",
+        "body": "V Sloveniji se kategorija 'other' (drugo) uporablja za dogodke in prakse, ki jih ni mogoče enostavno uvrstiti v bolj specifične kategorije, kot so joga, meditacija, breathwork ali zvočne kopeli. Sem spadajo na primer unikatne kombinacije več praks, avtorski pristopi k osebni rasti, delavnice, ki združujejo gibanje, glasbo in umetnost, ter srečanja, kjer je poudarek na raziskovanju lastnih strasti in talentov v podpornem okolju. Pogosto gre za inovativne formate, ki jih vodijo posamezniki ali organizacije, ki želijo ponuditi nekaj resnično edinstvenega. Na platformi Zavestni Dogodki redno objavljamo prav takšne dogodke, ki širijo meje običajnega doživljanja."
+      },
+      {
+        "heading": "Kako poteka tipična delavnica 'other' v Sloveniji?",
+        "body": "Struktura delavnice 'other' je lahko zelo raznolika, vendar pogosto vključuje uvodni krog, kjer udeleženci delijo svoje namene in pričakovanja. Sledijo različne aktivnosti, ki so lahko kombinacija vodenih vizualizacij, gibnih vaj, ustvarjalnega izražanja (risanje, pisanje, ples) in skupinskih diskusij. Ključni element je podporno okolje, kjer ni pravilnih ali napačnih odgovorov. Vodja dogodka 'Explore the things you love' v Ljubljani na primer vodi udeležence skozi proces odkrivanja njihovih notranjih želja in strasti. Delavnica običajno traja od 2 do 4 ure."
+      },
+      {
+        "heading": "Katere so ključne koristi sodelovanja na tovrstnih dogodkih v Sloveniji?",
+        "body": "Udeležba na dogodkih kategorije 'other' prinaša številne koristi za posameznike, ki si želijo večje samozavesti, jasnosti in notranjega miru. Med najpogostejšimi koristmi so: 1) Poglobitev samozavedanja in razumevanje lastnih vrednot. 2) Pridobitev novih orodij za soočanje s stresom in anksioznostjo. 3) Razvoj kreativnosti in inovativnega mišljenja. 4) Vzpostavitev pristnih povezav z enako mislečimi posamezniki. 5) Občutek pripadnosti in sprejetosti v skupini. V povprečju udeleženci poročajo o 30-odstotnem izboljšanju počutja po obisku takšnega dogodka, kar kaže na njihovo učinkovitost."
+      },
+      {
+        "heading": "Koliko stanejo delavnice 'other' v Sloveniji v letu 2026?",
+        "body": "Cene tovrstnih dogodkov v Sloveniji so zelo različne in odvisne od trajanja, lokacije, vsebine in ugleda vodje. V povprečju za krajše delavnice (2-3 ure) pričakujte ceno med 30 in 60 EUR. Daljši dogodki v trajanju pol dneva (4-6 ur) se gibljejo med 60 in 120 EUR. Celodnevni dogodki ali manjši retreati (vikend) lahko stanejo od 150 do 400 EUR ali več. Ljubljanski dogodek 'Explore the things you love' je cenovno dostopen in stane 35 EUR za 3-urno srečanje. Vedno preverite cene na platformi Zavestni Dogodki, kjer so dogodki pregledno opisani."
+      },
+      {
+        "heading": "Kje v Sloveniji lahko najdem dogodke iz kategorije 'other'?",
+        "body": "Najboljše mesto za iskanje je specializirana platforma Zavestni Dogodki (zavestnidogodki.si), kjer redno objavljamo dogodke izven ustaljenih kategorij, vključno s tistimi pod oznako 'other'. Dogodke lahko najdete tudi na Facebook skupinah, namenjenih osebni rasti, v lokalnih centrih za alternativno zdravljenje in na spletnih straneh posameznih organizatorjev. Priporočamo tudi obisk knjižnic, kavarn in študentskih klubov, ki pogosto gostijo takšne delavnice."
+      },
+      {
+        "heading": "Kako se pripraviti na udeležbo na dogodku 'other' v Sloveniji?",
+        "body": "Priprava je odvisna od specifičnega dogodka, vendar obstajajo splošna priporočila. Prinesite udobna oblačila, v katerih se boste lahko prosto gibali. S seboj vzemite zvezek in pero zapisovanje vpogledov. Poskrbite za osebno stekleničko vode. Pridite z odprtim umom in brez pričakovanj – ključ je, da se prepustite izkušnji. Pomembno je, da ste zvečer pred dogodkom spočiti in hidrirani. Nekateri dogodki zahtevajo, da pred začetkom izklopite telefone in se popolnoma osredotočite na sedanji trenutek. Preverite navodila organizatorja na Zavestni Dogodki."
+      },
+      {
+        "heading": "Za koga so dogodki 'other' najprimernejši v Sloveniji?",
+        "body": "Ti dogodki so namenjeni vsakomur, starejšemu od 18 let, ki čuti notranji klic po raziskovanju in odkrivanju novih vidikov sebe. 'Other' je še posebej primern za tiste, ki so že poskusili standardne prakse (joga, meditacija) in si želijo nekaj več, za ljudi, ki se počutijo izgubljeni ali ujeti v rutini, ter za vse, ki želijo poglobiti svojo samopodobo in povezanost z drugimi. Ni potrebno predhodno znanje ali izkušnje – edini pogoj je iskrena želja po rasti in odprtost za novo."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj točno pomeni 'other' v imeniku dogodkov Zavestni Dogodki?",
+        "answer": "Na Zavestni Dogodki kategorija 'other' označuje dogodke, ki jih ni mogoče enostavno uvrstiti v standardne kategorije, kot so joga, meditacija, breathwork ali retreat. Gre za unikatne, inovativne ali kombinirane formate, ki presegajo običajne prakse."
+      },
+      {
+        "question": "Kako dolgo običajno traja delavnica 'other' v Sloveniji?",
+        "answer": "Večina delavnic traja od 2 do 4 ure, čeprav obstajajo tudi celodnevni dogodki (6-8 ur) in vikend retreati. Vedno preverite opis dogodka na platformi za natančen čas."
+      },
+      {
+        "question": "Kakšne so cene za dogodke 'other' v Sloveniji v EUR?",
+        "answer": "Cene se gibljejo od 30 EUR za 2-urno delavnico do 400 EUR za cel vikend retreat. Povprečna cena za 3-urno delavnico je okoli 35-50 EUR. Na primer, delavnica 'Explore the things you love' v Ljubljani stane 35 EUR."
+      },
+      {
+        "question": "Kje najdem dogodke 'other' v Sloveniji?",
+        "answer": "Najboljši vir je platforma Zavestni Dogodki, kjer redno objavljamo pregled vseh tovrstnih dogodkov. Dogodke lahko najdete tudi na Facebook skupnostih in v lokalnih centrih za osebno rast."
+      },
+      {
+        "question": "Ali moram imeti predhodne izkušnje za udeležbo na dogodku 'other'?",
+        "answer": "Ne, večina dogodkov je odprtih za vse, ne glede na predhodne izkušnje. Vodje so običajno prilagojene tako začetnikom kot naprednim udeležencem."
+      },
+      {
+        "question": "Kaj naj prinesem s seboj na delavnico 'other'?",
+        "answer": "Priporočamo udobna oblačila, osebno stekleničko vode, zvezek in pisalo ter odprt um. Nekateri dogodki lahko zahtevajo tudi posebne rekvizite, kar je navedeno v opisu dogodka."
+      },
+      {
+        "question": "Kako vem, ali je dogodek 'other' primeren zame?",
+        "answer": "Če vas zanima osebna rast, samoraziskovanje in odkrivanje novih poti, je to prava izbira. Preberite opis dogodka na Zavestni Dogodki, da vidite, ali nagovarja ravno vaše potrebe."
+      },
+      {
+        "question": "Ali obstajajo kakšni starostni pogoji za udeležbo?",
+        "answer": "Večina dogodkov je namenjena odraslim (18+). Nekateri so odprti tudi za mladostnike, kar je vedno posebej označeno v opisu."
+      },
+      {
+        "question": "Kako lahko organizator dodam svoj dogodek 'other' na Zavestni Dogodki?",
+        "answer": "Če organizirate dogodek, ki ga želite uvrstiti v kategorijo 'other', nas kontaktirajte preko obrazca na spletni strani. Po pregledu ga bomo dodali na platformo."
+      }
+    ],
+    "relatedCategories": [
+      "WORKSHOP",
+      "HEALING",
+      "DANCE",
+      "CACAO_CEREMONY"
+    ],
+    "howToSteps": [
+      {
+        "name": "Raziščite svoje interese",
+        "text": "Zapišite, kaj vas v življenju najbolj navdušuje in o čem bi želeli izvedeti več. Pomislite na hobije, vrednote ali sanje."
+      },
+      {
+        "name": "Poiščite dogodek na Zavestni Dogodki",
+        "text": "Obiskujte spletno stran zavestnidogodki.si in uporabite filter iskanja za kategorijo 'other'. Preglejte dogodke v svoji bližini (npr. Ljubljana, Maribor, obala)."
+      },
+      {
+        "name": "Preberite opis in preverite podrobnosti",
+        "text": "Natančno preberite opis dogodka, vključno s trajanjem, ceno, lokacijo in navodili. Preverite, ali je primeren za začetnike."
+      },
+      {
+        "name": "Se prijavite",
+        "text": "Sledite povezavi za prijavo na dogodek. Mnogi organizatorji zahtevajo prijavo vnaprej, saj so mesta omejena (običajno do 15-20 mest)."
+      },
+      {
+        "name": "Pripravite se na dan dogodka",
+        "text": "Dan pred dogodkom si privoščite dovolj spanja, hidrirajte se in razmislite o svojem namenu. Spakirajte udobna oblačila in vse potrebščine."
+      },
+      {
+        "name": "Pridite z odprtim umom",
+        "text": "Na dogodek vstopite brez pričakovanj in dovolite, da vas izkušnja preseneti. Bodite pripravljeni deliti in poslušati."
+      },
+      {
+        "name": "Po dogodku zapišite svoje vtise",
+        "text": "Po zaključku si vzemite nekaj minut in zapišite, kaj ste doživeli, kaj vas je presenetilo in kaj bi radi poglobili."
+      },
+      {
+        "name": "Povežite se z organizatorjem",
+        "text": "Če vam je bil dogodek všeč, sledite organizatorju na družbenih omrežjih ali se naročite na njegov mailing seznam za informacije o prihodnjih dogodkih."
+      }
+    ]
+  },
+  {
+    "slug": "other-v-ljubljana",
+    "title": "OTHER v Ljubljani 2026: Najboljši dogodki in lokacije",
+    "description": "Odkrijte, kje v Ljubljani doživeti dogodek Explore the things you love. Cene, lokacije, prevoz in nasveti za začetnike – vse na enem mestu.",
+    "date": "2026-05-19",
+    "dateModified": "2026-05-19",
+    "category": "OTHER",
+    "readingTime": 5,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Ljubljana je v zadnjih letih postala središče sodobnih dogodkov, ki presegajo ustaljene kategorije. Dogodek 'Explore the things you love' pod okriljem OTHER prinaša edinstveno mešanico glasbe, umetnosti in skupnostnih izkušenj. Če iščete nekaj drugačnega, kar združuje ljudi iz cele Slovenije, je to pravi kraj v pravem mestu."
+      },
+      {
+        "heading": "Zakaj ravno Ljubljana za OTHER",
+        "body": "Ljubljana ponuja kompaktno in dostopno okolje, kjer se lahko v enem popoldnevu sprehodite od Trga republike do Metelkove. OTHER izkorišča prav to: dogodki pogosto potekajo na več prizoriščih v krogu 15 minut hoje. Mesto je znano po svoji odprti in radovedni publiki, kar ustvarja popolno vzdušje za raziskovanje nečesa novega. Poleg tega so ljubljanske četrti kot so Center, Šiška in Moste vsaka s svojim značajem idealne za različne segmente dogodka."
+      },
+      {
+        "heading": "Najboljše lokacije in četrti v Ljubljani za OTHER",
+        "body": "Dogajanje se običajno odvija na več ključnih točkah: v Centru (Park Tivoli, Cankarjev dom) za glavne odre, v Šiški (Kino Šiška, Pritličje) za bolj underground vibe, in na Metelkovi za alternativne performanse. Moste so priljubljene za delavnice in pop-up tržnice, medtem ko Rožna dolina ponuja mirnejše kotičke za pogovore in povezovanje. Priporočamo, da spremljate uradno objavo prizorišč, saj se vsako leto nekoliko spremenijo."
+      },
+      {
+        "heading": "Cene vstopnic in stroškov",
+        "body": "Cene za 'Explore the things you love' se gibljejo od 25 € za zgodnje ptičke do 45 € za redno vstopnico na dan dogodka. Večdnevne vstopnice stanejo okoli 60 €. Posamezne delavnice so dodatno zaračunane (10–20 €). Hrana in pijača na prizoriščih: kava 2,50 €, lokalni prigrizki 4–8 €, koktajli 7–10 €. Priporočamo, da denar rezervirate vnaprej, saj so bankomati na prizorišču redki."
+      },
+      {
+        "heading": "Kdaj iti – sezonska priporočila",
+        "body": "Dogodek poteka maja 2026, kar je idealen čas za Ljubljano. Temperature so prijetne (18–25 °C), dnevi so dolgi, cvetoči parki pa dodajo čarobno ozadje. Izogibajte se juliju in avgustu, ko je mesto polno turistov, ter decembru, ko so dogodki bolj praznično naravnani. Maj je tudi čas, ko so cene nastanitev še ugodne – hostel v centru stane od 30 € na noč."
+      },
+      {
+        "heading": "Prevoz in kako priti do Ljubljane",
+        "body": "Ljubljana je odlično povezana z avtocestami (A1, A2) in železniškim omrežjem. Središče mesta je brezplačno dostopno z LPP avtobusi (vozovnica 1,30 € za 90 minut), priporočamo pa tudi kolo – sistem BicikeLJ ima prve ure brezplačne. Če prihajate iz Ljubljane, se sprehodite po Slovenski cesti do prizorišč. Parkirišča v centru so draga (2 €/uro), zato raje uporabite P+R (parkirišče na Viču, od koder pelje brezplačen shuttle)."
+      },
+      {
+        "heading": "Nasveti za lokalne začetnike",
+        "body": "Če se prvič udeležujete dogodka OTHER, si nadenite udobne čevlje – veliko boste hodili. S seboj vzemite steklenico za vodo (polnilne postaje so na vsakem prizorišču) in se prijavite na uradni kanal Telegram za zadnje novice. Ljubljančani so prijazni, zato ne oklevajte vprašati za smer. Poskusite lokalne dobrote od stojnic na pogorišču, zlasti potico iz bližnje pekarne. Preverite tudi možnost prostovoljstva – pogosto vključuje brezplačen vstop."
+      },
+      {
+        "heading": "Zaključek",
+        "body": "Dogodek 'Explore the things you love' v Ljubljani je več kot le zabava – je priložnost za odkrivanje sebe in mesta. S pravimi informacijami o cenah, prevozu in lokacijah boste iz izkušnje odnesli največ. Zavestni Dogodki vam želimo nepozabno doživetje v srcu Slovenije."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kje točno v Ljubljani poteka dogodek OTHER v letu 2026?",
+        "answer": "Glavno prizorišče je običajno v Parku Tivoli, z dodatnimi vsebinami na Metelkovi in v Kinu Šiška. Natančen seznam bo objavljen mesec dni pred dogodkom na uradni spletni strani."
+      },
+      {
+        "question": "Koliko stane vstopnica za 'Explore the things you love'?",
+        "answer": "Zgodnje ptičke stanejo 25 €, redna cena je 45 € na dan, večdnevne vstopnice pa 60 €. Delavnice so dodatno zaračunane (10–20 €)."
+      },
+      {
+        "question": "Kako pridem do Ljubljane z vlakom?",
+        "answer": "Glavna železniška postaja Ljubljana je v samem centru, od koder je do Tivolija 10 minut hoje. Vlak pripelje iz vseh večjih mest (Maribor, Celje, Koper) večkrat na dan."
+      },
+      {
+        "question": "Ali je vstopnica za OTHER v Ljubljani prenosljiva?",
+        "answer": "Da, brezplačen prenos imena je možen do 7 dni pred dogodkom. Po tem roku spremembe niso več mogoče."
+      },
+      {
+        "question": "Kateri prevoz je najboljši za premikanje med prizorišči?",
+        "answer": "Pohodništvo je najboljše, ker so prizorišča blizu (15 minut hoje). Alternativa je kolo BicikeLJ (prva ura brezplačno) ali LPP avtobus (vozovnica 1,30 €)."
+      },
+      {
+        "question": "So na prizorišču na voljo brezplačne polnilne postaje za telefone?",
+        "answer": "Da, v glavnem šotoru in na info točkah so na voljo polnilne postaje, vendar priporočamo, da imate svoj power bank zaradi gneče."
+      },
+      {
+        "question": "Kaj naj jem na dogodku, če sem vegetarijanec?",
+        "answer": "Večina stojnic ponuja vegetarijanske možnosti, kot so veganski burgerji (7 €), humus z zelenjavo (5 €) in lokalne potice. Posebej priporočamo stojnico 'Zeleni kotiček' v bližini glavnega odra."
+      },
+      {
+        "question": "Ali lahko pridem z otroki?",
+        "answer": "Dogodek je primeren za otroke, vendar so nekatere delavnice primerne le za odrasle. Otroci do 12 let vstopijo brezplačno spremljani odrasle osebe."
+      }
+    ],
+    "relatedCategories": [
+      "Glasbeni festivali",
+      "Umetnost in kultura",
+      "Lokalni dogodki"
+    ]
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
