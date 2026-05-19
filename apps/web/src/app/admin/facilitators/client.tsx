@@ -7,6 +7,7 @@ interface FacilitatorActionsProps {
   canResearch: boolean;
   canSendEmail: boolean;
   hasBeenResearched: boolean;
+  currentAvatarUrl?: string | null;
 }
 
 export function FacilitatorActions({
@@ -14,6 +15,7 @@ export function FacilitatorActions({
   canResearch,
   canSendEmail,
   hasBeenResearched,
+  currentAvatarUrl,
 }: FacilitatorActionsProps) {
   const [researching, setResearching] = useState(false);
   const [sending, setSending] = useState(false);
@@ -21,6 +23,29 @@ export function FacilitatorActions({
   const [emailDone, setEmailDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [emailPreview, setEmailPreview] = useState<string | null>(null);
+  const [showPhotoInput, setShowPhotoInput] = useState(false);
+  const [photoUrl, setPhotoUrl] = useState(currentAvatarUrl ?? "");
+  const [savingPhoto, setSavingPhoto] = useState(false);
+
+  async function handleSavePhoto() {
+    if (!photoUrl.trim()) return;
+    setSavingPhoto(true);
+    setError(null);
+    try {
+      const res = await fetch(`/api/admin/facilitators/${organizerId}/photo`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ avatarUrl: photoUrl.trim() }),
+      });
+      if (!res.ok) throw new Error("Failed to save photo");
+      setShowPhotoInput(false);
+      window.location.reload();
+    } catch {
+      setError("Napaka pri shranjevanju slike");
+    } finally {
+      setSavingPhoto(false);
+    }
+  }
 
   async function handleResearch() {
     setResearching(true);
@@ -123,6 +148,33 @@ export function FacilitatorActions({
           <>✉️ Pošlji dobrodošlico</>
         )}
       </button>
+
+      {/* Set photo button */}
+      <button
+        onClick={() => setShowPhotoInput((v) => !v)}
+        className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-stone-50 text-stone-500 hover:bg-stone-100 border border-stone-200 transition-all"
+      >
+        📷 {currentAvatarUrl ? "Zamenjaj sliko" : "Dodaj sliko"}
+      </button>
+
+      {showPhotoInput && (
+        <div className="flex gap-1.5">
+          <input
+            type="url"
+            value={photoUrl}
+            onChange={(e) => setPhotoUrl(e.target.value)}
+            placeholder="https://..."
+            className="flex-1 min-w-0 px-2 py-1.5 text-xs border border-stone-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-300"
+          />
+          <button
+            onClick={handleSavePhoto}
+            disabled={savingPhoto}
+            className="px-2.5 py-1.5 bg-emerald-600 text-white rounded-lg text-xs font-medium hover:bg-emerald-700 disabled:opacity-50"
+          >
+            {savingPhoto ? "…" : "✓"}
+          </button>
+        </div>
+      )}
 
       {/* Error */}
       {error && (

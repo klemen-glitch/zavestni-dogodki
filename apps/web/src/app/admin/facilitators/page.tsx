@@ -166,6 +166,7 @@ export default async function FacilitatorsPage() {
                     canResearch={canResearch}
                     canSendEmail={canSendEmail}
                     hasBeenResearched={!!org.researchedAt}
+                    currentAvatarUrl={org.avatarUrl}
                   />
 
                 </div>
