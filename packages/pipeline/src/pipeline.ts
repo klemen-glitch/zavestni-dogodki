@@ -90,6 +90,7 @@ export async function runPipeline(
       authorName: post.authorName,
     });
 
+
     if (!result.success || !result.event) {
       errors.push(`AI failed on ${post.postId}: ${result.error}`);
       console.log("❌ AI error");
@@ -121,6 +122,35 @@ export async function runPipeline(
       const shouldAutoApprove = confidence >= autoApproveAbove;
       const slug = await generateSlug(event.titleEn);
 
+      // Find-or-create organizer using the real author name + Facebook profile data
+      const organizerName = event.organizerName ?? post.authorName;
+      let organizerId: string | null = null;
+      if (organizerName && organizerName !== "Unknown") {
+        const existing = await prisma.organizer.findFirst({ where: { name: organizerName } });
+        if (existing) {
+          // Backfill avatar/facebookUrl if not yet set
+          if ((post.authorAvatarUrl && !existing.avatarUrl) || (post.authorFbUrl && !existing.facebookUrl)) {
+            await prisma.organizer.update({
+              where: { id: existing.id },
+              data: {
+                ...(post.authorAvatarUrl && !existing.avatarUrl && { avatarUrl: post.authorAvatarUrl }),
+                ...(post.authorFbUrl && !existing.facebookUrl && { facebookUrl: post.authorFbUrl }),
+              },
+            });
+          }
+          organizerId = existing.id;
+        } else {
+          const created = await prisma.organizer.create({
+            data: {
+              name: organizerName,
+              facebookUrl: post.authorFbUrl ?? null,
+              avatarUrl: post.authorAvatarUrl ?? null,
+            },
+          });
+          organizerId = created.id;
+        }
+      }
+
       const created = await prisma.event.create({
         data: {
           slug,
@@ -144,6 +174,7 @@ export async function runPipeline(
           rawText: post.text,
           aiProcessed: true,
           aiConfidence: confidence,
+          ...(organizerId && { organizerId }),
         },
       });
 

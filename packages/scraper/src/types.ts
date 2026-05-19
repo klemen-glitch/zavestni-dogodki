@@ -4,6 +4,10 @@ export interface ScrapedPost {
   imageUrls: string[];
   postUrl: string;
   authorName: string;
+  /** Facebook profile URL of the post author, e.g. https://www.facebook.com/username */
+  authorFbUrl?: string;
+  /** Stable Facebook profile picture URL via Graph API */
+  authorAvatarUrl?: string;
   postedAt: string;
   scrapedAt: string;
 }

@@ -82,6 +82,33 @@ export async function scrapeFacebookGroup(
       (els: HTMLAnchorElement[]) => [...new Set(els.map((e) => e.href).filter(Boolean))]
     );
 
+    // ── Extract author profile links from DOM ────────────────────────────────
+    // Capture Facebook profile URLs of post authors in feed order.
+    // We look for <a href="facebook.com/X"> links that wrap an <image> element
+    // (the small circular avatar beside each post). We filter out group/events/
+    // hashtag/page links and deduplicate consecutive repeats caused by FB's
+    // "who commented" stacking — keeping only the first occurrence per block.
+    const authorLinks: { fbUrl: string; avatarUrl: string | null }[] = await page.$$eval(
+      'a[href*="facebook.com"]',
+      (els: HTMLAnchorElement[]) => {
+        const SKIP = ["/groups/", "/events/", "/hashtag/", "/pages/", "/marketplace/", "login", "help"];
+        const seen = new Set<string>();
+        const results: { fbUrl: string; avatarUrl: string | null }[] = [];
+        for (const el of els) {
+          const href = el.href;
+          if (!href || SKIP.some((s) => href.includes(s))) continue;
+          // Only links that have an image child (avatar circles)
+          const img = el.querySelector("img");
+          if (!img) continue;
+          const key = href.split("?")[0]; // ignore query params for dedup
+          if (seen.has(key)) continue;
+          seen.add(key);
+          results.push({ fbUrl: href, avatarUrl: img.src ?? null });
+        }
+        return results.slice(0, 60);
+      }
+    );
+
     // Split feed by "Comment as" which appears after every post (admin view)
     // Also handle non-admin boundary: "Like · Comment · Share"
     const sections = feedText.split(/\bComment as\s+\w[\w\s]*\n|\bLike\s*·\s*Comment\s*·\s*Share\b/);
@@ -113,12 +140,22 @@ export async function scrapeFacebookGroup(
       const postIdMatch = postUrl.match(/\/posts\/(\d+)|\/permalink\/(\d+)/);
       const postId = postIdMatch?.[1] ?? postIdMatch?.[2] ?? `fb-${Date.now()}-${postIndex}`;
 
+      // Try to match author profile link by index
+      const authorLink = authorLinks[postIndex];
+      const authorFbUrl = authorLink?.fbUrl;
+      // Derive a stable Graph API picture URL from the Facebook profile URL
+      const authorAvatarUrl = authorFbUrl
+        ? fbProfilePictureUrl(authorFbUrl)
+        : undefined;
+
       posts.push({
         postId,
         text,
         imageUrls: [],
         postUrl,
         authorName: extractAuthorFromSection(lines),
+        authorFbUrl,
+        authorAvatarUrl,
         postedAt: new Date().toISOString(),
         scrapedAt: new Date().toISOString(),
       });
@@ -195,4 +232,29 @@ function extractAuthorFromSection(lines: string[]): string {
     }
   }
   return "Unknown";
+}
+
+// ── Helper: derive stable Facebook profile picture URL ────────────────────────
+// Uses the public Graph API picture endpoint which works for public profiles.
+// When a profile is private, Facebook returns a default silhouette — that is
+// still correct behaviour (no fake photo).
+function fbProfilePictureUrl(fbUrl: string): string | undefined {
+  try {
+    const url = new URL(fbUrl);
+    // facebook.com/profile.php?id=123456
+    const idParam = url.searchParams.get("id");
+    if (idParam && /^\d+$/.test(idParam)) {
+      return `https://graph.facebook.com/${idParam}/picture?type=large`;
+    }
+    // facebook.com/username  (first path segment, not a reserved word)
+    const pathParts = url.pathname.split("/").filter(Boolean);
+    const username = pathParts[0];
+    const RESERVED = new Set(["groups", "events", "pages", "hashtag", "marketplace", "watch", "login"]);
+    if (username && !RESERVED.has(username) && !/^\d+$/.test(username)) {
+      return `https://graph.facebook.com/${username}/picture?type=large`;
+    }
+  } catch {
+    // invalid URL
+  }
+  return undefined;
 }
