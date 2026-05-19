@@ -113,8 +113,19 @@ async function getEvents(search: SearchParams) {
     ...(search.featured === "true" && { featured: true }),
     ...(search.free === "true" && { price: 0 }),
     ...(search.priceMax && { price: { lte: Number(search.priceMax) } }),
-    ...(search.city && { venue: { city: search.city } }),
-    ...(search.region && { venue: { region: search.region } }),
+    // City: check both linked Venue record AND venueName string (most scraped events use venueName)
+    ...(search.city && {
+      OR: [
+        { venue: { city: { contains: search.city, mode: "insensitive" as const } } },
+        { venueName: { contains: search.city, mode: "insensitive" as const } },
+      ],
+    }),
+    ...(search.region && {
+      OR: [
+        { venue: { region: { contains: search.region, mode: "insensitive" as const } } },
+        { venueName: { contains: search.region, mode: "insensitive" as const } },
+      ],
+    }),
     ...(search.q && {
       OR: [
         { titleEn: { contains: search.q, mode: "insensitive" as const } },
