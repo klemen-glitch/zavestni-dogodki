@@ -8,101 +8,85 @@
  *   node scripts/fb-login-once.mjs
  *
  * What it does:
- *   1. Opens a real Chrome browser window (not headless)
- *   2. Navigates to facebook.com/login
- *   3. Fills in your email + password from .env
- *   4. Waits for YOU to complete 2FA if needed
- *   5. Saves the session to packages/scraper/auth/facebook-state.json
- *   6. That file is reused by the daily scraper for months
+ *   1. Opens a Chrome window (not headless) with Facebook login
+ *   2. You log in manually (supports Google OAuth, 2FA, etc.)
+ *   3. Saves the session to packages/scraper/auth/facebook-state.json
+ *   4. That file is reused by the daily scraper for months
  */
 
 import { chromium } from "playwright";
-import { readFileSync, mkdirSync } from "fs";
+import { readFileSync, mkdirSync, writeFileSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, "..");
-
-// Load .env manually
-const envPath = resolve(ROOT, ".env");
-const envContent = readFileSync(envPath, "utf8");
-const env = Object.fromEntries(
-  envContent
-    .split("\n")
-    .filter((l) => l.includes("=") && !l.startsWith("#"))
-    .map((l) => {
-      const [k, ...v] = l.split("=");
-      return [k.trim(), v.join("=").trim().replace(/^"|"$/g, "")];
-    })
-);
-
-const EMAIL = env.FB_EMAIL;
-const PASSWORD = env.FB_PASSWORD;
 const AUTH_PATH = resolve(ROOT, "packages/scraper/auth/facebook-state.json");
 
-if (!EMAIL || EMAIL === "your@email.com") {
-  console.error("❌ Set FB_EMAIL in your .env file first");
-  process.exit(1);
-}
-if (!PASSWORD || PASSWORD === "your-facebook-password") {
-  console.error("❌ Set FB_PASSWORD in your .env file first");
-  process.exit(1);
-}
-
-import os from "os";
-
-const CHROME_PROFILE = resolve(os.homedir(), "Library/Application Support/Google/Chrome");
-
-console.log("📋 Opening Chrome with your existing profile...");
-console.log("   (Make sure Chrome is fully closed / Cmd+Q before this runs)\n");
+console.log("📋 Opening Chrome for Facebook login...");
+console.log("   Log in to Facebook in the Chrome window that opens.");
+console.log("   Supports Google OAuth, 2FA, etc. — just log in as you normally would.\n");
 
 mkdirSync(resolve(ROOT, "packages/scraper/auth"), { recursive: true });
 
-// Launch Chrome with the user's real profile — already logged in to Facebook
-const context = await chromium.launchPersistentContext(CHROME_PROFILE, {
+const browser = await chromium.launch({
   channel: "chrome",
   headless: false,
   args: ["--start-maximized"],
 });
 
+const context = await browser.newContext({ viewport: null });
 const page = await context.newPage();
 await page.goto("https://www.facebook.com/");
 
-console.log("⏳ Waiting for Facebook feed to load (up to 30 seconds)...");
+// Check if already on a non-login URL (session still valid)
+const isLoggedIn = (url) => {
+  const h = url.href;
+  return (
+    h.includes("facebook.com") &&
+    !h.includes("/login") &&
+    !h.includes("/checkpoint") &&
+    !h.includes("/two_factor") &&
+    !h.includes("/two_step_verification") &&
+    !h.includes("/identity_confirmation") &&
+    !h.includes("/recover") &&
+    !h.includes("google.com") &&
+    !h.includes("accounts.")
+  );
+};
 
-// Wait until we see the FB feed — not a login page
-try {
-  await page.waitForURL(
-    (url) =>
-      url.href.includes("facebook.com") &&
-      !url.href.includes("/login") &&
-      !url.href.includes("/checkpoint") &&
-      !url.href.includes("google.com"),
-    { timeout: 30_000 }
-  );
-} catch {
-  // If still on login/google page after 30s, wait extra 60s for manual action
-  console.log("⚠️  Not logged in automatically — you have 60 seconds to log in manually in the browser window...");
-  await page.waitForURL(
-    (url) =>
-      url.href.includes("facebook.com") &&
-      !url.href.includes("/login") &&
-      !url.href.includes("google.com"),
-    { timeout: 60_000 }
-  );
+if (!isLoggedIn(new URL(page.url()))) {
+  console.log("⏳ Waiting for you to log in (up to 5 minutes)...");
+  console.log("   The Chrome window should be visible on your screen.\n");
+  try {
+    await page.waitForURL(isLoggedIn, { timeout: 300_000 });
+  } catch {
+    console.error("❌ Timed out after 5 minutes. Run the script again.");
+    await browser.close();
+    process.exit(1);
+  }
 }
 
 await page.waitForTimeout(3000);
+console.log(`✓ Logged in at: ${page.url()}`);
 
-// Extra wait to ensure all cookies are set
-await page.waitForTimeout(2000);
+const allCookies = await context.cookies();
+const fbCookies = allCookies.filter(
+  (c) => c.domain?.includes("facebook.com") || c.domain?.includes("fbcdn.net")
+);
 
-// Save session
-await context.storageState({ path: AUTH_PATH });
 await browser.close();
 
-console.log("✅ Login successful! Session saved to:");
+if (!fbCookies.some((c) => c.name === "c_user") || !fbCookies.some((c) => c.name === "xs")) {
+  console.error("❌ Session incomplete — missing c_user or xs cookie. Try again.");
+  process.exit(1);
+}
+
+writeFileSync(AUTH_PATH, JSON.stringify({ cookies: allCookies, origins: [] }, null, 2));
+
+const cUser = fbCookies.find((c) => c.name === "c_user");
+console.log(`\n✅ Session saved (${allCookies.length} cookies) to:`);
 console.log(`   ${AUTH_PATH}`);
+if (cUser) console.log(`\n👤 Logged in as Facebook user: ${cUser.value}`);
 console.log("\n🎉 The daily scraper will now use this session automatically.");
 console.log("   It stays valid for ~3 months. When it expires, just run this script again.");
