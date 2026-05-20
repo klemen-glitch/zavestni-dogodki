@@ -4,6 +4,7 @@
  */
 
 import { db } from "@/lib/db";
+import { CATEGORY_LABEL as CATEGORY_LABEL_MAP } from "@/lib/utils";
 
 export interface EnrichedContent {
   intro: string[];           // 3 paragraphs about the event
@@ -296,8 +297,10 @@ Piši v slovenščini. Ton: topel, navdihujoč, literarno bogat, a dostopen.`;
 
     if (!res.ok) return {};
     const data = (await res.json()) as { choices: Array<{ message: { content: string } }> };
-    const text = data.choices?.[0]?.message?.content ?? "{}";
-    return JSON.parse(text) as Partial<EnrichedContent>;
+    const raw = data.choices?.[0]?.message?.content ?? "{}";
+    // Strip markdown code fences if DeepSeek wraps the JSON
+    const cleaned = raw.replace(/```json\s*/gi, "").replace(/```\s*/g, "").trim();
+    return JSON.parse(cleaned) as Partial<EnrichedContent>;
   } catch {
     return {};
   }
@@ -319,11 +322,11 @@ export async function getEnrichedContent(event: {
 }): Promise<EnrichedContent> {
   const apiKey = process.env.DEEPSEEK_API_KEY;
 
-  // Check cache — must have both text content AND image data to be considered fresh
+  // Check cache — valid if it has enriched text content
   if (event.rawText) {
     try {
       const cached = JSON.parse(event.rawText) as EnrichedContent & { enrichedAt?: string };
-      if (cached.enrichedAt && cached.intro?.length > 0 && cached.heroImageUrl) {
+      if (cached.enrichedAt && cached.intro?.length > 0 && cached.facilitatorBio) {
         return cached;
       }
     } catch {
@@ -356,7 +359,10 @@ export async function getEnrichedContent(event: {
       "Čas za introspekcijo in integracijo",
       "Skupna refleksija in zaključek",
     ],
-    facilitatorBio: ai.facilitatorBio ?? event.organizer?.bio ?? "Izkušen facilitator z globoko predanostjo svojemu delu.",
+    facilitatorBio: ai.facilitatorBio
+      ?? (event.organizer?.bio
+        ? `${event.organizer.name} je izkušen facilitator, specializiran za ${CATEGORY_LABEL_MAP[event.category] ?? "zavestne prakse"}. ${event.organizer.bio}`
+        : `${event.organizer?.name ?? "Facilitator"} je izkušen vodja ${CATEGORY_LABEL_MAP[event.category] ?? "zavestnih praks"} z globoko predanostjo transformativnemu delu. Skozi leta prakse je razvil/a edinstven pristop, ki združuje tradicionalno modrost z modernim razumevanjem telesa in uma. Na svojih srečanjih ustvarja varen, topel prostor, v katerem se udeleženci lahko predajo globokemu notranjemu potovanju.`),
     facilitatorFact: ai.facilitatorFact ?? `"Vsak, ki pride na ta prostor, prinese s seboj del svoje zgodbe. Moja naloga je, da ta prostor ohranjam varen in odprt." — ${event.organizer?.name ?? "Facilitator"}`,
     ...technique,
     locationContext: ai.locationContext ?? `${event.venue?.city ?? ""} je eno od središč zavestne skupnosti v Sloveniji. ${event.venue?.region ? `Regija ${event.venue.region} ponuda naravno bogato okolje, ki dopolnjuje notranjo prakso.` : ""}`,
