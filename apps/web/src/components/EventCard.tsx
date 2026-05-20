@@ -67,19 +67,26 @@ export function EventCard({ event, compact = false }: EventCardProps) {
             />
           </>
         ) : (
-          /* No image — full branded gradient */
+          /* No image — editorial text card */
           <div
-            className="absolute inset-0 flex items-center justify-center"
-            style={{ background: `linear-gradient(135deg, ${catColor}, ${catDark})` }}
+            className="absolute inset-0 flex flex-col justify-between p-4 overflow-hidden"
+            style={{ background: `linear-gradient(145deg, ${catColor}0d 0%, ${catDark}18 100%)` }}
           >
-            {/* Botanical decoration */}
-            <svg className="absolute inset-0 w-full h-full opacity-[0.08]" viewBox="0 0 400 300" fill="none">
-              <circle cx="300" cy="60" r="80" stroke="white" strokeWidth="1" />
-              <circle cx="300" cy="60" r="55" stroke="white" strokeWidth="0.8" />
-              <path d="M260 200 Q300 150 340 200 Q300 180 260 200Z" fill="white" opacity="0.4" />
-              <path d="M220 250 Q280 190 340 250 Q280 225 220 250Z" fill="white" opacity="0.3" />
+            {/* Decorative circles — top right */}
+            <svg className="absolute top-0 right-0 w-3/4 h-full opacity-[0.07]" viewBox="0 0 180 180" fill="none">
+              <circle cx="160" cy="30" r="120" stroke={catColor} strokeWidth="1"/>
+              <circle cx="160" cy="30" r="75" stroke={catColor} strokeWidth="0.8"/>
+              <circle cx="160" cy="30" r="35" stroke={catColor} strokeWidth="0.6"/>
             </svg>
-            <span className="text-7xl opacity-25 select-none">{emoji}</span>
+            {/* Category label top-left */}
+            <span className="text-[9px] tracking-[0.18em] uppercase font-medium relative z-10"
+              style={{ color: catColor }}>
+              {label}
+            </span>
+            {/* Title bottom */}
+            <p className="font-serif text-lg font-light text-stone-800 leading-snug line-clamp-3 relative z-10">
+              {title}
+            </p>
           </div>
         )}
 

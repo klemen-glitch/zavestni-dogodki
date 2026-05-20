@@ -276,61 +276,120 @@ export default async function EventPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <div className="relative w-full h-[52vh] min-h-[360px] max-h-[520px] overflow-hidden">
-        {(event.imageUrl ?? enriched.heroImageUrl) ? (
+      {event.imageUrl ? (
+        /* Photo hero: real photo as atmospheric background, text prominently layered */
+        <div className="relative w-full h-[52vh] min-h-[380px] max-h-[540px] overflow-hidden">
           <Image
-            src={(event.imageUrl ?? enriched.heroImageUrl)!}
+            src={event.imageUrl}
             alt={event.titleSl ?? event.titleEn}
             fill
             className="object-cover"
             priority
           />
-        ) : (
-          <div className="absolute inset-0" style={{ background: `linear-gradient(135deg, ${catColor}, ${catDark})` }} />
-        )}
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/30 to-transparent" />
-        {/* Category gradient accent */}
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{ background: `linear-gradient(to right, transparent 40%, ${catColor}66 100%)` }}
-        />
+          <div className="absolute inset-0 bg-gradient-to-t from-stone-900/92 via-stone-900/55 to-stone-900/10" />
 
-        {/* Back link */}
-        <div className="absolute top-6 left-6">
-          <Link
-            href="/events"
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium bg-black/20 backdrop-blur-sm px-3 py-1.5 rounded-full transition-colors"
-          >
-            ← Vsi dogodki
-          </Link>
-        </div>
-
-        {/* Hero content */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 max-w-5xl">
-          <div className="flex items-center gap-2 mb-3">
-            <span
-              className="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full text-white"
-              style={{ backgroundColor: catColor }}
+          <div className="absolute top-6 left-6">
+            <Link
+              href="/events"
+              className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm font-medium bg-black/20 backdrop-blur-sm px-3 py-1.5 rounded-full transition-colors"
             >
-              {emoji} {label}
-            </span>
-            {event.featured && (
-              <span className="inline-flex items-center gap-1 text-xs font-bold px-3 py-1 rounded-full bg-amber-400 text-amber-900">
-                ⭐ Izpostavljeno
-              </span>
-            )}
+              ← Vsi dogodki
+            </Link>
           </div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-3 drop-shadow-lg">
-            {event.titleSl ?? event.titleEn}
-          </h1>
-          <p className="text-white/80 text-lg font-medium">
-            📅 {formatDate(event.date)} {time && `· ${time}`}
-            {endTime && ` – ${endTime}`}
-            &nbsp;&nbsp;📍 {locationName}{locationCity ? `, ${locationCity}` : ""}
-          </p>
+
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 max-w-5xl">
+            <div className="flex items-center gap-2 mb-3">
+              <span
+                className="text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full text-white"
+                style={{ backgroundColor: catColor }}
+              >
+                {label}
+              </span>
+              {event.featured && (
+                <span className="text-[10px] font-medium uppercase tracking-widest px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white">
+                  Izpostavljeno
+                </span>
+              )}
+            </div>
+            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-white leading-tight mb-3 drop-shadow">
+              {event.titleSl ?? event.titleEn}
+            </h1>
+            <p className="text-white/80 text-base md:text-lg leading-relaxed mb-4 max-w-2xl">
+              {(event.shortDescEn ?? event.descriptionEn).slice(0, 200)}
+              {(event.shortDescEn ?? event.descriptionEn).length > 200 ? "…" : ""}
+            </p>
+            <p className="text-white/55 text-xs font-medium uppercase tracking-widest">
+              {formatDate(event.date, { weekday: "short", day: "numeric", month: "long" })}
+              {time ? ` · ${time}` : ""}
+              {endTime ? ` – ${endTime}` : ""}
+              {(locationName || locationCity) && ` · ${locationName}${locationCity ? `, ${locationCity}` : ""}`}
+            </p>
+          </div>
         </div>
-      </div>
+      ) : (
+        /* Editorial hero: cream background, serif title, text-first — no AI photo */
+        <div className="relative w-full overflow-hidden border-b border-stone-200/60" style={{ backgroundColor: "#faf7f2" }}>
+          {/* Left accent bar */}
+          <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: catColor }} />
+          {/* Botanical decorative circles */}
+          <svg
+            className="absolute top-0 right-0 w-[45%] h-full pointer-events-none"
+            viewBox="0 0 400 400"
+            fill="none"
+            style={{ opacity: 0.05 }}
+            aria-hidden="true"
+          >
+            <circle cx="360" cy="120" r="300" stroke={catColor} strokeWidth="1" />
+            <circle cx="360" cy="120" r="200" stroke={catColor} strokeWidth="0.8" />
+            <circle cx="360" cy="120" r="110" stroke={catColor} strokeWidth="0.6" />
+            <circle cx="360" cy="120" r="50" stroke={catColor} strokeWidth="0.5" />
+          </svg>
+
+          <div className="max-w-5xl mx-auto px-8 md:px-12 pt-14 pb-12 relative">
+            <Link
+              href="/events"
+              className="inline-flex items-center gap-2 text-stone-400 hover:text-stone-600 text-sm mb-7 transition-colors"
+            >
+              ← Vsi dogodki
+            </Link>
+
+            <div className="flex items-center gap-2 mb-5">
+              <span
+                className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full text-white"
+                style={{ backgroundColor: catColor }}
+              >
+                {label}
+              </span>
+              {event.featured && (
+                <span className="text-[10px] font-medium uppercase tracking-widest px-3 py-1 rounded-full bg-white border border-stone-200 text-stone-500">
+                  Izpostavljeno
+                </span>
+              )}
+            </div>
+
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-stone-800 leading-tight mb-5 max-w-3xl">
+              {event.titleSl ?? event.titleEn}
+            </h1>
+
+            <p className="text-stone-500 text-lg leading-relaxed mb-7 max-w-2xl">
+              {(event.shortDescEn ?? event.descriptionEn).slice(0, 220)}
+              {(event.shortDescEn ?? event.descriptionEn).length > 220 ? "…" : ""}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium uppercase tracking-widest text-stone-400">
+              <span>
+                {formatDate(event.date, { weekday: "long", day: "numeric", month: "long" })}
+                {time ? ` · ${time}` : ""}
+                {endTime ? ` – ${endTime}` : ""}
+              </span>
+              <span className="text-stone-300">|</span>
+              <span>{locationName}{locationCity ? `, ${locationCity}` : ""}</span>
+              <span className="text-stone-300">|</span>
+              <span style={{ color: catColor }}>{formatPrice(event.price, event.priceNote)}</span>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── MAIN ─────────────────────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 py-10">
