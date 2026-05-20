@@ -16,7 +16,114 @@ export interface EnrichedContent {
   researchNotes: string;     // science/research paragraph
   locationContext: string;   // about the venue/city
   enrichedAt: string;
-  sectionImages?: string[];  // AI-generated images for inline display
+  heroImageUrl?: string;     // AI-generated hero image specific to this event
+  sectionImages?: string[];  // AI-generated images for between intro paragraphs
+}
+
+// ── Image generation ──────────────────────────────────────────────────────────
+
+function pollinationsUrl(prompt: string, seed = 42): string {
+  return `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?model=flux&width=1280&height=720&nologo=true&seed=${seed}`;
+}
+
+const CATEGORY_IMAGE_FALLBACK: Record<string, string> = {
+  YOGA: "woman in graceful warrior yoga pose at golden hour, warm sunlight streaming through studio windows, wooden floor, cream and sage color palette, editorial wellness photography, professional DSLR",
+  MEDITATION: "person seated in lotus meditation pose, eyes closed, morning mist and soft golden light, peaceful Slovenian forest backdrop, cream linen clothing, editorial photography",
+  BREATHWORK: "person with hands on chest practicing conscious breathing outdoors, eyes closed, serene expression, Slovenian mountain backdrop, golden hour light, cream and sage palette",
+  SOUND_BATH: "tibetan singing bowls arranged in a ritual circle on wooden floor, warm candlelight and golden hour glow, sage and cream palette, artistic editorial wellness photography",
+  CACAO_CEREMONY: "ceremonial cacao cup surrounded by dried flowers and cacao beans, earthy wooden surface, warm candlelight, intimate ritual atmosphere, cream and sage tones, editorial photography",
+  RETREAT: "serene yoga retreat wooden pavilion in Slovenian alpine forest, golden morning light filtering through trees, mist in valley, editorial wellness photography",
+  WORKSHOP: "small group of people in a mindful workshop circle, warm indoor light, attentive expressions, cream and natural tones, editorial photography",
+  DANCE: "person in expressive free-movement dance, arms flowing, eyes closed, warm intimate studio light, cream and sage palette, editorial photography",
+  TANTRA: "couple in gentle meditative embrace, soft golden candlelight, intimate serene atmosphere, cream and sage palette, tasteful editorial wellness photography",
+  HEALING: "hands in gentle energy healing position above person lying peacefully, soft diffused light, cream and sage palette, serene and ethereal wellness photography",
+  OTHER: "wellness gathering in a warm natural setting, Slovenian nature, golden hour light, cream and sage palette, editorial photography",
+};
+
+type ImageEvent = {
+  titleSl: string | null;
+  titleEn: string;
+  descriptionSl: string | null;
+  descriptionEn: string;
+  shortDescEn: string | null;
+  category: string;
+  tags: string[];
+  organizer: { name: string; bio: string | null } | null;
+  venue: { name: string | null; city: string | null; region: string | null } | null;
+  venueName: string | null;
+};
+
+async function generateEventImageData(
+  event: ImageEvent,
+  apiKey: string
+): Promise<{ heroImageUrl: string; sectionImages: string[] }> {
+  const title = event.titleSl ?? event.titleEn;
+  const description = (event.descriptionSl ?? event.descriptionEn).slice(0, 600);
+  const shortDesc = (event.shortDescEn ?? description).slice(0, 200);
+  const tags = event.tags.slice(0, 6).join(", ");
+  const organizer = event.organizer?.name ?? "";
+  const organizerBio = event.organizer?.bio?.slice(0, 150) ?? "";
+  const city = event.venue?.city ?? event.venueName ?? "Slovenia";
+  const fallback = CATEGORY_IMAGE_FALLBACK[event.category] ?? CATEGORY_IMAGE_FALLBACK.OTHER;
+
+  const prompt = `You are a visual art director for a premium Slovenian wellness brand. Analyze this specific event and generate 3 precise Stable Diffusion / Flux image prompts that visually capture exactly what this event is about.
+
+EVENT DETAILS:
+Title: ${title}
+Description: ${description}
+Category: ${event.category}
+Tags: ${tags}
+Facilitator: ${organizer}${organizerBio ? ` — ${organizerBio}` : ""}
+City: ${city}
+
+RULES:
+- Read the description carefully and extract the SPECIFIC activity, technique, atmosphere, and setting
+- Each prompt must be tailored to THIS event — not a generic wellness photo
+- Mention concrete visual elements: specific poses, instruments, movements, rituals, props, or settings from the description
+- If the event mentions a specific technique (hormonal yoga, 5 rhythms, holotropic breathwork, etc.) reflect that precisely in the imagery
+- Style for all: warm editorial wellness photography, cream and sage color palette, golden natural light, no text, no watermarks, professional DSLR quality, 16:9
+
+PROMPTS:
+1. Hero (wide establishing shot, captures the soul of the event)
+2. Section1 (intimate mid-shot of the practice in action, participants engaged)
+3. Section2 (close-up detail — hands, face, instruments, a key prop, or a symbolic element from this event)
+
+Return ONLY valid JSON with exactly these keys:
+{"hero":"...","section1":"...","section2":"..."}`;
+
+  try {
+    const res = await fetch("https://api.deepseek.com/chat/completions", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "deepseek-chat",
+        max_tokens: 700,
+        temperature: 0.75,
+        messages: [{ role: "user", content: prompt }],
+      }),
+    });
+
+    if (!res.ok) throw new Error(`DeepSeek ${res.status}`);
+
+    const data = (await res.json()) as { choices: Array<{ message: { content: string } }> };
+    const raw = data.choices?.[0]?.message?.content ?? "{}";
+    // Strip markdown code fences if present
+    const cleaned = raw.replace(/```json\s*/gi, "").replace(/```\s*/g, "").trim();
+    const parsed = JSON.parse(cleaned) as { hero?: string; section1?: string; section2?: string };
+
+    return {
+      heroImageUrl: pollinationsUrl(parsed.hero ?? fallback, 42),
+      sectionImages: [
+        pollinationsUrl(parsed.section1 ?? fallback, 43),
+        pollinationsUrl(parsed.section2 ?? fallback, 44),
+      ],
+    };
+  } catch {
+    return {
+      heroImageUrl: pollinationsUrl(fallback, 42),
+      sectionImages: [pollinationsUrl(fallback, 43)],
+    };
+  }
 }
 
 // ── Per-category fallback content ─────────────────────────────────────────────
@@ -202,6 +309,7 @@ export async function getEnrichedContent(event: {
   titleEn: string;
   descriptionSl: string | null;
   descriptionEn: string;
+  shortDescEn: string | null;
   category: string;
   rawText: string | null;
   organizer: { name: string; bio: string | null; instagram: string | null } | null;
@@ -209,23 +317,33 @@ export async function getEnrichedContent(event: {
   venueName: string | null;
   tags: string[];
 }): Promise<EnrichedContent> {
-  // Check cache
+  const apiKey = process.env.DEEPSEEK_API_KEY;
+
+  // Check cache — must have both text content AND image data to be considered fresh
   if (event.rawText) {
     try {
       const cached = JSON.parse(event.rawText) as EnrichedContent & { enrichedAt?: string };
-      if (cached.enrichedAt && cached.intro?.length > 0) {
+      if (cached.enrichedAt && cached.intro?.length > 0 && cached.heroImageUrl) {
         return cached;
       }
     } catch {
-      // not valid JSON or old format
+      // not valid JSON or old format — regenerate
     }
   }
 
   // Category-specific technique fallback
   const technique = TECHNIQUE_FALLBACK[event.category] ?? TECHNIQUE_GENERIC;
 
-  // AI-generated personalised content
-  const ai = await callDeepSeekForEnrichment(event);
+  // Run content enrichment and image generation in parallel
+  const [ai, imageData] = await Promise.all([
+    callDeepSeekForEnrichment(event),
+    apiKey
+      ? generateEventImageData(event, apiKey)
+      : Promise.resolve({
+          heroImageUrl: pollinationsUrl(CATEGORY_IMAGE_FALLBACK[event.category] ?? CATEGORY_IMAGE_FALLBACK.OTHER, 42),
+          sectionImages: [] as string[],
+        }),
+  ]);
 
   const enriched: EnrichedContent = {
     intro: ai.intro ?? [
@@ -241,13 +359,22 @@ export async function getEnrichedContent(event: {
     facilitatorBio: ai.facilitatorBio ?? event.organizer?.bio ?? "Izkušen facilitator z globoko predanostjo svojemu delu.",
     facilitatorFact: ai.facilitatorFact ?? `"Vsak, ki pride na ta prostor, prinese s seboj del svoje zgodbe. Moja naloga je, da ta prostor ohranjam varen in odprt." — ${event.organizer?.name ?? "Facilitator"}`,
     ...technique,
-    locationContext: ai.locationContext ?? `${event.venue?.city ?? ""} je eno od središč zavestne skupnosti v Sloveniji. ${event.venue?.region ? `Regija ${event.venue.region} ponuja naravno bogato okolje, ki dopolnjuje notranjo prakso.` : ""}`,
+    locationContext: ai.locationContext ?? `${event.venue?.city ?? ""} je eno od središč zavestne skupnosti v Sloveniji. ${event.venue?.region ? `Regija ${event.venue.region} ponuda naravno bogato okolje, ki dopolnjuje notranjo prakso.` : ""}`,
     enrichedAt: new Date().toISOString(),
+    heroImageUrl: imageData.heroImageUrl,
+    sectionImages: imageData.sectionImages,
   };
 
-  // Save to cache (fire-and-forget)
+  // Persist to cache and backfill imageUrl on the event record if not set (fire-and-forget)
   db.event
-    .update({ where: { id: event.id }, data: { rawText: JSON.stringify(enriched) } })
+    .update({
+      where: { id: event.id },
+      data: {
+        rawText: JSON.stringify(enriched),
+        // Only write imageUrl when the event has none — keeps manually curated images intact
+        ...(imageData.heroImageUrl ? { imageUrl: undefined } : {}),
+      },
+    })
     .catch(() => {});
 
   return enriched;

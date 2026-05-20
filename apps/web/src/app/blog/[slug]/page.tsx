@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import { getBlogPost, BLOG_POSTS } from "@/content/blog-posts";
 import { CATEGORY_EMOJI, CATEGORY_LABEL, CATEGORY_HEX } from "@/lib/utils";

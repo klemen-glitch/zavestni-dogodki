@@ -277,9 +277,9 @@ export default async function EventPage({
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <div className="relative w-full h-[52vh] min-h-[360px] max-h-[520px] overflow-hidden">
-        {event.imageUrl ? (
+        {(event.imageUrl ?? enriched.heroImageUrl) ? (
           <Image
-            src={event.imageUrl}
+            src={(event.imageUrl ?? enriched.heroImageUrl)!}
             alt={event.titleSl ?? event.titleEn}
             fill
             className="object-cover"
