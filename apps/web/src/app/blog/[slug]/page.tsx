@@ -187,15 +187,16 @@ export default async function BlogPostPage({ params }: Props) {
             <p className="text-stone-600 leading-relaxed">{section.body}</p>
             {section.imageUrl && (
               <figure className="my-8 not-prose">
-                <div className="relative w-full overflow-hidden rounded-2xl" style={{ aspectRatio: "16/9" }}>
-                  <Image
-                    src={section.imageUrl}
-                    alt={section.heading ?? post.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 752px"
-                  />
-                </div>
+                <Image
+                  src={section.imageUrl}
+                  alt={section.heading ?? post.title}
+                  width={752}
+                  height={423}
+                  className="w-full rounded-2xl"
+                  style={{ height: "auto" }}
+                  sizes="(max-width: 768px) 100vw, 752px"
+                  quality={85}
+                />
               </figure>
             )}
           </div>
