@@ -195,7 +195,6 @@ export default async function BlogPostPage({ params }: Props) {
                   className="w-full rounded-2xl"
                   style={{ height: "auto" }}
                   sizes="(max-width: 768px) 100vw, 752px"
-                  quality={85}
                 />
               </figure>
             )}
