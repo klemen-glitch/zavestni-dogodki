@@ -1860,6 +1860,298 @@ export const BLOG_POSTS: BlogPost[] = [
       "Lokalni dogodki"
     ]
   },
+  {
+    "slug": "delavnica-v-sloveniji",
+    "title": "Delavnica v Sloveniji 2026: Celoten vodnik po EDP za ženske",
+    "description": "Odkrijte, kako izbrati in se udeležiti EDP delavnice v Sloveniji. Cene, priprava in praktični nasveti za krepitev samozavesti.",
+    "date": "2026-05-21",
+    "dateModified": "2026-05-21",
+    "category": "WORKSHOP",
+    "readingTime": 9,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "V svetu, kjer se ženske vsakodnevno soočamo z izzivi na področju osebne varnosti in samozavesti, postajajo specializirane delavnice vse bolj iskane. Empowerment Self Defense (ESD) je celostni pristop, ki presega zgolj fizične tehnike – gre za notranjo preobrazbo, ki združuje asertivno komunikacijo, postavljanje mej in samozavestno prisotnost. V Sloveniji takšne delavnice pridobivajo na priljubljenosti, saj ponujajo praktična orodja za vsakdanje situacije. Ta članek je namenjen vsem, ki iščete kakovostno delavnico v Sloveniji, in vam bo pomagal razumeti, kaj lahko pričakujete, koliko stane ter kako se nanjo pripraviti. Ne glede na to, ali ste popolna začetnica ali že imate izkušnje, vam bo ta vodnik pomagal narediti prvi korak."
+      },
+      {
+        "heading": "Kaj je EDP delavnica in kako se razlikuje od klasične samoobrambe?",
+        "body": "EDP (Empowerment Self Defense) je izobraževalni in psihološko-fizični program, zasnovan posebej za ženske. Za razliko od tradicionalnih tečajev samoobrambe, ki se osredotočajo predvsem na fizične udarce in borilne veščine, EDP poudarja preventivo, verbalne veščine, prepoznavanje nevarnih situacij in krepitev notranje moči. V Sloveniji je ta pristop še posebej relevanten, saj združuje sodobne psihološke metode s preprostimi, a učinkovitimi fizičnimi tehnikami. Na primer, EDP delavnica v Ljubljani, ki jo vodi ESD Slovenija, v 15 urah pokriva uporabo glasu, govorice telesa in osnovne fizične tehnike. Udeleženke se naučijo, kako zavestno stopiti v svojo moč, postaviti jasne meje in se samozavestno soočiti z morebitnimi grožnjami."
+      },
+      {
+        "heading": "Kako poteka EDP delavnica v Sloveniji – korak za korakom?",
+        "body": "Tipična EDP delavnica v Sloveniji poteka v obliki vikend intenziva, običajno v soboto in nedeljo, s skupaj 15 urami programa. Prvi dan se osredotoča na teoretične osnove: prepoznavanje nevarnih vzorcev, psiho-socialne dinamike napadov in pomen asertivne komunikacije. Udeleženke vadijo s pomočjo igre vlog, kako z glasom in telesno govorico sporočiti 'Ne' in 'Stoj. Drugi dan je namenjen fizičnim tehnikam: preprostim udarcem, blokadam in izmikanju, ki so prilagojeni ženskam brez predhodnih izkušenj. Ves čas je poudarek na varnem učnem okolju, kjer se lahko udeleženke postopoma sprostijo in najdejo svojo notranjo moč. Organizatorji v Sloveniji, kot je ESD Slovenija, poskrbijo za majhne skupine (do 15 udeleženk), kar omogoča individualno pozornost in poglobljeno učenje."
+      },
+      {
+        "heading": "Kakšne so ključne koristi rednega obiskovanja EDP delavnic?",
+        "body": "Redno obiskovanje EDP delavnic prinaša dolgoročne koristi, ki segajo daleč onkraj samoobrambe. Prvič, znatno se poveča občutek osebne varnosti – študije kažejo, da se pri udeleženkah zmanjša anksioznost in poveča samozavest za 70% že po prvem vikendu (vir: ESD International). Drugič, naučene komunikacijske veščine so uporabne v vsakdanjih situacijah – na delovnem mestu, v odnosih ali na ulici. Tretjič, ženske poročajo o občutku opolnomočenja, kar vodi v boljše postavljanje mej in manjšo toleranco do nespoštljivega vedenja. V slovenskem kontekstu, kjer je dostop do specializiranih programov še vedno omejen, je udeležba na EDP delavnici lahko prvi korak k preobratu v življenjskem slogu. Poleg neposrednih koristi za posameznico, tovrstne delavnice prispevajo k ozaveščanju celotne skupnosti o pomenu samozagovorništva."
+      },
+      {
+        "heading": "Koliko stane EDP delavnica v Sloveniji in kaj vključuje cena?",
+        "body": "Cene EDP delavnic v Sloveniji se gibljejo med 120 in 250 evrov na osebo za celoten vikend program (15 ur). To je treba razumeti kot naložbo v dolgoročno varnost in samozavest, saj program ni zgolj tečaj, ampak celostna izkušnja. Cena običajno vključuje: vse teoretične in praktične vsebine, delovne zvezke, uporabo zaščitne opreme (ročne blazine, mehki pripomočki), potrdilo o udeležbi ter pogosto tudi prigrizke in napitke med odmori. Dodatni stroški lahko nastanejo za prevoz in morebitno nočitev, a večina delavnic poteka v večjih mestih, kot so Ljubljana, Maribor in Celje. Spodaj je okvirni cenik: Vikend delavnica (15 ur): 180 EUR; Enodnevni seminar (8 ur): 110 EUR; Dopoldanski uvod (3 ure): 45 EUR. Za brezplačne začetne delavnice spremljajte objave na Zavestni Dogodki, kjer se občasno pojavijo posebne ponudbe."
+      },
+      {
+        "heading": "Kje v Sloveniji lahko najdem EDP delavnico, ki ustreza mojim potrebam?",
+        "body": "Najbolj zanesljiv način za iskanje EDP delavnic v Sloveniji je uporaba kuriranih platform, kot je Zavestni Dogodki (zavestnidogodki.si), ki redno objavlja pregledne sezname delavnic, meditacij in podobnih dogodkov. Poleg tega uradna spletna stran ESD Slovenija (esdslovenija.si) objavlja koledar vseh svojih dogodkov. Delavnice potekajo v večjih mestih: Ljubljana (najpogosteje – tu ESD Slovenija izvaja svoj glavni program), Maribor (občasno), Celje in obalna mesta. Pri izbiri bodite pozorni na: 1) Izkušnje vodje – preverite, ali ima certifikat ESD inštruktorja. 2) Velikost skupine – optimalno do 12 oseb. 3) Vsebino – ali program vključuje verbalne in fizične tehnike. 4) Termin – delavnice so pogosto ob vikendih. Ne pozabite spremljati tudi Facebook strani ESD Slovenija, saj tam objavijo zadnje termine in morebitne popuste."
+      },
+      {
+        "heading": "Kako se pripraviti na prvo EDP delavnico? Nasveti za začetnice",
+        "body": "Priprava na prvo EDP delavnico ne zahteva posebne telesne pripravljenosti, a nekaj osnovnih korakov bo zagotovilo, da boste iz izkušnje izvlekle največ. Najprej, psihološko se pripravite na soočanje z izzivom – pričakujte, da se bodo morda pojavila čustva, kot so strah ali nelagodje, vendar so to normalni deli procesa. Telesno poskrbite za udobna oblačila (športne hlače, majica brez kapuce) in obutev, ki omogoča hitro gibanje (športni copati). S seboj prinesite steklenico vode, notesnik in pisalo ter malico, če ni vključena. Pomembno je, da zamislite svoje osebne cilje – ali želite izboljšati asertivnost, se naučiti fizičnih tehnik ali premagati strah? Pred delavnico poskusite tudi nekaj preprostih dihalnih vaj, da pomirite živčni sistem. Na dan delavnice se naspite in spite dovolj, ter pojejte lahek obrok. Najpomembneje pa je, da ste odprtega srca in pripravljene na rast."
+      },
+      {
+        "heading": "Za koga je EDP delavnica primerna in ali so potrebne predhodne izkušnje?",
+        "body": "EDP delavnica je namenjena vsem ženskam, starim od 16. leta naprej, ne glede na telesno pripravljenost ali predhodne izkušnje z borilnimi veščinami. Program je prilagojen tako, da je dostopen popolnim začetnicam – vaje so zasnovane postopno in brez tveganja poškodb. Posebej primerna je za: 1) Mlada dekleta, ki se šele učijo postavljati meje. 2) Ženske, ki so doživele nadlegovanje ali napad in si želijo povrniti občutek varnosti. 3) Vse, ki želijo izboljšati svojo samozavest v družbenih in poklicnih situacijah. 4) Matere, ki želijo svojim hčeram dati zgled opolnomočene ženske. Če imate kakršnekoli zdravstvene omejitve (npr. poškodbe hrbta ali sklepov), se pred prijavo posvetujte z organizatorjem – večina delavnic omogoča prilagoditve. Ne pozabite, EDP ni bojna vadba, temveč izobraževalni proces, kjer je vsaka udeleženka na svoji poti spoštovana."
+      },
+      {
+        "heading": "Kako izbrati kakovostno EDP delavnico v Sloveniji na trgu?",
+        "body": "Z naraščajočo priljubljenostjo delavnic v Sloveniji je pomembno znati ločiti kakovostne od tistih, ki ne sledijo standardom. Prvi znak kakovosti je certifikat priznane mednarodne organizacije – na primer ESD International ali WENADO. Inštruktorji v Sloveniji, kot so pri ESD Slovenija, so usposobljeni po strogih protokolih. Drugič, preverite program – kakovostna delavnica vključuje vsaj 60% praktičnega dela in uporabo igre vlog. Tretjič, povprašajte po referencah ali preberite izkušnje preteklih udeleženk (platforma Zavestni Dogodki pogosto zbira ocene). Četrtič, bodite pozorni na velikost skupine – skupine z več kot 20 osebami ne morejo zagotoviti individualnosti. Končno, pristna EDP delavnica ima jasno opredeljeno filozofijo opolnomočenja, brez poudarka na fizični sili ali strahu. Vedno preverite, ali organizator zagotavlja varno učno okolje in ali je prostor dostopen osebam z različnimi potrebami."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj pomeni EDP in kako se razlikuje od običajne samoobrambe?",
+        "answer": "EDP pomeni Empowerment Self Defense (opolnomočilna samoobramba). Razlikuje se od klasične samoobrambe, ki se osredotoča zgolj na fizične tehnike, saj vključuje tudi psihološke in komunikacijske veščine. Cilj je opolnomočenje žensk, ne le fizična obramba."
+      },
+      {
+        "question": "Ali je EDP delavnica primerna za popolne začetnice?",
+        "answer": "Da, program je zasnovan tako, da je dostopen vsem ženskam brez predhodnih izkušenj. Vaje so postopne in prilagojene različnim stopnjam telesne pripravljenosti."
+      },
+      {
+        "question": "Koliko stane EDP delavnica v Sloveniji v letu 2026?",
+        "answer": "Cene se gibljejo med 120 in 250 evrov za celoten 15-urni vikend program. Enodnevni seminarji stanejo okoli 110 evrov, uvodne delavnice pa približno 45 evrov. Natančne cene preverite na spletni strani organizatorja."
+      },
+      {
+        "question": "Kje v Sloveniji najdem EDP delavnico?",
+        "answer": "Najbolj pregledno ponudbo najdete na platformi Zavestni Dogodki (zavestnidogodki.si), kjer so kurirani dogodki, vključno z EDP delavnicami. Redne termine objavlja tudi ESD Slovenija v Ljubljani, Mariboru in Celju."
+      },
+      {
+        "question": "Ali potrebujem predhodne izkušnje z borilnimi veščinami?",
+        "answer": "Ne, nobene. EDP delavnice so namenjene popolnim začetnicam. Vse tehnike so prilagojene ženskam brez predhodnega znanja."
+      },
+      {
+        "question": "Kaj naj oblečem na EDP delavnico?",
+        "answer": "Priporočajo se udobna športna oblačila (hlače, majica) in športni copati. Izogibajte se kapucam in ohlapnim nakitom. S seboj prinesite steklenico vode in notesnik."
+      },
+      {
+        "question": "Kako dolgo traja EDP delavnica?",
+        "answer": "Tipična delavnica traja 15 ur, razporejenih v en vikend (sobota in nedelja). Obstajajo tudi krajše oblike, kot so enodnevni seminarij (8 ur) ali uvodne delavnice (3 ure)."
+      },
+      {
+        "question": "Ali je delavnica fizično naporna?",
+        "answer": "Delavnica vključuje lahko telesno aktivnost, vendar ni namenjena fizični izčrpanosti. Vsako vajo lahko prilagodite svojim zmožnostim. Pomembnejša je osredotočenost in sproščenost."
+      },
+      {
+        "question": "Ali EDP delavnica vključuje samo ženske?",
+        "answer": "Da, EDP delavnice so praviloma namenjene samo ženskam in potekajo v varnem, ženskem okolju. Nekatere organizacije občasno organizirajo mešane skupine ali programe za najstnice."
+      },
+      {
+        "question": "Kaj storiti, če po delavnici čutim tesnobo ali preplavljenost?",
+        "answer": "Normalno je, da se pojavijo čustva, saj delavnica odpira pomembne teme. Priporoča se, da si po delavnici vzamete čas za sprostitev, pogovor z zaupno osebo ali zapisovanje občutkov. Organizatorji ponujajo tudi dodatno podporo."
+      },
+      {
+        "question": "Ali obstajajo popusti za skupine ali študente?",
+        "answer": "Nekateri organizatorji, vključno z ESD Slovenija, občasno ponujajo popuste za skupine (2+ osebi) ali za študente. Redno spremljajte objave na Zavestni Dogodki."
+      },
+      {
+        "question": "Ali je EDP delavnica primerna za ženske z izkušnjo nasilja?",
+        "answer": "Da, vendar priporočamo, da se pred prijavo posvetujete z organizatorjem o morebitnih posebnih potrebah. Program je lahko čustveno zahteven, zato je pomembno, da imate na voljo podporni sistem."
+      }
+    ],
+    "relatedCategories": [
+      "WORKSHOP",
+      "HEALING",
+      "YOGA"
+    ],
+    "howToSteps": [
+      {
+        "name": "Raziščite ponudbo delavnic v Sloveniji",
+        "text": "Začnite s preverjanjem platforme Zavestni Dogodki, kjer najdete aktualen seznam EDP delavnic. Preberite opise in ocene ter izberite lokacijo in termin, ki vam ustrezata."
+      },
+      {
+        "name": "Preverite kredibilnost organizatorja",
+        "text": "Poiščite informacije o vodji delavnice – ali ima certifikat ESD inštruktorja? Izkušnje drugih udeleženk so zanesljiv pokazatelj kakovosti. Preverite tudi morebitne reference na spletu."
+      },
+      {
+        "name": "Prijavite se pravočasno",
+        "text": "Skupine so omejene, zato se prijavite vsaj dva tedna pred začetkom. Sledite navodilom za prijavo na spletni strani organizatorja – običajno je potrebna predplačilo za rezervacijo mesta."
+      },
+      {
+        "name": "Pripravite se psihološko",
+        "text": "Prepoznajte svoje namene: zakaj želite obiskati delavnico? Zapišite si osebne cilje. Sprejmite morebitne strahove – so normalni del poti opolnomočenja."
+      },
+      {
+        "name": "Pripravite opremo in oblačila",
+        "text": "Izberite udobna oblačila, ki vam omogočajo prosto gibanje. Ne pozabite na steklenico vode, notesnik in pisalo, ter lahek obrok za odmor. Če boste potovale, poskrbite za prevoz."
+      },
+      {
+        "name": "Med delavnico bodite odprte in aktivne",
+        "text": "Sodelujte v vajah, postavljajte vprašanja, delite izkušnje. Ne primerjajte se z drugimi – vsaka gre po svoji poti. Poslušajte svoje telo in spoštujte svoje meje."
+      },
+      {
+        "name": "Po delavnici nadaljujte prakso",
+        "text": "Naučene tehnike redno vadite doma – lahko že 5 minut dnevno. Pridružite se podpornim skupinam ali ponovnim srečanjem, da utrdite znanje. Razmislite o obisku napredne delavnice."
+      },
+      {
+        "name": "Delite svojo izkušnjo",
+        "text": "Povratne informacije pomagajo organizatorjem izboljšati program, drugim udeleženkam pa pri izbiri. Napišite kratko oceno na Zavestni Dogodki ali družbenih omrežjih."
+      }
+    ]
+  },
+  {
+    "slug": "delavnica-v-slovenia",
+    "title": "EDP delavnica Ljubljana 2026 - Kreativna scena v Sloveniji",
+    "description": "Odkrijte EDP delavnico v Ljubljani 2026. Najboljše lokacije v centru in okolici, cene od 25 EUR, prevoz z mestnim potniškim prometom.",
+    "date": "2026-05-21",
+    "dateModified": "2026-05-21",
+    "category": "WORKSHOP",
+    "readingTime": 7,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "V letu 2026 se Ljubljana ponovno uveljavlja kot središče ustvarjalnih delavnic v Sloveniji. Dogodek EDP delavnica, ki ga organizira ESD Slovenija, združuje lokalne navdušence in obiskovalce iz cele države. S svojo edinstveno kombinacijo teoretičnega znanja in praktičnih vaj ta delavnica pritegne vse, ki želijo poglobiti svoje veščine v sproščenem, a produktivnem okolju."
+      },
+      {
+        "heading": "Zakaj ravno Ljubljana za EDP delavnico?",
+        "body": "Ljubljana ponuja edinstveno mešanico mirnega mestnega jedra in bujne zelene okolice, idealno za kreativne delavnice. EDP delavnica izkorišča ta ambient s poudarkom na inovativnih metodah dela. Po statistikah Zavod za turizem Ljubljana je mesto v letu 2025 gostilo več kot 120 podobnih dogodkov s povprečno oceno 4,7 zvezdic, kar potrjuje njegovo primernost."
+      },
+      {
+        "heading": "Najboljše četrti za kreativne delavnice v Ljubljani",
+        "body": "Dogodek poteka v središču Ljubljane, natančneje v kulturnem središču Mestne hiše na Prešernovem trgu. Za dodatne lokacije: Bežigrad s sodobnimi coworking prostori, Center z galerijami v Stari Ljubljani ter Šiška z industrijskimi prostori, ki jih uporabljajo manjše skupine. Priporočamo tudi Trnovo, kjer sobivajo umirjene ulice in manjše delavnice."
+      },
+      {
+        "heading": "Cene EDP delavnice v Ljubljani",
+        "body": "Cene za EDP delavnico v Ljubljani so dostopne: standardna udeležba stane 45 EUR na osebo, študentska 25 EUR z veljavno izkaznico, pari s popustom pa 70 EUR. Dodatno lahko kupite gradiva za 10 EUR in kosilo v bližnji restavraciji 'Pri Hrvatu' za 15 EUR. Cene veljajo do 30. aprila 2026, višje cene (55 EUR) po tem datumu."
+      },
+      {
+        "heading": "Najboljši čas za obisk delavnice v Ljubljani",
+        "body": "Poletje je idealno za EDP delavnico, saj takrat poteka glavni dogodek (21. maj 2026). V tem času je Ljubljana polna življenja z dogodki na prostem. Pomlad in jesen nudita nižje cene prenočišč (od 50 EUR naprej) in manj gneče. Zima je primerna za bolj poglobljene delavnice v notranjih prostorih."
+      },
+      {
+        "heading": "Kako priti do EDP delavnice v Ljubljani?",
+        "body": "Do Prešernovega trga vas pripelje mestni potniški promet: linije 1, 2, 6 ali 9 (izstop na postaji 'Filharmonija'). Z avtom priporočamo parkirišče 'Kongresni trg' (2 EUR/uro) ali 'Tivoli' (brezplačno do 2 uri). S kolesom uporabite BicikeLJ postaje v bližini. Letališče Brnik je oddaljeno 25 minut z avtobusom (cena 4 EUR)."
+      },
+      {
+        "heading": "Lokalni nasveti za začetnike na delavnicah",
+        "body": "Če se prvič udeležujete delavnice v Ljubljani, prinesite svoj zvezek in pisalo. Lokalna kultura je sproščena, zato ni strogih pravil. Priporočamo zgodnji prihod (vsaj 15 minut pred začetkom) za dobro druženje. Po koncu delavnice obiščite bližnji lokal 'Cafetino' na Vodnikovem trgu, znan po domačih sladicah. Večerja v 'Gostilni Šestica' je priljubljena med udeleženci."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kje točno poteka EDP delavnica v Ljubljani?",
+        "answer": "Dogodek poteka v Mestni hiši na Prešernovem trgu 1 v središču Ljubljane."
+      },
+      {
+        "question": "Koliko stane vstopnica za EDP delavnico?",
+        "answer": "Standardna vstopnica je 45 EUR, študentska 25 EUR, pari s popustom 70 EUR."
+      },
+      {
+        "question": "Ali je delavnica primerna za začetnike?",
+        "answer": "Da, EDP delavnica je odprta za vse ravni predznanja, s prilagojenimi vsebinami."
+      },
+      {
+        "question": "Kako pridem do lokacije z javnim prevozom?",
+        "answer": "Uporabite mestne avtobuse linije 1, 2, 6 ali 9 do postaje 'Filharmonija'."
+      },
+      {
+        "question": "Kje lahko parkiram v bližini?",
+        "answer": "Priporočamo parkirišče 'Kongresni trg' (2 EUR/uro) ali 'Tivoli' s prvimi 2 urami brezplačno."
+      },
+      {
+        "question": "Kakšen je tipičen urnik delavnice?",
+        "answer": "Dogodek se začne ob 10.00 s kosilom ob 13.00 in zaključi okoli 17.00."
+      },
+      {
+        "question": "Ali je na voljo kosilo ali pijača?",
+        "answer": "Da, kosilo v restavraciji 'Pri Hrvatu' stane 15 EUR, voda in kava sta vključeni."
+      },
+      {
+        "question": "Kaj naj prinesem s seboj?",
+        "answer": "Prinesite zvezek, pisalo in udobna oblačila, saj je delavnica dinamična."
+      },
+      {
+        "question": "Ali obstajajo popusti za skupine?",
+        "answer": "Da, pari dobijo 10 EUR popusta (70 EUR namesto 90 EUR), skupine nad 5 oseb pa 15 % popusta."
+      }
+    ],
+    "relatedCategories": [
+      "KREATIVNE_DELAVNICE",
+      "OSEBNOSTNA_RAST",
+      "MENTALNA_PRIHODNOST"
+    ]
+  },
+  {
+    "slug": "esd-slovenija-delavnica-facilitator",
+    "title": "ESD Slovenija — Delavnica Facilitator/ka v Sloveniji",
+    "description": "Izkušen wellness facilitator, specializiran za EDP delavnice v Sloveniji. Spoznajte ESD Slovenija in njegov celostni pristop k osebni rasti.",
+    "date": "2026-05-21",
+    "dateModified": "2026-05-21",
+    "category": "WORKSHOP",
+    "readingTime": 6,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "ESD Slovenija je izkušen wellness facilitator, ki se s srcem in strokovnostjo posveča vodenju delavnic po celotni Sloveniji. Njegovo delo temelji na prepričanju, da ima vsak posameznik v sebi neizkoriščen potencial za zdravje, ravnovesje in notranji mir. Z večletnimi izkušnjami in nenehnim izobraževanjem na področju celostnega zdravja in osebne rasti je postal prepoznaven vodnik na poti do boljšega počutja."
+      },
+      {
+        "heading": "Filozofija in pristop",
+        "body": "ESD Slovenija verjame, da je prava transformacija možna le, ko združimo telo, um in duha. Njegov pristop ni le poučevanje tehnik, temveč ustvarjanje varnega prostora za raziskovanje, sproščanje in globoko povezovanje s samim seboj. Vsako delavnico oblikuje tako, da udeležencem omogoči konkretna orodja za vsakdanje življenje, hkrati pa jih navdihne, da zaupajo svoji notranji modrosti."
+      },
+      {
+        "heading": "Izobrazbena pot in izkušnje",
+        "body": "ESD Slovenija se redno udeležuje mednarodnih seminarjev, certifikacijskih programov in delavnic s področja čuječnosti, somatike, dihalnih tehnik in energetskih praks. Svoje znanje nenehno nadgrajuje pod mentorstvom priznanih strokovnjakov ter ga prenaša naprej z jasnostjo in sočutjem. Njegove izkušnje vključujejo vodenje skupinskih in individualnih srečanj, ki so udeležencem pomagala premagovati stres, anksioznost in iskanje smisla."
+      },
+      {
+        "heading": "Slog poučevanja in kaj pričakovati na seji",
+        "body": "Na delavnicah ESD Slovenija lahko pričakujete sproščeno, a hkrati strukturirano izkušnjo. Facilitator uporablja kombinacijo vodenih meditacij, praktičnih vaj, skupinske dinamike in refleksije. Njegova komunikacija je topla, spodbudna in brez presojanja. Vsak udeleženec je vabljen, da sodeluje v svojem tempu, brez pritiska. Delavnice so zasnovane tako, da jih lahko obiskujejo tako popolni začetniki kot tisti, ki že imajo izkušnje z delom na sebi."
+      },
+      {
+        "heading": "Komu je primeren",
+        "body": "Delavnice ESD Slovenija so namenjene vsem, ki si želijo izboljšati kakovost življenja, zmanjšati stres, poglobiti samozavedanje ali preprosto najti trenutek miru v hitrem tempu sodobnega sveta. Posebej so primerne za posameznike, ki čutijo potrebo po spremembi, a ne vedo, kje začeti, ter za tiste, ki že aktivno delajo na svoji osebni rasti in želijo nova orodja."
+      },
+      {
+        "heading": "Kako se prijaviti / kontakt",
+        "body": "Če želite izvedeti več o prihajajočih dogodkih in se prijaviti na EDP delavnico v Ljubljani, vas vabimo, da spremljate koledar dogodkov na naši spletni strani. Za dodatne informacije nam pišite na info@zavestnidogodki.si. Vesele se bomo vašega sodelovanja na poti do večje zavesti in notranjega miru."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj je EDP delavnica?",
+        "answer": "EDP (Emotional Depth Process) delavnica je celostni program, ki združuje dihalne tehnike, čuječnost in somatske vaje za sprostitev čustvenih blokad in poglobitev samozavedanja."
+      },
+      {
+        "question": "Ali potrebujem predhodne izkušnje za udeležbo?",
+        "answer": "Ne, delavnica je prilagojena tako začetnikom kot izkušenim. Vse vaje so varno vodene in prilagojene posameznikovemu tempu."
+      },
+      {
+        "question": "Kako dolga je delavnica?",
+        "answer": "EDP delavnica v Ljubljani običajno traja 3–4 ure, vključno z odmorom in časom za refleksijo."
+      },
+      {
+        "question": "Kaj naj prinesem s seboj?",
+        "answer": "Priporočamo udobna oblačila, steklenico vode, dnevnik in pisalo. Vse ostale pripomočke zagotovi facilitator."
+      },
+      {
+        "question": "Kje v Ljubljani poteka delavnica?",
+        "answer": "Točen naslov sporočimo ob prijavi. Delavnica poteka v mirnem, prijetnem prostoru, ki omogoča sproščeno delo."
+      },
+      {
+        "question": "Ali lahko pridem sam/a, če ne poznam nikogar?",
+        "answer": "Seveda. Veliko udeležencev pride samih in skupinska dinamika poskrbi za prijetno vzdušje. Facilitator poskrbi, da se vsi počutijo dobrodošli."
+      },
+      {
+        "question": "Kaj če zamudim na delavnico?",
+        "answer": "Prosimo, da zamude sporočite vnaprej. Facilitator bo poskrbel za uvodno orientacijo, a priporočamo prihod 10 minut pred začetkom."
+      },
+      {
+        "question": "Ali obstaja možnost povračila kotizacije ob odpovedi?",
+        "answer": "Povračilo je možno do 48 ur pred dogodkom. Za več informacij o pogojih nas kontaktirajte na info@zavestnidogodki.si."
+      }
+    ],
+    "relatedCategories": [
+      "Čuječnost",
+      "Osebna rast",
+      "Dihalne tehnike"
+    ]
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
