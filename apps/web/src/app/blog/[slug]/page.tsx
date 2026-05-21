@@ -285,7 +285,7 @@ export default async function BlogPostPage({ params }: Props) {
             Prihajajoči {CATEGORY_LABEL[post.category]?.toLowerCase() ?? "zavestni"} dogodki
           </h2>
           <div className="flex flex-col gap-3">
-            {upcomingEvents.map((e) => (
+            {upcomingEvents.filter((e) => e.slug).map((e) => (
               <Link
                 key={e.id}
                 href={`/events/${e.slug}`}
