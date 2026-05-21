@@ -32,15 +32,26 @@ export async function scrapeFacebookGroup(
   try {
     browser = await chromium.launch({ headless });
 
-    // Load session from saved cookies
+    // Load session: file on disk (local) → FB_COOKIES env var (Vercel) → unauthenticated
     let context;
     try {
       context = await browser.newContext({ storageState: authStatePath });
-      console.log("♻️  Reusing saved Facebook session");
+      console.log("♻️  Reusing saved Facebook session (file)");
     } catch {
-      // No session file — can't log in automatically (Google OAuth blocks Playwright)
-      context = await browser.newContext();
-      console.warn("⚠️  No saved session found. Run scripts/fb-login-once.mjs first.");
+      const envCookies = process.env.FB_COOKIES;
+      if (envCookies) {
+        try {
+          const storageState = JSON.parse(envCookies) as { cookies: unknown[]; origins: unknown[] };
+          context = await browser.newContext({ storageState });
+          console.log("♻️  Reusing saved Facebook session (env var)");
+        } catch {
+          context = await browser.newContext();
+          console.warn("⚠️  FB_COOKIES env var is invalid JSON — running unauthenticated");
+        }
+      } else {
+        context = await browser.newContext();
+        console.warn("⚠️  No session found. Run scripts/fb-login-once.mjs first.");
+      }
     }
 
     const page = await context.newPage();
