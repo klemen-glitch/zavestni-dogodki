@@ -41,7 +41,8 @@ export async function scrapeFacebookGroup(
       const envCookies = process.env.FB_COOKIES;
       if (envCookies) {
         try {
-          const storageState = JSON.parse(envCookies) as { cookies: unknown[]; origins: unknown[] };
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const storageState = JSON.parse(envCookies) as any;
           context = await browser.newContext({ storageState });
           console.log("♻️  Reusing saved Facebook session (env var)");
         } catch {
