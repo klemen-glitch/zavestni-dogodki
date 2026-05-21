@@ -1,9 +1,12 @@
+export const revalidate = 3600;
+
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getBlogPost, BLOG_POSTS } from "@/content/blog-posts";
 import { CATEGORY_EMOJI, CATEGORY_LABEL, CATEGORY_HEX } from "@/lib/utils";
+import { db } from "@/lib/db";
 
 const AUTHOR_BIO = {
   name: "Uredništvo Zavestni Dogodki",
@@ -62,6 +65,33 @@ export default async function BlogPostPage({ params }: Props) {
       (p.category === post.category ||
         p.relatedCategories.some((c) => post.relatedCategories.includes(c)))
   ).slice(0, 2);
+
+  // Fetch upcoming events for this category + find organizer if facilitator post
+  const [upcomingEvents, organizer] = await Promise.all([
+    db.event.findMany({
+      where: {
+        category: { in: post.relatedCategories.length > 0 ? post.relatedCategories as never[] : [post.category as never] },
+        status: { in: ["APPROVED", "FEATURED"] },
+        date: { gte: new Date() },
+      },
+      orderBy: { date: "asc" },
+      take: 3,
+      select: {
+        id: true,
+        slug: true,
+        titleSl: true,
+        titleEn: true,
+        category: true,
+        date: true,
+        venueName: true,
+        price: true,
+        venue: { select: { city: true } },
+      },
+    }),
+    post.organizerName
+      ? db.organizer.findFirst({ where: { name: post.organizerName } })
+      : Promise.resolve(null),
+  ]);
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -221,6 +251,66 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
               </details>
             ))}
+          </div>
+        </section>
+      )}
+
+      {/* Organizer profile link — only for facilitator-type posts */}
+      {organizer && (
+        <section className="mb-10">
+          <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 flex items-center gap-4">
+            {organizer.avatarUrl
+              ? <Image src={organizer.avatarUrl} alt={organizer.name} width={56} height={56} className="w-14 h-14 rounded-xl object-cover flex-shrink-0" />
+              : <div className="w-14 h-14 rounded-xl bg-emerald-700 flex items-center justify-center text-2xl flex-shrink-0">🧘</div>
+            }
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-semibold text-emerald-700 uppercase tracking-wide mb-0.5">Facilitator</p>
+              <p className="font-bold text-stone-800">{organizer.name}</p>
+              {organizer.bio && <p className="text-stone-500 text-xs mt-1 line-clamp-2">{organizer.bio}</p>}
+            </div>
+            <Link
+              href={`/organizers/${organizer.id}`}
+              className="flex-shrink-0 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-colors"
+            >
+              Celoten profil →
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {/* Upcoming events for this category */}
+      {upcomingEvents.length > 0 && (
+        <section className="mb-10">
+          <h2 className="text-lg font-bold text-stone-800 mb-4">
+            Prihajajoči {CATEGORY_LABEL[post.category]?.toLowerCase() ?? "zavestni"} dogodki
+          </h2>
+          <div className="flex flex-col gap-3">
+            {upcomingEvents.map((e) => (
+              <Link
+                key={e.id}
+                href={`/events/${e.slug}`}
+                className="flex items-center gap-4 bg-white border border-stone-100 rounded-xl px-4 py-3 hover:border-emerald-200 hover:shadow-sm transition-all group"
+              >
+                <div className="text-2xl flex-shrink-0">{CATEGORY_EMOJI[e.category] ?? "🌿"}</div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-stone-800 text-sm leading-snug group-hover:text-emerald-700 transition-colors truncate">
+                    {e.titleSl ?? e.titleEn}
+                  </p>
+                  <p className="text-xs text-stone-400 mt-0.5">
+                    {new Date(e.date).toLocaleDateString("sl-SI", { day: "numeric", month: "long", year: "numeric" })}
+                    {(e.venue?.city ?? e.venueName) && ` · ${e.venue?.city ?? e.venueName}`}
+                  </p>
+                </div>
+                <span className="text-xs font-semibold text-emerald-700 flex-shrink-0">
+                  {e.price ? `${e.price} €` : "Brezplačno"}
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-3 text-right">
+            <Link href={`/categories/${post.category.toLowerCase()}`} className="text-xs font-semibold text-emerald-700 hover:underline">
+              Vsi {CATEGORY_LABEL[post.category]?.toLowerCase() ?? "zavestni"} dogodki →
+            </Link>
           </div>
         </section>
       )}

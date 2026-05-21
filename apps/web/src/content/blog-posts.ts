@@ -14,6 +14,8 @@ export interface BlogPost {
   relatedCategories: string[];
   /** Optional HowTo steps for instructional posts — generates HowTo schema + rich results */
   howToSteps?: { name: string; text: string }[];
+  /** Organizer name for facilitator-type articles — used to link to /organizers/[id] */
+  organizerName?: string;
 }
 
 export const BLOG_POSTS: BlogPost[] = [

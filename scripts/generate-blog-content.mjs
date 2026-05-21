@@ -76,13 +76,11 @@ function getExistingSlugs() {
   return new Set([...content.matchAll(/slug:\s*["']([^"']+)["']/g)].map((m) => m[1]));
 }
 
-function uniqueSlug(base, alternatives, existingSlugs) {
-  if (!existingSlugs.has(base)) return base;
-  for (const alt of alternatives) {
-    if (!existingSlugs.has(alt)) return alt;
+function hasArticleForPrefix(prefix, existingSlugs) {
+  for (const slug of existingSlugs) {
+    if (slug.startsWith(prefix + "-") || slug === prefix) return true;
   }
-  const withYear = `${base}-2026`;
-  return existingSlugs.has(withYear) ? `${base}-vodic-2026` : withYear;
+  return false;
 }
 
 // ── DeepSeek API call ──────────────────────────────────────────────────────
@@ -135,16 +133,12 @@ async function generateTypeArticle(existingSlugs) {
   const catLabel = CATEGORY_LABELS[event.category] || event.category;
   const catSlug = slugify(catLabel);
 
-  const slug = uniqueSlug(
-    `${catSlug}-v-sloveniji`,
-    [
-      `${catSlug}-za-zacetnike`,
-      `${catSlug}-koristi-in-ucinki`,
-      `${catSlug}-vadba-slovenija`,
-      `kaj-je-${catSlug}`,
-    ],
-    existingSlugs
-  );
+  if (hasArticleForPrefix(catSlug, existingSlugs)) {
+    console.log(`\n⏭️  Skipping type article — category "${catLabel}" already has a blog post`);
+    return null;
+  }
+
+  const slug = `${catSlug}-v-sloveniji`;
 
   const system = `Si strokovni SEO pisec za slovensko platformo Zavestni Dogodki (zavestnidogodki.si) — kurirani imenik joga delavnic, meditacij, breathwork sej, zvočnih kopeli in retreatov v Sloveniji.
 Pišeš dolge, faktografske, izjemno koristne vsebine v slovenščini, ki:
@@ -211,16 +205,12 @@ async function generateLocationArticle(existingSlugs) {
   const catLabel = CATEGORY_LABELS[event.category] || event.category;
   const catSlug = slugify(catLabel);
   const citySlug = slugify(event.city);
+  const slug = `${catSlug}-v-${citySlug}`;
 
-  const slug = uniqueSlug(
-    `${catSlug}-v-${citySlug}`,
-    [
-      `${catSlug}-${citySlug}-delavnice`,
-      `${catSlug}-${citySlug}-studiji-2026`,
-      `zavestni-dogodki-${citySlug}`,
-    ],
-    existingSlugs
-  );
+  if (existingSlugs.has(slug)) {
+    console.log(`\n⏭️  Skipping location article — "${slug}" already exists`);
+    return null;
+  }
 
   const system = `Si strokovni pisec lokalnega SEO za slovensko platformo Zavestni Dogodki. Specializiran si za wellness sceno v posameznih mestih Slovenije. Pišeš konkretne, lokalno relevantne vsebine z imeni četrti, prevoznih zvez in priporočili iz prve roke. VEDNO vrni SAMO veljavni JSON objekt.`;
 
@@ -285,17 +275,13 @@ async function generateFacilitatorArticle(existingSlugs) {
   const catLabel = CATEGORY_LABELS[event.category] || event.category;
   const catSlug = slugify(catLabel);
   const orgSlug = slugify(event.organizerName);
-  const citySlug = slugify(event.city);
 
-  const slug = uniqueSlug(
-    `${orgSlug}-${catSlug}-facilitator`,
-    [
-      `${orgSlug}-${catSlug}-${citySlug}`,
-      `${orgSlug}-zavestni-dogodki`,
-      `${orgSlug}-wellness-facilitator`,
-    ],
-    existingSlugs
-  );
+  if (hasArticleForPrefix(orgSlug, existingSlugs)) {
+    console.log(`\n⏭️  Skipping facilitator article — "${event.organizerName}" already has a blog post`);
+    return null;
+  }
+
+  const slug = `${orgSlug}-${catSlug}-facilitator`;
 
   const system = `Si strokovni pisec za E-E-A-T optimizacijo wellness facilitatorjev v Sloveniji. Pišeš avtoritativne profile, ki gradijo zaupanje, osebno blagovno znamko in dokazujejo strokovno znanje. Ton: profesionalen, topel, iskren — ne marketinški in ne pretirano hvalisav. VEDNO vrni SAMO veljavni JSON objekt.`;
 
@@ -351,6 +337,7 @@ Vrni SAMO ta JSON:
   const raw = await callClaude(system, prompt);
   const post = extractJson(raw);
   post.slug = slug;
+  post.organizerName = event.organizerName;
   return post;
 }
 
@@ -380,13 +367,19 @@ async function main() {
 
   // 1. Event type article
   const typeArticle = await generateTypeArticle(existingSlugs);
-  generated.push(typeArticle);
-  console.log(`   ✅ Type article done: ${typeArticle.slug}`);
+  if (typeArticle) {
+    generated.push(typeArticle);
+    existingSlugs.add(typeArticle.slug);
+    console.log(`   ✅ Type article done: ${typeArticle.slug}`);
+  }
 
   // 2. Location article
   const locationArticle = await generateLocationArticle(existingSlugs);
-  generated.push(locationArticle);
-  console.log(`   ✅ Location article done: ${locationArticle.slug}`);
+  if (locationArticle) {
+    generated.push(locationArticle);
+    existingSlugs.add(locationArticle.slug);
+    console.log(`   ✅ Location article done: ${locationArticle.slug}`);
+  }
 
   // 3. Facilitator article (optional)
   const facilitatorArticle = await generateFacilitatorArticle(existingSlugs);

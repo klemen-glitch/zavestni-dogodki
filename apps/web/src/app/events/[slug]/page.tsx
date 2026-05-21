@@ -12,6 +12,7 @@ import { SubscribeSection } from "@/components/subscribe/SubscribeSection";
 import { EventCard } from "@/components/EventCard";
 import { EventLocationMap } from "@/components/EventLocationMap";
 import { EventCTALink } from "@/components/EventCTALink";
+import { BLOG_POSTS } from "@/content/blog-posts";
 import {
   CATEGORY_EMOJI,
   CATEGORY_LABEL,
@@ -830,6 +831,35 @@ export default async function EventPage({
             </div>
           </section>
         )}
+
+        {/* ── RELATED BLOG POSTS ───────────────────────────────────────── */}
+        {(() => {
+          const relatedBlogs = BLOG_POSTS.filter(
+            (p) => p.category === event.category || p.relatedCategories.includes(event.category)
+          ).slice(0, 3);
+          if (relatedBlogs.length === 0) return null;
+          return (
+            <section className="mt-16">
+              <h2 className="text-xl font-bold text-stone-800 mb-5">Koristni članki</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {relatedBlogs.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/blog/${p.slug}`}
+                    className="bg-white border border-stone-100 rounded-xl p-4 hover:border-emerald-200 hover:shadow-sm transition-all group"
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-base">{CATEGORY_EMOJI[p.category] ?? "📖"}</span>
+                      <span className="text-xs font-medium text-emerald-700">{CATEGORY_LABEL[p.category] ?? p.category}</span>
+                    </div>
+                    <p className="font-bold text-stone-800 text-sm leading-snug group-hover:text-emerald-700 transition-colors">{p.title}</p>
+                    <p className="text-xs text-stone-400 mt-2">{p.readingTime} min branja</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          );
+        })()}
 
         {/* ── NEWSLETTER — personalised subscribe ──────────────────────────── */}
         <section className="mt-16">
