@@ -244,6 +244,25 @@ export default async function EventPage({
     ],
   };
 
+  const personSchema = event.organizer
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: event.organizer.name,
+        url: `${appUrl}/organizers/${event.organizer.id}`,
+        ...(event.organizer.avatarUrl && { image: event.organizer.avatarUrl }),
+        description: event.organizer.richBio ?? event.organizer.bio ?? undefined,
+        jobTitle: `${label} Facilitator`,
+        knowsAbout: [label, "zavestne prakse", "wellness", "Slovenija"],
+        sameAs: [
+          ...(event.organizer.website ? [event.organizer.website] : []),
+          ...(event.organizer.instagram ? [`https://instagram.com/${event.organizer.instagram.replace("@", "")}`] : []),
+          ...(event.organizer.facebookUrl ? [event.organizer.facebookUrl] : []),
+        ],
+        worksFor: { "@type": "Organization", name: "Zavestni Dogodki", url: appUrl },
+      }
+    : null;
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -274,6 +293,9 @@ export default async function EventPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {personSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
+      )}
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       {event.imageUrl ? (
@@ -473,17 +495,22 @@ export default async function EventPage({
               </section>
             )}
 
-            {/* Facilitator */}
+            {/* Facilitator — Wikipedia-style editorial profile */}
             {event.organizer && (
               <section>
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2 mb-5">
                   <div className="w-1 h-6 rounded-full" style={{ backgroundColor: catColor }} />
-                  <h2 className="text-xl font-bold text-stone-800">Facilitator</h2>
+                  <h2 className="text-xl font-bold text-stone-800">O facilitatorju</h2>
                 </div>
+
                 <div className="bg-white rounded-2xl border border-stone-100 overflow-hidden">
-                  <div className="flex flex-col sm:flex-row gap-0">
-                    {event.organizer.avatarUrl && (
-                      <div className="relative sm:w-44 h-44 flex-shrink-0">
+                  {/* Top strip with avatar + name header */}
+                  <div
+                    className="px-6 pt-6 pb-5 flex items-start gap-5"
+                    style={{ background: `linear-gradient(135deg, ${catColor}08 0%, ${catColor}14 100%)`, borderBottom: `1px solid ${catColor}22` }}
+                  >
+                    {event.organizer.avatarUrl ? (
+                      <div className="relative w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
                         <Image
                           src={event.organizer.avatarUrl}
                           alt={event.organizer.name}
@@ -491,57 +518,102 @@ export default async function EventPage({
                           className="object-cover [object-position:50%_15%]"
                         />
                       </div>
+                    ) : (
+                      <div
+                        className="w-20 h-20 rounded-xl flex-shrink-0 flex items-center justify-center text-3xl shadow-sm"
+                        style={{ background: `${catColor}20` }}
+                      >
+                        {emoji}
+                      </div>
                     )}
-                    <div className="p-6 flex-1">
-                      <div className="flex items-start justify-between mb-2">
-                        <div>
-                          <h3 className="text-lg font-bold text-stone-800">{event.organizer.name}</h3>
-                          {event.organizer.verified && (
-                            <span className="inline-flex items-center gap-1 text-xs text-emerald-700 font-medium">
-                              ✓ Verificiran facilitator
-                            </span>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <h3 className="text-xl font-bold text-stone-800">{event.organizer.name}</h3>
+                        {event.organizer.verified && (
+                          <span
+                            className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full text-white"
+                            style={{ backgroundColor: catColor }}
+                          >
+                            ✓ Verificiran
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Specialization tag */}
+                      <p className="text-sm font-medium mb-2" style={{ color: catColor }}>
+                        {emoji} {label} facilitator · Slovenija
+                      </p>
+
+                      {/* Rating row */}
+                      {event.organizer.rating > 0 && (
+                        <div className="flex items-center gap-1.5">
+                          {[1, 2, 3, 4, 5].map((s) => (
+                            <span key={s} className={`text-sm ${s <= Math.round(event.organizer!.rating) ? "text-amber-400" : "text-stone-200"}`}>★</span>
+                          ))}
+                          <span className="text-xs font-semibold text-stone-600 ml-1">{event.organizer.rating.toFixed(1)}</span>
+                          {event.organizer.reviewCount > 0 && (
+                            <span className="text-xs text-stone-400">({event.organizer.reviewCount} ocen)</span>
                           )}
                         </div>
-                        {event.organizer.rating && (
-                          <div className="flex items-center gap-1 bg-amber-50 px-2 py-1 rounded-lg">
-                            <span className="text-amber-500 text-sm">★</span>
-                            <span className="text-sm font-semibold text-amber-700">
-                              {event.organizer.rating.toFixed(1)}
-                            </span>
-                            {event.organizer.reviewCount && (
-                              <span className="text-xs text-amber-600">({event.organizer.reviewCount})</span>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                      <p className="text-stone-600 text-sm leading-relaxed mb-4">{enriched.facilitatorBio}</p>
-                      <blockquote className="border-l-2 pl-4 italic text-stone-500 text-sm" style={{ borderColor: catColor }}>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Biography — multi-paragraph from richBio */}
+                  <div className="px-6 py-5 space-y-3 border-b border-stone-50">
+                    {enriched.facilitatorBio
+                      .split(/\n\n+/)
+                      .filter(Boolean)
+                      .map((para, i) => (
+                        <p key={i} className="text-stone-600 text-sm leading-relaxed">
+                          {para.trim()}
+                        </p>
+                      ))}
+                  </div>
+
+                  {/* Quote */}
+                  {enriched.facilitatorFact && (
+                    <div className="px-6 py-4 border-b border-stone-50">
+                      <blockquote
+                        className="border-l-[3px] pl-4 italic text-stone-500 text-sm leading-relaxed"
+                        style={{ borderColor: catColor }}
+                      >
                         {enriched.facilitatorFact}
                       </blockquote>
-                      <div className="flex gap-3 mt-4">
-                        {event.organizer.instagram && (
-                          <a
-                            href={`https://instagram.com/${event.organizer.instagram.replace("@", "")}`}
-                            target="_blank"
-                            rel="noopener"
-                            className="inline-flex items-center gap-1.5 text-xs font-medium text-white px-3 py-1.5 rounded-lg"
-                            style={{ backgroundColor: "#e1306c" }}
-                          >
-                            Instagram {event.organizer.instagram}
-                          </a>
-                        )}
-                        {event.organizer.website && (
-                          <a
-                            href={event.organizer.website}
-                            target="_blank"
-                            rel="noopener"
-                            className="inline-flex items-center gap-1.5 text-xs font-medium text-stone-700 bg-stone-100 px-3 py-1.5 rounded-lg hover:bg-stone-200 transition-colors"
-                          >
-                            🌐 Spletna stran
-                          </a>
-                        )}
-                      </div>
                     </div>
+                  )}
+
+                  {/* Footer: links + profile CTA */}
+                  <div className="px-6 py-4 flex flex-wrap items-center gap-3">
+                    {event.organizer.instagram && (
+                      <a
+                        href={`https://instagram.com/${event.organizer.instagram.replace("@", "")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-white px-3 py-1.5 rounded-lg"
+                        style={{ backgroundColor: "#e1306c" }}
+                      >
+                        📸 {event.organizer.instagram.startsWith("@") ? event.organizer.instagram : `@${event.organizer.instagram}`}
+                      </a>
+                    )}
+                    {event.organizer.website && (
+                      <a
+                        href={event.organizer.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-stone-700 bg-stone-100 px-3 py-1.5 rounded-lg hover:bg-stone-200 transition-colors"
+                      >
+                        🌐 Spletna stran
+                      </a>
+                    )}
+                    <Link
+                      href={`/organizers/${event.organizer.id}`}
+                      className="ml-auto inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors hover:opacity-80"
+                      style={{ color: catColor, borderColor: `${catColor}55`, backgroundColor: `${catColor}0d` }}
+                    >
+                      Celoten profil →
+                    </Link>
                   </div>
                 </div>
               </section>

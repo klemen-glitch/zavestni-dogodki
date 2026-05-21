@@ -76,6 +76,10 @@ model Organizer {
   tier        OrganizerTier @default(FREE)
   events      Event[]
 
+  // Rich bio — researched Wikipedia-style biography, auto-updated on each new event
+  richBio             String?
+  richBioResearchedAt DateTime?
+
   // Research & outreach fields
   researchedAt    DateTime?
   researchNotes   String?

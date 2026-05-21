@@ -5,6 +5,7 @@
 
 import { db } from "@/lib/db";
 import { CATEGORY_LABEL as CATEGORY_LABEL_MAP } from "@/lib/utils";
+import { needsResearch, researchAndSaveOrganizer } from "@/lib/organizer-research";
 
 export interface EnrichedContent {
   intro: string[];           // 3 paragraphs about the event
@@ -315,18 +316,44 @@ export async function getEnrichedContent(event: {
   shortDescEn: string | null;
   category: string;
   rawText: string | null;
-  organizer: { name: string; bio: string | null; instagram: string | null } | null;
+  organizer: {
+    id: string;
+    name: string;
+    bio: string | null;
+    instagram: string | null;
+    website: string | null;
+    facebookUrl: string | null;
+    richBio: string | null;
+    richBioResearchedAt: Date | null;
+  } | null;
   venue: { name: string | null; city: string | null; region: string | null } | null;
   venueName: string | null;
   tags: string[];
 }): Promise<EnrichedContent> {
   const apiKey = process.env.DEEPSEEK_API_KEY;
 
+  // Trigger organizer research whenever needed — runs regardless of event cache
+  if (event.organizer && needsResearch(event.organizer)) {
+    db.event.findMany({
+      where: { organizerId: event.organizer.id },
+      select: { category: true },
+    }).then((evts) => {
+      const cats = [...new Set(evts.map((e) => e.category))];
+      researchAndSaveOrganizer({ ...event.organizer!, eventCategories: cats }).catch(
+        (err: unknown) => console.error("[enrichment] organizer research failed:", err)
+      );
+    }).catch(() => {});
+  }
+
   // Check cache — valid if it has enriched text content
   if (event.rawText) {
     try {
       const cached = JSON.parse(event.rawText) as EnrichedContent & { enrichedAt?: string };
       if (cached.enrichedAt && cached.intro?.length > 0 && cached.facilitatorBio) {
+        // Inject richBio into cached result if available (overrides cached short bio)
+        if (event.organizer?.richBio) {
+          cached.facilitatorBio = event.organizer.richBio;
+        }
         return cached;
       }
     } catch {
@@ -359,7 +386,9 @@ export async function getEnrichedContent(event: {
       "Čas za introspekcijo in integracijo",
       "Skupna refleksija in zaključek",
     ],
-    facilitatorBio: ai.facilitatorBio
+    // Priority: richBio (researched) > DeepSeek for this event > short bio fallback
+    facilitatorBio: event.organizer?.richBio
+      ?? ai.facilitatorBio
       ?? (event.organizer?.bio
         ? `${event.organizer.name} je izkušen facilitator, specializiran za ${CATEGORY_LABEL_MAP[event.category] ?? "zavestne prakse"}. ${event.organizer.bio}`
         : `${event.organizer?.name ?? "Facilitator"} je izkušen vodja ${CATEGORY_LABEL_MAP[event.category] ?? "zavestnih praks"} z globoko predanostjo transformativnemu delu. Skozi leta prakse je razvil/a edinstven pristop, ki združuje tradicionalno modrost z modernim razumevanjem telesa in uma. Na svojih srečanjih ustvarja varen, topel prostor, v katerem se udeleženci lahko predajo globokemu notranjemu potovanju.`),
