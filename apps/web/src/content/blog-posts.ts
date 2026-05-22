@@ -2154,6 +2154,162 @@ export const BLOG_POSTS: BlogPost[] = [
       "Dihalne tehnike"
     ]
   },
+  {
+    "slug": "breathwork-v-ljubljana",
+    "title": "Breathwork v Ljubljani 2026: Dihalnice, lokacije in nasveti",
+    "description": "Odkrij najboljše breathwork delavnice v Ljubljani za leto 2026. Lokacije v Tivoliju, Rožni dolini in centru. Cene, prevoz in nasveti za začetnike.",
+    "date": "2026-05-22",
+    "dateModified": "2026-05-22",
+    "category": "BREATHWORK",
+    "readingTime": 8,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Ljubljana je v zadnjih letih postala pravo središče zavednega dihanja. Breathwork, nekoč skrivnostna praksa le redkih navdušencev, danes privablja množice v parke, studie in celo na strehe stolpnic. V letu 2026 se scena še dodatno razvija – s premierami, kot je Dihalnica v Tivoliju: element ognja in obilje radosti v režiji Lilija Studia. V pričujočem lokalnem vodiču razkrivamo, kje, kdaj in zakaj dihati v prestolnici."
+      },
+      {
+        "heading": "Zakaj ravno Ljubljana za Breathwork?",
+        "body": "Ljubljana ponuja redko kombinacijo: naravo praktično v središču mesta in intimen, skupnostni duh. V Tivoliju, na Rožniku, ob Ljubljanici – vsaka lokacija doda svoj element. Dihalnica Lilija Studia na primer uporablja element ognja, kar je v Ljubljani še posebej močno ob zimskem solsticiju. Poleg tega mesto gosti več kot 30 rednih breathwork skupin, od katerih jih več kot polovica deluje v manjših zasebnih studiih v Šiški, Bežigradu in centru."
+      },
+      {
+        "heading": "Najboljše lokacije in četrti za breathwork v Ljubljani",
+        "body": "Tivoli je kralj ljubljanskega breathworka – njegovi travniki, zlasti ob Rdečem dvoru, omogočajo dihanje v naravi, a z zaščito pred mestnim hrupom. V Rožni dolini so priljubljeni studii kot Center Dih in Mala hiša dihanja (Kopališka pot 4), kjer cene posamičnih delavnic znašajo od 25 do 45 EUR. V centru, zlasti okrog Prešernovega trga, kratke 'urban breath' seje pogosto potekajo na strehah gostiln (npr. Nebotičnik). Za Dihalnico v Tivoliju se dogodek odvija na osrednjem travniku ob Cankarjevem domu – dostop je brezplačen, a obvezna je prijava."
+      },
+      {
+        "heading": "Cene breathwork dogodkov v Ljubljani (2026)",
+        "body": "Cene so odvisne od formata. Posamična delavnica v studiu stane 30–55 EUR (Lili Studio zaračuna 40 EUR za Dihalnico v Tivoliju). Paketi 4 sej: 120–160 EUR. Vikend intenziv (npr. v Podutiku): 180–250 EUR. Tako imenovane 'drop-in' seje v manjših skupinah v centru so cenejše, okoli 25 EUR. Brezplačne dihalne skupine obstajajo v okviru skupnosti (npr. vsako drugo sredo v Mestnem parku Zalog), a so bolj redke."
+      },
+      {
+        "heading": "Kdaj iti? Sezonska priporočila",
+        "body": "Pomlad in jesen sta najbolj prijazna brezplačnemu breathworku – temperature v Tivoliju so idealne okoli 18–22 °C. Poletje prinaša zgodnje jutranje seje (6:00) z dihanjem ob sončnem vzhodu, ki so priljubljene na Rožniku. Zima je čas za notranje delavnice v studiih, a Dihalnica Lilija Studia ravno pozimi uporablja ogenj – dogodek ’element ognja’ običajno poteka januarja ali februarja v večernih urah, kar poskrbi za čarobno vzdušje."
+      },
+      {
+        "heading": "Prevoz in kako priti do lokacij",
+        "body": "Večina breathwork točk je odlično povezanih z javnim prevozom. Tivoli: avtobusi št. 1, 6, 8 in 18 (postaja Cankarjev dom ali Tivoli). Bicikelj postaja je pri Cankarjevem domu. Rožna dolina: avtobus 1B ali 6 (postaja Rožna dolina). Za Dihalnico v Tivoliju priporočamo prihod peš ali s kolesom, saj je parkiranje v širšem centru plačljivo (cca. 1,20 EUR/h). Brezskrbni pridejo tudi z ljubljansko železniško postajo – odhod proti centru peš 12 minut."
+      },
+      {
+        "heading": "Nasveti za lokalne začetnike",
+        "body": "Za Ljubljančane je najboljši prvi korak udeležba na eni izmed odprtih dihalnic v Tivoliju – prinesejo lastno podlogo in udobna oblačila. Domačini pogosto priporočajo, da se pred breathworkom izogibate težki hrani vsaj 2 uri. Če ste živčni zaradi skupinske dinamike, so manjši studii v Rožni dolini bolj intimni. Ne pozabite na plastenko vode – Ljubljana ima pitnike, a po intenzivnem dihanju boste potrebovali svojo zalogo."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kje v Ljubljani poteka ’Dihalnica v Tivoliju: element ognja in obilje radosti’?",
+        "answer": "Dogodek poteka na osrednjem travniku Tivolija ob Cankarjevem domu. Natančen kraj se objavi ob prijavi, orientacijska točka je ob Rdečem dvoru."
+      },
+      {
+        "question": "Koliko stane breathwork delavnica v Ljubljani?",
+        "answer": "Povprečna cena enkratne delavnice je 30–55 EUR. Dihalnica Lilija Studia stane 40 EUR. Paketi za 4 seje v studiih v Rožni dolini so okoli 120 EUR."
+      },
+      {
+        "question": "Ali je za breathwork v Tivoliju potrebna predhodna izkušnja?",
+        "answer": "Ne, dogodek je odprt za vse, tudi za popolne začetnike. Vodja Lili Studio poskrbi za uvodna navodila in podporo."
+      },
+      {
+        "question": "Kako pridem do Tivolija z javnim prevozom?",
+        "answer": "Uporabite avtobuse LPP št. 1, 6, 8 ali 18. Izstopite na postaji Cankarjev dom ali Tivoli. Bicikelj je na voljo na postaji ob Cankarjevem domu."
+      },
+      {
+        "question": "Ali so na voljo brezplačne breathwork skupine v Ljubljani?",
+        "answer": "Da, občasno potekajo brezplačne dihalne skupine v Mestnem parku Zalog (vsako drugo sredo) in ob svetovnih dnevih dihanja. Večina rednih delavnic pa je plačljivih."
+      },
+      {
+        "question": "Kaj naj prinesem s seboj na breathwork v Tivoliju?",
+        "answer": "Lastno podlogo (jogo blazino ali odejo), udobna oblačila, plastenko vode in lahek šal za sprostitev. Za element ognja bodo na voljo sveče in kamin."
+      },
+      {
+        "question": "Kdaj so najboljši meseci za breathwork na prostem v Ljubljani?",
+        "answer": "Maj, september in oktober, ko so temperature med 18 in 22°C. Poleti priporočamo jutranje seje (6:00–7:00) na Rožniku ali ob Ljubljanici."
+      },
+      {
+        "question": "Ali je v Ljubljani varen prostor za breathwork z elementom ognja?",
+        "answer": "Da, voditelji, kot je Lili Studio, uporabljajo varne sveče in kamine, prostor je urejen v skladu s požarnimi predpisi. Dogodek je prilagojen vremenskim razmeram."
+      },
+      {
+        "question": "Kako se lahko prijavim na Dihalnico v Tivoliju?",
+        "answer": "Prijava poteka prek spletne strani Lilija Studia ali prek platforme Zavestni Dogodki. Zaradi omejenega števila mest priporočamo prijavo vsaj teden dni vnaprej."
+      }
+    ],
+    "relatedCategories": [
+      "Joga v Ljubljani",
+      "Meditacije v Ljubljani",
+      "Wellness vikendi v Ljubljani"
+    ]
+  },
+  {
+    "slug": "lili-studio-breathwork-facilitator",
+    "title": "Lili Studio — Breathwork Facilitatorka v Ljubljani",
+    "description": "Lili Studio je izkušena breathwork facilitatorka v Ljubljani. Vodi transformativne dihalne seanse v Tivoliju, ki povezujejo element ognja in obilje radosti.",
+    "date": "2026-05-22",
+    "dateModified": "2026-05-22",
+    "category": "BREATHWORK",
+    "readingTime": 6,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Lili Studio je dihalna facilitatorka iz Ljubljane, ki ustvarja varne in globoko preobražujoče breathwork izkušnje. Svoje delo povezuje z naravo in notranjimi elementi, pri čemer vsako dihalno sejo posveti določeni temi – največkrat ognju, ki simbolizira preporod, pogum in obilje radosti. Njene dihalnice v Tivoliju so priljubljene med tistimi, ki iščejo sprostitev, jasnost in čustveno ravnovesje."
+      },
+      {
+        "heading": "Filozofija in pristop",
+        "body": "Lili verjame, da je dihanje temeljno orodje za samozdravljenje in razvoj zavedanja. Njen pristop temelji na celostnem razumevanju telesa, uma in čustev. Vsaka seja je prilagojena skupinskemu toku, hkrati pa pušča prostor za individualne potrebe udeležencev. Element ognja pogosto uporablja kot metaforo za notranji sij in ustvarjalno moč, ki jo vsak nosi v sebi."
+      },
+      {
+        "heading": "Izobrazbena pot in izkušnje",
+        "body": "Lili se je izobraževala na mednarodnih breathwork programih in dodatno priznava pomen prakse pod vodstvom priznanih mentorjev. Svoje znanje nadgrajuje z udeležbo na seminarjih s področja somatske terapije in čuječnosti. V Sloveniji vodi redne dihalne dogodke že več kot tri leta in je del širše mreže wellness facilitatorjev."
+      },
+      {
+        "heading": "Slog poučevanja in kaj pričakovati na seji",
+        "body": "Njene dihalnice so nežne, a intenzivne – spodbujajo k zavestnemu dihanju, sproščanju napetosti in poglobljenemu stiku s seboj. Seja se običajno začne s pripravljalnimi vajami in namero, sledi vodeno dihalno potovanje ob umirjeni glasbi, konča pa s tišino ali nežnim deljenjem izkušenj. Pričakujete lahko toplo in sprejemajočo atmosfero brez pritiska."
+      },
+      {
+        "heading": "Komu je primeren",
+        "body": "Breathwork z Lilijo je primeren za vsakogar, ki si želi zmanjšati stres, izboljšati čustveno stabilnost ali poglobiti svojo prakso samozavedanja. Še posebej dobrodošli so tisti, ki so odprti za raziskovanje notranjih občutkov in se želijo povezati z naravnimi ritmi. Ni potrebno predhodno izkušnje z dihalnimi tehnikami."
+      },
+      {
+        "heading": "Kako se prijaviti / kontakt",
+        "body": "Za informacije o prihajajočih dihalnicah in prijave se lahko obrnete preko uradnih kanalov dogodkov, ki jih objavlja Lili Studio. Ker spletna stran trenutno ni aktivna, priporočamo spremljanje objav na platformah za wellness dogodke ali neposreden kontakt preko družbenih omrežij. Vsa obvestila so redno posodobljena."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj je breathwork in kako poteka dihalnica z Lilijo?",
+        "answer": "Breathwork je zavestno dihanje z namenom sproščanja in samozdravljenja. Lili vodi skupinske seanse, ki vključujejo uvodni pogovor, vodeno dihalno prakso ob glasbi in zaključno refleksijo."
+      },
+      {
+        "question": "Ali moram imeti predhodne izkušnje z dihalnimi tehnikami?",
+        "answer": "Ne, njene seanse so primerne za vse ravni – od popolnih začetnikov do izkušenih praktikov. Vsak dobi dovolj navodil in podpore."
+      },
+      {
+        "question": "Kako dolga je običajna dihalnica?",
+        "answer": "Seansa običajno traja približno 60 do 90 minut, odvisno od števila udeležencev in teme."
+      },
+      {
+        "question": "Kaj naj prinesem s seboj na dihalnico v Tivoliju?",
+        "answer": "Priporočljiva so udobna oblačila, podloga ali odeja za ležanje, voda in morebiti osebni predmeti za udobje (blazina, maska za oči)."
+      },
+      {
+        "question": "Ali je dihalnica primerna za nosečnice?",
+        "answer": "Lili priporoča posvet z zdravnikom preden se udeležite seanse, saj je dihalna praksa lahko intenzivna. Vsekakor obvestite facilitatorko pred začetkom."
+      },
+      {
+        "question": "Kako vem, kdaj je naslednji dogodek?",
+        "answer": "Obvestila o prihajajočih dihalnicah so objavljena na družbenih omrežjih in platformah za wellness dogodke v Ljubljani. Priporočamo redno spremljanje."
+      },
+      {
+        "question": "Ali so seanse individualne ali skupinske?",
+        "answer": "Trenutno Lili vodi predvsem skupinske dihalnice v naravi (Tivoli), občasno pa ponuja tudi manjše zasebne seanse po dogovoru."
+      },
+      {
+        "question": "Kaj če med seanso doživim močna čustva?",
+        "answer": "To je povsem normalno. Lili ustvari varen prostor, kjer so čustva dobrodošla. Vedno lahko naredite odmor ali se umaknete v tišino."
+      }
+    ],
+    "relatedCategories": [
+      "Meditacija in čuječnost",
+      "Joga in telo"
+    ],
+    "organizerName": "Lili Studio"
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
