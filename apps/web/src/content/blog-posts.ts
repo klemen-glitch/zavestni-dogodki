@@ -2736,6 +2736,224 @@ export const BLOG_POSTS: BlogPost[] = [
       "Ulična umetnost"
     ]
   },
+  {
+    "slug": "other-v-sloveniji",
+    "title": "Zavestna srečanja v Sloveniji: Popoln vodnik za 2026",
+    "description": "Odkrijte, kaj so zavestna srečanja (other) v Sloveniji. Naučite se, kako potekajo, kakšne so cene in kje jih najti. Preberite praktične nasvete.",
+    "date": "2026-05-29",
+    "dateModified": "2026-05-29",
+    "category": "OTHER",
+    "readingTime": 12,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "V zadnjih letih se je v Sloveniji razvila močna skupnost, ki išče globlji pomen, povezanost in ravnovesje. Poleg klasičnih jogijskih praks, meditacije in dihalnih tehnik se vse bolj uveljavljajo tako imenovana \"zavestna srečanja\" (v angleščini pogosto označena kot \"other\" ali \"conscious gatherings\"). Ta edinstvena doživetja združujejo različne elemente – od zvočnih kopeli in cvetličnih esenc do deljenja kroga in somatskih praks – v celostno izkušnjo, ki nagovarja telo, um in duha. V tem obsežnem vodniku vam bomo predstavili vse, kar morate vedeti o zavestnih srečanjih v Sloveniji v letu 2026, vključno z najboljšimi praksami, okvirnimi cenami in nasveti za popolne začetnike."
+      },
+      {
+        "heading": "Kaj točno je zavestno srečanje (other) in kako se razlikuje od delavnice ali retreata?",
+        "body": "Zavestno srečanje, ki ga v naši kategoriji označujemo kot \"other\", je namensko ustvarjen prostor in čas, kjer se udeleženci zberejo z namenom poglobljene samorefleksije, povezovanja z naravo in drugimi ter negovanja notranjega miru. Za razliko od strukturirane delavnice, ki se osredotoča na učenje določene veščine (npr. tehnike dihanja), ali večdnevnega retreata, ki je bolj intenziven in celosten, je zavestno srečanje pogosto bolj fluidno in odprto. Poteka lahko v obliki večernega kroga ob ognju, polodnevnega doživetja v gozdu ali jutranjega rituala ob jezeru. Ključni poudarki so namerna pozornost (mindfulness), prisotnost v trenutku, spoštovanje do sebe in drugih ter pogosto tudi povezovanje z naravnimi elementi. Cilj ni doseči nekaj zunanjega, temveč se preprosto uglasiti s svojim notranjim ritmom in najti trenutek tišine sredi vsakdanjega vrveža."
+      },
+      {
+        "heading": "Kako poteka tipično zavestno srečanje v Sloveniji?",
+        "body": "Čeprav je vsako srečanje edinstveno, lahko opazimo skupne elemente. Udeleženci se ob prihodu usedejo v krog, kar simbolizira enakopravnost in skupnost. Voditelj srečanja pogosto začne s kratkim uvoda, kjer pojasni namen in okvir srečanja. Sledijo lahko preproste jogijske asane za sprostitev telesa, dihalne vaje (breathwork) za umiritev uma in vodena meditacija. Pogost del je tudi zvočna kopel s tibetanskimi skledami, gongi ali drugimi inštrumenti, ki omogoči poglobljeno sprostitev. Nekatera srečanja vključujejo tudi deljenje v krogu, kjer lahko udeleženci izrazijo svoja čustva ali izkušnje, če želijo. Dogodek se običajno zaključi s čajem ali lažjim prigrizkom, kar omogoči neformalno druženje in povezovanje. V Sloveniji so zaradi bogate narave takšna srečanja pogosto organizirana na prostem – v gozdovih, na travnikih, ob rekah ali na posestvih z vrtovi."
+      },
+      {
+        "heading": "Kakšne so koristi udeležbe na zavestnem srečanju za vaše zdravje in dobro počutje?",
+        "body": "Zavestna srečanja ponujajo vrsto dokazanih koristi za fizično, mentalno in čustveno zdravje. Redna udeležba lahko pripomore k znižanju ravni stresa in anksioznosti, saj prakse, kot so meditacija in dihalne vaje, aktivirajo parasimpatični živčni sistem (odgovoren za počitek in prebavo). To vodi v nižji krvni tlak, boljši spanec in večjo odpornost. Na mentalni ravni se izboljšata koncentracija in jasnost misli, kar je še posebej dragoceno v današnjem svetu preobremenjenosti z informacijami. Čustveno se udeleženci pogosto počutijo bolj povezani s seboj in drugimi, kar zmanjšuje občutke osamljenosti in izolacije. Številne raziskave, na primer tiste s Harvarda, kažejo, da že 15-minutna redna meditacija spremeni možganske strukture (nevroplastičnost) za boljšo regulacijo čustev. Poleg tega srečanje v naravi povečuje proizvodnjo endorfinov in zmanjšuje kortizol (stresni hormon), kar celostno krepi imunski sistem."
+      },
+      {
+        "heading": "Kakšne so cene zavestnih srečanj v Sloveniji v letu 2026?",
+        "body": "Cene zavestnih srečanj v Sloveniji so zelo raznolike in odvisne od trajanja, lokacije, vključenih aktivnosti in voditelja. Za polodnevno srečanje (3-4 ure) v naravi, ki vključuje jogijske asane, meditacijo in zvočno kopel, lahko pričakujete ceno med 35 in 55 EUR. Večerni dogodki (2-3 ure) so pogosto nekoliko cenejši, v rangu od 20 do 35 EUR, še posebej, če so brez kosila ali večerje. Cene za celodnevna doživetja (8 ur) z vključenim obrokom (pogosto vegetarijanski ali veganski) se gibljejo od 70 do 120 EUR. Ekskluzivnejša srečanja z znanimi mednarodnimi voditelji ali na posebnih lokacijah (npr. grajski vrtovi, zasebna posestva) lahko dosežejo tudi 150 EUR na dan. Številni organizatorji ponujajo zgodnje prijave (early bird) s popustom 10–20 % ali pakete za več srečanj. Vedno je dobro preveriti, kaj je vključeno v ceno – pogosto so to napitki, prigrizki, včasih pa tudi uporaba jogijskih blazin in odej."
+      },
+      {
+        "heading": "Kje v Sloveniji lahko najdem kvalitetna zavestna srečanja (other)?",
+        "body": "Najboljši vir za iskanje zavestnih srečanj v Sloveniji je specializirana platforma Zavestni Dogodki (zavestnidogodki.si), ki kurira in objavlja preverjene dogodke s področja joge, meditacije, dihalnih praks, zvočnih kopeli in, seveda, zavestnih srečanj v kategoriji \"other\". Regijsko so najbolj aktivna območja Ljubljana z okolico (npr. Barje, Rožnik), Gorenjska (Bled, Bohinj, Kranjska Gora), Obala (Portorož, Izola) in Štajerska (Maribor, Pohorje). Vedno več dogodkov poteka tudi na kmetijah in ekoloških posestvih po vsej Sloveniji. Pri izbiri bodite pozorni na opis dogodka, izkušnje voditelja (mnogi imajo certifikate iz joge, meditacije ali somatskih praks) in morebitne ocene preteklih udeležencev. Priporočamo, da se na srečanje prijavite prek platforme, saj so pogosto omejena na manjše skupine (10-20 oseb) zaradi intimnosti in kakovosti izkušnje."
+      },
+      {
+        "heading": "Kako se pripraviti na svoje prvo zavestno srečanje?",
+        "body": "Priprava na prvo zavestno srečanje je preprosta in ni zahtevna. Prvi in najpomembnejši korak je odprt um – ne pričakujte ničesar konkretnega in dovolite, da izkušnja pride do vas. Oblačila naj bodo udobna, najbolje v plasteh, saj se lahko temperatura med meditacijo v naravi hitro spremeni. S seboj prinesite podlogo za sedenje (blazino, odejo ali jogijsko blazino), steklenico vode, morda dnevnik in pisalo za beleženje vtisov ter nekaj, kar vas pokrije med počitkom (lahka odeja ali šal). Pomembno je, da na srečanje pridete spočiti in lačni, vendar ne s polnim želodcem – priporočljiv je lahek obrok vsaj 2 uri pred začetkom. Izklopite telefon ali ga pustite v torbi, saj je namen srečanja odklop od digitalnega sveta. Če imate kakršnekoli zdravstvene težave (npr. težave s hrbtenico, poškodbe, dihalne bolezni), o tem vnaprej obvestite voditelja, da vam lahko prilagodi vaje."
+      },
+      {
+        "heading": "Za koga so zavestna srečanja najbolj primerna?",
+        "body": "Zavestna srečanja so odprta za vse, ne glede na starost, spol ali predhodne izkušnje s podobnimi praksami. Še posebej pa so primerna za posameznike, ki čutijo potrebo po umiritvi, poglobitvi samospoznavanja, povezovanju z naravo ali iskanju novega smisla in namena v življenju. Če ste pod stresom zaradi zahtevne službe, študija ali družinskih obveznosti, vam lahko nekaj ur na takšnem srečanju prinese prepotrebno olajšanje in svežo perspektivo. So tudi odlična priložnost za ljudi, ki se počutijo osamljene ali želijo spoznati podobno misleče posameznike. Prav tako so primerna za vse, ki želijo poglobiti svojo obstoječo prakso joge ali meditacije. Edina prava ovira je morda izrazita nenaklonjenost deljenju v skupini (kar pa ni obvezno) ali globoka fizična nepripravljenost za lahkotno gibanje. V vsakem primeru je priporočljivo, da se udeležite srečanja, ki je označeno kot \"za začetnike\" ali \"vse ravni\"."
+      },
+      {
+        "heading": "Kako pogosto naj se udeležujem zavestnih srečanj, da občutim trajne učinke?",
+        "body": "Tako kot pri vsaki praksi velja, da je rednost ključ do dolgoročnih koristi. Že eno samo srečanje vam lahko prinese trenutno olajšanje in nov vpogled, vendar se bodo trajne spremembe v načinu odzivanja na stres in splošnem počutju pokazale ob redni udeležbi. Večina strokovnjakov priporoča obisk vsaj enega zavestnega srečanja na teden ali vsaj dvakrat na mesec za vzdrževanje ravnovesja in poglabljanje izkušnje. Nekateri posamezniki kombinirajo daljša srečanja (polodnevna ali celodnevna) enkrat mesečno s krajšimi večernimi dogodki vmes. Pomembno je poslušati svoje telo in potrebe – če čutite, da vam srečanje pomaga, ga vključite v svoj urnik. Mnogi udeleženci poročajo, da po 3-6 mesecih redne udeležbe občutno izboljšajo kakovost spanja, znižajo raven anksioznosti in razvijejo bolj pozitiven pogled na svet."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj je zavestno srečanje (other) v kontekstu duhovnih praks?",
+        "answer": "Zavestno srečanje je celostno doživetje, ki združuje različne prakse (meditacijo, dihanje, nežno gibanje, zvočno terapijo) v namerno ustvarjenem prostoru. Ne gre za učenje določene veščine, temveč za poglobljeno izkušnjo povezanosti s seboj in naravo."
+      },
+      {
+        "question": "Ali moram imeti izkušnje z jogo ali meditacijo, da se udeležim zavestnega srečanja?",
+        "answer": "Nikakor. Večina zavestnih srečanj je odprtih za vse ravni. Voditelj bo vedno ponudil prilagoditve in možnost, da se pridružite v svojem tempu. Gre bolj za izkušnjo kot za vadbo."
+      },
+      {
+        "question": "Kakšna so pravila obnašanja na takšnem srečanju?",
+        "answer": "Osnovna pravila so spoštovanje tišine med praksami, izklopljen telefon, nevsiljivost in spoštovanje zasebnosti drugih udeležencev. Deljenje v krogu je prostovoljno. Običajno se pričakuje, da ostanete do konca srečanja."
+      },
+      {
+        "question": "Kje najdem zavestna srečanja v Sloveniji (kategorija other)?",
+        "answer": "Najboljši vir je platforma Zavestni Dogodki (zavestnidogodki.si), kjer so zbrani preverjeni dogodki iz vse Slovenije. Dogodke lahko iščete po datumu, lokaciji in kategoriji."
+      },
+      {
+        "question": "Kakšne so cene zavestnih srečanj v Sloveniji v letu 2026?",
+        "answer": "Cene se gibljejo od 20 EUR za krajše večerne dogodke do 120 EUR za celodnevna doživetja z obrokom. Polodnevna srečanja (3-4 ure) v naravi stanejo približno 35–55 EUR. Vedno preverite, kaj je vključeno."
+      },
+      {
+        "question": "Kaj naj oblečem na zavestno srečanje v naravi?",
+        "answer": "Priporočamo udobna oblačila v plasteh, saj se lahko temperatura hitro spremeni. Primerne so ohlapne hlače, bombažna majica, topla jakna ali pulover. S seboj vzemite tudi nogavice in obutev, ki jo lahko hitro sezujete."
+      },
+      {
+        "question": "Ali lahko na srečanje pridem z otrokom?",
+        "answer": "To je odvisno od posameznega dogodka. Nekatera srečanja so izrecno označena kot \"samo za odrasle\" ali \"od 16. leta\", medtem ko druga dobrodošla tudi otroke. Vedno preverite opis dogodka na Zavestnih Dogodkih ali kontaktirajte organizatorja."
+      },
+      {
+        "question": "Kakšna je razlika med zavestnim srečanjem in tečajem joge?",
+        "answer": "Tečaj joge se osredotoča na fizične položaje (asane) in dihalne tehnike (pranayama). Zavestno srečanje je veliko bolj celostno in vključuje čustvene, mentalne in duhovne elemente, pogosto v kombinaciji z naravo in skupnostnim deljenjem."
+      },
+      {
+        "question": "Ali potrebujem svojo jogijsko blazino in pripomočke?",
+        "answer": "Večina organizatorjev poskrbi za osnovne pripomočke (blazine, odeje, stole), vendar je priporočljivo, da v primeru nestrinjanja ali posebnih potreb prinesete svojo podlogo. Za večino dogodkov je dovolj že debela odeja ali blazina za sedenje."
+      },
+      {
+        "question": "Ali so zavestna srečanja primerna za ljudi z anksioznostjo ali depresijo?",
+        "answer": "Da, mnogim ljudem z blago do zmerno anksioznostjo in depresijo takšna srečanja pomagajo pri umiritvi in samoregulaciji. Pri hudih duševnih stiskah se pred udeležbo posvetujte z zdravnikom ali terapevtom, saj lahko intenzivna čustva včasih pridejo na površje."
+      },
+      {
+        "question": "Kako dolgo običajno traja zavestno srečanje?",
+        "answer": "Trajanje je zelo različno. Večerni dogodki trajajo 2-3 ure, polodnevna srečanja 3-4 ure, celodnevna pa 6-8 ur. Nekatera posebna srečanja ob polni luni ali solsticiju lahko trajajo tudi dlje."
+      },
+      {
+        "question": "Kaj storiti, če se med srečanjem počutim neudobno ali me preplavijo čustva?",
+        "answer": "To je popolnoma normalno in sprejeto. Lahko se nežno umaknete, se usedete ali sprehodite. Vedno lahko tiho odidete v kopalnico ali na svež zrak. Voditelj je tam za podporo, zato ga lahko kadar koli pokličete na pomoč."
+      }
+    ],
+    "relatedCategories": [
+      "WORKSHOP",
+      "MEDITATION",
+      "SOUND_BATH",
+      "RETREAT"
+    ],
+    "howToSteps": [
+      {
+        "name": "Korak 1: Določite svoj namen in želje",
+        "text": "Preden začnete iskati dogodek, se vprašajte, zakaj si želite udeležiti zavestnega srečanja. Ali si želite sprostitve, poglobljene meditacije, povezovanja z ljudmi ali pa preprosto potrebujete čas zase? To vam bo pomagalo izbrati pravi dogodek."
+      },
+      {
+        "name": "Korak 2: Poiščite dogodek na Zavestnih Dogodkih",
+        "text": "Obiščite spletno stran zavestnidogodki.si in uporabite filter za kategorijo \"other\" ali iščite po ključnih besedah, kot so \"zavestno srečanje\" ali \"krog v naravi\". Prebrskajte dogodke, preverite datume in lokacije."
+      },
+      {
+        "name": "Korak 3: Preberite opis in preverite voditelja",
+        "text": "Ko najdete dogodek, ki vas zanima, natančno preberite opis. Bodite pozorni, kaj je vključeno (npr. obrok, pripomočki) in kakšne so izkušnje voditelja. Preverite morebitne recenzije ali ocene preteklih udeležencev."
+      },
+      {
+        "name": "Korak 4: Prijavite se in pripravite potrebščine",
+        "text": "Po prijavi (pogosto prek platforme) si pripravite udobna oblačila, podlogo za sedenje, vodo, dnevnik in lahek prigrizek. Sporočite voditelju morebitne posebne potrebe ali zdravstvene omejitve."
+      },
+      {
+        "name": "Korak 5: Pridite z odprtim umom in srcem",
+        "text": "Na dogodek pridite brez visokih pričakovanj. Pustite telefon v torbi, se usedite v krog in preprosto bodite prisotni. Sprejmite vse, kar se pojavi – tišino, zvoke, čustva ali misli."
+      },
+      {
+        "name": "Korak 6: Sodelujte v svojem tempu",
+        "text": "Med praksami (joga, dihanje, meditacija) sodelujte le toliko, kolikor vam ustreza. Če se želite samo sprostiti in opazovati, je to v redu. Nikoli se ne silite v položaje ali dihalne vaje, ki vam niso udobne."
+      },
+      {
+        "name": "Korak 7: Po srečanju si vzemite čas za integracijo",
+        "text": "Po koncu srečanja ne hitite takoj v vsakdanje obveznosti. Namesto tega si vzemite vsaj 15 minut za tiho sedenje ali zapisovanje vtisov v dnevnik. To bo okrepilo učinke izkušnje."
+      },
+      {
+        "name": "Korak 8: Razmislite o redni praksi",
+        "text": "Če vam je bilo srečanje všeč, razmislite o redni udeležbi. Spremljajte koledar na Zavestnih Dogodkih za prihajajoče dogodke v vaši bližini in poskusite vključiti vsaj eno srečanje na teden v svoj urnik."
+      }
+    ]
+  },
+  {
+    "slug": "other-v-ljubljana",
+    "title": "OTHER v Ljubljani 2026 – doživetja, lokacije in cene",
+    "description": "Odkrijte, kaj ponuja OTHER v Ljubljani 2026: najboljše četrti, cene, kdaj in kako priti. Lokalni vodnik za zavestna doživetja v prestolnici.",
+    "date": "2026-05-29",
+    "dateModified": "2026-05-29",
+    "category": "OTHER",
+    "readingTime": 8,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Ljubljana je v zadnjih letih postala središče zavestnih dogodkov, kjer se prepletajo umetnost, glasba in osebna rast. Leta 2026 bo scena še bolj pestra, zlasti na področju OTHER – dogodkov, ki presegajo klasične okvire. Ne glede na to, ali ste domačin ali obiskovalec, vas čakajo edinstvena doživetja, ki združujejo skupnost, poglobitev in sprostitev."
+      },
+      {
+        "heading": "Zakaj ravno Ljubljana za OTHER?",
+        "body": "Ljubljana s svojo intimno velikostjo, zelenimi površinami in napredno mislečo skupnostjo ponuja idealno okolje za OTHER dogodke. Mesto je znano po svoji odprtosti in povezovanju različnih praks – od meditacije v Tivoliju do sodobnih umetniških performansov v centru. Leta 2026 se pričakujejo številni pop-up večeri, ki bodo združevali zvok, gibanje in tišino."
+      },
+      {
+        "heading": "Najboljše lokacije in četrti za OTHER v Ljubljani",
+        "body": "Dogodki OTHER potekajo na več različnih koncih mesta. Priljubljene četrti vključujejo center (Stara Ljubljana) s svojimi galerijami in atriji, kot je Pritličje ali Galerija Škuc. Metelkova mesto ostaja ključna točka za bolj alternativne izkušnje, medtem ko Rožna dolina in Moste ponujata bolj umirjene prostore. Za večje dogodke je pogosto v uporabi Gospodarsko razstavišče ali Cukrarna."
+      },
+      {
+        "heading": "Cene za OTHER dogodke v Ljubljani 2026",
+        "body": "Cene vstopnic za OTHER dogodke se gibljejo od 15 € do 45 €, odvisno od trajanja in vključenih aktivnosti. Delavnice so praviloma cenejše (15–25 €), večerni dogodki z živo glasbo pa lahko stanejo do 45 €. Paketi za več dogodkov so pogosto ugodnejši – do 20 % popusta. Za študente in upokojence so na voljo popusti v višini 10–15 %."
+      },
+      {
+        "heading": "Kdaj iti – sezonska priporočila za OTHER",
+        "body": "Pomlad (april–junij) je najboljša sezona za OTHER dogodke v Ljubljani, saj so tedaj številni festivali na prostem. Poletje ponuja nočne dogodke v Tivoliju in ob Ljubljanici, jesen pa bolj intimne izkušnje v zaprtih prostorih. Zima je mirnejša, a vrtovi in galerije še vedno gostijo manjše dogodke. Priporočamo rezervacijo vsaj teden dni vnaprej."
+      },
+      {
+        "heading": "Kako priti do prizorišč OTHER v Ljubljani",
+        "body": "Ljubljana je odlično povezana z javnim prevozom (LPP avtobusi in mestni vlaki). Do centra pridete z linijami 1, 6, 8, 11, ki pokrivajo večino četrti. S kolesom (Bicikelj) lahko dosežete vsa prizorišča v 15 minutah. Za tiste, ki prihajajo iz drugih mest, je priporočljiva uporaba vlaka (Ljubljana–Maribor, Ljubljana–Koper) ali avtobusa, s postajališčem v bližini centra. Parkirišče je na voljo v garažah Kongresni trg in Kozolec."
+      },
+      {
+        "heading": "Nasveti za lokalne začetnike OTHER dogodkov",
+        "body": "Če se prvič udeležujete OTHER dogodka v Ljubljani, začnite z manjšim večerom v četrti Trnovo ali Šiška. Priporočamo, da pridete 15 minut prej, da se udobno namestite. Ne pozabite na udobna oblačila in steklenico vode. Spremljajte lokalne skupnosti na Facebooku in Instagramu za zadnje novice. Večina organizatorjev sprejema plačilo s karticami, vendar je za manjše dogodke dobro imeti gotovino."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kje v Ljubljani potekajo OTHER dogodki?",
+        "answer": "Najpogostejše lokacije so center (galerije Pritličje, Škuc), Metelkova mesto, Cukrarna in Gospodarsko razstavišče. Pozimi so dogodki pogosto v Zapikih ali Malem gradu."
+      },
+      {
+        "question": "Koliko stane vstopnica za OTHER v Ljubljani 2026?",
+        "answer": "Cene se gibljejo od 15 € za krajše delavnice do 45 € za celovečerne dogodke z več aktivnostmi. Popusti za študente in skupine so običajni."
+      },
+      {
+        "question": "Ali so dogodki primerni za začetnike?",
+        "answer": "Da, večina OTHER dogodkov v Ljubljani je odprtih za vse, ne glede na predznanje. Organizatorji pogosto poskrbijo za uvod v prakso."
+      },
+      {
+        "question": "Kako do Metelkove z javnim prevozom?",
+        "answer": "Do Metelkove lahko pridete z avtobusoma 2 in 9 (postaja Metelkova) ali s kolesom Bicikelj (postaja Metelkova). Od železniške postaje je približno 10 minut hoje."
+      },
+      {
+        "question": "Ali obstajajo popusti za več dogodkov?",
+        "answer": "Da, nekateri organizatorji ponujajo pakete za 3 ali 5 dogodkov s 15–20 % popustom. Preverite njihove profile na Zavestni Dogodki."
+      },
+      {
+        "question": "Kdaj je najboljši letni čas za OTHER v Ljubljani?",
+        "answer": "Pomlad in poletje ponujata največ dogodkov na prostem, jesen pa bolj intimne izkušnje v zaprtih prostorih. Zima je mirnejša, a še vedno aktivna."
+      },
+      {
+        "question": "Ali je treba dogodke rezervirati vnaprej?",
+        "answer": "Priporočamo rezervacijo vsaj 3–5 dni vnaprej, zlasti za priljubljene dogodke. Nekatere manjše delavnice imajo omejeno število mest."
+      },
+      {
+        "question": "Kakšna so parkirna priporočila v centru?",
+        "answer": "Uporabite garažo Kongresni trg (približno 2 €/uro) ali Kozolec (1,5 €/uro). Alternativa je parkirišče P+R Barje, od koder je avtobus do centra."
+      },
+      {
+        "question": "Ali so dogodki v angleščini?",
+        "answer": "Večina dogodkov je v slovenščini, vendar vse več organizatorjev ponuja angleške prevode ali dvojezične vsebine, zlasti v centru in na Metelkovi."
+      }
+    ],
+    "relatedCategories": [
+      "dogodki",
+      "rekreacija"
+    ]
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
