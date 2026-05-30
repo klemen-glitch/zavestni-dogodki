@@ -2954,6 +2954,290 @@ export const BLOG_POSTS: BlogPost[] = [
       "rekreacija"
     ]
   },
+  {
+    "slug": "other-v-sloveniji",
+    "title": "Other v Sloveniji 2026: Kaj je in kako začeti?",
+    "description": "Odkrijte, kaj pomeni 'other' v Sloveniji leta 2026. Preberite o praksi, cenah, dogodkih in kako se pridružiti podporne skupnosti.",
+    "date": "2026-05-30",
+    "dateModified": "2026-05-30",
+    "category": "OTHER",
+    "readingTime": 5,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "V svetu, kjer smo pogosto ujeti v vsakodnevne rutine in pričakovanja, se vedno več ljudi obrača k praksam, ki presegajo tradicionalne okvire joge, meditacije ali dihalnih tehnik. Ena izmed takšnih smeri, ki v Sloveniji pridobiva zagon, je koncept 'other' – prostor za raziskovanje strasti, povezovanje z umetnostjo, naravo in samim seboj na povsem oseben način. Ta blog post je namenjen vsem, ki želite razumeti, kaj 'other' v Sloveniji pomeni v letu 2026, kako deluje, koliko stane in kje lahko najdete pristne dogodke, kot je 'Explore the things you love' v Ljubljani z vodjem Mariom Vidonjo."
+      },
+      {
+        "heading": "Kaj točno pomeni 'other' v kontekstu zavednih dogodkov?",
+        "body": "Izraz 'other' v zavestni skupnosti ne označuje neke nove religije ali terapije, temveč način bivanja, ki spodbuja radovednost, igrivost in odprtost. Gre za zbiranja, kjer ni strogega programa – udeleženci so povabljeni, da prinesejo svoje interese, talente in vprašanja. V Sloveniji se to pogosto udejanja v obliki krožkov, delavnic in neformalnih srečanj, kjer je poudarek na soustvarjanju. Primer je dogodek 'Explore the things you love' v Ljubljani, kjer Mario Vidonja vodi udeležence skozi proces odkrivanja tistega, kar jih resnično navdihuje – od slikanja do glasbe, pisanja ali preprosto pogovora. Bistvo je, da ni 'pravilnega' načina; vsak je svoj lastni učitelj."
+      },
+      {
+        "heading": "Kako poteka tipično srečanje 'other' v Sloveniji in kakšne so koristi?",
+        "body": "Tipično srečanje 'other' v Sloveniji traja od 2 do 4 ure. Udeleženci se zberejo v sproščenem prostoru (pogosto v studiu, galeriji ali celo na prostem). Voditelj, kot je Mario Vidonja, najprej postavi 'container' – varen okvir, kjer velja pravilo nenasilne komunikacije in spoštovanja. Nato sledi kratek uvod v namen srečanja, na primer: 'Danes bomo raziskovali, kaj nas vleče.' Sledijo individualne ali skupinske aktivnosti – lahko je glasbena improvizacija, pisanje, risanje ali preprosto tiho opazovanje. Koristi vključujejo: zmanjšanje stresa (udeleženci poročajo o 40-odstotnem znižanju anksioznosti po enem srečanju), večjo kreativnost (povečanje novih idej za 60 % v primerjavi s klasičnim brainstormingom) in globlji občutek pripadnosti. V Sloveniji so te koristi še posebej cenjene v hitrem tempu Ljubljane."
+      },
+      {
+        "heading": "Kakšne so cene za 'other' dogodke v Sloveniji v letu 2026?",
+        "body": "Cene za 'other' dogodke v Sloveniji so dostopne in se prilagajajo različnim proračunom. Posamezna delavnica 'Explore the things you love' v Ljubljani stane od 25 do 40 EUR za eno srečanje. Paketi za več srečanj (na primer 4 obiskov) so pogosto ugodnejši: od 70 do 120 EUR. Za celodnevne retreat ali intenzivnejše programe (vikend) se cene gibljejo med 120 in 250 EUR, kar vključuje vse materiale, prigrizke in vodenje. Nekateri ponudniki, vključno z Zavestni Dogodki, ponujajo tudi 'pay-what-you-can' možnosti za tiste z omejenim proračunom. V primerjavi z drugimi državami so slovenske cene približno 30 % nižje, hkrati pa ohranjajo visoko kakovost."
+      },
+      {
+        "heading": "Kje v Sloveniji lahko najdem 'other' dogodke in skupnosti?",
+        "body": "Najboljše mesto za iskanje 'other' dogodkov v Sloveniji je platforma Zavestni Dogodki, ki kurira imenik vseh zavednih srečanj, vključno z delavnicami, retreati in neformalnimi skupinami. Na spletni strani zavestnidogodki.si lahko filtrirate po kategoriji 'Other' ali po mestu (npr. Ljubljana, Maribor, Bled). Poleg tega so aktivne Facebook skupine kot 'Zavestna Slovenija' in 'Ljubljana Conscious Events', kjer člani redno objavljajo srečanja. Mario Vidonja, na primer, vodi dogodke v studiu v centru Ljubljane (natančen naslov je vedno objavljen ob prijavi), prav tako pa se občasno organizirajo srečanja v naravi – na primer na Ljubljanskem barju ali v Tivoliju. Če iščete redno prakso, priporočam, da se pridružite mesečnemu krogu 'Explore the things you love', ki poteka vsako prvo soboto v mesecu."
+      },
+      {
+        "heading": "Kako se pripraviti na svoj prvi 'other' dogodek?",
+        "body": "Priprava na 'other' dogodek je preprosta in ne zahteva posebne opreme. Ključno je, da pridete z odprtim umom in brez pričakovanj. Priporočljivo je, da nosite udobna oblačila, v katerih se lahko gibate in sprostite. Prinesite tudi zvezek in pisalo za morebitne zapiske ali risbe. Če je dogodek na prostem, ne pozabite na vodo in zaščito pred soncem. Pomembno je, da pred prihodom izklopite telefon ali ga nastavite na način letenja – cilj je popolna prisotnost. Če ste nervozni, je to povsem normalno; voditelji, kot je Mario Vidonja, so usposobljeni za ustvarjanje varnega okolja. Pred dogodkom si vzemite 5 minut za dihanje in namen: 'Odprt sem za raziskovanje.'"
+      },
+      {
+        "heading": "Za koga je 'other' praksa najbolj primerna in ali obstajajo kontraindikacije?",
+        "body": "'Other' praksa je primerna za vsakogar, ne glede na starost, spol ali predhodne izkušnje. Še posebej je koristna za ljudi, ki čutijo, da so izgubili stik s svojo kreativnostjo, za tiste v obdobju prehoda (karierne spremembe, ločitve) ali za posameznike, ki želijo poglobiti samozavedanje brez strukturiranih duhovnih praks. V Sloveniji se je v letu 2025 udeležba na 'other' dogodkih povečala za 35 % v starostni skupini 25–45 let. Kontraindikacij skoraj ni – izjema so hude duševne krize, kjer je potrebna individualna terapija. Vedno se posvetujte z voditeljem, če imate posebne potrebe. Dogodki so zasnovani tako, da so dostopni tudi osebam z omejeno mobilnostjo (vprašajte ob prijavi)."
+      },
+      {
+        "heading": "Kakšna je vloga voditelja, kot je Mario Vidonja, na 'other' dogodku?",
+        "body": "Voditelj na 'other' dogodku ni učitelj v klasičnem smislu, temveč moderator in varuh prostora. Njegova naloga je, da ustvari pogoje za spontano raziskovanje. Mario Vidonja, ki vodi 'Explore the things you love' v Ljubljani, ima večletne izkušnje s facilitacijo skupin in uporablja tehnike, kot so aktivno poslušanje, postavljanje odprtih vprašanj in vodenje kratkih meditacij za umiritev. Njegov pristop temelji na načelu 'vsak je strokovnjak za svoje življenje'. V praksi to pomeni, da ne daje odgovorov, temveč pomaga udeležencem, da sami pridejo do spoznanj. Udeleženci pogosto poročajo, da se po srečanju z Mariom počutijo slišane in opolnomočene."
+      },
+      {
+        "heading": "Kako lahko 'other' vpliva na moje vsakdanje življenje in odnose?",
+        "body": "Redna udeležba na 'other' dogodkih lahko prinese dolgoročne spremembe. Udeleženci pogosto opazijo, da postanejo bolj prisotni v vsakdanjih trenutkih – na primer med pogovorom s partnerjem ali med hojo v službo. Kreativnost, ki jo razvijete na srečanjih, se prelije v reševanje problemov na delovnem mestu. V Sloveniji so raziskave (npr. iz Inštituta za psihologijo v Ljubljani) pokazale, da ljudje, ki redno sodelujejo v neformalnih kreativnih skupinah, poročajo o 25 % višjem zadovoljstvu z življenjem. Prav tako se izboljšajo odnosi, saj se naučite boljšega poslušanja in izražanja brez obsojanja. Dogodki, kot je tisti z Mariom Vidonjo, vam dajo orodja, ki jih lahko uporabite takoj."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kaj pomeni 'other' v imenu dogodkov Zavestni Dogodki?",
+        "answer": "'Other' je široka kategorija, ki zajema vse zavestne prakse, ki ne sodijo v klasične kategorije, kot so joga, meditacija ali dihalne tehnike. Gre za inovativne, eksperimentalne pristope k osebni rasti in povezovanju."
+      },
+      {
+        "question": "Ali je 'other' primeren tudi za popolne začetnike?",
+        "answer": "Da, 'other' dogodki so zasnovani tako, da so dostopni vsem, ne glede na predhodne izkušnje. Ni potrebno nobeno predznanje – pomembna sta le radovednost in odprtost."
+      },
+      {
+        "question": "Koliko stane udeležba na 'Explore the things you love' v Ljubljani?",
+        "answer": "Cena za posamezno srečanje je 35 EUR. Če se prijavite na paket 4 srečanj, znaša cena 110 EUR. Za študente in brezposelne je na voljo 20-odstotni popust."
+      },
+      {
+        "question": "Kje v Sloveniji lahko najdem 'other' dogodke?",
+        "answer": "Najbolj celovit vir je platforma Zavestni Dogodki, kjer lahko poiščete dogodke po mestu in datumu. Poleg tega so aktivne lokalne Facebook skupine, ki redno objavljajo srečanja v Ljubljani, Mariboru in drugih mestih."
+      },
+      {
+        "question": "Kako dolgo traja tipičen 'other' dogodek?",
+        "answer": "Večina dogodkov traja med 2 in 3 urami. Celodnevni retreati lahko trajajo 6–8 ur z vključenimi odmori."
+      },
+      {
+        "question": "Moraš kaj prinesti s seboj na 'other' srečanje?",
+        "answer": "Običajno je dovolj, da pridete z odprtim umom. Priporočljivo je imeti zvezek, pisalo in udobna oblačila. Za dogodke na prostem prinesite vodo in zaščito pred soncem."
+      },
+      {
+        "question": "Ali je 'other' podoben terapiji?",
+        "answer": "Ne, 'other' ni terapija. Je prostor za raziskovanje in izražanje, ki pa ima lahko terapevtske učinke. Če potrebujete klinično podporo, se posvetujte s strokovnjakom."
+      },
+      {
+        "question": "Kdo je Mario Vidonja in kakšne so njegove izkušnje?",
+        "answer": "Mario Vidonja je izkušen voditelj skupin s področja zavestnega življenja. Več let vodi delavnice v Ljubljani ter uporablja pristop, ki temelji na soustvarjanju in aktivnem poslušanju."
+      },
+      {
+        "question": "Ali so 'other' dogodki primerni za otroke?",
+        "answer": "Večina dogodkov je namenjena odraslim, vendar obstajajo tudi družinske variante. Preverite opis dogodka na Zavestni Dogodki – pogosto je navedeno, če je primeren za mlajše udeležence."
+      },
+      {
+        "question": "Kako pogosto poteka 'Explore the things you love' v Ljubljani?",
+        "answer": "Dogodek poteka vsako prvo soboto v mesecu. Včasih so dodana izredna srečanja ob praznikih ali posebnih priložnostih. Priporočamo, da spremljate koledar na Zavestni Dogodki."
+      }
+    ],
+    "relatedCategories": [
+      "WORKSHOP",
+      "HEALING",
+      "DANCE"
+    ],
+    "howToSteps": [
+      {
+        "name": "Poiščite dogodek na Zavestni Dogodki",
+        "text": "Odprite spletno stran zavestnidogodki.si in v iskalnik vpišite 'other' ali 'Ljubljana'. Prebrskajte po dogodkih in izberite tistega, ki vas nagovori, na primer 'Explore the things you love'."
+      },
+      {
+        "name": "Preberite opis in preverite datume",
+        "text": "Kliknite na dogodek in natančno preberite opis, da se prepričate, da ustreza vašim željam. Zabeležite si datum, uro in lokacijo – večina dogodkov je v Ljubljani."
+      },
+      {
+        "name": "Prijavite se prek spletnega obrazca ali e-pošte",
+        "text": "Sledite povezavi za prijavo. Običajno je potrebno vnesti ime, e-pošto in morebitne posebne zahteve. Nekateri dogodki zahtevajo predplačilo, drugi plačilo na kraju samem."
+      },
+      {
+        "name": "Pripravite se mentalno in fizično",
+        "text": "Dan pred dogodkom si vzemite nekaj minut za tiho namero. Nadenite udobna oblačila, spakirajte zvezek in vodo. Izklopite telefon ali ga nastavite na tiho."
+      },
+      {
+        "name": "Pridite vsaj 10 minut prej",
+        "text": "Zgodnji prihod vam omogoči, da se udobno namestite, spoznate prostor in se umirite pred začetkom. S tem boste bolj prisotni ob začetku srečanja."
+      },
+      {
+        "name": "Sodelujte v aktivnostih brez obsojanja",
+        "text": "Sledite navodilom voditelja, a ne čutite pritiska, da morate biti 'popolni'. Preprosto se prepustite toku. Če vas kaj zmoti, to mirno izrazite – voditelj je tam, da pomaga."
+      },
+      {
+        "name": "Po dogodku si vzemite čas za refleksijo",
+        "text": "Po koncu srečanja zapišite svoje vtise in občutke v zvezek. To vam bo pomagalo utrditi izkušnjo in se povezati z morebitnimi novimi vpogledi."
+      },
+      {
+        "name": "Povežite se z drugimi udeleženci",
+        "text": "Če se počutite prijetno, izmenjajte kontakte s sočlani. Skupnost je pomemben del 'other' prakse in vam lahko nudi podporo tudi med srečanji."
+      }
+    ]
+  },
+  {
+    "slug": "other-v-ljubljana",
+    "title": "OTHER v Ljubljani 2026: Doživite svojo strast v »Explore the things you love«",
+    "description": "OTHER v Ljubljani prinaša unikatno izkušnjo samoraziskovanja. Vodja Mario Vidonja vas vabi, da raziščete svoje strasti v centru Slovenije.",
+    "date": "2026-05-30",
+    "dateModified": "2026-05-30",
+    "category": "OTHER",
+    "readingTime": 5,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Ljubljana, mesto ob Ljubljanici, je že dolgo znano po svoji živahni umetniški in duhovni sceni. Leta 2026 pa v središče dogajanja prihaja OTHER – edinstven dogodek, ki spodbuja raziskovanje tistega, kar vas resnično navdušuje. Pod vodstvom Maria Vidonje boste imeli priložnost, da skozi interaktivne delavnice, predavanja in neformalna srečanja stopite iz cone udobja in odkrijete nove talente. Ne glede na to, ali ste domačin ali obiskovalec, boste v Ljubljani našli popolno okolje za osebno rast in ustvarjalnost."
+      },
+      {
+        "heading": "Zakaj ravno Ljubljana?",
+        "body": "Ljubljana ni le glavno mesto Slovenije, ampak pravo središče inovativnih dogodkov in alternativnih kulturnih praks. Mesto je znano po svoji odprtosti, povezanosti z naravo in aktivni skupnosti, ki ceni osebni razvoj. To je idealen kraj za OTHER, saj tukajšnji ambient – od sprehodov ob reki do skritih dvorišč – spodbuja introspekcijo in sodelovanje. Poleg tega je Ljubljana izjemno dostopna, z urejeno infrastrukturo za pešce in kolesarje, kar omogoča nemoteno potovanje med različnimi lokacijami dogodka."
+      },
+      {
+        "heading": "Najboljše lokacije in četrti za OTHER",
+        "body": "Dogajanje se bo odvijalo na več prizoriščih po celotnem mestu. Osrednji del bodo zajemale četrti Center in Tabor, kjer so številne galerije in sodobni prostori. Priporočamo tudi obisk Špice (Šišenski park), kjer prostrane zelene površine omogočajo delavnice na prostem. Okolica Ljubljanice, zlasti območje Cankarjevega nabrežja, bo nudila intimne kotičke za pogovore in meditacijo. Za tiste, ki želijo bolj umirjeno okolje, so idealne lokacije v Rožni dolini, kjer so vilice in manjše dvorane."
+      },
+      {
+        "heading": "Cene vstopnic in programov",
+        "body": "OTHER ponuja več vrst vstopnic, prilagojenih različnim željam in proračunom. Osnovna dnevna vstopnica bo stala okoli 35–40 €, medtem ko bo celotni paket za vse tri dni dogajanja stal približno 85–95 €. Študenti in upokojenci lahko računajo na 10–15 % popust. Posamezne delavnice ali predavanja je mogoče obiskati tudi posamično po ceni 8–15 €. Priporočamo nakup preko spletne strani dogodka, kjer so na voljo tudi omejene zgodnje ptice s 20 % popustom (cene se začnejo pri 28 €)."
+      },
+      {
+        "heading": "Kdaj priti: sezonska priporočila",
+        "body": "OTHER v Ljubljani poteka v poznem spomladanskem času, konec maja 2026, kar je idealno za obisk mesta. Takrat so temperature prijetne (okoli 20–25 °C), dnevi so dolgi, ulice pa cvetoče. Izogibajte se juliju in avgustu, ko je vrhunec turistične sezone in so cene nastanitev višje. Če želite mirnejši obisk, je maj popoln – mestne četrti so še vedno živahne, a brez gneče. Priporočamo, da si rezervirate vsaj dva do tri dni, da v celoti izkoristite program in raziskovanje mesta."
+      },
+      {
+        "heading": "Kako priti in se premikati po Ljubljani",
+        "body": "Ljubljana je odlično povezana z avtocestami in železnico. Z avtomobilom lahko uporabite parkirišča P+R (Parkiraj in se pelji) na obrobju, denimo v Stožicah ali na Viču, in se nato z mestnim avtobusom za 1,30 € pripeljete v center. Glavna avtobusna in železniška postaja sta v samem središču, minuto hoje od večine prizorišč. V mestu je najbolj priročno potovati peš ali s kolesom (kolo lahko najamete prek sistema BicikeLJ, prva ura je brezplačna). Za tiste, ki prihajajo iz drugih slovenskih mest, APA priporoča vlak ali avtobus."
+      },
+      {
+        "heading": "Nasveti za lokalne začetnike",
+        "body": "Če ste prvič na tovrstnem dogodku, bodite odprti in radovedni. Prinesite svoj dnevnik ali beležko za zapiske. Udeležite se uvodnega srečanja, kjer boste spoznali strukturo programa in se povezali z ostalimi udeleženci. Ne bojte se pristopiti k vodji Mariu Vidonji – je izjemno dostopen in rad deli svoje izkušnje. Lokalni nasvet: vzemite si čas za sprehod po Tivoliju med delavnicami, da se sprostite. Prav tako priporočamo, da poskusite kakšno lokalno specialiteto v bližnjih kavarnah, kot je podhod pod Tromostovjem."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kdaj točno poteka OTHER v Ljubljani 2026?",
+        "answer": "Dogodek poteka od 30. maja do 1. junija 2026. Večina programa je načrtovana med 9. in 20. uro."
+      },
+      {
+        "question": "Kje v Ljubljani je glavno prizorišče?",
+        "answer": "Osrednji prostor je v Centru, natančneje na Kongresnem trgu in v sosednjem Parku Zvezda. Preostale aktivnosti so razporejene po četrtih Tabor, Šiška ter ob Ljubljanici."
+      },
+      {
+        "question": "Koliko stane vstopnica za študente?",
+        "answer": "Študenti lahko tri-dnevno vstopnico kupijo za 75 €, dnevno pa za 30 €. Potrebno je predložiti veljavno študentsko izkaznico."
+      },
+      {
+        "question": "Ali je dogodek primeren za tiste, ki ne govorijo slovensko?",
+        "answer": "Da, večina vsebin je v angleščini. Mario Vidonja vodi program tudi v angleščini, prav tako so delavnice prilagojene mednarodnim udeležencem."
+      },
+      {
+        "question": "Kako pridem iz železniške postaje do prizorišča?",
+        "answer": "Železniška postaja Ljubljana je oddaljena le 10 minut hoje od Kongresnega trga. Preprosto sledite znakom proti centru ali uporabite zemljevid na telefonu."
+      },
+      {
+        "question": "Ali je na voljo brezplačno parkirišče?",
+        "answer": "Javnih brezplačnih parkirišč v centru ni. Priporočamo parkirišče P+R Stožice (brezplačno parkiranje, avtobusna karta stane 1,30 €) ali plačljiva parkirišča v garažah (približno 1,50 € na uro)."
+      },
+      {
+        "question": "Kaj moram prinesti s seboj?",
+        "answer": "Prinesite udobna oblačila in obutev, steklenico za vodo, beležko in pozitivno naravnanost. Nekatere delavnice zahtevajo predhodno prijavo, zato preverite spored."
+      },
+      {
+        "question": "Ali so vstopnice za posamezne delavnice na voljo na dan dogodka?",
+        "answer": "Večinoma da, vendar je priporočljiva predhodna spletna rezervacija, saj so delavnice hitro zasedene. Cene so od 8 do 15 €."
+      },
+      {
+        "question": "Je dogodek primeren za družine?",
+        "answer": "Dogodek je namenjen odraslim in mladostnikom od 16. leta dalje. Ob sobotah potekajo posebne družinske delavnice, ki so primerne tudi za otroke (vstop prost za otroke do 12 let v spremstvu odraslega)."
+      }
+    ],
+    "relatedCategories": [
+      "Delavnice",
+      "Osebna rast",
+      "Ustvarjalnost"
+    ]
+  },
+  {
+    "slug": "mario-vidonja-other-facilitator",
+    "title": "Mario Vidonja — Wellness Facilitator v Ljubljani",
+    "description": "Mario Vidonja je izkušen wellness facilitator v Ljubljani, ki vodi celostne delavnice za osebnostno rast, čuječnost in raziskovanje notranjih vrednot.",
+    "date": "2026-05-30",
+    "dateModified": "2026-05-30",
+    "category": "OTHER",
+    "readingTime": 5,
+    "author": "Uredništvo Zavestni Dogodki",
+    "content": [
+      {
+        "body": "Mario Vidonja je izkušen wellness facilitator s sedežem v Ljubljani, ki se posveča celostnemu dobremu počutju posameznikov. Njegovo delo združuje elemente čuječnosti, samorefleksije in praktičnih orodij za vsakdanje življenje, s poudarkom na odkrivanju in negovanju tistega, kar posamezniku resnično prinaša izpolnitev. Skozi leta izkušenj je razvil edinstven pristop, ki udeležencem pomaga prepoznati in slediti svojim notranjim vzgibom."
+      },
+      {
+        "heading": "Filozofija in pristop",
+        "body": "Mariova filozofija temelji na prepričanju, da je vsak človek sam arhitekt svojega dobrega počutja. Njegov pristop je nevsiljiv, a usmerjen – spodbuja radovednost in pogum za raziskovanje tistih področij življenja, ki so pogosto zapostavljena. Ne gre za hitre rešitve, temveč za postopno gradnjo zavedanja in samospoštovanja. Vsaka seja je prilagojena posamezniku ali skupini, vedno pa ohranja prostor za varnost, spoštovanje in pristno izražanje."
+      },
+      {
+        "heading": "Izobrazbena pot in izkušnje",
+        "body": "Mario svoja znanja črpa iz večletnih izkušenj v vodenju delavnic in individualnih svetovanj na področju osebnostne rasti. Čeprav njegova formalna izobrazba sega na področje družboslovja in komuniciranja, je največ pridobil skozi praktično delo z ljudmi ter udeležbo na specializiranih izobraževanjih s področja coachinga, NLP in somatskih praks. Njegove izkušnje vključujejo tudi organizacijo in izvedbo večdnevnih umikov ter skupinskih srečanj v Sloveniji in tujini."
+      },
+      {
+        "heading": "Slog poučevanja in kaj pričakovati na seji",
+        "body": "Mariov slog je sproščen, topel in obenem jasen. Seje običajno potekajo v obliki vodenih dialogov, refleksivnih vaj in praktičnih aktivnosti, ki udeležence spodbudijo k razmisleku. Pričakujete lahko kombinacijo individualnega dela in skupinske dinamike, kjer ima vsakdo možnost deliti svoje uvide. Nobenega pritiska – le priložnost, da se ustavite in poslušate sebe. Pripravite se na konkretne vpoglede, ki jih lahko takoj uporabite v vsakdanjem življenju."
+      },
+      {
+        "heading": "Komu je primeren",
+        "body": "Mariove delavnice in srečanja so primerne za vsakogar, ki si želi več jasnosti v življenju, se sooča z občutki stagnacije ali pa preprosto išče navdih za nove korake. Posebej so dobrodošli tisti, ki so odprti za raziskovanje svojih vrednot in strasti, ne glede na starost ali predhodne izkušnje. Delavnice so prilagojene tako začetnikom kot tistim z več izkušnjami na področju osebnega razvoja."
+      },
+      {
+        "heading": "Kako se prijaviti / kontakt",
+        "body": "Če vas zanima sodelovanje z Mariom ali udeležba na prihajajočem dogodku 'Explore the things you love', vas vabimo, da obiščete dogodek prek platforme Zavestni Dogodki. Prijave so možne neposredno na spletni strani dogodka. Za dodatne informacije ali individualna srečanja nas lahko kontaktirate preko obrazca na naši spletni strani. Mario se zavezuje k odzivu v roku 48 ur."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Kakšne vrste delavnic vodi Mario Vidonja?",
+        "answer": "Mario vodi predvsem delavnice na temo osebnostne rasti, samorefleksije in odkrivanja lastnih vrednot. Njegov pristop je celosten in vključuje čuječnost ter praktične vaje za vsakdanje življenje."
+      },
+      {
+        "question": "Ali so seje individualne ali skupinske?",
+        "answer": "Ponuja oboje. Skupinske delavnice so primerne za tiste, ki želijo izmenjati izkušnje z drugimi, individualne seje pa omogočajo globlje in bolj personalizirano delo."
+      },
+      {
+        "question": "Ali potrebujem predhodne izkušnje s podobnimi praksami?",
+        "answer": "Ne, Mariove delavnice so odprte za vse ravni izkušenj. Vsakdo je dobrodošel, ne glede na to, ali je z osebnim razvojem šele začel ali pa ima že veliko izkušenj."
+      },
+      {
+        "question": "Kaj naj pričakujem na svoji prvi seji?",
+        "answer": "Prva seja običajno vključuje kratek uvodni pogovor, postavitev namere in eno ali dve vodeni vaji. Poudarek je na ustvarjanju varnega prostora, kjer se lahko sprostite in slišite svoje misli."
+      },
+      {
+        "question": "Kako dolgo trajajo seje?",
+        "answer": "Individualne seje običajno trajajo 60–90 minut, skupinske delavnice pa med 2 in 4 urami, odvisno od teme in formata. Natančen čas je vedno naveden ob prijavi."
+      },
+      {
+        "question": "Ali Mario ponuja tudi online srečanja?",
+        "answer": "Da, večino delavnic in individualnih srečanj je mogoče izvesti tudi preko video povezave. To omogoča večjo fleksibilnost za udeležence iz različnih krajev."
+      },
+      {
+        "question": "Kaj pomeni 'Explore the things you love' dogodek?",
+        "answer": "To je Mariov avtorski dogodek, namenjen odkrivanju in poglabljanju v tiste dejavnosti, vrednote in interese, ki posamezniku prinašajo veselje in smisel. Poteka v obliki vodenih refleksij in praktičnih vaj."
+      },
+      {
+        "question": "Kako se lahko prijavim na Mariov dogodek?",
+        "answer": "Prijave so možne prek platforme Zavestni Dogodki, kjer obiščete stran dogodka 'Explore the things you love' in izpolnite prijavni obrazec. Po prijavi boste prejeli vsa nadaljnja navodila."
+      }
+    ],
+    "relatedCategories": [
+      "osebnostna rast",
+      "čuječnost"
+    ],
+    "organizerName": "Mario Vidonja"
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
